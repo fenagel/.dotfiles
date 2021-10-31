@@ -1,6 +1,3 @@
-require("fenagel.telescope")
-require("fenagel.lsp")
-
 P = function(v)
   print(vim.inspect(v))
   return v

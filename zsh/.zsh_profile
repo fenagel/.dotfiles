@@ -1,4 +1,4 @@
-xport XDG_CONFIG_HOME=$HOME/.config
+export XDG_CONFIG_HOME=$HOME/.config
 VIM="nvim"
 
 export PYTHONBREAKPOINT="pudb.set_trace"
