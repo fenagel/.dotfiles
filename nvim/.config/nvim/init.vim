@@ -29,20 +29,20 @@ call plug#begin('~/.vim/plugged')
   Plug 'nvim-treesitter/playground'
 
   " Debugger Plugins
-  Plug 'mfussenegger/nvim-dap'
-  Plug 'Pocco81/DAPInstall.nvim'
-  Plug 'szw/vim-maximizer'
+  " Plug 'mfussenegger/nvim-dap'
+  " Plug 'Pocco81/DAPInstall.nvim'
+  " Plug 'szw/vim-maximizer'
 
   " Snippets
-  Plug 'L3MON4D3/LuaSnip'
-  Plug 'rafamadriz/friendly-snippets'
+  " Plug 'L3MON4D3/LuaSnip'
+  " Plug 'rafamadriz/friendly-snippets'
 
   Plug 'rust-lang/rust.vim'
-  Plug 'tpope/vim-fugitive'
-  Plug 'tpope/vim-rhubarb'
-  Plug 'junegunn/gv.vim'
-  Plug 'vim-utils/vim-man'
-  Plug 'mbbill/undotree'
+  " Plug 'tpope/vim-fugitive'
+  " Plug 'tpope/vim-rhubarb'
+  " Plug 'junegunn/gv.vim'
+  " Plug 'vim-utils/vim-man'
+  " Plug 'mbbill/undotree'
   Plug 'gruvbox-community/gruvbox'
 
   " telescope requirements...
