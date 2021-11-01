@@ -72,10 +72,17 @@ export PATH="./bin:./node_modules/.bin:${PATH}:/usr/local/sbin"
 [[ -f "$HOME/.aliases" ]] && source "$HOME/.aliases"
 
 # aliases
-alias ls "ls -p -G"
-alias la "ls -A"
-alias ll "ls -l"
-alias lla "ll -A"
+alias ls="ls -p -G"
+alias la="ls -A"
+alias ll="ls -l"
+alias lla="ll -A"
+
+# Get External IP / local IPs
+alias ip="curl ipinfo.io/ip"
+alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
+alias speedtest="wget -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip"
+
+
 
 # Encoding stuff for the terminal
 export LANG=en_US.UTF-8
