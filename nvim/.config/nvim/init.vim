@@ -28,6 +28,7 @@ call plug#begin('~/.vim/plugged')
 
   " nvim/cmp setup with luasnip
   Plug 'neovim/nvim-lspconfig'
+  Plug 'williamboman/nvim-lsp-installer'
   Plug 'hrsh7th/cmp-nvim-lsp'
   Plug 'hrsh7th/cmp-buffer'
   Plug 'hrsh7th/cmp-path'
