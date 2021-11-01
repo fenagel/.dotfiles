@@ -1,0 +1,14 @@
+[core]
+	excludesfile = ~/.gitignore
+	editor = nvim
+[push]
+  default = simple
+[color]
+  status = auto
+  diff = auto
+  branch = auto
+  interactive = auto
+  grep = auto
+  ui = auto
+[branch "master"]
+  mergeoptions = --ff-only
