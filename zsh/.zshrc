@@ -71,6 +71,12 @@ export PATH="./bin:./node_modules/.bin:${PATH}:/usr/local/sbin"
 # Store your own aliases in the ~/.aliases file and load the here.
 [[ -f "$HOME/.aliases" ]] && source "$HOME/.aliases"
 
+# aliases
+alias ls "ls -p -G"
+alias la "ls -A"
+alias ll "ls -l"
+alias lla "ll -A"
+
 # Encoding stuff for the terminal
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
