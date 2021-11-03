@@ -14,28 +14,31 @@ set wildignore+=**/.git/*
 
 call plug#begin('~/.vim/plugged')
   Plug 'gruvbox-community/gruvbox'
-  Plug 'chriskempson/base16-vim'
 
-  Plug 'vim-airline/vim-airline-themes'
+  " Neovim Tree shitter
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'nvim-treesitter/playground'
+
+  " Plebvim lsp Plugins
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'hrsh7th/cmp-nvim-lsp'
+  Plug 'hrsh7th/cmp-buffer'
+  Plug 'hrsh7th/nvim-cmp'
+  Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
+  Plug 'onsails/lspkind-nvim'
+  Plug 'glepnir/lspsaga.nvim'
+  Plug 'simrat39/symbols-outline.nvim'
+
+  " Snippets
+  Plug 'L3MON4D3/LuaSnip'
+  Plug 'rafamadriz/friendly-snippets'
+
+  Plug 'chriskempson/base16-vim'
 
   Plug 'junegunn/gv.vim'
   Plug 'tpope/vim-fugitive'
-
-  Plug 'mbbill/undotree'
-
   Plug 'sbdchd/neoformat'
-  Plug 'mattn/emmet-vim'
-
-  " nvim/cmp setup with luasnip
-  Plug 'neovim/nvim-lspconfig'
-  Plug 'williamboman/nvim-lsp-installer'
-  Plug 'hrsh7th/cmp-nvim-lsp'
-  Plug 'hrsh7th/cmp-buffer'
-  Plug 'hrsh7th/cmp-path'
-  Plug 'hrsh7th/cmp-cmdline'
-  Plug 'hrsh7th/nvim-cmp'
-  Plug 'L3MON4D3/LuaSnip'
-  Plug 'saadparwaiz1/cmp_luasnip'
+  Plug 'mbbill/undotree'
 
   " telescope requirements...
   Plug 'nvim-lua/popup.nvim'
@@ -53,6 +56,8 @@ endif
 
 let loaded_matchparen = 1
 let mapleader = " "
+
+lua require'nvim-treesitter.configs'.setup { indent = { enable = true }, highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }}
 
 imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'
 inoremap <silent> <S-Tab> <cmd>lua require'luasnip'.jump(-1)<Cr>
@@ -95,22 +100,10 @@ nnoremap <leader>j :m .+1<CR>==
 
 inoremap <C-c> <esc>
 
-fun! TrimWhitespace()
-  let l:save = winsaveview()
-  keeppatterns %s/\s\+$//e
-  call winrestview(l:save)
-endfun
-
-
 augroup highlight_yank
     autocmd!
     autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 40})
 augroup END
-
-augroup FENAGEL
-  autocmd!
-  autocmd BufWritePre * :call TrimWhitespace()
-augroup end
 
 augroup fmt
   autocmd!
