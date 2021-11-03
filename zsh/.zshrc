@@ -23,9 +23,6 @@ export HOMEBREW_NO_ANALYTICS=1
 # Disable warning about insecure completion-dependent directories
 ZSH_DISABLE_COMPFIX=true
 
-# Actually load Oh-My-Zsh
-source "${ZSH}/oh-my-zsh.sh"
-
 # Load rbenv if installed (to manage your Ruby versions)
 export PATH="${HOME}/.rbenv/bin:${PATH}" # Needed for Linux/WSL
 type -a rbenv > /dev/null && eval "$(rbenv init -)"

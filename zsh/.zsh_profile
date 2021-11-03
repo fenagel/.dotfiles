@@ -5,10 +5,6 @@ export PYTHONBREAKPOINT="pudb.set_trace"
 export GOPATH=$HOME/go
 export GIT_EDITOR=$VIM
 
-# Where should I put you?
-bindkey -s ^f "tmux-sessionizer\n"
-
-
 validateYaml() {
     python -c 'import yaml,sys;yaml.safe_load(sys.stdin)' < $1
 }
