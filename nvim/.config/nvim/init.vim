@@ -34,6 +34,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'rafamadriz/friendly-snippets'
 
   Plug 'chriskempson/base16-vim'
+  Plug 'nvim-lualine/lualine.nvim'
+  " If you want to have icons in your statusline choose one of these
+  Plug 'kyazdani42/nvim-web-devicons'
 
   Plug 'junegunn/gv.vim'
   Plug 'tpope/vim-fugitive'
@@ -48,7 +51,6 @@ call plug#begin('~/.vim/plugged')
 call plug#end()
 
 lua require("fenagel")
-let g:airline_theme='simple'
 
 if executable('rg')
     let g:rg_derive_root='true'
