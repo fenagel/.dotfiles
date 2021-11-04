@@ -38,7 +38,7 @@ cmp.setup({
 	},
 
     formatting = {
-        format = function(ntry, vim_item)
+        format = function(entry, vim_item)
             vim_item.kind = lspkind.presets.default[vim_item.kind]
             local menu = source_mapping[entry.source.name]
             if entry.source.name == 'cmp_tabnine' then
@@ -53,16 +53,16 @@ cmp.setup({
     },
 
 	sources = {
-        -- tabnine completion? yayaya
-        { name = "cmp_tabnine" },
+    -- tabnine completion? yayaya
+    { name = 'cmp_tabnine' },
 
-		{ name = "nvim_lsp" },
+		{ name = 'nvim_lsp' },
 
 		-- For vsnip user.
 		-- { name = 'vsnip' },
 
 		-- For luasnip user.
-		{ name = "luasnip" },
+		{ name = 'luasnip' },
 
 		-- For ultisnips user.
 		-- { name = 'ultisnips' },
