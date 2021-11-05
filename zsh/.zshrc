@@ -9,13 +9,14 @@ export DOTFILES=$HOME/.dotfiles
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
-source $ZSH/oh-my-zsh.sh
-
-source $HOME/.zsh_profile
 
 
 # You can change the theme with another one from https://github.com/robbyrussell/oh-my-zsh/wiki/themes
 ZSH_THEME="robbyrussell"
+
+source $ZSH/oh-my-zsh.sh
+
+source $HOME/.zsh_profile
 
 # (macOS-only) Prevent Homebrew from reporting - https://github.com/Homebrew/brew/blob/master/docs/Analytics.md
 export HOMEBREW_NO_ANALYTICS=1
