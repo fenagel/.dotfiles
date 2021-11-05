@@ -12,3 +12,5 @@
   ui = auto
 [branch "master"]
   mergeoptions = --ff-only
+[user]
+	name = fenagel

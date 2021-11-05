@@ -56,6 +56,8 @@ if executable('rg')
     let g:rg_derive_root='true'
 endif
 
+let g:neoformat_enabled_javascript = ['prettier']
+
 let loaded_matchparen = 1
 let mapleader = " "
 
