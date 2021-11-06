@@ -105,6 +105,9 @@ nnoremap <leader>j :m .+1<CR>==
 
 inoremap <C-c> <esc>
 
+nnoremap <C-s> :w<CR>
+inoremap <C-s> <esc>:w<CR>
+
 augroup highlight_yank
     autocmd!
     autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 40})
