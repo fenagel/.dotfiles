@@ -73,6 +73,7 @@ imap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' 
 smap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'
 
 nnoremap <leader>u :UndotreeShow<CR>
+nnoremap <leader>pv :Ex<CR>
 
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
