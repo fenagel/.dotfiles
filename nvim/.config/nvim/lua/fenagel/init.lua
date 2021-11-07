@@ -1,16 +1,4 @@
-require("fenagel.telescope")
-require("fenagel.lsp")
-
-P = function(v)
-  print(vim.inspect(v))
-  return v
-end
-
-if pcall(require, 'plenary') then
-  RELOAD = require('plenary.reload').reload_module
-
-  R = function(name)
-    RELOAD(name)
-    return require(name)
-  end
-end
+require'fenagel.plugins'
+require'fenagel.mappings'
+require'fenagel.lsp'
+require'fenagel.telescope'

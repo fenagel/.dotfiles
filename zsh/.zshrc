@@ -86,3 +86,5 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
 export BUNDLER_EDITOR=nvim
+
+alias luamake=/Users/felix/code/lua-language-server/3rd/luamake/luamake
