@@ -80,8 +80,8 @@ require("telescope").setup({
 require("telescope").load_extension("fzy_native")
      
 map('n', '<leader>ps', ':lua require("telescope.builtin").grep_string({ search = vim.fn.input("Grep For > ")})<CR>')
-map('n', '<leader>p', ':lua require("telescope.builtin").git_files()<CR>')
-map('n','<Leader>pf' ,':lua require("telescope.builtin").find_files()<CR>' )
+map('n', '<C-p>', ':lua require("telescope.builtin").git_files()<CR>')
+map('n','<leader>pf' ,':lua require("telescope.builtin").find_files()<CR>' )
 map('n', '<leader>pw', ':lua require("telescope.builtin").grep_string { search = vim.fn.expand("<cword>") }<CR>')
 map('n', '<leader>pb', ':lua require("telescope.builtin").buffers()<CR>')
 map('n', '<leader>vh', ':lua require("telescope.builtin").help_tags()<CR>')
@@ -240,6 +240,7 @@ map('n', '<leader>u', ':UndotreeShow<CR>')
 map('n', 'Y', 'yg$')
 map('n', 'n', 'nzzzv')
 map('n', 'N', 'Nzzzv')
+map('x', '<leader>p', "'_dP")
 
 -------------------- LSP -----------------------------------
 local function config(_config)
