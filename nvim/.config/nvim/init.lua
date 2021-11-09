@@ -113,12 +113,17 @@ cmp.setup({
 			-- vim.fn["UltiSnips#Anon"](args.body)
 		end,
 	},
-	mapping = {
-		["<C-u>"] = cmp.mapping.scroll_docs(-4),
-		["<C-d>"] = cmp.mapping.scroll_docs(4),
-		["<C-Space>"] = cmp.mapping.complete(),
-		["<C-e>"] = cmp.mapping.close(),
-	},
+  mapping = {
+      ['<C-o>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+      ['<C-p>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+      ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+      ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+      ['<C-e>'] = cmp.mapping({
+        i = cmp.mapping.abort(),
+        c = cmp.mapping.close(),
+      }),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    },
 
     formatting = {
         format = function(entry, vim_item)
@@ -135,11 +140,11 @@ cmp.setup({
         end
     },
 
-	sources = {
+	  sources = {
         -- tabnine completion? yayaya
         { name = "cmp_tabnine" },
 
-		{ name = "nvim_lsp" },
+		  { name = "nvim_lsp" },
 
 		-- For vsnip user.
 		-- { name = 'vsnip' },
@@ -185,7 +190,7 @@ require("luasnip.loaders.from_vscode").lazy_load({
 })
 
 -- Neoformat
-  g.neoformat_try_prettier = 1
+g.neoformat_try_prettier = 1
 
 -------------------- OPTIONS -------------------------------
 local indent, width = 2, 80
@@ -240,7 +245,18 @@ map('n', '<leader>u', ':UndotreeShow<CR>')
 map('n', 'Y', 'yg$')
 map('n', 'n', 'nzzzv')
 map('n', 'N', 'Nzzzv')
-map('x', '<leader>p', "'_dP")
+map('x', '<Leader>p', "'_dP")
+map('v', 'J', ":m '>+1<CR>gv=gv")
+map('v', 'K', ":m '<-2<CR>gv=gv")
+map('n', '<Leader>+', ':vertical resize +5<CR>')
+map('n', '<Leader>_', ':vertical resize -5<CR>')
+map('n', '<C-h>', ':wincmd h<CR>')
+map('n', '<C-j>', ':wincmd j<CR>')
+map('n', '<C-k>', ':wincmd k<CR>')
+map('n', '<C-l>', ':wincmd l<CR>')
+map('n', '<leader>ne', ':NERDTreeToggle<CR>')
+map('n', '<C-s>', ':w<CR>')
+map('i', '<C-s>', '<esc>:w<CR>')
 
 -------------------- LSP -----------------------------------
 local function config(_config)
@@ -311,5 +327,5 @@ require('nvim-treesitter.configs').setup {
 -------------------- COMMANDS ------------------------------
 vim.tbl_map(function(c) cmd(fmt('autocmd %s', c)) end, {
   'TextYankPost * silent! lua require"vim.highlight".on_yank({timeout = 40})',
-  'BufWritePre * undojoin | Neoformat'
+  'BufWritePre * undojoin | Neoformat prettier'
 })
