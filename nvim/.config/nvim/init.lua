@@ -45,11 +45,6 @@ vim.call('plug#end')
 
 -------------------- PLUGIN SETUP --------------------------
 -- Telescope
-local pickers = require("telescope.pickers")
-local finders = require("telescope.finders")
-local previewers = require("telescope.previewers")
-local action_state = require("telescope.actions.state")
-local conf = require("telescope.config").values
 local actions = require("telescope.actions")
 
 require("telescope").setup({
@@ -79,12 +74,12 @@ require("telescope").setup({
 
 require("telescope").load_extension("fzy_native")
      
-map('n', '<leader>ps', ':lua require("telescope.builtin").grep_string({ search = vim.fn.input("Grep For > ")})<CR>')
+map('n', '<leader>fg', ':lua require("telescope.builtin").grep_string({ search = vim.fn.input("Grep For > ")})<CR>')
 map('n', '<C-p>', ':lua require("telescope.builtin").git_files()<CR>')
-map('n','<leader>pf' ,':lua require("telescope.builtin").find_files()<CR>' )
-map('n', '<leader>pw', ':lua require("telescope.builtin").grep_string { search = vim.fn.expand("<cword>") }<CR>')
-map('n', '<leader>pb', ':lua require("telescope.builtin").buffers()<CR>')
-map('n', '<leader>vh', ':lua require("telescope.builtin").help_tags()<CR>')
+map('n','<leader>ff' ,':lua require("telescope.builtin").find_files()<CR>' )
+map('n', '<leader>fw', ':lua require("telescope.builtin").grep_string { search = vim.fn.expand("<cword>") }<CR>')
+map('n', '<leader>fb', ':lua require("telescope.builtin").buffers()<CR>')
+map('n', '<leader>fh', ':lua require("telescope.builtin").help_tags()<CR>')
 
 -- nvim-cmp 
 local cmp = require("cmp")
@@ -114,38 +109,10 @@ cmp.setup({
 		end,
 	},
     mapping = {
-      ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-      ["<C-f>"] = cmp.mapping.scroll_docs(4),
-      ["<C-e>"] = cmp.mapping.close(),
-      ["<c-y>"] = cmp.mapping(
-        cmp.mapping.confirm {
-          behavior = cmp.ConfirmBehavior.Insert,
-          select = true,
-        },
-        { "i", "c" }
-      ),
-
-      ["<c-space>"] = cmp.mapping {
-        i = cmp.mapping.complete(),
-        c = function(
-          _ --[[fallback]]
-        )
-          if cmp.visible() then
-            if not cmp.confirm { select = true } then
-              return
-            end
-          else
-            cmp.complete()
-          end
-        end,
-      },
-
-      ["<tab>"] = cmp.mapping {
-        i = cmp.config.disable,
-        c = function(fallback)
-          fallback()
-        end,
-    },
+      ["<c-d>"] = cmp.mapping.scroll_docs(-4),
+      ["<c-f>"] = cmp.mapping.scroll_docs(4),
+      ["<c-e>"] = cmp.mapping.close(),
+      ["<c-space>"] = cmp.mapping.complete(),
   },
     formatting = {
         format = function(entry, vim_item)
@@ -211,9 +178,6 @@ require("luasnip.loaders.from_vscode").lazy_load({
 	exclude = {},
 })
 
--- Neoformat
-g.neoformat_try_prettier = 1
-
 -------------------- OPTIONS -------------------------------
 local indent, width = 2, 80
 opt.colorcolumn = tostring(width)   -- Line length marker
@@ -225,11 +189,10 @@ opt.undofile = true
 opt.syntax = 'on'
 opt.ignorecase = true               -- Ignore case
 opt.number = true                   -- Show line numbers
-opt.pumheight = 12                  -- Max height of popup menu
 opt.relativenumber = true           -- Relative line numbers
 opt.scrolloff = 8                   -- Lines of context
 opt.shiftwidth = indent             -- Size of an indent
-opt.shortmess = 'atToOFc'           -- Prompt message options
+vim.cmd [[set shortmess+=c]]
 opt.sidescrolloff = 8               -- Columns of context
 opt.signcolumn = 'yes'              -- Show sign column
 opt.smartcase = true                -- Do not ignore case with capitals
@@ -259,8 +222,6 @@ cmd 'au ColorScheme * hi! CursorLineNr guibg=NONE'
 -------------------- MAPPINGS ------------------------------
 g.mapleader = ' '
 map('', '<leader>c', '"+y')
-map('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<S-Tab>"', {expr = true})
-map('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
 map('i', '<C-f>', '<ESC>')
 map('t', '<C-f>', '<ESC>', {noremap = false})
 map('n', '<leader>u', ':UndotreeShow<CR>')
@@ -272,13 +233,14 @@ map('v', 'J', ":m '>+1<CR>gv=gv")
 map('v', 'K', ":m '<-2<CR>gv=gv")
 map('n', '<Leader>+', ':vertical resize +5<CR>')
 map('n', '<Leader>_', ':vertical resize -5<CR>')
-map('n', '<C-h>', ':wincmd h<CR>')
-map('n', '<C-j>', ':wincmd j<CR>')
-map('n', '<C-k>', ':wincmd k<CR>')
-map('n', '<C-l>', ':wincmd l<CR>')
+map('n', '<leader-h>', ':wincmd h<CR>')
+map('n', '<leader-j>', ':wincmd j<CR>')
+map('n', '<leader-k>', ':wincmd k<CR>')
+map('n', '<leader-l>', ':wincmd l<CR>')
 map('n', '<leader>ne', ':NERDTreeToggle<CR>')
 map('n', '<C-s>', ':w<CR>')
 map('i', '<C-s>', '<esc>:w<CR>')
+map('n', '<Leader>gs', '<cmd>Git<CR>')
 
 -------------------- LSP -----------------------------------
 local function config(_config)
@@ -310,6 +272,35 @@ require("lspconfig").gopls.setup(config({
 		},
 	},
 }))
+
+local sumneko_root_path = "/Users/felix/.cache/nvim/lspconfig/sumneko_lua/lua-language-server"
+local sumneko_binary = sumneko_root_path .. "/bin/macOS/lua-language-server"
+
+require("lspconfig").sumneko_lua.setup(config({
+	cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
+	settings = {
+		Lua = {
+			runtime = {
+				-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+				version = "LuaJIT",
+				-- Setup your lua path
+				path = vim.split(package.path, ";"),
+			},
+			diagnostics = {
+				-- Get the language server to recognize the `vim` global
+				globals = { "vim" },
+			},
+			workspace = {
+				-- Make the server aware of Neovim runtime files
+				library = {
+					[vim.fn.expand("$VIMRUNTIME/lua")] = true,
+					[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+				},
+			},
+		},
+	},
+}))
+
 
 map('n', '<leader>vp', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
 map('n', '<leader>vn', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
@@ -349,5 +340,7 @@ require('nvim-treesitter.configs').setup {
 -------------------- COMMANDS ------------------------------
 vim.tbl_map(function(c) cmd(fmt('autocmd %s', c)) end, {
   'TextYankPost * silent! lua require"vim.highlight".on_yank({timeout = 40})',
-  'BufWritePre * undojoin | Neoformat prettier'
 })
+vim.cmd[[autocmd BufWritePre *.cs :lua vim.lsp.buf.formatting_sync()]]
+vim.cmd[[autocmd BufWritePre *js,*ts,*jsx,*tsx,*.graphql,*.md,*.mdx,*.svelte,*.yml,*yaml :Neoformat prettier]]
+
