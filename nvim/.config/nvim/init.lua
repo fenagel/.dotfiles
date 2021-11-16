@@ -215,6 +215,10 @@ cmd 'au ColorScheme * hi! Normal guibg=NONE'
 cmd 'au ColorScheme * hi! SignColumn guibg=NONE'
 cmd 'au ColorScheme * hi! LineNr guibg=NONE'
 cmd 'au ColorScheme * hi! CursorLineNr guibg=NONE'
+g.gruvbox_invert_selection = '0'
+g.gruvbox_contrast_dark = 'hard'
+g.background= "dark"
+
 
 -------------------- MAPPINGS ------------------------------
 g.mapleader = ' '
@@ -242,6 +246,7 @@ map('n','<leader>ff' ,':lua require("telescope.builtin").find_files()<CR>' )
 map('n', '<leader>fw', ':lua require("telescope.builtin").grep_string { search = vim.fn.expand("<cword>") }<CR>')
 map('n', '<leader>fb', ':lua require("telescope.builtin").buffers()<CR>')
 map('n', '<leader>fh', ':lua require("telescope.builtin").help_tags()<CR>')
+map('n', '<Leader>rp', ':resize 100<CR>')
 -------------------- LSP -----------------------------------
 local function config(_config)
 	return vim.tbl_deep_extend("force", {
