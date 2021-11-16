@@ -41,6 +41,7 @@ vim.call('plug#begin', '~/.vim/plugged')
   Plug 'glepnir/lspsaga.nvim'
   Plug 'simrat39/symbols-outline.nvim'
   Plug 'jiangmiao/auto-pairs'
+  Plug 'mattn/emmet-vim'
 vim.call('plug#end')
 
 -------------------- PLUGIN SETUP --------------------------
@@ -73,13 +74,6 @@ require("telescope").setup({
 })
 
 require("telescope").load_extension("fzy_native")
-     
-map('n', '<leader>fg', ':lua require("telescope.builtin").grep_string({ search = vim.fn.input("Grep For > ")})<CR>')
-map('n', '<C-p>', ':lua require("telescope.builtin").git_files()<CR>')
-map('n','<leader>ff' ,':lua require("telescope.builtin").find_files()<CR>' )
-map('n', '<leader>fw', ':lua require("telescope.builtin").grep_string { search = vim.fn.expand("<cword>") }<CR>')
-map('n', '<leader>fb', ':lua require("telescope.builtin").buffers()<CR>')
-map('n', '<leader>fh', ':lua require("telescope.builtin").help_tags()<CR>')
 
 -- nvim-cmp 
 local cmp = require("cmp")
@@ -108,12 +102,16 @@ cmp.setup({
 			-- vim.fn["UltiSnips#Anon"](args.body)
 		end,
 	},
-    mapping = {
-      ["<c-d>"] = cmp.mapping.scroll_docs(-4),
-      ["<c-f>"] = cmp.mapping.scroll_docs(4),
-      ["<c-e>"] = cmp.mapping.close(),
-      ["<c-space>"] = cmp.mapping.complete(),
-  },
+  mapping = {
+      ['<c-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+      ['<c-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+      ['<c-space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+      ['<c-e>'] = cmp.mapping({
+        i = cmp.mapping.abort(),
+        c = cmp.mapping.close(),
+      }),
+      ['<c-y>'] = cmp.mapping.confirm({ select = true }),
+    },
     formatting = {
         format = function(entry, vim_item)
             vim_item.kind = lspkind.presets.default[vim_item.kind]
@@ -128,14 +126,13 @@ cmp.setup({
             return vim_item
         end
     },
-
 	  sources = {
-        -- tabnine completion? yayaya
-        { name = "cmp_tabnine" },
+    -- tabnine completion? yayaya
+    { name = "cmp_tabnine" },
 
-		  { name = "nvim_lsp" },
+    { name = "nvim_lsp" },
 
-		-- For vsnip user.
+    -- For vsnip user.
 		-- { name = 'vsnip' },
 
 		-- For luasnip user.
@@ -162,7 +159,7 @@ local snippets_paths = function()
 	local plugins = { "friendly-snippets" }
 	local paths = {}
 	local path
-	local root_path = vim.env.HOME .. "/.vim/plugged/"
+	local root_path = "/Users/felix/.vim/plugged/"
 	for _, plug in ipairs(plugins) do
 		path = root_path .. plug
 		if vim.fn.isdirectory(path) ~= 0 then
@@ -222,26 +219,29 @@ cmd 'au ColorScheme * hi! CursorLineNr guibg=NONE'
 -------------------- MAPPINGS ------------------------------
 g.mapleader = ' '
 map('', '<leader>c', '"+y')
-map('i', '<C-f>', '<ESC>')
-map('t', '<C-f>', '<ESC>', {noremap = false})
 map('n', '<leader>u', ':UndotreeShow<CR>')
 map('n', 'Y', 'yg$')
 map('n', 'n', 'nzzzv')
 map('n', 'N', 'Nzzzv')
-map('x', '<Leader>p', "'_dP")
+map('x', '<Leader_p>', "'_dP")
 map('v', 'J', ":m '>+1<CR>gv=gv")
 map('v', 'K', ":m '<-2<CR>gv=gv")
 map('n', '<Leader>+', ':vertical resize +5<CR>')
 map('n', '<Leader>_', ':vertical resize -5<CR>')
-map('n', '<leader-h>', ':wincmd h<CR>')
-map('n', '<leader-j>', ':wincmd j<CR>')
-map('n', '<leader-k>', ':wincmd k<CR>')
-map('n', '<leader-l>', ':wincmd l<CR>')
+map('n', '<leader>h', ':wincmd h<CR>')
+map('n', '<leader>j', ':wincmd j<CR>')
+map('n', '<leader>k', ':wincmd k<CR>')
+map('n', '<leader>l', ':wincmd l<CR>')
 map('n', '<leader>ne', ':NERDTreeToggle<CR>')
 map('n', '<C-s>', ':w<CR>')
 map('i', '<C-s>', '<esc>:w<CR>')
 map('n', '<Leader>gs', '<cmd>Git<CR>')
-
+map('n', '<leader>fg', ':lua require("telescope.builtin").grep_string({ search = vim.fn.input("Grep For > ")})<CR>')
+map('n', '<leader>f', ':lua require("telescope.builtin").git_files()<CR>')
+map('n','<leader>ff' ,':lua require("telescope.builtin").find_files()<CR>' )
+map('n', '<leader>fw', ':lua require("telescope.builtin").grep_string { search = vim.fn.expand("<cword>") }<CR>')
+map('n', '<leader>fb', ':lua require("telescope.builtin").buffers()<CR>')
+map('n', '<leader>fh', ':lua require("telescope.builtin").help_tags()<CR>')
 -------------------- LSP -----------------------------------
 local function config(_config)
 	return vim.tbl_deep_extend("force", {
@@ -342,5 +342,5 @@ vim.tbl_map(function(c) cmd(fmt('autocmd %s', c)) end, {
   'TextYankPost * silent! lua require"vim.highlight".on_yank({timeout = 40})',
 })
 vim.cmd[[autocmd BufWritePre *.cs :lua vim.lsp.buf.formatting_sync()]]
-vim.cmd[[autocmd BufWritePre *js,*ts,*jsx,*tsx,*.graphql,*.md,*.mdx,*.svelte,*.yml,*yaml :Neoformat prettier]]
+vim.cmd[[autocmd BufWritePre *js,*ts,*jsx,*tsx,*.vue,*.graphql,*.md,*.mdx,*.svelte,*.yml,*yaml :Neoformat prettier]]
 

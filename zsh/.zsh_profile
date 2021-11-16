@@ -1,19 +1,1 @@
-export XDG_CONFIG_HOME=$HOME/.config
 VIM="nvim"
-
-export PYTHONBREAKPOINT="pudb.set_trace"
-export GOPATH=$HOME/go
-export GIT_EDITOR=$VIM
-
-validateYaml() {
-    python -c 'import yaml,sys;yaml.safe_load(sys.stdin)' < $1
-}
-
-goWork() {
-    cp ~/.npm_work_rc ~/.npmrc
-}
-
-eslintify() {
-    cat $1 > /tmp/file_to_eslint
-    npx eslint
-}
