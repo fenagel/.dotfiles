@@ -7,7 +7,7 @@ export DOTFILES=$HOME/.dotfiles
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git zsh-autosuggestions zsh-completions zsh-syntax-highlighting zsh-z)
 
 
 
@@ -15,8 +15,6 @@ plugins=(git)
 ZSH_THEME="robbyrussell"
 
 source $ZSH/oh-my-zsh.sh
-
-source $HOME/.zsh_profile
 
 # (macOS-only) Prevent Homebrew from reporting - https://github.com/Homebrew/brew/blob/master/docs/Analytics.md
 export HOMEBREW_NO_ANALYTICS=1
@@ -31,6 +29,10 @@ type -a rbenv > /dev/null && eval "$(rbenv init -)"
 # Load pyenv (to manage your Python versions)
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 type -a pyenv > /dev/null && eval "$(pyenv init -)" && eval "$(pyenv virtualenv-init -)" && RPROMPT+='[🐍 $(pyenv_prompt_info)]'
+
+# ITERM (MACOS ONLY)
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+test -e /usr/share/nvm/init-nvm.sh && source /usr/share/nvm/init-nvm.sh
 
 # Load nvm (to manage your node versions)
 export NVM_DIR="$HOME/.nvm"
@@ -86,5 +88,6 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
 export BUNDLER_EDITOR=nvim
+export EDITOR='nvim'
 
-alias luamake=/Users/felix/code/lua-language-server/3rd/luamake/luamake
+
