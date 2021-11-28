@@ -1,0 +1,37 @@
+local vim = vim
+vim.g.one_allow_italics = true
+vim.g.oceanic_next_terminal_bold = true
+vim.g.oceanic_next_terminal_italic = true
+vim.g.vim_monokai_tasty_italic = true
+vim.g.table_mode_corner = "|"
+vim.g.markdown_fold_override_foldtext = false
+vim.g.markdown_syntax_conceal = false
+vim.g.mkdp_auto_start = false
+vim.g.vim_json_syntax_conceal = false
+vim.g.override_nvim_web_devicons = true
+
+vim.g.mapleader = ' '
+
+vim.opt.expandtab = true
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
+vim.opt.hidden = true
+vim.opt.signcolumn = 'yes'
+vim.opt.softtabstop = 2
+vim.opt.scrolloff = 7
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.termguicolors = true
+vim.opt.syntax = 'on'
+vim.opt.errorbells = false
+vim.opt.smartcase = true
+vim.opt.showmode = false
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.incsearch = true
+vim.opt.completeopt='menuone,noinsert,noselect'
+vim.opt.wrap = false
+vim.opt.updatetime = 500
+vim.opt.redrawtime = 500
+vim.opt.clipboard = 'unnamedplus'
+vim.opt.shortmess = "atIcF"

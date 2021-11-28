@@ -91,3 +91,5 @@ export BUNDLER_EDITOR=nvim
 export EDITOR='nvim'
 
 
+
+alias luamake=/Users/felix/lua-language-server/3rd/luamake/luamake

@@ -55,6 +55,12 @@ local function set_keymaps()
   map('n', '<leader>j', '<CMD>wincmd j<CR>', options)
   map('n', '<leader>k', '<CMD>wincmd k<CR>', options)
   map('n', '<leader>l', '<CMD>wincmd l<CR>', options)
+
+  map('n', '<leader>f', '<CMD>Format<CR>', options)
+  
+  map('n', '<leader>+', ':vertical resize +5<CR>', options)
+  map('n', '<leader>-', ':vertical resize -5<CR>', options)
+  map('n', '<C-S>', ':w<CR>', options)
 end
 
 

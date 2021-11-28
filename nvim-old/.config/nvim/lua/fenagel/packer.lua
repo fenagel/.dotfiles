@@ -79,6 +79,8 @@ local function packer_startup()
     end
   }
 
+  use {"mattn/emmet-vim"}
+
   -- Themes
   use {
     'folke/tokyonight.nvim',
@@ -98,14 +100,6 @@ local function packer_startup()
     end
   }
 
-  -- Sessions
-  use {
-    'rmagatti/auto-session',
-    config = function ()
-      require'fenagel.plugins.auto_session'.init()
-    end
-  }
-  
   -- Utilities
   use 'unblevable/quick-scope' -- promote use of f<key>
 
@@ -117,6 +111,8 @@ local function packer_startup()
       require'fenagel.plugins.lualine'.init()
     end
   }
+
+  use 'mhartington/formatter.nvim'
 
   use 'preservim/nerdcommenter'
 
