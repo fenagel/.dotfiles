@@ -103,7 +103,7 @@ local on_attach = function(client, bufnr)
 
   --Hover
   -- mapBuf(bufnr, "n", "<Leader>gh", "<Cmd>lua vim.lsp.buf.hover()<CR>")
-  mapBuf(bufnr, "n", "<Leader>gh", "<CMD>lua require('lspsaga.hover').render_hover_doc()<cr>")
+  mapBuf(bufnr, "n", "<Leader>gh", '<Cmd>lua vim.lsp.buf.hover()<CR>')
 
   mapBuf(bufnr, "n", "<Leader>gi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
   mapBuf(bufnr, "n", "<Leader>gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
