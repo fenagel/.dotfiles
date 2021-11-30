@@ -5,7 +5,7 @@ end
 
 return require "packer".startup(
   function(use)
-        use {"nvim-lua/popup.nvim"}
+    use {"nvim-lua/popup.nvim"}
     use {"nvim-lua/plenary.nvim"}
     use {"wbthomason/packer.nvim"}
 
@@ -28,15 +28,15 @@ return require "packer".startup(
     }
     use {"JoosepAlviste/nvim-ts-context-commentstring"}
     use {"kyazdani42/nvim-web-devicons"}
-    
+
     -- Statusline
     use {"hoob3rt/lualine.nvim"}
-    
+
     -- HTML
     use {"mattn/emmet-vim"}
     use {"posva/vim-vue"}
     use {"othree/html5.vim"}
-    
+
     -- CSS
     use {
       "norcalli/nvim-colorizer.lua",
@@ -48,10 +48,10 @@ return require "packer".startup(
     -- Colors
     use {"mhartington/oceanic-next"}
     use 'gruvbox-community/gruvbox'
-    
+
     -- Editor Config
     use {"editorconfig/editorconfig-vim"}
-    
+
     -- Git
     use {"tpope/vim-fugitive"}
     use {"tpope/vim-rhubarb"}
@@ -72,17 +72,17 @@ return require "packer".startup(
       end
     }
     use {"pwntester/octo.nvim"}
-    
+
     -- JS/TS
     use {"elzr/vim-json"}
-    
+
     -- Treesitter
     use {'nvim-treesitter/nvim-treesitter'}
     use {"nvim-treesitter/playground"}
 
     -- Language Servers
     use {'neovim/nvim-lspconfig'}
-    
+
     -- Completion
     use {
       'hrsh7th/nvim-cmp',
@@ -101,7 +101,7 @@ return require "packer".startup(
         'onsails/lspkind-nvim'
       }
     }
-    
+
     -- Markdown
     use {"tpope/vim-markdown", ft = "markdown"}
 
