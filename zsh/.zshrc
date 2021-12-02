@@ -81,7 +81,7 @@ alias ip="curl ipinfo.io/ip"
 alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
 alias speedtest="wget -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip"
 
-
+alias v='nvim'
 
 # Encoding stuff for the terminal
 export LANG=en_US.UTF-8
