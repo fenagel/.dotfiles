@@ -62,39 +62,6 @@ local M = {}
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
   vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {virtual_text = false})
 
-local function completionItemResolveCB(err, _, result)
-  if err or not result then
-    return
-  end
-  local bufnr = vim.api.nvim_get_current_buf()
-  if result.additionalTextEdits then
-    vim.lsp.util.apply_text_edits(result.additionalTextEdits, bufnr)
-  end
-end
-local function requestCompletionItemResolve(bufnr, item)
-  vim.lsp.buf_request(bufnr, "completionItem/resolve", item, completionItemResolveCB)
-end
-function M.on_complete_done()
-  local bufnr = vim.api.nvim_get_current_buf()
-  local completed_item_var = vim.v.completed_item
-  if
-    completed_item_var and completed_item_var.user_data and completed_item_var.user_data.nvim and
-      completed_item_var.user_data.nvim.lsp and
-      completed_item_var.user_data.nvim.lsp.completion_item
-   then
-    local item = completed_item_var.user_data.nvim.lsp.completion_item
-    requestCompletionItemResolve(bufnr, item)
-  end
-  if
-    completed_item_var and completed_item_var.user_data and completed_item_var.user_data and
-      completed_item_var.user_data.lsp and
-      completed_item_var.user_data.lsp.completion_item
-   then
-    local item = completed_item_var.user_data.lsp.completion_item
-    requestCompletionItemResolve(bufnr, item)
-  end
-end
-
 local on_attach = function(client, bufnr)
   -- completion.on_attach()
 
