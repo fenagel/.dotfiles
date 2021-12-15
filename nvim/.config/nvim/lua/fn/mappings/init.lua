@@ -47,7 +47,7 @@ M.map('n', '<leader>k', ':wincmd k<CR>')
 M.map('n', '<leader>l', ':wincmd l<CR>')
 M.map('n', '<leader>+', ':vertical resize +5<CR>')
 M.map('n', '<leader>-', ':vertical resize -5<CR>')
-M.map('n', '<leader>w', ':w<CR>')
+M.map('n', '<c-s>', ':w<CR>')
 M.map('n', '<leader>q', ':q<CR>')
 --Vim Config edits
 M.map('n', '<leader>ve', ':edit ~/.config/nvim/init.lua<cr>')
