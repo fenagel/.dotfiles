@@ -81,7 +81,10 @@ return require("packer").startup({
       },
       config = get_setup("cmp"),
     })
+
     use({ "kyazdani42/nvim-tree.lua", config = get_setup("tree") })
+
+    use({ "goolord/alpha-nvim", config = get_setup("alpha") })
 
     use({
       "lewis6991/gitsigns.nvim",
