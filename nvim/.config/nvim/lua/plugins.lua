@@ -20,7 +20,7 @@ end
 vim.api.nvim_command("packadd packer.nvim")
 -- returns the require for use in `config` parameter of packer's use
 -- expects the name of the config file
-function get_setup(name)
+local function get_setup(name)
   return string.format('require("setup/%s")', name)
 end
 
@@ -31,7 +31,9 @@ return require("packer").startup({
 
     use({ "nathom/filetype.nvim", config = get_setup("filetype") })
 
-    use({ "EdenEast/nightfox.nvim", config = get_setup("nightfox") })
+    -- use({ "EdenEast/nightfox.nvim", config = get_setup("nightfox") })
+    -- use({ "gruvbox-community/gruvbox", config = get_setup("gruvbox")})
+    use({ "navarasu/onedark.nvim", config= get_setup("onedark")})
 
     use({ "kyazdani42/nvim-web-devicons" })
 
