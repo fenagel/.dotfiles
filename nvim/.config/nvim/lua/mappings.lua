@@ -12,6 +12,15 @@ map("n", "<leader>e", ":NvimTreeToggle<CR>", { silent = true })
 map("n", "<c-f>", "<cmd>Format<cr>")
 -- Allow gf to open non-existing files
 map("", "gf", ":edit <cfile><cr>")
+-- LSP mappings
+map('n', 'gd',         '<cmd>lua vim.lsp.buf.definition()<CR>')
+map('n', 'gD',         '<cmd>lua vim.lsp.buf.declaration()<CR>')
+map('n', 'gi',         '<cmd>lua vim.lsp.buf.implementation()<CR>')
+map('n', 'gw',         '<cmd>lua vim.lsp.buf.document_symbol()<CR>')
+map('n', 'gW',         '<cmd>lua vim.lsp.buf.workspace_symbol()<CR>')
+map('n', 'gr',         '<cmd>lua vim.lsp.buf.references()<CR>')
+map('n', 'gt',         '<cmd>lua vim.lsp.buf.type_definition()<CR>')
+map('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')
 -- Reselect visual selection after indenting
 map("v", "<", "<gv")
 map("v", ">", ">gv")
