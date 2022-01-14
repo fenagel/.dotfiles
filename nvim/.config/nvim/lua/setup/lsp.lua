@@ -154,3 +154,4 @@ for type, icon in pairs(signs) do
 end
 
 vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false})]])
+vim.cmd([[autocmd BufEnter,BufWinEnter,TabEnter *.rs :lua require'lsp_extensions.inlay_hints{}]])

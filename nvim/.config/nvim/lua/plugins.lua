@@ -32,8 +32,8 @@ return require("packer").startup({
     use({ "nathom/filetype.nvim", config = get_setup("filetype") })
 
     -- use({ "EdenEast/nightfox.nvim", config = get_setup("nightfox") })
-    -- use({ "gruvbox-community/gruvbox", config = get_setup("gruvbox")})
-    use({ "navarasu/onedark.nvim", config= get_setup("onedark")})
+    use({ "gruvbox-community/gruvbox", config = get_setup("gruvbox")})
+    -- use({ "navarasu/onedark.nvim", config= get_setup("onedark")})
 
     use({ "kyazdani42/nvim-web-devicons" })
 
@@ -72,7 +72,6 @@ return require("packer").startup({
         { "hrsh7th/cmp-buffer" },
         { "hrsh7th/cmp-path" },
         { "hrsh7th/cmp-cmdline" },
-        { "hrsh7th/vim-vsnip" },
         { "hrsh7th/cmp-vsnip" },
         {
           'tzachar/cmp-tabnine',
@@ -115,7 +114,6 @@ return require("packer").startup({
       },
       config = get_setup("telescope"),
     })
-    use({ "nvim-telescope/telescope-file-browser.nvim" })
     use({ "onsails/lspkind-nvim", requires = { { "famiu/bufdelete.nvim" } } })
     use({ "tpope/vim-repeat" })
     use({ "tpope/vim-surround" })
@@ -128,6 +126,8 @@ return require("packer").startup({
       "mhartington/formatter.nvim",
       config = get_setup("formatter"),
     })
+
+    use({ "glepnir/lspsaga.nvim" })
 
     use({
       "simrat39/symbols-outline.nvim",
