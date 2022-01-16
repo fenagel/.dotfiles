@@ -68,7 +68,7 @@ return require("packer").startup({
       "hrsh7th/nvim-cmp",
       requires = {
         { "hrsh7th/cmp-nvim-lsp" },
-        { "hrsh7th/cmp-nvim-lua" },
+        { "hrsh7th/vim-vsnip" },
         { "hrsh7th/cmp-buffer" },
         { "hrsh7th/cmp-path" },
         { "hrsh7th/cmp-cmdline" },
@@ -96,6 +96,8 @@ return require("packer").startup({
 
     use({ "neovim/nvim-lspconfig", config = get_setup("lsp") })
 
+    use({ "nvim-lua/lsp_extensions.nvim" })
+
     use({
       "numToStr/Comment.nvim",
       opt = true,
@@ -110,7 +112,7 @@ return require("packer").startup({
       requires = {
         { "nvim-lua/popup.nvim" },
         { "nvim-lua/plenary.nvim" },
-        { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
+        { "nvim-telescope/telescope-fzy-native.nvim" },
       },
       config = get_setup("telescope"),
     })
