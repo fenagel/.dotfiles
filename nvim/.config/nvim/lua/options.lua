@@ -32,7 +32,7 @@ opt.termguicolors = true -- You will have bad experience for diagnostic messages
 opt.wrap = false
 opt.mouse = "a"
 opt.guicursor = ""
-opt.undodir = vim.fn.stdpath('data') .. '/undodir' 
+opt.undodir = vim.fn.stdpath('data') .. '/undodir'
 opt.undofile = true
 vim.cmd("au TextYankPost * lua vim.highlight.on_yank {on_visual = true}") -- disabled in visual mode
 -- Give me some fenced codeblock goodness
@@ -41,6 +41,6 @@ vim.cmd 'au ColorScheme * hi! Normal guibg=NONE'
 vim.cmd 'au ColorScheme * hi! SignColumn guibg=NONE'
 vim.cmd 'au ColorScheme * hi! LineNr guibg=NONE'
 vim.cmd 'au ColorScheme * hi! CursorLineNr guibg=NONE'
-vim.cmd 'au ColorScheme * hi! LineNr guifg=#5eacd3'
-vim.cmd 'au ColorScheme * hi! netrwDir guifg=#5eacd3'
+vim.cmd 'au ColorScheme * hi! LineNr guifg=#82e2ff'
+vim.cmd 'au ColorScheme * hi! netrwDir guifg=#82e2ff'
 vim.cmd 'au ColorScheme * hi! Normal ctermbg=none'

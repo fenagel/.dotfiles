@@ -78,6 +78,11 @@ _G.packer_plugins = {
     path = "/Users/felix/.local/share/nvim/site/pack/packer/opt/Comment.nvim",
     url = "https://github.com/numToStr/Comment.nvim"
   },
+  LuaSnip = {
+    loaded = true,
+    path = "/Users/felix/.local/share/nvim/site/pack/packer/start/LuaSnip",
+    url = "https://github.com/L3MON4D3/LuaSnip"
+  },
   ["alpha-nvim"] = {
     config = { 'require("setup/alpha")' },
     loaded = true,
@@ -129,10 +134,10 @@ _G.packer_plugins = {
     path = "/Users/felix/.local/share/nvim/site/pack/packer/start/cmp-tabnine",
     url = "https://github.com/tzachar/cmp-tabnine"
   },
-  ["cmp-vsnip"] = {
+  cmp_luasnip = {
     loaded = true,
-    path = "/Users/felix/.local/share/nvim/site/pack/packer/start/cmp-vsnip",
-    url = "https://github.com/hrsh7th/cmp-vsnip"
+    path = "/Users/felix/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
+    url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
   ["emmet-vim"] = {
     loaded = true,
@@ -145,12 +150,6 @@ _G.packer_plugins = {
     path = "/Users/felix/.local/share/nvim/site/pack/packer/start/filetype.nvim",
     url = "https://github.com/nathom/filetype.nvim"
   },
-  ["formatter.nvim"] = {
-    config = { 'require("setup/formatter")' },
-    loaded = true,
-    path = "/Users/felix/.local/share/nvim/site/pack/packer/start/formatter.nvim",
-    url = "https://github.com/mhartington/formatter.nvim"
-  },
   ["gitsigns.nvim"] = {
     config = { 'require("setup/gitsigns")' },
     loaded = false,
@@ -158,12 +157,6 @@ _G.packer_plugins = {
     only_cond = false,
     path = "/Users/felix/.local/share/nvim/site/pack/packer/opt/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
-  },
-  gruvbox = {
-    config = { 'require("setup/gruvbox")' },
-    loaded = true,
-    path = "/Users/felix/.local/share/nvim/site/pack/packer/start/gruvbox",
-    url = "https://github.com/gruvbox-community/gruvbox"
   },
   ["lsp_extensions.nvim"] = {
     loaded = true,
@@ -187,6 +180,12 @@ _G.packer_plugins = {
     only_cond = false,
     path = "/Users/felix/.local/share/nvim/site/pack/packer/opt/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
+  },
+  ["nightfox.nvim"] = {
+    config = { 'require("setup/nightfox")' },
+    loaded = true,
+    path = "/Users/felix/.local/share/nvim/site/pack/packer/start/nightfox.nvim",
+    url = "https://github.com/EdenEast/nightfox.nvim"
   },
   ["nvim-autopairs"] = {
     config = { 'require("setup/autopairs")' },
@@ -260,6 +259,11 @@ _G.packer_plugins = {
     path = "/Users/felix/.local/share/nvim/site/pack/packer/opt/symbols-outline.nvim",
     url = "https://github.com/simrat39/symbols-outline.nvim"
   },
+  ["telescope-file-browser.nvim"] = {
+    loaded = true,
+    path = "/Users/felix/.local/share/nvim/site/pack/packer/start/telescope-file-browser.nvim",
+    url = "https://github.com/nvim-telescope/telescope-file-browser.nvim"
+  },
   ["telescope-fzy-native.nvim"] = {
     loaded = true,
     path = "/Users/felix/.local/share/nvim/site/pack/packer/start/telescope-fzy-native.nvim",
@@ -274,6 +278,11 @@ _G.packer_plugins = {
     path = "/Users/felix/.local/share/nvim/site/pack/packer/opt/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
+  ["vim-prettier"] = {
+    loaded = true,
+    path = "/Users/felix/.local/share/nvim/site/pack/packer/start/vim-prettier",
+    url = "https://github.com/prettier/vim-prettier"
+  },
   ["vim-repeat"] = {
     loaded = true,
     path = "/Users/felix/.local/share/nvim/site/pack/packer/start/vim-repeat",
@@ -283,16 +292,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/felix/.local/share/nvim/site/pack/packer/start/vim-surround",
     url = "https://github.com/tpope/vim-surround"
-  },
-  ["vim-vsnip"] = {
-    loaded = true,
-    path = "/Users/felix/.local/share/nvim/site/pack/packer/start/vim-vsnip",
-    url = "https://github.com/hrsh7th/vim-vsnip"
-  },
-  ["vim-vsnip-integ"] = {
-    loaded = true,
-    path = "/Users/felix/.local/share/nvim/site/pack/packer/start/vim-vsnip-integ",
-    url = "https://github.com/hrsh7th/vim-vsnip-integ"
   }
 }
 
@@ -329,18 +328,26 @@ end
 time([[Setup for symbols-outline.nvim]], true)
 require("setup/outline")
 time([[Setup for symbols-outline.nvim]], false)
--- Config for: formatter.nvim
-time([[Config for formatter.nvim]], true)
-require("setup/formatter")
-time([[Config for formatter.nvim]], false)
+-- Config for: nightfox.nvim
+time([[Config for nightfox.nvim]], true)
+require("setup/nightfox")
+time([[Config for nightfox.nvim]], false)
+-- Config for: filetype.nvim
+time([[Config for filetype.nvim]], true)
+require("setup/filetype")
+time([[Config for filetype.nvim]], false)
+-- Config for: nvim-treesitter
+time([[Config for nvim-treesitter]], true)
+require("setup/treesitter")
+time([[Config for nvim-treesitter]], false)
+-- Config for: nvim-lspconfig
+time([[Config for nvim-lspconfig]], true)
+require("setup/lsp")
+time([[Config for nvim-lspconfig]], false)
 -- Config for: alpha-nvim
 time([[Config for alpha-nvim]], true)
 require("setup/alpha")
 time([[Config for alpha-nvim]], false)
--- Config for: gruvbox
-time([[Config for gruvbox]], true)
-require("setup/gruvbox")
-time([[Config for gruvbox]], false)
 -- Config for: nvim-cmp
 time([[Config for nvim-cmp]], true)
 require("setup/cmp")
@@ -349,18 +356,6 @@ time([[Config for nvim-cmp]], false)
 time([[Config for nvim-tree.lua]], true)
 require("setup/tree")
 time([[Config for nvim-tree.lua]], false)
--- Config for: filetype.nvim
-time([[Config for filetype.nvim]], true)
-require("setup/filetype")
-time([[Config for filetype.nvim]], false)
--- Config for: nvim-lspconfig
-time([[Config for nvim-lspconfig]], true)
-require("setup/lsp")
-time([[Config for nvim-lspconfig]], false)
--- Config for: nvim-treesitter
-time([[Config for nvim-treesitter]], true)
-require("setup/treesitter")
-time([[Config for nvim-treesitter]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd nvim-autopairs ]]
@@ -372,8 +367,8 @@ time([[Sequenced loading]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file SymbolsOutline lua require("packer.load")({'symbols-outline.nvim'}, { cmd = "SymbolsOutline", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Telescope lua require("packer.load")({'telescope.nvim'}, { cmd = "Telescope", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file SymbolsOutline lua require("packer.load")({'symbols-outline.nvim'}, { cmd = "SymbolsOutline", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 time([[Defining lazy-load commands]], false)
 
 -- Keymap lazy-loads
@@ -386,7 +381,7 @@ vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au BufReadPre * ++once lua require("packer.load")({'gitsigns.nvim', 'nvim-colorizer.lua'}, { event = "BufReadPre *" }, _G.packer_plugins)]]
+vim.cmd [[au BufReadPre * ++once lua require("packer.load")({'nvim-colorizer.lua', 'gitsigns.nvim'}, { event = "BufReadPre *" }, _G.packer_plugins)]]
 vim.cmd [[au VimEnter * ++once lua require("packer.load")({'lualine.nvim'}, { event = "VimEnter *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")

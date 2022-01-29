@@ -31,9 +31,14 @@ return require("packer").startup({
 
     use({ "nathom/filetype.nvim", config = get_setup("filetype") })
 
-    -- use({ "EdenEast/nightfox.nvim", config = get_setup("nightfox") })
-    use({ "gruvbox-community/gruvbox", config = get_setup("gruvbox")})
+    use({ "EdenEast/nightfox.nvim", config = get_setup("nightfox") })
+    -- use({ "gruvbox-community/gruvbox", config = get_setup("gruvbox") })
     -- use({ "navarasu/onedark.nvim", config= get_setup("onedark")})
+    -- use({
+    --   "catppuccin/nvim",
+    --   as = "catppuccin",
+    --   config = get_setup("catppuccin"),
+    -- })
 
     use({ "kyazdani42/nvim-web-devicons" })
 
@@ -68,20 +73,20 @@ return require("packer").startup({
       "hrsh7th/nvim-cmp",
       requires = {
         { "hrsh7th/cmp-nvim-lsp" },
-        { "hrsh7th/vim-vsnip" },
         { "hrsh7th/cmp-buffer" },
         { "hrsh7th/cmp-path" },
         { "hrsh7th/cmp-cmdline" },
-        { "hrsh7th/cmp-vsnip" },
         {
-          'tzachar/cmp-tabnine',
+          "tzachar/cmp-tabnine",
           run = "./install.sh",
         },
-        { "hrsh7th/vim-vsnip-integ" },
         { "f3fora/cmp-spell", { "hrsh7th/cmp-calc" }, { "hrsh7th/cmp-emoji" } },
       },
       config = get_setup("cmp"),
     })
+
+    use({ "L3MON4D3/LuaSnip" })
+    use({ "saadparwaiz1/cmp_luasnip" })
 
     use({ "kyazdani42/nvim-tree.lua", config = get_setup("tree") })
 
@@ -116,18 +121,17 @@ return require("packer").startup({
       },
       config = get_setup("telescope"),
     })
+    use({ "nvim-telescope/telescope-file-browser.nvim" })
     use({ "onsails/lspkind-nvim", requires = { { "famiu/bufdelete.nvim" } } })
     use({ "tpope/vim-repeat" })
     use({ "tpope/vim-surround" })
 
     -- HTML
-    use {"mattn/emmet-vim"}
+    use({ "mattn/emmet-vim" })
 
     --Formatter
-    use({
-      "mhartington/formatter.nvim",
-      config = get_setup("formatter"),
-    })
+    use({ "prettier/vim-prettier", run = "yarn install" })
+    -- use({ "jose-elias-alvarez/null-ls.nvim", config = get_setup("null-ls") })
 
     use({ "glepnir/lspsaga.nvim" })
 

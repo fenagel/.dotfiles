@@ -4,12 +4,11 @@ local lspkind = require("lspkind")
 cmp.setup({
   snippet = {
     expand = function(args)
-      -- For `vsnip` user.
-      vim.fn["vsnip#anonymous"](args.body)
+      require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
     end,
   },
   mapping = {
-    ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
+    ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
     ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
     ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
     ["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
@@ -17,23 +16,15 @@ cmp.setup({
       i = cmp.mapping.abort(),
       c = cmp.mapping.close(),
     }),
-    ["<CR>"] = cmp.mapping(
-      cmp.mapping.confirm({
-        behavior = cmp.ConfirmBehavior.Replace,
-        select = true,
-      }),
-     { "i", "c" }
-    ),
+    ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
   },
-  completion = {
-    completeopt = "menu,menuone,noinsert",
-  },
-  sources = {
-    { name = 'cmp_tabnine' },
+  sources = cmp.config.sources({
+    { name = "cmp_tabnine" },
     { name = "nvim_lsp" },
-    { name = "vsnip" },
+    { name = "luasnip" }, -- For luasnip users.
+  }, {
     { name = "buffer" },
-  },
+  }),
   formatting = {
     format = lspkind.cmp_format({
       with_text = true,
@@ -46,15 +37,5 @@ cmp.setup({
         look = "",
       },
     }),
-  },
-  experimental = {
-    ghost_text = true,
-    native_menu = false,
-  },
-})
-
-cmp.setup.cmdline("/", {
-  sources = {
-    { name = "buffer" },
   },
 })
