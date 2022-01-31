@@ -22,9 +22,12 @@ map("", "gf", ":edit <cfile><cr>")
 -- Reselect visual selection after indenting
 map("v", "<", "<gv")
 map("v", ">", ">gv")
+
 -- Open nvimrc file
 map("n", "<Leader>v", "<cmd>e $MYVIMRC<CR>")
 
+-- Update Packer
+map("n", "<leader>u", "<cmd> PackerUpdate<CR>")
 -- Source nvimrc file
 map("n", "<Leader>sv", ":luafile %<CR>")
 

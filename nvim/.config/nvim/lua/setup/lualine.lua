@@ -38,7 +38,7 @@ end
 require("lualine").setup({
   options = {
     icons_enabled = true,
-    theme = "nightfox",
+    theme = "gruvbox",
     component_separators = { " ", " " },
     section_separators = { left = "", right = "" },
     disabled_filetypes = {},

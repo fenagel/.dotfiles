@@ -31,8 +31,8 @@ return require("packer").startup({
 
     use({ "nathom/filetype.nvim", config = get_setup("filetype") })
 
-    use({ "EdenEast/nightfox.nvim", config = get_setup("nightfox") })
-    -- use({ "gruvbox-community/gruvbox", config = get_setup("gruvbox") })
+    -- use({ "EdenEast/nightfox.nvim", config = get_setup("nightfox") })
+    use({ "gruvbox-community/gruvbox", config = get_setup("gruvbox") })
     -- use({ "navarasu/onedark.nvim", config= get_setup("onedark")})
     -- use({
     --   "catppuccin/nvim",
