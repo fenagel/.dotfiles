@@ -158,12 +158,6 @@ _G.packer_plugins = {
     path = "/Users/felix/.local/share/nvim/site/pack/packer/opt/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
-  gruvbox = {
-    config = { 'require("setup/gruvbox")' },
-    loaded = true,
-    path = "/Users/felix/.local/share/nvim/site/pack/packer/start/gruvbox",
-    url = "https://github.com/gruvbox-community/gruvbox"
-  },
   ["lsp_extensions.nvim"] = {
     loaded = true,
     path = "/Users/felix/.local/share/nvim/site/pack/packer/start/lsp_extensions.nvim",
@@ -187,6 +181,12 @@ _G.packer_plugins = {
     path = "/Users/felix/.local/share/nvim/site/pack/packer/opt/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
+  ["nightfox.nvim"] = {
+    config = { 'require("setup/colors")' },
+    loaded = true,
+    path = "/Users/felix/.local/share/nvim/site/pack/packer/start/nightfox.nvim",
+    url = "https://github.com/EdenEast/nightfox.nvim"
+  },
   ["nvim-autopairs"] = {
     config = { 'require("setup/autopairs")' },
     load_after = {},
@@ -207,6 +207,11 @@ _G.packer_plugins = {
     only_cond = false,
     path = "/Users/felix/.local/share/nvim/site/pack/packer/opt/nvim-colorizer.lua",
     url = "https://github.com/norcalli/nvim-colorizer.lua"
+  },
+  ["nvim-lsp-installer"] = {
+    loaded = true,
+    path = "/Users/felix/.local/share/nvim/site/pack/packer/start/nvim-lsp-installer",
+    url = "https://github.com/williamboman/nvim-lsp-installer"
   },
   ["nvim-lspconfig"] = {
     config = { 'require("setup/lsp")' },
@@ -328,34 +333,34 @@ end
 time([[Setup for symbols-outline.nvim]], true)
 require("setup/outline")
 time([[Setup for symbols-outline.nvim]], false)
--- Config for: nvim-tree.lua
-time([[Config for nvim-tree.lua]], true)
-require("setup/tree")
-time([[Config for nvim-tree.lua]], false)
--- Config for: nvim-cmp
-time([[Config for nvim-cmp]], true)
-require("setup/cmp")
-time([[Config for nvim-cmp]], false)
--- Config for: nvim-treesitter
-time([[Config for nvim-treesitter]], true)
-require("setup/treesitter")
-time([[Config for nvim-treesitter]], false)
--- Config for: alpha-nvim
-time([[Config for alpha-nvim]], true)
-require("setup/alpha")
-time([[Config for alpha-nvim]], false)
 -- Config for: nvim-lspconfig
 time([[Config for nvim-lspconfig]], true)
 require("setup/lsp")
 time([[Config for nvim-lspconfig]], false)
+-- Config for: nvim-cmp
+time([[Config for nvim-cmp]], true)
+require("setup/cmp")
+time([[Config for nvim-cmp]], false)
+-- Config for: nvim-tree.lua
+time([[Config for nvim-tree.lua]], true)
+require("setup/tree")
+time([[Config for nvim-tree.lua]], false)
+-- Config for: nightfox.nvim
+time([[Config for nightfox.nvim]], true)
+require("setup/colors")
+time([[Config for nightfox.nvim]], false)
+-- Config for: alpha-nvim
+time([[Config for alpha-nvim]], true)
+require("setup/alpha")
+time([[Config for alpha-nvim]], false)
+-- Config for: nvim-treesitter
+time([[Config for nvim-treesitter]], true)
+require("setup/treesitter")
+time([[Config for nvim-treesitter]], false)
 -- Config for: filetype.nvim
 time([[Config for filetype.nvim]], true)
 require("setup/filetype")
 time([[Config for filetype.nvim]], false)
--- Config for: gruvbox
-time([[Config for gruvbox]], true)
-require("setup/gruvbox")
-time([[Config for gruvbox]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd nvim-autopairs ]]
@@ -367,8 +372,8 @@ time([[Sequenced loading]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Telescope lua require("packer.load")({'telescope.nvim'}, { cmd = "Telescope", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file SymbolsOutline lua require("packer.load")({'symbols-outline.nvim'}, { cmd = "SymbolsOutline", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Telescope lua require("packer.load")({'telescope.nvim'}, { cmd = "Telescope", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 time([[Defining lazy-load commands]], false)
 
 -- Keymap lazy-loads
@@ -381,7 +386,7 @@ vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au BufReadPre * ++once lua require("packer.load")({'nvim-colorizer.lua', 'gitsigns.nvim'}, { event = "BufReadPre *" }, _G.packer_plugins)]]
+vim.cmd [[au BufReadPre * ++once lua require("packer.load")({'gitsigns.nvim', 'nvim-colorizer.lua'}, { event = "BufReadPre *" }, _G.packer_plugins)]]
 vim.cmd [[au VimEnter * ++once lua require("packer.load")({'lualine.nvim'}, { event = "VimEnter *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
@@ -390,5 +395,6 @@ if should_profile then save_profiles(1) end
 end)
 
 if not no_errors then
+  error_msg = error_msg:gsub('"', '\\"')
   vim.api.nvim_command('echohl ErrorMsg | echom "Error in packer_compiled: '..error_msg..'" | echom "Please check your config for correctness" | echohl None')
 end

@@ -31,9 +31,10 @@ return require("packer").startup({
 
     use({ "nathom/filetype.nvim", config = get_setup("filetype") })
 
-    -- use({ "EdenEast/nightfox.nvim", config = get_setup("nightfox") })
-    use({ "gruvbox-community/gruvbox", config = get_setup("gruvbox") })
-    -- use({ "navarasu/onedark.nvim", config= get_setup("onedark")})
+    use({ "EdenEast/nightfox.nvim", config = get_setup("colors") })
+    -- use({ "gruvbox-community/gruvbox", config = get_setup("gruvbox") })
+   -- use({ 'bluz71/vim-nightfly-guicolors', config = get_setup("colors") })
+   -- use({ "navarasu/onedark.nvim", config= get_setup("onedark")})
     -- use({
     --   "catppuccin/nvim",
     --   as = "catppuccin",
@@ -100,7 +101,7 @@ return require("packer").startup({
     })
 
     use({ "neovim/nvim-lspconfig", config = get_setup("lsp") })
-
+    use {'williamboman/nvim-lsp-installer'}
     use({ "nvim-lua/lsp_extensions.nvim" })
 
     use({
