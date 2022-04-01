@@ -1,15 +1,14 @@
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-local on_attach = function()
-  vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 })
-  vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = 0 })
-  vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, { buffer = 0 })
-  vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer = 0 })
-  vim.keymap.set("n", "<leader>dj", vim.diagnostic.goto_next, { buffer = 0 })
-  vim.keymap.set("n", "<leader>dk", vim.diagnostic.goto_prev, { buffer = 0 })
-  vim.keymap.set("n", "<leader>dl", "<cmd>Telescope diagnostics<cr>", { buffer = 0 })
-  vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { buffer = 0 })
-  vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = 0 })
-end
+-- local on_attach = function()
+--   vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 })
+--   vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = 0 })
+--   vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, { buffer = 0 })
+--   vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer = 0 })
+--   vim.keymap.set("n", "<leader>dj", vim.diagnostic.goto_next, { buffer = 0 })
+--   vim.keymap.set("n", "<leader>dk", vim.diagnostic.goto_prev, { buffer = 0 })
+--   vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { buffer = 0 })
+--   vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = 0 })
+-- end
 --lspconfig.gopls.setup(gopls_config)
 local lsp_installer = require("nvim-lsp-installer")
 
@@ -24,7 +23,6 @@ lsp_installer.on_server_ready(function(server)
   if server.name == 'gopls' then
     opts = {
       capabilities = capabilities;
-      on_attach = on_attach;
       settings = {
         gopls = {
           analyses = {
@@ -74,12 +72,10 @@ end)
 
 require("lspconfig").cssls.setup({
   capabilities = capabilities,
-  on_attach = on_attach,
 })
 
 require("lspconfig").gopls.setup({
   capabilities = capabilities,
-  on_attach = on_attach,
 })
 
 require("lspconfig/configs").emmet_ls = {
@@ -91,29 +87,24 @@ require("lspconfig/configs").emmet_ls = {
     end,
     settings = {},
     capabilities = capabilities,
-    on_attach = on_attach,
   },
 }
 
 require("lspconfig").emmet_ls.setup({
   capabilities = capabilities,
-  on_attach = on_attach,
 })
 
 require("lspconfig").graphql.setup({
   capabilities = capabilities,
-  on_attach = on_attach,
 })
 
 require("lspconfig").html.setup({
   capabilities = capabilities,
-  on_attach = on_attach,
 })
 
 require("lspconfig").jsonls.setup({
   cmd = { "vscode-json-language-server", "--stdio" },
   capabilities = capabilities,
-  on_attach = on_attach,
   filetypes = { "json", "jsonc" },
   settings = {
     json = {
@@ -166,7 +157,6 @@ require("lspconfig").jsonls.setup({
 
 require("lspconfig").solidity_ls.setup({
   capabilities = capabilities,
-  on_attach = on_attach,
 })
 
 -- Different machine VAR for office
@@ -180,7 +170,6 @@ end
 require("lspconfig").sumneko_lua.setup({
   cmd = { luaCmd .. "/bin/macOS/lua-language-server", "-E", luaCmd .. "/main.lua" },
   capabilities = capabilities,
-  on_attach = on_attach,
   settings = {
     Lua = {
       runtime = { version = "LuaJIT", path = vim.split(package.path, ";") },
@@ -207,15 +196,12 @@ require("lspconfig").tsserver.setup({
     -- "vue"
   },
   capabilities = capabilities,
-  on_attach = on_attach,
 })
 require("lspconfig").solargraph.setup({
   capabilities = capabilities,
-  on_attach = on_attach,
 })
 require("lspconfig").vuels.setup({
   capabilities = capabilities,
-  on_attach = on_attach,
 })
 
 local signs = {
