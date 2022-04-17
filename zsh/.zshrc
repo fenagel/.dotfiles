@@ -1,7 +1,5 @@
 # Fig pre block. Keep at the top of this file.
-export PATH="${PATH}:${HOME}/.local/bin"
-eval "$(fig init zsh pre)"
-
+. "$HOME/.fig/shell/zshrc.pre.zsh"
 # Path to your oh-my-zsh installation.
 DISABLE_MAGIC_FUNCTIONS=true
 export ZSH=$HOME/.oh-my-zsh
@@ -100,5 +98,4 @@ export EDITOR='nvim'
 alias luamake=/Users/felix/lua-language-server/3rd/luamake/luamake
 
 # Fig post block. Keep at the bottom of this file.
-eval "$(fig init zsh post)"
-
+. "$HOME/.fig/shell/zshrc.post.zsh"
