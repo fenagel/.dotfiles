@@ -36,9 +36,9 @@ return require("packer").startup({
     -- Themes
     -- use({ "EdenEast/nightfox.nvim", config = get_setup("colors") })
     use({ "gruvbox-community/gruvbox", config = get_setup("gruvbox") })
-    -- use({ 'folke/tokyonight.nvim', config = get_setup("colors")}) 
+    -- use({ 'folke/tokyonight.nvim', config = get_setup("colors")})
     -- use({ 'bluz71/vim-nightfly-guicolors', config = get_setup("colors") })
-     -- use({ "navarasu/onedark.nvim", config= get_setup("onedark")})
+    -- use({ "navarasu/onedark.nvim", config= get_setup("onedark")})
     -- use({
     --   "catppuccin/nvim",
     --   as = "catppuccin",
@@ -110,10 +110,10 @@ return require("packer").startup({
       event = "BufReadPre",
       config = get_setup("gitsigns"),
     })
-    use({ "tpope/vim-fugitive"})
+    use({ "tpope/vim-fugitive" })
 
     use({ "neovim/nvim-lspconfig", config = get_setup("lsp") })
-    use {'williamboman/nvim-lsp-installer'}
+    use { 'williamboman/nvim-lsp-installer' }
     use({ "nvim-lua/lsp_extensions.nvim" })
 
     -- Telescope
@@ -127,7 +127,7 @@ return require("packer").startup({
       config = get_setup("telescope"),
     })
     use({ "nvim-telescope/telescope-file-browser.nvim" })
-    
+
     -- General
     use({
       "numToStr/Comment.nvim",
@@ -143,17 +143,6 @@ return require("packer").startup({
       cmd = { "SymbolsOutline" },
       setup = get_setup("outline"),
     })
-    use {
-      "folke/todo-comments.nvim",
-      requires = "nvim-lua/plenary.nvim",
-      config = function()
-        require("todo-comments").setup {
-          -- your configuration comes here
-          -- or leave it empty to use the default settings
-          -- refer to the configuration section below
-        }
-      end
-    }
     --Formatter
     use({ "prettier/vim-prettier", run = "yarn install" })
     -- use({ "jose-elias-alvarez/null-ls.nvim", config = get_setup("null-ls") })
