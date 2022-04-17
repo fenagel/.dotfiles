@@ -35,8 +35,8 @@ return require("packer").startup({
 
     -- Themes
     -- use({ "EdenEast/nightfox.nvim", config = get_setup("colors") })
-    -- use({ "gruvbox-community/gruvbox", config = get_setup("gruvbox") })
-    use({ "rebelot/kanagawa.nvim", config = get_setup("colors") })
+    use({ "gruvbox-community/gruvbox", config = get_setup("gruvbox") })
+    -- use({ "rebelot/kanagawa.nvim", config = get_setup("colors") })
     -- use({ 'folke/tokyonight.nvim', config = get_setup("colors")})
     -- use({ 'bluz71/vim-nightfly-guicolors', config = get_setup("colors") })
     -- use({ "navarasu/onedark.nvim", config= get_setup("onedark")})
