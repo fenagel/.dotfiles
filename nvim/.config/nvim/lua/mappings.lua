@@ -8,14 +8,14 @@
 
 -- AUTO COMMANDS --
 vim.api.nvim_create_autocmd("BufWritePre", {
- callback = function()
-   vim.lsp.buf.formatting_sync()
- end,
- pattern = '*'
+  callback = function()
+    vim.lsp.buf.formatting_sync()
+  end,
+  pattern = '*'
 })
 vim.api.nvim_create_autocmd("BufWritePre", {
-command = ':Prettier',
-pattern = {'*.js','*.ts','*.jsx','*.tsx','*.xml','*.vue','*.graphql','*.md','*.mdx','*.svelte','*.yml','*.yaml' }
+  command = ':Prettier',
+  pattern = { '*.js', '*.ts', '*.jsx', '*.tsx', '*.xml', '*.vue', '*.graphql', '*.md', '*.mdx', '*.svelte', '*.yml', '*.yaml' }
 })
 
 -- Map leader to space
@@ -50,7 +50,7 @@ vim.keymap.set('n', '<leader>gm', ':Gmove<Space>', { silent = true })
 vim.keymap.set('n', '<leader>go', ':Git checkout<Space>', { silent = true })
 
 -- Diagnostic keymaps
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
+vim.keymap.set('n', '<leader>do', vim.diagnostic.open_float)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
@@ -72,7 +72,7 @@ vim.keymap.set('n', 'gr', vim.lsp.buf.references)
 vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action)
 vim.keymap.set('n', '<leader>so', require('telescope.builtin').lsp_document_symbols)
 vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
-vim.keymap.set("n", "<leader>te", ":NvimTreeToggle<CR>", { silent = true })
+vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { silent = true })
 vim.keymap.set("n", "<leader>tr", ":NvimTreeRefresh<CR>", { silent = true })
 
 -- Allow gf to open non-existing files
