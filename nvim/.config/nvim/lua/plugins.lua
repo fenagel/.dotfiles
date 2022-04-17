@@ -1,9 +1,11 @@
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
-  augroup end
-]])
+--vim.cmd([[
+--  augroup packer_user_config
+--    autocmd!
+--    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+--  augroup end
+--]])
+local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
+vim.api.nvim_create_autocmd('BufWritePost', { command = 'source <afile> | PackerCompile', group = packer_group, pattern = 'init.lua' })
 
 local fn = vim.fn
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
@@ -17,7 +19,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
     install_path,
   })
 end
-vim.api.nvim_command("packadd packer.nvim")
+vim.cmd [[packadd packer.nvim]]
 -- returns the require for use in `config` parameter of packer's use
 -- expects the name of the config file
 local function get_setup(name)
@@ -31,18 +33,26 @@ return require("packer").startup({
 
     use({ "nathom/filetype.nvim", config = get_setup("filetype") })
 
+    -- Themes
     -- use({ "EdenEast/nightfox.nvim", config = get_setup("colors") })
     use({ "gruvbox-community/gruvbox", config = get_setup("gruvbox") })
-   -- use({ 'bluz71/vim-nightfly-guicolors', config = get_setup("colors") })
-   -- use({ "navarasu/onedark.nvim", config= get_setup("onedark")})
+    -- use({ 'folke/tokyonight.nvim', config = get_setup("colors")}) 
+    -- use({ 'bluz71/vim-nightfly-guicolors', config = get_setup("colors") })
+     -- use({ "navarasu/onedark.nvim", config= get_setup("onedark")})
     -- use({
     --   "catppuccin/nvim",
     --   as = "catppuccin",
     --   config = get_setup("catppuccin"),
     -- })
 
-    use({ "kyazdani42/nvim-web-devicons" })
+    use({
+      "norcalli/nvim-colorizer.lua",
+      event = "BufReadPre",
+      config = get_setup("colorizer"),
+    })
 
+    -- Status line
+    use({ "kyazdani42/nvim-web-devicons" })
     use({
       "nvim-lualine/lualine.nvim",
       config = get_setup("lualine"),
@@ -50,26 +60,16 @@ return require("packer").startup({
       requires = { "kyazdani42/nvim-web-devicons", opt = true },
     })
 
-    use({
-      "norcalli/nvim-colorizer.lua",
-      event = "BufReadPre",
-      config = get_setup("colorizer"),
-    })
-    -- Post-install/update hook with neovim command
+    -- Treesitter
     use({
       "nvim-treesitter/nvim-treesitter",
       config = get_setup("treesitter"),
       run = ":TSUpdate",
     })
-
     use("nvim-treesitter/nvim-treesitter-textobjects")
 
-    use({
-      "windwp/nvim-autopairs",
-      after = "nvim-cmp",
-      config = get_setup("autopairs"),
-    })
 
+    -- Autocompletion
     use({
       "hrsh7th/nvim-cmp",
       requires = {
@@ -86,35 +86,39 @@ return require("packer").startup({
       config = get_setup("cmp"),
     })
 
+    -- Snippets, Language, Syntax
     use({ "L3MON4D3/LuaSnip" })
     use({ "saadparwaiz1/cmp_luasnip" })
+    use({
+      "windwp/nvim-autopairs",
+      after = "nvim-cmp",
+      config = get_setup("autopairs"),
+    })
+    use({ "onsails/lspkind-nvim", requires = { { "famiu/bufdelete.nvim" } } })
+    use({ "mattn/emmet-vim" })
 
+    -- File Explorer Tree
     use({ "kyazdani42/nvim-tree.lua", config = get_setup("tree") })
 
+    -- Start Screen
     use({ "goolord/alpha-nvim", config = get_setup("alpha") })
 
+    -- Git
     use({
       "lewis6991/gitsigns.nvim",
       requires = { "nvim-lua/plenary.nvim" },
       event = "BufReadPre",
       config = get_setup("gitsigns"),
     })
+    use({ "tpope/vim-fugitive"})
 
     use({ "neovim/nvim-lspconfig", config = get_setup("lsp") })
     use {'williamboman/nvim-lsp-installer'}
     use({ "nvim-lua/lsp_extensions.nvim" })
 
-    use({
-      "numToStr/Comment.nvim",
-      opt = true,
-      keys = { "gc", "gcc" },
-      config = get_setup("comment"),
-    })
-
+    -- Telescope
     use({
       "nvim-telescope/telescope.nvim",
-      module = "telescope",
-      cmd = "Telescope",
       requires = {
         { "nvim-lua/popup.nvim" },
         { "nvim-lua/plenary.nvim" },
@@ -123,24 +127,36 @@ return require("packer").startup({
       config = get_setup("telescope"),
     })
     use({ "nvim-telescope/telescope-file-browser.nvim" })
-    use({ "onsails/lspkind-nvim", requires = { { "famiu/bufdelete.nvim" } } })
+    
+    -- General
+    use({
+      "numToStr/Comment.nvim",
+      opt = true,
+      keys = { "gc", "gcc" },
+      config = get_setup("comment"),
+    })
     use({ "tpope/vim-repeat" })
     use({ "tpope/vim-surround" })
-
-    -- HTML
-    use({ "mattn/emmet-vim" })
-
-    --Formatter
-    use({ "prettier/vim-prettier", run = "yarn install" })
-    -- use({ "jose-elias-alvarez/null-ls.nvim", config = get_setup("null-ls") })
-
     use({ "glepnir/lspsaga.nvim" })
-
     use({
       "simrat39/symbols-outline.nvim",
       cmd = { "SymbolsOutline" },
       setup = get_setup("outline"),
     })
+    use {
+      "folke/todo-comments.nvim",
+      requires = "nvim-lua/plenary.nvim",
+      config = function()
+        require("todo-comments").setup {
+          -- your configuration comes here
+          -- or leave it empty to use the default settings
+          -- refer to the configuration section below
+        }
+      end
+    }
+    --Formatter
+    use({ "prettier/vim-prettier", run = "yarn install" })
+    -- use({ "jose-elias-alvarez/null-ls.nvim", config = get_setup("null-ls") })
 
     if packer_bootstrap then
       require("packer").sync()
