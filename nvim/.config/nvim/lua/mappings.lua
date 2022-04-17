@@ -71,7 +71,6 @@ vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename)
 vim.keymap.set('n', 'gr', vim.lsp.buf.references)
 vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action)
 vim.keymap.set('n', '<leader>so', require('telescope.builtin').lsp_document_symbols)
-vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { silent = true })
 vim.keymap.set("n", "<leader>tr", ":NvimTreeRefresh<CR>", { silent = true })
 
