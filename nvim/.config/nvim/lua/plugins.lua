@@ -35,7 +35,7 @@ return require("packer").startup({
 
     -- Themes
     -- use({ "EdenEast/nightfox.nvim", config = get_setup("colors") })
-    use({ "gruvbox-community/gruvbox", config = get_setup("gruvbox") })
+    use({ "gruvbox-community/gruvbox", config = get_setup("colors") })
     -- use({ "rebelot/kanagawa.nvim", config = get_setup("colors") })
     -- use({ 'folke/tokyonight.nvim', config = get_setup("colors")})
     -- use({ 'bluz71/vim-nightfly-guicolors', config = get_setup("colors") })
@@ -112,7 +112,7 @@ return require("packer").startup({
       config = get_setup("gitsigns"),
     })
     use({ "tpope/vim-fugitive" })
-
+    use({ "junegunn/gv.vim" })
     use({ "neovim/nvim-lspconfig", config = get_setup("lsp") })
     use { 'williamboman/nvim-lsp-installer' }
     use({ "nvim-lua/lsp_extensions.nvim" })
@@ -144,6 +144,7 @@ return require("packer").startup({
       cmd = { "SymbolsOutline" },
       setup = get_setup("outline"),
     })
+    use({ "ray-x/go.nvim", config = get_setup("go") })
     --Formatter
     use({ "prettier/vim-prettier", run = "yarn install" })
     -- use({ "jose-elias-alvarez/null-ls.nvim", config = get_setup("null-ls") })

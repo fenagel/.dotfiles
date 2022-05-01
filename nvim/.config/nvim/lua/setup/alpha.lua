@@ -42,11 +42,7 @@ dashboard.section.header.val = {
 dashboard.section.header.opts.hl = pick_color()
 
 dashboard.section.buttons.val = {
-  button("<Leader>f", "  File Explorer"),
-  button("<C-P>", "  Find file"),
-  button("<Leader>a", "  Find word"),
-  button("<Leader>n", "  New file"),
-  button("<Leader>ve", "  Config"),
+  button("<leader>f", "  Find file"),
   button("<Leader>u", "  Update plugins"),
   button("<Leader>q", "  Quit"),
 }

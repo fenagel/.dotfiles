@@ -38,6 +38,8 @@ vim.keymap.set('n', '<leader>gc', function() require('telescope.builtin').git_co
 vim.keymap.set('n', '<leader>gb', function() require('telescope.builtin').git_branches() end)
 vim.keymap.set('n', '<leader>gs', function() require('telescope.builtin').git_status() end)
 vim.keymap.set('n', '<leader>gp', function() require('telescope.builtin').git_bcommits() end)
+-- GV
+vim.keymap.set('n', '<leader>gv', ':GV<CR>', { silent = true })
 -- Fugitive shortcuts
 vim.keymap.set('n', '<leader>ga', ':Git add %:p<CR><CR>', { silent = true })
 vim.keymap.set('n', '<leader>gg', ':GBrowse<CR>', { silent = true })
@@ -86,6 +88,7 @@ vim.keymap.set("n", "<Leader>v", "<cmd>e $MYVIMRC<CR>")
 
 -- Update Packer
 vim.keymap.set("n", "<leader>u", "<cmd> PackerUpdate<CR>")
+
 -- Source nvimrc file
 vim.keymap.set("n", "<Leader>sl", ":luafile %<CR>")
 
@@ -99,10 +102,21 @@ vim.keymap.set("n", "<Leader>sa", "ggVG<c-$>")
 -- http://ddrscott.github.io/blog/2016/yank-without-jank/
 vim.keymap.set("v", "y", "myy`y")
 vim.keymap.set("v", "Y", "myY`y")
+
+
 -- Paste replace visual selection without copying it
 vim.keymap.set("v", "<leader>p", '"_dP')
+
 -- Make Y behave like the other capitals
 vim.keymap.set("n", "Y", "y$")
+
+-- yank plus additional cmd for custom yanks
+vim.keymap.set("n", "<leader>y", '"+y')
+vim.keymap.set("v", "<leader>y", '"+y')
+
+-- delete plus additional cmd for custom deletes
+vim.keymap.set("n", "<leader>d", '"_d')
+vim.keymap.set("v", "<leader>d", '"_d')
 
 -- Tab to switch buffers in Normal mode
 vim.keymap.set("n", "<Tab>", ":bnext<CR>")
@@ -113,9 +127,6 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("n", "J", "mzJ`z")
 
--- Make Y yank to end of the line
-vim.keymap.set("n", "Y", "y$")
-
 -- Line bubbling
 vim.keymap.set("n", "<c-j>", "<cmd>m .+1<CR>==", { silent = true })
 vim.keymap.set("n", "<c-k>", "<cmd>m .-2<CR>==", { silent = true })
@@ -124,24 +135,6 @@ vim.keymap.set("v", "<c-k>", ":m '<-2<CR>==gv=gv", { silent = true })
 
 --After searching, pressing escape stops the highlight
 vim.keymap.set("n", "<esc>", ":noh<cr><esc>", { silent = true })
-
--- Telescope
---map("n", "<C-p>", '<cmd>lua require("telescope.builtin").find_files()<cr>')
---map("n", "<leader>lg", '<cmd>lua require("telescope.builtin").live_grep()<cr>')
---map("n", "<leader>b", '<cmd>lua require("telescope.builtin").buffers()<cr>')
---map("n", "<leader>j", '<cmd>lua require("telescope.builtin").help_tags()<cr>')
---map("n", "<leader>f", '<cmd>lua require("telescope.builtin").git_files()<cr>')
---map("n", "<leader>gs", '<cmd>lua require("telescope.builtin").git_status()<cr>')
---map("n", "<leader>gb", '<cmd>lua require("telescope").extensions.file_browser.file_browser()<CR>')
---map("n", "<leader>i", '<cmd>lua require("telescope.builtin").git_status()<cr>')
---map("n", "<leader>ca", '<cmd>lua require("telescope.builtin").lsp_code_actions()<cr>')
---map("n", "<leader>cs", '<cmd>lua require("telescope.builtin").lsp_document_symbols()<cr>')
---map("n", "<leader>cd", '<cmd>lua require("telescope.builtin").lsp_document_diagnostics()<cr>')
---map("n", "<leader>cr", '<cmd>lua require("telescope.builtin").lsp_references()<cr>')
----- map("i", "<F2>", '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
----- map("n", "<leader>cn", '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
----- map("v", "<leader>cn", '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
---map("n", "<leader>ci", "<cmd>lua vim.diagnostic.open_float()<cr>")
 
 -- Movement
 vim.keymap.set("n", "<leader>h", ":wincmd h<CR>")
@@ -152,3 +145,15 @@ vim.keymap.set("n", "<leader>+", ":vertical resize +5<CR>")
 vim.keymap.set("n", "<leader>-", ":vertical resize -5<CR>")
 vim.keymap.set("", "<leader>w", ":w<CR>")
 vim.keymap.set("", "<leader>q", ":q<CR>")
+
+-- Go Commands
+vim.keymap.set("n", "<leader>oc", ":GoCmt<CR>")
+vim.keymap.set("n", "<leader>od", ":GoDoc<CR>")
+vim.keymap.set("n", "<leader>oat", ":GoAddTag<CR>")
+vim.keymap.set("n", "<leader>ort", ":GoRmTag<CR>")
+vim.keymap.set("n", "<leader>op", ":GoFixPlurals<CR>")
+vim.keymap.set("n", "<leader>otc", ":GoTest -c<CR>")
+vim.keymap.set("n", "<leader>otf", ":GoTestFunc<CR>")
+vim.keymap.set("n", "<leader>otp", ":GoTestPkg<CR>")
+vim.keymap.set("n", "<leader>ol", ":GoLint<CR>")
+vim.keymap.set("n", "<leader>ol", ":GoCoverage<CR>")
