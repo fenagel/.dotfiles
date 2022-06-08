@@ -55,7 +55,7 @@ vim.keymap.set('n', '<leader>go', ':Git checkout<Space>', { silent = true })
 vim.keymap.set('n', '<leader>do', vim.diagnostic.open_float)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
+-- vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 
 -- LSP settings
 vim.keymap.set('n', 'gD', vim.lsp.buf.declaration)
@@ -145,6 +145,12 @@ vim.keymap.set("n", "<leader>+", ":vertical resize +5<CR>")
 vim.keymap.set("n", "<leader>-", ":vertical resize -5<CR>")
 vim.keymap.set("", "<leader>w", ":w<CR>")
 vim.keymap.set("", "<leader>q", ":q<CR>")
+
+-- Search and replace word under cursor
+vim.keymap.set("n", "<leader>sr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
+-- GO error boiler plate macro
+vim.keymap.set("n", "<leader>ee", [[oif err != nil {<CR>return nil, err<CR>}<CR><esc>kkI<esc>]])
 
 -- Go Commands
 vim.keymap.set("n", "<leader>oc", ":GoCmt<CR>")

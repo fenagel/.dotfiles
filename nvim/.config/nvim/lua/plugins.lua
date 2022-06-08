@@ -34,8 +34,8 @@ return require("packer").startup({
     use({ "nathom/filetype.nvim", config = get_setup("filetype") })
 
     -- Themes
-    -- use({ "EdenEast/nightfox.nvim", config = get_setup("colors") })
-    use({ "gruvbox-community/gruvbox", config = get_setup("colors") })
+    use({ "EdenEast/nightfox.nvim", config = get_setup("colors") })
+    -- use({ "gruvbox-community/gruvbox", config = get_setup("colors") })
     -- use({ "rebelot/kanagawa.nvim", config = get_setup("colors") })
     -- use({ 'folke/tokyonight.nvim', config = get_setup("colors")})
     -- use({ 'bluz71/vim-nightfly-guicolors', config = get_setup("colors") })
@@ -97,12 +97,10 @@ return require("packer").startup({
     })
     use({ "onsails/lspkind-nvim", requires = { { "famiu/bufdelete.nvim" } } })
     use({ "mattn/emmet-vim" })
+    use({ 'darrikonn/vim-gofmt' })
 
     -- File Explorer Tree
     use({ "kyazdani42/nvim-tree.lua", config = get_setup("tree") })
-
-    -- Start Screen
-    use({ "goolord/alpha-nvim", config = get_setup("alpha") })
 
     -- Git
     use({
@@ -144,7 +142,6 @@ return require("packer").startup({
       cmd = { "SymbolsOutline" },
       setup = get_setup("outline"),
     })
-    use({ "ray-x/go.nvim", config = get_setup("go") })
     --Formatter
     use({ "prettier/vim-prettier", run = "yarn install" })
     -- use({ "jose-elias-alvarez/null-ls.nvim", config = get_setup("null-ls") })

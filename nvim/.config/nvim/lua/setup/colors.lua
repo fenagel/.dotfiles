@@ -1,18 +1,18 @@
 -- vim.g.nightflyTransparent = 1
--- require('nightfox').setup({
---   options = {
---     transparent = true,
---   }
--- })
+require('nightfox').setup({
+  options = {
+    transparent = true,
+  }
+})
 -- vim.cmd [[colorscheme nightfly]]
--- vim.cmd [[colorscheme nightfox]]
+vim.cmd [[colorscheme nightfox]]
 -- vim.g.tokyonight_style = "night"
 -- vim.g.tokyonight_transparent = true
 -- vim.cmd [[colorscheme tokyonight]]
 
-vim.cmd [[colorscheme gruvbox]]
+-- vim.cmd [[colorscheme gruvbox]]
 -- vim.cmd 'au ColorScheme * hi! Normal guibg=none'
-vim.g.gruvbox_invert_selection = '0'
+-- vim.g.gruvbox_invert_selection = '0'
 
 -- require('kanagawa').setup({
 --   undercurl = true, -- enable undercurls
