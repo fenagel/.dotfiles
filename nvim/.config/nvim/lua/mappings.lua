@@ -40,16 +40,9 @@ vim.keymap.set('n', '<leader>gs', function() require('telescope.builtin').git_st
 vim.keymap.set('n', '<leader>gp', function() require('telescope.builtin').git_bcommits() end)
 -- GV
 vim.keymap.set('n', '<leader>gv', ':GV<CR>', { silent = true })
--- Fugitive shortcuts
-vim.keymap.set('n', '<leader>ga', ':Git add %:p<CR><CR>', { silent = true })
-vim.keymap.set('n', '<leader>gg', ':GBrowse<CR>', { silent = true })
-vim.keymap.set('n', '<leader>gd', ':Gdiff<CR>', { silent = true })
-vim.keymap.set('n', '<leader>ge', ':Gedit<CR>', { silent = true })
-vim.keymap.set('n', '<leader>gr', ':Gread<CR>', { silent = true })
-vim.keymap.set('n', '<leader>gw', ':Gwrite<CR><CR>', { silent = true })
-vim.keymap.set('n', '<leader>gl', ':silent! Glog<CR>:bot copen<CR>', { silent = true })
-vim.keymap.set('n', '<leader>gm', ':Gmove<Space>', { silent = true })
-vim.keymap.set('n', '<leader>go', ':Git checkout<Space>', { silent = true })
+-- Neogit shortcuts
+vim.keymap.set('n', '<leader>gg', function() require('neogit').open() end)
+vim.keymap.set('n', '<leader>ga', '<cmd>!git fetch --all<CR>')
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>do', vim.diagnostic.open_float)

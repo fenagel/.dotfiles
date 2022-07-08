@@ -34,17 +34,11 @@ return require("packer").startup({
     use({ "nathom/filetype.nvim", config = get_setup("filetype") })
 
     -- Themes
-    use({ "EdenEast/nightfox.nvim", config = get_setup("colors") })
-    -- use({ "gruvbox-community/gruvbox", config = get_setup("colors") })
-    -- use({ "rebelot/kanagawa.nvim", config = get_setup("colors") })
-    -- use({ 'folke/tokyonight.nvim', config = get_setup("colors")})
+    -- use({ "EdenEast/nightfox.nvim", config = get_setup("colors") })
+    use({ "gruvbox-community/gruvbox", config = get_setup("colors") })
+    --    use({ "rebelot/kanagawa.nvim", config = get_setup("colors") })
+    -- use({ 'folke/tokyonight.nvim', config = get_setup("colors") })
     -- use({ 'bluz71/vim-nightfly-guicolors', config = get_setup("colors") })
-    -- use({ "navarasu/onedark.nvim", config= get_setup("onedark")})
-    -- use({
-    --   "catppuccin/nvim",
-    --   as = "catppuccin",
-    --   config = get_setup("catppuccin"),
-    -- })
 
     use({
       "norcalli/nvim-colorizer.lua",
@@ -114,6 +108,7 @@ return require("packer").startup({
     use({ "neovim/nvim-lspconfig", config = get_setup("lsp") })
     use { 'williamboman/nvim-lsp-installer' }
     use({ "nvim-lua/lsp_extensions.nvim" })
+    use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
 
     -- Telescope
     use({
