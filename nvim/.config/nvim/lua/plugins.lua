@@ -108,7 +108,7 @@ return require("packer").startup({
     use({ "neovim/nvim-lspconfig", config = get_setup("lsp") })
     use { 'williamboman/nvim-lsp-installer' }
     use({ "nvim-lua/lsp_extensions.nvim" })
-    use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
+    use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim', config = get_setup("neogit") }
 
     -- Telescope
     use({
