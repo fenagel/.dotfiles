@@ -89,6 +89,12 @@ _G.packer_plugins = {
     path = "/Users/felix/.local/share/nvim/site/pack/packer/start/bufdelete.nvim",
     url = "https://github.com/famiu/bufdelete.nvim"
   },
+  catppuccin = {
+    config = { 'require("setup/colors")' },
+    loaded = true,
+    path = "/Users/felix/.local/share/nvim/site/pack/packer/start/catppuccin",
+    url = "https://github.com/catppuccin/nvim"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/Users/felix/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -153,6 +159,12 @@ _G.packer_plugins = {
     path = "/Users/felix/.local/share/nvim/site/pack/packer/opt/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
+  gruvbox = {
+    config = { 'require("setup/colors")' },
+    loaded = true,
+    path = "/Users/felix/.local/share/nvim/site/pack/packer/start/gruvbox",
+    url = "https://github.com/gruvbox-community/gruvbox"
+  },
   ["gv.vim"] = {
     loaded = true,
     path = "/Users/felix/.local/share/nvim/site/pack/packer/start/gv.vim",
@@ -180,6 +192,12 @@ _G.packer_plugins = {
     only_cond = false,
     path = "/Users/felix/.local/share/nvim/site/pack/packer/opt/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
+  },
+  neogit = {
+    config = { 'require("setup/neogit")' },
+    loaded = true,
+    path = "/Users/felix/.local/share/nvim/site/pack/packer/start/neogit",
+    url = "https://github.com/TimUntersberger/neogit"
   },
   ["nvim-autopairs"] = {
     config = { 'require("setup/autopairs")' },
@@ -274,12 +292,6 @@ _G.packer_plugins = {
     path = "/Users/felix/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
-  ["tokyonight.nvim"] = {
-    config = { 'require("setup/colors")' },
-    loaded = true,
-    path = "/Users/felix/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
-    url = "https://github.com/folke/tokyonight.nvim"
-  },
   ["vim-fugitive"] = {
     loaded = true,
     path = "/Users/felix/.local/share/nvim/site/pack/packer/start/vim-fugitive",
@@ -312,34 +324,42 @@ time([[Defining packer_plugins]], false)
 time([[Setup for symbols-outline.nvim]], true)
 require("setup/outline")
 time([[Setup for symbols-outline.nvim]], false)
--- Config for: nvim-lspconfig
-time([[Config for nvim-lspconfig]], true)
-require("setup/lsp")
-time([[Config for nvim-lspconfig]], false)
--- Config for: nvim-treesitter
-time([[Config for nvim-treesitter]], true)
-require("setup/treesitter")
-time([[Config for nvim-treesitter]], false)
--- Config for: nvim-tree.lua
-time([[Config for nvim-tree.lua]], true)
-require("setup/tree")
-time([[Config for nvim-tree.lua]], false)
--- Config for: telescope.nvim
-time([[Config for telescope.nvim]], true)
-require("setup/telescope")
-time([[Config for telescope.nvim]], false)
--- Config for: filetype.nvim
-time([[Config for filetype.nvim]], true)
-require("setup/filetype")
-time([[Config for filetype.nvim]], false)
+-- Config for: gruvbox
+time([[Config for gruvbox]], true)
+require("setup/colors")
+time([[Config for gruvbox]], false)
 -- Config for: nvim-cmp
 time([[Config for nvim-cmp]], true)
 require("setup/cmp")
 time([[Config for nvim-cmp]], false)
--- Config for: tokyonight.nvim
-time([[Config for tokyonight.nvim]], true)
+-- Config for: neogit
+time([[Config for neogit]], true)
+require("setup/neogit")
+time([[Config for neogit]], false)
+-- Config for: nvim-tree.lua
+time([[Config for nvim-tree.lua]], true)
+require("setup/tree")
+time([[Config for nvim-tree.lua]], false)
+-- Config for: catppuccin
+time([[Config for catppuccin]], true)
 require("setup/colors")
-time([[Config for tokyonight.nvim]], false)
+time([[Config for catppuccin]], false)
+-- Config for: nvim-treesitter
+time([[Config for nvim-treesitter]], true)
+require("setup/treesitter")
+time([[Config for nvim-treesitter]], false)
+-- Config for: filetype.nvim
+time([[Config for filetype.nvim]], true)
+require("setup/filetype")
+time([[Config for filetype.nvim]], false)
+-- Config for: telescope.nvim
+time([[Config for telescope.nvim]], true)
+require("setup/telescope")
+time([[Config for telescope.nvim]], false)
+-- Config for: nvim-lspconfig
+time([[Config for nvim-lspconfig]], true)
+require("setup/lsp")
+time([[Config for nvim-lspconfig]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd nvim-autopairs ]]
@@ -356,8 +376,8 @@ time([[Defining lazy-load commands]], false)
 
 -- Keymap lazy-loads
 time([[Defining lazy-load keymaps]], true)
-vim.cmd [[noremap <silent> gc <cmd>lua require("packer.load")({'Comment.nvim'}, { keys = "gc", prefix = "" }, _G.packer_plugins)<cr>]]
 vim.cmd [[noremap <silent> gcc <cmd>lua require("packer.load")({'Comment.nvim'}, { keys = "gcc", prefix = "" }, _G.packer_plugins)<cr>]]
+vim.cmd [[noremap <silent> gc <cmd>lua require("packer.load")({'Comment.nvim'}, { keys = "gc", prefix = "" }, _G.packer_plugins)<cr>]]
 time([[Defining lazy-load keymaps]], false)
 
 vim.cmd [[augroup packer_load_aucmds]]
