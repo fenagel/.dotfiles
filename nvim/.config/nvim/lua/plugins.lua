@@ -41,8 +41,9 @@ return require("packer").startup({
       as = "catppuccin",
       config = get_setup("colors")
     })
+    use { 'rose-pine/neovim', as = 'rose-pine', config = get_setup("colors") }
     --    use({ "rebelot/kanagawa.nvim", config = get_setup("colors") })
-    -- use({ 'folke/tokyonight.nvim', config = get_setup("colors") })
+    use({ 'folke/tokyonight.nvim', config = get_setup("colors") })
     -- use({ 'bluz71/vim-nightfly-guicolors', config = get_setup("colors") })
 
     use({

@@ -59,8 +59,6 @@ vim.cmd 'au ColorScheme * hi! Normal guibg=NONE'
 vim.cmd 'au ColorScheme * hi! SignColumn guibg=NONE'
 vim.cmd 'au ColorScheme * hi! LineNr guibg=NONE'
 vim.cmd 'au ColorScheme * hi! CursorLineNr guibg=NONE'
-vim.cmd 'au ColorScheme * hi! LineNr guifg=#6A9589'
-vim.cmd 'au ColorScheme * hi! netrwDir guifg=#6A9589'
 vim.cmd 'au ColorScheme * hi! Normal ctermbg=none'
 -- Transparent LSP Float Windows
 vim.cmd 'au ColorScheme * highlight! normalfloat guibg=none'
