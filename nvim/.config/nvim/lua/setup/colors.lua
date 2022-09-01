@@ -1,3 +1,53 @@
+function ColorMyPencils()
+  vim.g.gruvbox_contrast_dark = 'hard'
+
+  vim.g.gruvbox_invert_selection = '0'
+  vim.opt.background = "dark"
+
+  local hl = function(thing, opts)
+    vim.api.nvim_set_hl(0, thing, opts)
+  end
+
+  hl("SignColumn", {
+    bg = "none",
+  })
+
+  hl("ColorColumn", {
+    ctermbg = 0,
+    bg = "#555555",
+  })
+
+  hl("CursorLineNR", {
+    bg = "None"
+  })
+
+  hl("Normal", {
+    bg = "none"
+  })
+
+  hl("LineNr", {
+    fg = "#5eacd3"
+  })
+
+  hl("netrwDir", {
+    fg = "#5eacd3"
+  })
+
+end
+
+ColorMyPencils()
+-- vim.cmd 'au ColorScheme * hi! Normal guibg=NONE'
+-- vim.cmd 'au ColorScheme * hi! SignColumn guibg=NONE'
+-- vim.cmd 'au ColorScheme * hi! LineNr guibg=NONE'
+-- vim.cmd 'au ColorScheme * hi! CursorLineNr guibg=NONE'
+-- vim.cmd 'au ColorScheme * hi! Normal ctermbg=none'
+-- -- Transparent LSP Float Windows
+-- vim.cmd 'au ColorScheme * highlight! normalfloat guibg=none'
+-- vim.cmd 'au ColorScheme * highlight! errorfloat guibg=none'
+-- vim.cmd 'au ColorScheme * highlight! warningfloat guibg=none'
+-- vim.cmd 'au ColorScheme * highlight! infofloat guibg=none'
+-- vim.cmd 'au ColorScheme * highlight! hintfloat guibg=none'
+-- vim.cmd 'au ColorScheme * highlight! FloatBorder guifg=#aaaaaa guibg=NONE'
 -- vim.g.nightflyTransparent = 1
 -- vim.cmd [[colorscheme nightfly]]
 -- require('nightfox').setup({
@@ -6,8 +56,7 @@
 --   }
 -- })
 -- vim.cmd [[colorscheme nightfox]]
--- Theme settings
-vim.g.tokyonight_style = "night"
+vim.g.tokyonight_style = "storm"
 vim.g.tokyonight_italic_functions = true
 vim.g.tokyonight_sidebars = { "qf", "vista_kind", "terminal", "packer" }
 vim.g.tokyonight_transparent = true
@@ -17,6 +66,13 @@ vim.g.tokyonight_colors = {
   bg_float = "none"
 }
 vim.cmd [[colorscheme tokyonight]]
+
+-- local poimandres = require("poimandres")
+-- poimandres.setup({
+--   disable_background = true,
+--   disable_float_background = true,
+-- })
+-- vim.cmd('colorscheme poimandres')
 -- vim.cmd [[colorscheme gruvbox]]
 -- vim.cmd 'au ColorScheme * hi! Normal guibg=none'
 -- vim.g.gruvbox_invert_selection = '0'
@@ -39,64 +95,3 @@ vim.cmd [[colorscheme tokyonight]]
 --   }
 -- })
 --
--- vim.cmd [[colorscheme catppuccin]]
--- require('rose-pine').setup({
---   --- @usage 'main' | 'moon'
---   dark_variant = 'main',
---   bold_vert_split = false,
---   dim_nc_background = false,
---   disable_background = false,
---   disable_float_background = false,
---   disable_italics = false,
---
---   --- @usage string hex value or named color from rosepinetheme.com/palette
---   groups = {
---     background = 'base',
---     panel = 'surface',
---     border = 'highlight_med',
---     comment = 'muted',
---     link = 'iris',
---     punctuation = 'subtle',
---
---     error = 'love',
---     hint = 'iris',
---     info = 'foam',
---     warn = 'gold',
---
---     headings = {
---       h1 = 'iris',
---       h2 = 'foam',
---       h3 = 'rose',
---       h4 = 'gold',
---       h5 = 'pine',
---       h6 = 'foam',
---     }
---     -- or set all headings at once
---     -- headings = 'subtle'
---   },
---
---   -- Change specific vim highlight groups
---   highlight_groups = {
---     ColorColumn = { bg = 'rose' }
---   }
--- })
---
--- -- set colorscheme after options
--- vim.cmd('colorscheme rose-pine')
--- require('kanagawa').setup({
---   undercurl = true, -- enable undercurls
---   commentStyle = "italic",
---   functionStyle = "NONE",
---   keywordStyle = "italic",
---   statementStyle = "bold",
---   typeStyle = "NONE",
---   variablebuiltinStyle = "italic",
---   specialReturn = true, -- special highlight for the return keyword
---   specialException = true, -- special highlight for exception handling keywords
---   transparent = true, -- do not set background color
---   dimInactive = false, -- dim inactive window `:h hl-NormalNC`
---   globalStatus = true, -- adjust window separators highlight for laststatus=3
---   colors = {},
---   overrides = {},
--- })
--- vim.cmd("colorscheme kanagawa")

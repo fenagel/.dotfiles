@@ -5,7 +5,8 @@
 --  augroup end
 --]])
 local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
-vim.api.nvim_create_autocmd('BufWritePost', { command = 'source <afile> | PackerCompile', group = packer_group, pattern = 'init.lua' })
+vim.api.nvim_create_autocmd('BufWritePost',
+  { command = 'source <afile> | PackerCompile', group = packer_group, pattern = 'init.lua' })
 
 local fn = vim.fn
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
@@ -34,15 +35,11 @@ return require("packer").startup({
     use({ "nathom/filetype.nvim", config = get_setup("filetype") })
 
     -- Themes
-    -- use({ "EdenEast/nightfox.nvim", config = get_setup("colors") })
     use({ "gruvbox-community/gruvbox", config = get_setup("colors") })
-    use({
-      "catppuccin/nvim",
-      as = "catppuccin",
+    use {
+      'olivercederborg/poimandres.nvim',
       config = get_setup("colors")
-    })
-    use { 'rose-pine/neovim', as = 'rose-pine', config = get_setup("colors") }
-    --    use({ "rebelot/kanagawa.nvim", config = get_setup("colors") })
+    }
     use({ 'folke/tokyonight.nvim', config = get_setup("colors") })
     -- use({ 'bluz71/vim-nightfly-guicolors', config = get_setup("colors") })
 
@@ -90,11 +87,6 @@ return require("packer").startup({
     -- Snippets, Language, Syntax
     use({ "L3MON4D3/LuaSnip" })
     use({ "saadparwaiz1/cmp_luasnip" })
-    use({
-      "windwp/nvim-autopairs",
-      after = "nvim-cmp",
-      config = get_setup("autopairs"),
-    })
     use({ "onsails/lspkind-nvim", requires = { { "famiu/bufdelete.nvim" } } })
     use({ "mattn/emmet-vim" })
     use({ 'darrikonn/vim-gofmt' })

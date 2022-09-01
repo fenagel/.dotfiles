@@ -2,6 +2,10 @@ local opt = vim.opt -- to set options
 opt.backspace = { "indent", "eol", "start" }
 opt.clipboard = "unnamedplus"
 opt.completeopt = "menu,menuone,noselect"
+opt.guicursor = ""
+opt.background = "dark"
+opt.updatetime = 50
+opt.isfname:append("@-@")
 opt.errorbells = false
 opt.expandtab = true -- Use spaces instead of tabs
 opt.hidden = true -- Enable background buffers
@@ -14,7 +18,7 @@ opt.number = true -- Show line numbers
 opt.list = true -- Show some invisible characters
 opt.listchars = { tab = " ", trail = "·" }
 opt.relativenumber = true
-opt.scrolloff = 7 -- Lines of context
+opt.scrolloff = 8 -- Lines of context
 opt.shiftwidth = 2 -- Size of an indent
 opt.shortmess = "c"
 opt.showmode = false -- Don't display mode
@@ -55,15 +59,3 @@ vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
 -- Give me some fenced codeblock goodness
 vim.g.markdown_fenced_languages = { "html", "javascript", "typescript", "css", "scss", "lua", "vim" }
-vim.cmd 'au ColorScheme * hi! Normal guibg=NONE'
-vim.cmd 'au ColorScheme * hi! SignColumn guibg=NONE'
-vim.cmd 'au ColorScheme * hi! LineNr guibg=NONE'
-vim.cmd 'au ColorScheme * hi! CursorLineNr guibg=NONE'
-vim.cmd 'au ColorScheme * hi! Normal ctermbg=none'
--- Transparent LSP Float Windows
-vim.cmd 'au ColorScheme * highlight! normalfloat guibg=none'
-vim.cmd 'au ColorScheme * highlight! errorfloat guibg=none'
-vim.cmd 'au ColorScheme * highlight! warningfloat guibg=none'
-vim.cmd 'au ColorScheme * highlight! infofloat guibg=none'
-vim.cmd 'au ColorScheme * highlight! hintfloat guibg=none'
-vim.cmd 'au ColorScheme * highlight! FloatBorder guifg=#aaaaaa guibg=NONE'

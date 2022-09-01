@@ -15,25 +15,31 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 vim.api.nvim_create_autocmd("BufWritePre", {
   command = ':Prettier',
-  pattern = { '*.js', '*.ts', '*.jsx', '*.tsx', '*.xml', '*.vue', '*.graphql', '*.md', '*.mdx', '*.svelte', '*.yml', '*.yaml' }
+  pattern = { '*.js', '*.ts', '*.jsx', '*.tsx', '*.xml', '*.vue', '*.graphql', '*.md', '*.mdx', '*.svelte', '*.yml',
+    '*.yaml', '*.astro' }
 })
 
 -- Map leader to space
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.g.mapleader = " "
 vim.g.maplocalleader = ' '
-
+vim.keymap.set('n', "<C-d>", "<C-d>zz")
+vim.keymap.set('n', "<C-u>", "<C-u>zz")
+vim.keymap.set('n', "<leader>y", "\"+y")
+vim.keymap.set('v', "<leader>y", "\"+y")
+vim.keymap.set('n', "<leader>Y", "\"+Y")
 -- Telescope
-vim.keymap.set('n', '<leader>f', require('telescope.builtin').git_files)
-vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files)
-vim.keymap.set('n', '<leader>sb', require('telescope.builtin').current_buffer_fuzzy_find)
-vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags)
-vim.keymap.set('n', '<leader>st', require('telescope.builtin').tags)
-vim.keymap.set('n', '<leader>sd', require('telescope.builtin').grep_string)
-vim.keymap.set('n', '<leader>sp', require('telescope.builtin').live_grep)
-vim.keymap.set('n', '<leader>so', function()
-  require('telescope.builtin').tags { only_current_buffer = true }
+vim.keymap.set('n', '<C-p>', require('telescope.builtin').git_files)
+vim.keymap.set('n', '<leader>pf', require('telescope.builtin').find_files)
+vim.keymap.set('n', '<leader>pb', require('telescope.builtin').current_buffer_fuzzy_find)
+vim.keymap.set('n', '<leader>ph', require('telescope.builtin').help_tags)
+vim.keymap.set('n', "<leader>ps", function()
+  require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ") })
 end)
+vim.keymap.set('n', '<leader>pw', require('telescope.builtin').live_grep)
+-- vim.keymap.set('n', '<leader>pp', function()
+--   require('telescope.builtin').tags { only_current_buffer = true }
+-- end)
 vim.keymap.set('n', '<leader>gc', function() require('telescope.builtin').git_commits() end)
 vim.keymap.set('n', '<leader>gb', function() require('telescope.builtin').git_branches() end)
 vim.keymap.set('n', '<leader>gs', function() require('telescope.builtin').git_status() end)
@@ -55,22 +61,21 @@ vim.keymap.set('n', 'gD', vim.lsp.buf.declaration)
 vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
 vim.keymap.set('n', 'K', vim.lsp.buf.hover)
 vim.keymap.set('n', 'gi', vim.lsp.buf.implementation)
+vim.keymap.set('i', "<C-h>", function() vim.lsp.buf.signature_help() end)
 vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help)
-vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder)
-vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder)
-vim.keymap.set('n', '<leader>wl', function()
-  vim.inspect(vim.lsp.buf.list_workspace_folders())
-end)
 vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition)
 vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename)
 vim.keymap.set('n', 'gr', vim.lsp.buf.references)
 vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action)
-vim.keymap.set('n', '<leader>so', require('telescope.builtin').lsp_document_symbols)
 vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { silent = true })
 vim.keymap.set("n", "<leader>tr", ":NvimTreeRefresh<CR>", { silent = true })
-
 -- Allow gf to open non-existing files
 vim.keymap.set("", "gf", ":edit <cfile><cr>")
+
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+vim.keymap.set("n", "Y", "yg$")
 
 -- Reselect visual selection after indenting
 vim.keymap.set("v", "<", "<gv")
@@ -104,8 +109,8 @@ vim.keymap.set("v", "<leader>p", '"_dP')
 vim.keymap.set("n", "Y", "y$")
 
 -- yank plus additional cmd for custom yanks
-vim.keymap.set("n", "<leader>y", '"+y')
-vim.keymap.set("v", "<leader>y", '"+y')
+-- vim.keymap.set("n", "<leader>y", '"+y')
+-- vim.keymap.set("v", "<leader>y", '"+y')
 
 -- delete plus additional cmd for custom deletes
 vim.keymap.set("n", "<leader>d", '"_d')
@@ -140,7 +145,7 @@ vim.keymap.set("", "<leader>w", ":w<CR>")
 vim.keymap.set("", "<leader>q", ":q<CR>")
 
 -- Search and replace word under cursor
-vim.keymap.set("n", "<leader>sr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- GO error boiler plate macro
 vim.keymap.set("n", "<leader>ee", [[oif err != nil {<CR>return nil, err<CR>}<CR><esc>kkI<esc>]])
