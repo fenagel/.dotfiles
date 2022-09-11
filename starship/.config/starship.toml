@@ -1,5 +1,5 @@
 [character]
-success_symbol = "[](black)"
+success_symbol = "[](white)"
 error_symbol = "[](red)"
 vicmd_symbol = "[](black)"
 
