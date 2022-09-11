@@ -109,7 +109,7 @@ require("lspconfig").astro.setup({
   flags = lsp_flags,
   capabilities = capabilities,
 })
-require("lspconfig").bashlib.setup({
+require("lspconfig").bashlsp.setup({
   on_attach = on_attach,
   flags = lsp_flags,
   capabilities = capabilities,
