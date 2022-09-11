@@ -1,8 +1,20 @@
+vim.g.fenagel_colorscheme = "catppuccin"
+
 function ColorMyPencils()
   vim.g.gruvbox_contrast_dark = 'hard'
-
+  vim.g.tokyonight_transparent_sidebar = false
+  vim.g.tokyonight_transparent = false
+  vim.g.catppuccin_flavour = "mocha"
+  require('catppuccin').setup({
+    transparent_background = true
+  })
+  -- vim.g.tokyonight_colors = {
+  --   bg_float = "none"
+  -- }
   vim.g.gruvbox_invert_selection = '0'
   vim.opt.background = "dark"
+
+  vim.cmd("colorscheme " .. vim.g.fenagel_colorscheme)
 
   local hl = function(thing, opts)
     vim.api.nvim_set_hl(0, thing, opts)
@@ -48,50 +60,3 @@ ColorMyPencils()
 -- vim.cmd 'au ColorScheme * highlight! infofloat guibg=none'
 -- vim.cmd 'au ColorScheme * highlight! hintfloat guibg=none'
 -- vim.cmd 'au ColorScheme * highlight! FloatBorder guifg=#aaaaaa guibg=NONE'
--- vim.g.nightflyTransparent = 1
--- vim.cmd [[colorscheme nightfly]]
--- require('nightfox').setup({
---   options = {
---     transparent = true,
---   }
--- })
--- vim.cmd [[colorscheme nightfox]]
-vim.g.tokyonight_style = "storm"
-vim.g.tokyonight_italic_functions = true
-vim.g.tokyonight_sidebars = { "qf", "vista_kind", "terminal", "packer" }
-vim.g.tokyonight_transparent = true
-vim.g.tokyonight_transparent_sidebar = true
-vim.g.tokyonight_dark_float = false
-vim.g.tokyonight_colors = {
-  bg_float = "none"
-}
-vim.cmd [[colorscheme tokyonight]]
-
--- local poimandres = require("poimandres")
--- poimandres.setup({
---   disable_background = true,
---   disable_float_background = true,
--- })
--- vim.cmd('colorscheme poimandres')
--- vim.cmd [[colorscheme gruvbox]]
--- vim.cmd 'au ColorScheme * hi! Normal guibg=none'
--- vim.g.gruvbox_invert_selection = '0'
--- require("catppuccin").setup({
---   transparent_background = true,
---   coc_nvim = false,
---   lsp_trouble = false,
---   cmp = true,
---   lsp_saga = true,
---   gitgutter = false,
---   gitsigns = true,
---   telescope = true,
---   dashboard = true,
---   neogit = true,
---   symbols_outline = true,
---   nvimtree = {
---     enabled = true,
---     show_root = false,
---     transparent_panel = false,
---   }
--- })
---

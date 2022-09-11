@@ -36,12 +36,8 @@ return require("packer").startup({
 
     -- Themes
     use({ "gruvbox-community/gruvbox", config = get_setup("colors") })
-    use {
-      'olivercederborg/poimandres.nvim',
-      config = get_setup("colors")
-    }
     use({ 'folke/tokyonight.nvim', config = get_setup("colors") })
-    -- use({ 'bluz71/vim-nightfly-guicolors', config = get_setup("colors") })
+    use { "catppuccin/nvim", as = "catppuccin", config = get_setup("colors") }
 
     use({
       "norcalli/nvim-colorizer.lua",
@@ -104,7 +100,6 @@ return require("packer").startup({
     use({ "tpope/vim-fugitive" })
     use({ "junegunn/gv.vim" })
     use({ "neovim/nvim-lspconfig", config = get_setup("lsp") })
-    use { 'williamboman/nvim-lsp-installer' }
     use({ "nvim-lua/lsp_extensions.nvim" })
     use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim', config = get_setup("neogit") }
 

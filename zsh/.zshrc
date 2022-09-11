@@ -1,7 +1,5 @@
-# Fig pre block. Keep at the top of this file.
-[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && . "$HOME/.fig/shell/zshrc.pre.zsh"
 # Path to your oh-my-zsh installation.
-DISABLE_MAGIC_FUNCTIONS=true
+# DISABLE_MAGIC_FUNCTIONS=true
 export ZSH=$HOME/.oh-my-zsh
 export DOTFILES=$HOME/.dotfiles
 
@@ -68,7 +66,9 @@ type -a nvm > /dev/null && load-nvmrc
 # So instead of running `bin/rails` like the doc says, just run `rails`
 # Same for `./node_modules/.bin` and nodejs
 export PATH="./bin:./node_modules/.bin:${PATH}:/usr/local/sbin"
+export PATH="${HOME}/.config/bin"
 
+export STARSHIP_CONFIG=${HOME}/.config/starship.toml
 # Store your own aliases in the ~/.aliases file and load the here.
 [[ -f "$HOME/.aliases" ]] && source "$HOME/.aliases"
 
@@ -99,5 +99,4 @@ export go_test() {
 
 alias luamake=/Users/felix/lua-language-server/3rd/luamake/luamake
 
-# Fig post block. Keep at the bottom of this file.
-[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && . "$HOME/.fig/shell/zshrc.post.zsh"
+eval "$(starship init zsh)"

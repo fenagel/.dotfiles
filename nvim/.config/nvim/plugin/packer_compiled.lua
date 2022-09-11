@@ -9,23 +9,26 @@ vim.api.nvim_command('packadd packer.nvim')
 
 local no_errors, error_msg = pcall(function()
 
-  local time
-  local profile_info
-  local should_profile = true
-  if should_profile then
-    local hrtime = vim.loop.hrtime
-    profile_info = {}
-    time = function(chunk, start)
-      if start then
-        profile_info[chunk] = hrtime()
-      else
-        profile_info[chunk] = (hrtime() - profile_info[chunk]) / 1e6
-      end
+_G._packer = _G._packer or {}
+_G._packer.inside_compile = true
+
+local time
+local profile_info
+local should_profile = true
+if should_profile then
+  local hrtime = vim.loop.hrtime
+  profile_info = {}
+  time = function(chunk, start)
+    if start then
+      profile_info[chunk] = hrtime()
+    else
+      profile_info[chunk] = (hrtime() - profile_info[chunk]) / 1e6
     end
-  else
-    time = function(chunk, start) end
   end
-  
+else
+  time = function(chunk, start) end
+end
+
 local function save_profiles(threshold)
   local sorted_times = {}
   for chunk_name, time_taken in pairs(profile_info) do
@@ -38,8 +41,10 @@ local function save_profiles(threshold)
       results[i] = elem[1] .. ' took ' .. elem[2] .. 'ms'
     end
   end
+  if threshold then
+    table.insert(results, '(Only showing plugins that took longer than ' .. threshold .. ' ms ' .. 'to load)')
+  end
 
-  _G._packer = _G._packer or {}
   _G._packer.profile_output = results
 end
 
@@ -70,7 +75,6 @@ time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
   ["Comment.nvim"] = {
-    after_files = { "/Users/felix/.local/share/nvim/site/pack/packer/opt/Comment.nvim/after/plugin/Comment.lua" },
     config = { 'require("setup/comment")' },
     keys = { { "", "gc" }, { "", "gcc" } },
     loaded = false,
@@ -88,12 +92,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/felix/.local/share/nvim/site/pack/packer/start/bufdelete.nvim",
     url = "https://github.com/famiu/bufdelete.nvim"
-  },
-  catppuccin = {
-    config = { 'require("setup/colors")' },
-    loaded = true,
-    path = "/Users/felix/.local/share/nvim/site/pack/packer/start/catppuccin",
-    url = "https://github.com/catppuccin/nvim"
   },
   ["cmp-buffer"] = {
     loaded = true,
@@ -199,18 +197,11 @@ _G.packer_plugins = {
     path = "/Users/felix/.local/share/nvim/site/pack/packer/start/neogit",
     url = "https://github.com/TimUntersberger/neogit"
   },
-  ["nvim-autopairs"] = {
-    config = { 'require("setup/autopairs")' },
-    load_after = {},
-    loaded = true,
-    needs_bufread = false,
-    path = "/Users/felix/.local/share/nvim/site/pack/packer/opt/nvim-autopairs",
-    url = "https://github.com/windwp/nvim-autopairs"
-  },
   ["nvim-cmp"] = {
-    after = { "nvim-autopairs" },
+    config = { 'require("setup/cmp")' },
     loaded = true,
-    only_config = true
+    path = "/Users/felix/.local/share/nvim/site/pack/packer/start/nvim-cmp",
+    url = "https://github.com/hrsh7th/nvim-cmp"
   },
   ["nvim-colorizer.lua"] = {
     config = { 'require("setup/colorizer")' },
@@ -219,11 +210,6 @@ _G.packer_plugins = {
     only_cond = false,
     path = "/Users/felix/.local/share/nvim/site/pack/packer/opt/nvim-colorizer.lua",
     url = "https://github.com/norcalli/nvim-colorizer.lua"
-  },
-  ["nvim-lsp-installer"] = {
-    loaded = true,
-    path = "/Users/felix/.local/share/nvim/site/pack/packer/start/nvim-lsp-installer",
-    url = "https://github.com/williamboman/nvim-lsp-installer"
   },
   ["nvim-lspconfig"] = {
     config = { 'require("setup/lsp")' },
@@ -263,6 +249,12 @@ _G.packer_plugins = {
     path = "/Users/felix/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
+  ["poimandres.nvim"] = {
+    config = { 'require("setup/colors")' },
+    loaded = true,
+    path = "/Users/felix/.local/share/nvim/site/pack/packer/start/poimandres.nvim",
+    url = "https://github.com/olivercederborg/poimandres.nvim"
+  },
   ["popup.nvim"] = {
     loaded = true,
     path = "/Users/felix/.local/share/nvim/site/pack/packer/start/popup.nvim",
@@ -291,6 +283,12 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/felix/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
+  },
+  ["tokyonight.nvim"] = {
+    config = { 'require("setup/colors")' },
+    loaded = true,
+    path = "/Users/felix/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
+    url = "https://github.com/folke/tokyonight.nvim"
   },
   ["vim-fugitive"] = {
     loaded = true,
@@ -324,34 +322,6 @@ time([[Defining packer_plugins]], false)
 time([[Setup for symbols-outline.nvim]], true)
 require("setup/outline")
 time([[Setup for symbols-outline.nvim]], false)
--- Config for: gruvbox
-time([[Config for gruvbox]], true)
-require("setup/colors")
-time([[Config for gruvbox]], false)
--- Config for: nvim-cmp
-time([[Config for nvim-cmp]], true)
-require("setup/cmp")
-time([[Config for nvim-cmp]], false)
--- Config for: neogit
-time([[Config for neogit]], true)
-require("setup/neogit")
-time([[Config for neogit]], false)
--- Config for: nvim-tree.lua
-time([[Config for nvim-tree.lua]], true)
-require("setup/tree")
-time([[Config for nvim-tree.lua]], false)
--- Config for: catppuccin
-time([[Config for catppuccin]], true)
-require("setup/colors")
-time([[Config for catppuccin]], false)
--- Config for: nvim-treesitter
-time([[Config for nvim-treesitter]], true)
-require("setup/treesitter")
-time([[Config for nvim-treesitter]], false)
--- Config for: filetype.nvim
-time([[Config for filetype.nvim]], true)
-require("setup/filetype")
-time([[Config for filetype.nvim]], false)
 -- Config for: telescope.nvim
 time([[Config for telescope.nvim]], true)
 require("setup/telescope")
@@ -360,14 +330,38 @@ time([[Config for telescope.nvim]], false)
 time([[Config for nvim-lspconfig]], true)
 require("setup/lsp")
 time([[Config for nvim-lspconfig]], false)
--- Load plugins in order defined by `after`
-time([[Sequenced loading]], true)
-vim.cmd [[ packadd nvim-autopairs ]]
-
--- Config for: nvim-autopairs
-require("setup/autopairs")
-
-time([[Sequenced loading]], false)
+-- Config for: nvim-tree.lua
+time([[Config for nvim-tree.lua]], true)
+require("setup/tree")
+time([[Config for nvim-tree.lua]], false)
+-- Config for: neogit
+time([[Config for neogit]], true)
+require("setup/neogit")
+time([[Config for neogit]], false)
+-- Config for: nvim-treesitter
+time([[Config for nvim-treesitter]], true)
+require("setup/treesitter")
+time([[Config for nvim-treesitter]], false)
+-- Config for: nvim-cmp
+time([[Config for nvim-cmp]], true)
+require("setup/cmp")
+time([[Config for nvim-cmp]], false)
+-- Config for: filetype.nvim
+time([[Config for filetype.nvim]], true)
+require("setup/filetype")
+time([[Config for filetype.nvim]], false)
+-- Config for: tokyonight.nvim
+time([[Config for tokyonight.nvim]], true)
+require("setup/colors")
+time([[Config for tokyonight.nvim]], false)
+-- Config for: gruvbox
+time([[Config for gruvbox]], true)
+require("setup/colors")
+time([[Config for gruvbox]], false)
+-- Config for: poimandres.nvim
+time([[Config for poimandres.nvim]], true)
+require("setup/colors")
+time([[Config for poimandres.nvim]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
@@ -384,10 +378,17 @@ vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au BufReadPre * ++once lua require("packer.load")({'gitsigns.nvim', 'nvim-colorizer.lua'}, { event = "BufReadPre *" }, _G.packer_plugins)]]
+vim.cmd [[au BufReadPre * ++once lua require("packer.load")({'nvim-colorizer.lua', 'gitsigns.nvim'}, { event = "BufReadPre *" }, _G.packer_plugins)]]
 vim.cmd [[au VimEnter * ++once lua require("packer.load")({'lualine.nvim'}, { event = "VimEnter *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
+
+_G._packer.inside_compile = false
+if _G._packer.needs_bufread == true then
+  vim.cmd("doautocmd BufRead")
+end
+_G._packer.needs_bufread = false
+
 if should_profile then save_profiles(1) end
 
 end)

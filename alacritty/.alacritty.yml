@@ -1,0 +1,388 @@
+# cSpell:words alacritty lfcd
+live_config_reload: true
+
+env:
+  TERM: xterm-256color
+
+shell:
+  program: /usr/local/bin/fish
+
+selection:
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
+  save_to_clipboard: true
+
+window:
+  opacity: 0.8
+  padding:
+    x: 18
+    y: 16
+  dynamic_padding: false
+  decorations: buttonless
+
+schemes:
+  latte: &latte # Default colors
+    primary:
+      background: "#EFF1F5" # base
+      foreground: "#4C4F69" # text
+      # Bright and dim foreground colors
+      dim_foreground: "#4C4F69" # text
+      bright_foreground: "#4C4F69" # text
+
+    # Cursor colors
+    cursor:
+      text: "#EFF1F5" # base
+      cursor: "#DC8A78" # rosewater
+    vi_mode_cursor:
+      text: "#EFF1F5" # base
+      cursor: "#7287FD" # lavender
+
+    # Search colors
+    search:
+      matches:
+        foreground: "#EFF1F5" # base
+        background: "#6C6F85" # subtext0
+      focused_match:
+        foreground: "#EFF1F5" # base
+        background: "#40A02B" # green
+      footer_bar:
+        foreground: "#EFF1F5" # base
+        background: "#6C6F85" # subtext0
+
+    # Keyboard regex hints
+    hints:
+      start:
+        foreground: "#EFF1F5" # base
+        background: "#DF8E1D" # yellow
+      end:
+        foreground: "#EFF1F5" # base
+        background: "#6C6F85" # subtext0
+
+    # Selection colors
+    selection:
+      text: "#EFF1F5" # base
+      background: "#DC8A78" # rosewater
+
+    # Normal colors
+    normal:
+      black: "#5C5F77" # subtext1
+      red: "#D20F39" # red
+      green: "#40A02B" # green
+      yellow: "#DF8E1D" # yellow
+      blue: "#1E66F5" # blue
+      magenta: "#EA76CB" # pink
+      cyan: "#179299" # teal
+      white: "#ACB0BE" # surface2
+
+    # Bright colors
+    bright:
+      black: "#6C6F85" # subtext0
+      red: "#D20F39" # red
+      green: "#40A02B" # green
+      yellow: "#DF8E1D" # yellow
+      blue: "#1E66F5" # blue
+      magenta: "#EA76CB" # pink
+      cyan: "#179299" # teal
+      white: "#BCC0CC" # surface1
+
+    # Dim colors
+    dim:
+      black: "#5C5F77" # subtext1
+      red: "#D20F39" # red
+      green: "#40A02B" # green
+      yellow: "#DF8E1D" # yellow
+      blue: "#1E66F5" # blue
+      magenta: "#EA76CB" # pink
+      cyan: "#179299" # teal
+      white: "#ACB0BE" # surface2
+
+    indexed_colors:
+      - { index: 16, color: "#FE640B" }
+      - { index: 17, color: "#DC8A78" }
+
+  frappe: &frappe # Default colors
+    primary:
+      background: "#303446" # base
+      foreground: "#C6D0F5" # text
+      # Bright and dim foreground colors
+      dim_foreground: "#C6D0F5" # text
+      bright_foreground: "#C6D0F5" # text
+
+    # Cursor colors
+    cursor:
+      text: "#303446" # base
+      cursor: "#F2D5CF" # rosewater
+    vi_mode_cursor:
+      text: "#303446" # base
+      cursor: "#BABBF1" # lavender
+
+    # Search colors
+    search:
+      matches:
+        foreground: "#303446" # base
+        background: "#A5ADCE" # subtext0
+      focused_match:
+        foreground: "#303446" # base
+        background: "#A6D189" # green
+      footer_bar:
+        foreground: "#303446" # base
+        background: "#A5ADCE" # subtext0
+
+    # Keyboard regex hints
+    hints:
+      start:
+        foreground: "#303446" # base
+        background: "#E5C890" # yellow
+      end:
+        foreground: "#303446" # base
+        background: "#A5ADCE" # subtext0
+
+    # Selection colors
+    selection:
+      text: "#303446" # base
+      background: "#F2D5CF" # rosewater
+
+    # Normal colors
+    normal:
+      black: "#51576D" # surface1
+      red: "#E78284" # red
+      green: "#A6D189" # green
+      yellow: "#E5C890" # yellow
+      blue: "#8CAAEE" # blue
+      magenta: "#F4B8E4" # pink
+      cyan: "#81C8BE" # teal
+      white: "#B5BFE2" # subtext1
+
+    # Bright colors
+    bright:
+      black: "#626880" # surface2
+      red: "#E78284" # red
+      green: "#A6D189" # green
+      yellow: "#E5C890" # yellow
+      blue: "#8CAAEE" # blue
+      magenta: "#F4B8E4" # pink
+      cyan: "#81C8BE" # teal
+      white: "#A5ADCE" # subtext0
+
+    # Dim colors
+    dim:
+      black: "#51576D" # surface1
+      red: "#E78284" # red
+      green: "#A6D189" # green
+      yellow: "#E5C890" # yellow
+      blue: "#8CAAEE" # blue
+      magenta: "#F4B8E4" # pink
+      cyan: "#81C8BE" # teal
+      white: "#B5BFE2" # subtext1
+
+    indexed_colors:
+      - { index: 16, color: "#EF9F76" }
+      - { index: 17, color: "#F2D5CF" }
+
+  macchiato: &macchiato # Default colors
+    primary:
+      background: "#24273A" # base
+      foreground: "#CAD3F5" # text
+      # Bright and dim foreground colors
+      dim_foreground: "#CAD3F5" # text
+      bright_foreground: "#CAD3F5" # text
+
+    # Cursor colors
+    cursor:
+      text: "#24273A" # base
+      cursor: "#F4DBD6" # rosewater
+    vi_mode_cursor:
+      text: "#24273A" # base
+      cursor: "#B7BDF8" # lavender
+
+    # Search colors
+    search:
+      matches:
+        foreground: "#24273A" # base
+        background: "#A5ADCB" # subtext0
+      focused_match:
+        foreground: "#24273A" # base
+        background: "#A6DA95" # green
+      footer_bar:
+        foreground: "#24273A" # base
+        background: "#A5ADCB" # subtext0
+
+    # Keyboard regex hints
+    hints:
+      start:
+        foreground: "#24273A" # base
+        background: "#EED49F" # yellow
+      end:
+        foreground: "#24273A" # base
+        background: "#A5ADCB" # subtext0
+
+    # Selection colors
+    selection:
+      text: "#24273A" # base
+      background: "#F4DBD6" # rosewater
+
+    # Normal colors
+    normal:
+      black: "#494D64" # surface1
+      red: "#ED8796" # red
+      green: "#A6DA95" # green
+      yellow: "#EED49F" # yellow
+      blue: "#8AADF4" # blue
+      magenta: "#F5BDE6" # pink
+      cyan: "#8BD5CA" # teal
+      white: "#B8C0E0" # subtext1
+
+    # Bright colors
+    bright:
+      black: "#5B6078" # surface2
+      red: "#ED8796" # red
+      green: "#A6DA95" # green
+      yellow: "#EED49F" # yellow
+      blue: "#8AADF4" # blue
+      magenta: "#F5BDE6" # pink
+      cyan: "#8BD5CA" # teal
+      white: "#A5ADCB" # subtext0
+
+    # Dim colors
+    dim:
+      black: "#494D64" # surface1
+      red: "#ED8796" # red
+      green: "#A6DA95" # green
+      yellow: "#EED49F" # yellow
+      blue: "#8AADF4" # blue
+      magenta: "#F5BDE6" # pink
+      cyan: "#8BD5CA" # teal
+      white: "#B8C0E0" # subtext1
+
+    indexed_colors:
+      - { index: 16, color: "#F5A97F" }
+      - { index: 17, color: "#F4DBD6" }
+
+  mocha: &mocha # Default colors
+    primary:
+      background: "#1E1E2E" # base
+      foreground: "#CDD6F4" # text
+      # Bright and dim foreground colors
+      dim_foreground: "#CDD6F4" # text
+      bright_foreground: "#CDD6F4" # text
+
+    # Cursor colors
+    cursor:
+      text: "#1E1E2E" # base
+      cursor: "#F5E0DC" # rosewater
+    vi_mode_cursor:
+      text: "#1E1E2E" # base
+      cursor: "#B4BEFE" # lavender
+
+    # Search colors
+    search:
+      matches:
+        foreground: "#1E1E2E" # base
+        background: "#A6ADC8" # subtext0
+      focused_match:
+        foreground: "#1E1E2E" # base
+        background: "#A6E3A1" # green
+      footer_bar:
+        foreground: "#1E1E2E" # base
+        background: "#A6ADC8" # subtext0
+
+    # Keyboard regex hints
+    hints:
+      start:
+        foreground: "#1E1E2E" # base
+        background: "#F9E2AF" # yellow
+      end:
+        foreground: "#1E1E2E" # base
+        background: "#A6ADC8" # subtext0
+
+    # Selection colors
+    selection:
+      text: "#1E1E2E" # base
+      background: "#F5E0DC" # rosewater
+
+    # Normal colors
+    normal:
+      black: "#45475A" # surface1
+      red: "#F38BA8" # red
+      green: "#A6E3A1" # green
+      yellow: "#F9E2AF" # yellow
+      blue: "#89B4FA" # blue
+      magenta: "#F5C2E7" # pink
+      cyan: "#94E2D5" # teal
+      white: "#BAC2DE" # subtext1
+
+    # Bright colors
+    bright:
+      black: "#585B70" # surface2
+      red: "#F38BA8" # red
+      green: "#A6E3A1" # green
+      yellow: "#F9E2AF" # yellow
+      blue: "#89B4FA" # blue
+      magenta: "#F5C2E7" # pink
+      cyan: "#94E2D5" # teal
+      white: "#A6ADC8" # subtext0
+
+    # Dim colors
+    dim:
+      black: "#45475A" # surface1
+      red: "#F38BA8" # red
+      green: "#A6E3A1" # green
+      yellow: "#F9E2AF" # yellow
+      blue: "#89B4FA" # blue
+      magenta: "#F5C2E7" # pink
+      cyan: "#94E2D5" # teal
+      white: "#BAC2DE" # subtext1
+
+    indexed_colors:
+      - { index: 16, color: "#FAB387" }
+      - { index: 17, color: "#F5E0DC" }
+
+colors: *mocha
+
+font:
+  normal:
+    family: "SFMono Nerd Font"
+    style: Regular
+  size: 22.0
+  use_thin_strokes: true
+
+mouse:
+  hide_when_typing: true
+
+key_bindings:
+  # Rename the current tmux window
+  - { key: Comma, mods: Command, chars: "\x02\x2c" }
+  # Select a new tmux session for the attached client interactively
+  - { key: K, mods: Command, chars: "\x02\x73" }
+  # Select window 1-9
+  - { key: Key1, mods: Command, chars: "\x02\x31" }
+  - { key: Key2, mods: Command, chars: "\x02\x32" }
+  - { key: Key3, mods: Command, chars: "\x02\x33" }
+  - { key: Key4, mods: Command, chars: "\x02\x34" }
+  - { key: Key5, mods: Command, chars: "\x02\x35" }
+  - { key: Key6, mods: Command, chars: "\x02\x36" }
+  - { key: Key7, mods: Command, chars: "\x02\x37" }
+  - { key: Key8, mods: Command, chars: "\x02\x38" }
+  - { key: Key9, mods: Command, chars: "\x02\x39" }
+  # Switch to last tmux session
+  - { key: L, mods: Command, chars: "\x02\x4c" }
+  - { key: LBracket, mods: Command, chars: "\x02\x5b" }
+  # Change to the previous tmux window
+  - { key: LBracket, mods: Command|Shift, chars: "\x02\x70" }
+  # Split the current pane into two, left and right
+  - { key: N, mods: Command|Shift, chars: "\x02\x25" }
+  # Split the current pane into two, top and bottom.
+  - { key: N, mods: Command, chars: "\x02\x22" }
+  # Detach the current tmux client
+  - { key: Q, mods: Command, chars: "\x02\x64" }
+  # Change to the next tmux window
+  - { key: RBracket, mods: Command|Shift, chars: "\x02\x6e" }
+  # Type <escape>:w<enter> to save neovim
+  - { key: S, mods: Command, chars: "\x1b\x3a\x77\x0a" }
+  # Create a new tmux window
+  - { key: T, mods: Command, chars: "\x02\x63" }
+  # Break the current tmux pane out of the tmux window
+  - { key: T, mods: Command|Shift, chars: "\x02\x21" }
+  # Kill the current tmux pane (and window if last pane)
+  - { key: W, mods: Command, chars: "\x02\x78" }
+  # Toggle the zoom state of the current tmux pane
+  - { key: Z, mods: Command, chars: "\x02\x7a" }
