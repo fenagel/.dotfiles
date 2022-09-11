@@ -57,7 +57,7 @@ require('lspconfig')['rust_analyzer'].setup {
   }
 }
 
-require'lspconfig'.sumneko_lua.setup {
+require 'lspconfig'.sumneko_lua.setup {
   settings = {
     Lua = {
       runtime = {
@@ -66,7 +66,7 @@ require'lspconfig'.sumneko_lua.setup {
       },
       diagnostics = {
         -- Get the language server to recognize the `vim` global
-        globals = {'vim'},
+        globals = { 'vim' },
       },
       workspace = {
         -- Make the server aware of Neovim runtime files
@@ -105,6 +105,16 @@ require("lspconfig").vuels.setup({
   capabilities = capabilities,
 })
 require("lspconfig").astro.setup({
+  on_attach = on_attach,
+  flags = lsp_flags,
+  capabilities = capabilities,
+})
+require("lspconfig").bashlib.setup({
+  on_attach = on_attach,
+  flags = lsp_flags,
+  capabilities = capabilities,
+})
+require("lspconfig").tailwindcss.setup({
   on_attach = on_attach,
   flags = lsp_flags,
   capabilities = capabilities,
