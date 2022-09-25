@@ -1,7 +1,7 @@
 vim.g.fenagel_colorscheme = "gruvbox"
 
 function ColorMyPencils()
-  -- vim.g.gruvbox_contrast_dark = 'hard'
+  vim.g.gruvbox_contrast_dark = 'hard'
   -- vim.g.tokyonight_transparent_sidebar = false
   -- vim.g.tokyonight_transparent = false
   -- vim.g.catppuccin_flavour = "macchiato"
@@ -11,8 +11,8 @@ function ColorMyPencils()
   -- vim.g.tokyonight_colors = {
   --   bg_float = "none"
   -- }
-  -- vim.g.gruvbox_invert_selection = '0'
-  -- vim.opt.background = "dark"
+  vim.g.gruvbox_invert_selection = '0'
+  vim.opt.background = "dark"
 
   vim.cmd("colorscheme " .. vim.g.fenagel_colorscheme)
 
