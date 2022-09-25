@@ -3,7 +3,6 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap = true, silent = true }
-vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 
@@ -20,7 +19,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+  vim.keymap.set('n', '<Kh>', vim.lsp.buf.signature_help, bufopts)
   vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
   vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
   vim.keymap.set('n', '<space>wl', function()
@@ -37,16 +36,19 @@ local lsp_flags = {
   -- This is the default in Nvim 0.7+
   debounce_text_changes = 150,
 }
+
 require('lspconfig')['pyright'].setup {
   on_attach = on_attach,
   flags = lsp_flags,
   capabilities = capabilities,
 }
+
 require('lspconfig')['tsserver'].setup {
   on_attach = on_attach,
   flags = lsp_flags,
   capabilities = capabilities,
 }
+
 require('lspconfig')['rust_analyzer'].setup {
   on_attach = on_attach,
   flags = lsp_flags,
@@ -94,26 +96,31 @@ require("lspconfig").tsserver.setup({
   flags = lsp_flags,
   capabilities = capabilities,
 })
+
 require("lspconfig").solargraph.setup({
   on_attach = on_attach,
   flags = lsp_flags,
   capabilities = capabilities,
 })
+
 require("lspconfig").vuels.setup({
   on_attach = on_attach,
   flags = lsp_flags,
   capabilities = capabilities,
 })
+
 require("lspconfig").astro.setup({
   on_attach = on_attach,
   flags = lsp_flags,
   capabilities = capabilities,
 })
-require("lspconfig").bashlsp.setup({
+
+require("lspconfig").bashls.setup({
   on_attach = on_attach,
   flags = lsp_flags,
   capabilities = capabilities,
 })
+
 require("lspconfig").tailwindcss.setup({
   on_attach = on_attach,
   flags = lsp_flags,

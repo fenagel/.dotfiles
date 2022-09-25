@@ -72,8 +72,6 @@ vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition)
 vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename)
 vim.keymap.set('n', 'gr', vim.lsp.buf.references)
 vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action)
-vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { silent = true })
-vim.keymap.set("n", "<leader>tr", ":NvimTreeRefresh<CR>", { silent = true })
 -- Allow gf to open non-existing files
 vim.keymap.set("", "gf", ":edit <cfile><cr>")
 
@@ -85,7 +83,6 @@ vim.keymap.set("n", "Y", "yg$")
 -- Reselect visual selection after indenting
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
-
 -- Open nvimrc file
 vim.keymap.set("n", "<Leader>v", "<cmd>e $MYVIMRC<CR>")
 
@@ -158,13 +155,13 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 vim.keymap.set("n", "<leader>ee", [[oif err != nil {<CR>return nil, err<CR>}<CR><esc>kkI<esc>]])
 
 -- Go Commands
-vim.keymap.set("n", "<leader>oc", ":GoCmt<CR>")
-vim.keymap.set("n", "<leader>od", ":GoDoc<CR>")
-vim.keymap.set("n", "<leader>oat", ":GoAddTag<CR>")
-vim.keymap.set("n", "<leader>ort", ":GoRmTag<CR>")
-vim.keymap.set("n", "<leader>op", ":GoFixPlurals<CR>")
-vim.keymap.set("n", "<leader>otc", ":GoTest -c<CR>")
-vim.keymap.set("n", "<leader>otf", ":GoTestFunc<CR>")
-vim.keymap.set("n", "<leader>otp", ":GoTestPkg<CR>")
-vim.keymap.set("n", "<leader>ol", ":GoLint<CR>")
-vim.keymap.set("n", "<leader>ol", ":GoCoverage<CR>")
+-- vim.keymap.set("n", "<leader>oc", ":GoCmt<CR>")
+-- vim.keymap.set("n", "<leader>od", ":GoDoc<CR>")
+-- vim.keymap.set("n", "<leader>oat", ":GoAddTag<CR>")
+-- vim.keymap.set("n", "<leader>ort", ":GoRmTag<CR>")
+-- vim.keymap.set("n", "<leader>op", ":GoFixPlurals<CR>")
+-- vim.keymap.set("n", "<leader>otc", ":GoTest -c<CR>")
+-- vim.keymap.set("n", "<leader>otf", ":GoTestFunc<CR>")
+-- vim.keymap.set("n", "<leader>otp", ":GoTestPkg<CR>")
+-- vim.keymap.set("n", "<leader>ol", ":GoLint<CR>")
+-- vim.keymap.set("n", "<leader>ol", ":GoCoverage<CR>")

@@ -61,7 +61,10 @@ return require("packer").startup({
       run = ":TSUpdate",
     })
     use("nvim-treesitter/nvim-treesitter-textobjects")
+    use { 'nvim-treesitter/nvim-treesitter-context', config = get_setup("treesitter-context") }
 
+    -- Harpoon window management
+    use { 'ThePrimeagen/harpoon', config = get_setup("harpoon") }
 
     -- Autocompletion
     use({
@@ -81,11 +84,15 @@ return require("packer").startup({
     })
 
     -- Snippets, Language, Syntax
-    use({ "L3MON4D3/LuaSnip" })
+    use({ "L3MON4D3/LuaSnip", config = get_setup("luasnips") })
     use({ "saadparwaiz1/cmp_luasnip" })
     use({ "onsails/lspkind-nvim", requires = { { "famiu/bufdelete.nvim" } } })
     use({ "mattn/emmet-vim" })
     use({ 'darrikonn/vim-gofmt' })
+    use { "rafamadriz/friendly-snippets",
+      module = { "cmp", "cmp_nvim_lsp" },
+      event = "InsertEnter",
+    }
 
     -- File Explorer Tree
     use({ "kyazdani42/nvim-tree.lua", config = get_setup("tree") })
