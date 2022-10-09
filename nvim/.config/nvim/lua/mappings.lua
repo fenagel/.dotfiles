@@ -9,7 +9,7 @@
 -- AUTO COMMANDS --
 vim.api.nvim_create_autocmd("BufWritePre", {
   callback = function()
-    vim.lsp.buf.formatting_sync()
+    vim.lsp.buf.format()
   end,
   pattern = '*'
 })
@@ -79,6 +79,8 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 vim.keymap.set("n", "Y", "yg$")
+
+vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>")
 
 -- Reselect visual selection after indenting
 vim.keymap.set("v", "<", "<gv")
@@ -152,7 +154,7 @@ vim.keymap.set("", "<leader>q", ":q<CR>")
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- GO error boiler plate macro
-vim.keymap.set("n", "<leader>ee", [[oif err != nil {<CR>return nil, err<CR>}<CR><esc>kkI<esc>]])
+-- vim.keymap.set("n", "<leader>ee", [[oif err != nil {<CR>return nil, err<CR>}<CR><esc>kkI<esc>]])
 
 -- Go Commands
 -- vim.keymap.set("n", "<leader>oc", ":GoCmt<CR>")

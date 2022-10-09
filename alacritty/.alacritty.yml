@@ -12,7 +12,7 @@ selection:
   save_to_clipboard: true
 
 window:
-  opacity: 0.9
+  opacity: 1.0
   padding:
     x: 18
     y: 16
@@ -170,28 +170,36 @@ schemes:
 
   gruvbox_material: &gruvbox_material
     primary:
-        background: '0x282828'
-        foreground: '0xdfbf8e'
+      background: '#353535'
+      foreground: '0xdfbf8e'
 
-        normal:
-          black:   '0x665c54'
-          red:     '0xea6962'
-          green:   '0xa9b665'
-          yellow:  '0xe78a4e'
-          blue:    '0x7daea3'
-          magenta: '0xd3869b'
-          cyan:    '0x89b482'
-          white:   '0xdfbf8e'
+    cursor:
+      text: '#2e3440'
+      cursor: '#ffffff'
 
-        bright:
-          black:   '0x928374'
-          red:     '0xea6962'
-          green:   '0xa9b665'
-          yellow:  '0xe3a84e'
-          blue:    '0x7daea3'
-          magenta: '0xd3869b'
-          cyan:    '0x89b482'
-          white:   '0xdfbf8e'
+    vi_mode_cursor:
+      text: '#2e3440'
+      cursor: '#ffffff'
+
+    normal:
+      black:   '0x665c54'
+      red:     '0xea6962'
+      green:   '0xa9b665'
+      yellow:  '0xe78a4e'
+      blue:    '0x7daea3'
+      magenta: '0xd3869b'
+      cyan:    '0x89b482'
+      white:   '0xdfbf8e'
+
+    bright:
+      black:   '0x928374'
+      red:     '0xea6962'
+      green:   '0xa9b665'
+      yellow:  '0xe3a84e'
+      blue:    '0x7daea3'
+      magenta: '0xd3869b'
+      cyan:    '0x89b482'
+      white:   '0xdfbf8e'
 
   gruvbox: &gruvbox
     primary:

@@ -39,7 +39,7 @@ require("lualine").setup({
   options = {
     icons_enabled = true,
     globalstatus = true,
-    theme = "nord",
+    theme = "catppuccin",
     component_separators = { " ", " " },
     section_separators = { left = "", right = "" },
     disabled_filetypes = {},
