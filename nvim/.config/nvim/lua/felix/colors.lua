@@ -1,50 +1,51 @@
-vim.g.fenagel_colorscheme = "gruvbox"
+vim.g.fenagel_colorscheme = "tokyonight"
 
 function ColorMyPencils()
-  vim.g.gruvbox_contrast_dark = 'hard'
-  -- vim.g.tokyonight_transparent_sidebar = false
-  -- vim.g.tokyonight_transparent = false
-  -- vim.g.catppuccin_flavour = "macchiato"
-  -- require('catppuccin').setup({
-  --   transparent_background = true
-  -- })
-  -- vim.g.tokyonight_colors = {
-  --   bg_float = "none"
-  -- }
-  vim.g.gruvbox_invert_selection = '0'
-  vim.opt.background = "dark"
+	vim.g.gruvbox_contrast_dark = "hard"
+	-- vim.g.catppuccin_flavour = "macchiato"
+	-- require('catppuccin').setup({
+	--   transparent_background = true
+	-- })
+	require("tokyonight").setup({
+		transparent = true,
+		styles = {
+			sidebars = "transparent",
+			floats = "transparent",
+		},
+	})
+	vim.g.gruvbox_invert_selection = "0"
+	vim.opt.background = "dark"
 
-  vim.cmd("colorscheme " .. vim.g.fenagel_colorscheme)
+	vim.cmd("colorscheme " .. vim.g.fenagel_colorscheme)
 
-  local hl = function(thing, opts)
-    vim.api.nvim_set_hl(0, thing, opts)
-  end
+	local hl = function(thing, opts)
+		vim.api.nvim_set_hl(0, thing, opts)
+	end
 
-  hl("SignColumn", {
-    bg = "none",
-  })
+	hl("SignColumn", {
+		bg = "none",
+	})
 
-  hl("ColorColumn", {
-    ctermbg = 0,
-    bg = "#555555",
-  })
+	hl("ColorColumn", {
+		ctermbg = 0,
+		bg = "#555555",
+	})
 
-  hl("CursorLineNR", {
-    bg = "None"
-  })
+	hl("CursorLineNR", {
+		bg = "None",
+	})
 
-  hl("Normal", {
-    bg = "none"
-  })
+	hl("Normal", {
+		bg = "none",
+	})
 
-  hl("LineNr", {
-    fg = "#5eacd3"
-  })
+	hl("LineNr", {
+		fg = "#5eacd3",
+	})
 
-  hl("netrwDir", {
-    fg = "#5eacd3"
-  })
-
+	hl("netrwDir", {
+		fg = "#5eacd3",
+	})
 end
 
 ColorMyPencils()

@@ -5,6 +5,11 @@ SETUVAR EDITOR:nvim
 SETUVAR FZF_CTRL_R_OPTS:\x2d\x2dreverse\x20\x2d\x2dpreview\x20\x27echo\x20\x7b\x7d\x27\x20\x2d\x2dpreview\x2dwindow\x20down\x3a3\x3ahidden\x3awrap\x20\x2d\x2dbind\x20\x27\x3f\x3atoggle\x2dpreview\x27
 SETUVAR FZF_DEFAULT_COMMAND:fd\x20\x2dH\x20\x2dE\x20\x27\x2egit\x27
 SETUVAR FZF_DEFAULT_OPTS:\x2d\x2dcolor\x3dspinner\x3a\x23F8BD96\x2chl\x3a\x23F28FAD\x20\x2d\x2dcolor\x3dfg\x3a\x23D9E0EE\x2cheader\x3a\x23F28FAD\x2cinfo\x3a\x23DDB6F2\x2cpointer\x3a\x23F8BD96\x20\x2d\x2dcolor\x3dmarker\x3a\x23F8BD96\x2cfg\x2b\x3a\x23F2CDCD\x2cprompt\x3a\x23DDB6F2\x2chl\x2b\x3a\x23F28FAD
+SETUVAR FZF_DISABLE_KEYBINDINGS:0
+SETUVAR FZF_LEGACY_KEYBINDINGS:1
+SETUVAR FZF_PREVIEW_DIR_CMD:ls
+SETUVAR FZF_PREVIEW_FILE_CMD:head\x20\x2dn\x2010
+SETUVAR FZF_TMUX_HEIGHT:40\x25
 SETUVAR FZF_TMUX_OPTS:\x2dp
 SETUVAR --path GOPATH:/Users/felix/go
 SETUVAR KIT_EDITOR:usr/local/Homebrew/bin/nvim
@@ -117,9 +122,10 @@ SETUVAR _fish_abbr_yu:yarn\x20ui
 SETUVAR _fisher_edc_2F_bass_files:\x7e/\x2econfig/fish/functions/__bass\x2epy\x1e\x7e/\x2econfig/fish/functions/bass\x2efish
 SETUVAR _fisher_fabioantunes_2F_fish_2D_nvm_files:\x7e/\x2econfig/fish/functions/__nvm_run\x2efish\x1e\x7e/\x2econfig/fish/functions/node\x2efish\x1e\x7e/\x2econfig/fish/functions/npm\x2efish\x1e\x7e/\x2econfig/fish/functions/npx\x2efish\x1e\x7e/\x2econfig/fish/functions/nvm\x2efish\x1e\x7e/\x2econfig/fish/functions/nvm_alias_command\x2efish\x1e\x7e/\x2econfig/fish/functions/nvm_alias_function\x2efish\x1e\x7e/\x2econfig/fish/functions/yarn\x2efish\x1e\x7e/\x2econfig/fish/completions/nvm\x2efish
 SETUVAR _fisher_franciscolourenco_2F_done_files:\x7e/\x2econfig/fish/conf\x2ed/done\x2efish
-SETUVAR _fisher_plugins:edc/bass\x1efabioantunes/fish\x2dnvm\x1efranciscolourenco/done
+SETUVAR _fisher_jethrokuan_2F_fzf_files:/Users/felix/\x2econfig/fish/functions/__fzf_cd\x2efish\x1e/Users/felix/\x2econfig/fish/functions/__fzf_complete\x2efish\x1e/Users/felix/\x2econfig/fish/functions/__fzf_complete_preview\x2efish\x1e/Users/felix/\x2econfig/fish/functions/__fzf_find_file\x2efish\x1e/Users/felix/\x2econfig/fish/functions/__fzf_get_dir\x2efish\x1e/Users/felix/\x2econfig/fish/functions/__fzf_open\x2efish\x1e/Users/felix/\x2econfig/fish/functions/__fzf_parse_commandline\x2efish\x1e/Users/felix/\x2econfig/fish/functions/__fzf_reverse_isearch\x2efish\x1e/Users/felix/\x2econfig/fish/functions/__fzfcmd\x2efish\x1e/Users/felix/\x2econfig/fish/conf\x2ed/fzf\x2efish
+SETUVAR _fisher_plugins:edc/bass\x1efabioantunes/fish\x2dnvm\x1efranciscolourenco/done\x1ejethrokuan/fzf
 SETUVAR _fisher_upgraded_to_4_4:\x1d
-SETUVAR fish_color_autosuggestion:black
+SETUVAR fish_color_autosuggestion:\x23a5abb6
 SETUVAR fish_color_cancel:\x2d\x2dreverse
 SETUVAR fish_color_command:normal
 SETUVAR fish_color_comment:434c5e

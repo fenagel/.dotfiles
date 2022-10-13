@@ -37,7 +37,7 @@ fish_add_path $GOPATH/bin
 [ -f ~/.config/tabtab/fish/__tabtab.fish ]; and . ~/.config/tabtab/fish/__tabtab.fish; or true
 
 # fish colors
-set -U fish_color_autosuggestion black
+set -U fish_color_autosuggestion '#a5abb6'
 set -U fish_color_command normal
 set -U fish_color_error red
 set -U fish_color_param cyan
