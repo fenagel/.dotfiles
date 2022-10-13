@@ -142,7 +142,7 @@ return packer.startup(function(use)
 	})
 	use({ "tpope/vim-repeat" })
 	use({ "tpope/vim-surround" })
-	--	use({ "glepnir/lspsaga.nvim" })
+	use({ "glepnir/lspsaga.nvim" })
 	use({
 		"simrat39/symbols-outline.nvim",
 		cmd = { "SymbolsOutline" },
