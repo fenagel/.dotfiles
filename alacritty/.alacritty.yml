@@ -12,7 +12,7 @@ selection:
   save_to_clipboard: true
 
 window:
-  opacity: 0.95
+  opacity: 0.90
   padding:
     x: 18
     y: 16
@@ -20,6 +20,41 @@ window:
   decorations: buttonless
 
 schemes:
+  ayu: &ayu # Default colors
+    primary:
+      background: '0x0A0E14'
+      foreground: '0xB3B1AD'
+
+    # Normal colors
+    normal:
+      black: '0x01060E'
+      red: '0xEA6C73'
+      green: '0x91B362'
+      yellow: '0xF9AF4F'
+      blue: '0x53BDFA'
+      magenta: '0xFAE994'
+      cyan: '0x90E1C6'
+      white: '0xC7C7C7'
+
+    # Bright colors
+    bright:
+      black: '0x686868'
+      red: '0xF07178'
+      green: '0xC2D94C'
+      yellow: '0xFFB454'
+      blue: '0x59C2FF'
+      magenta: '0xFFEE99'
+      cyan: '0x95E6CB'
+      white: '0xFFFFFF'
+
+    cursor:
+      text: '#000000'
+      cursor: '0xd8d8d8'
+
+    vi_mode_cursor:
+      text: '#000000'
+      cursor: '0xd8d8d8'
+
   base16: &base16
     primary:
       background: '0x181818'
@@ -576,7 +611,7 @@ schemes:
       - { index: 16, color: '#FAB387' }
       - { index: 17, color: '#F5E0DC' }
 
-colors: *base16
+colors: *ayu
 
 font:
   normal:
