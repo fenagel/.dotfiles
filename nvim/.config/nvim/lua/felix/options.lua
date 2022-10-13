@@ -24,7 +24,7 @@ opt.shortmess = "c"
 opt.showmode = false -- Don't display mode
 opt.sidescrolloff = 8 -- Columns of context
 opt.signcolumn = "yes:1" -- always show signcolumns
-opt.colorcolumn = '80'
+opt.colorcolumn = "80"
 opt.smartcase = true -- Do not ignore case with capitals
 opt.smartindent = true -- Insert indents automatically
 opt.spelllang = { "en_gb" }
@@ -36,23 +36,23 @@ opt.termguicolors = true -- You will have bad experience for diagnostic messages
 opt.wrap = false
 opt.mouse = "a"
 opt.guicursor = ""
-opt.undodir = vim.fn.stdpath('data') .. '/undodir'
+opt.undodir = vim.fn.stdpath("data") .. "/undodir"
 opt.undofile = true
 
 -- vim.cmd("au TextYankPost * lua vim.highlight.on_yank {on_visual = true}") -- disabled in visual mode
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
-local yank_group = augroup('HighlightYank', {})
+local yank_group = augroup("HighlightYank", {})
 
-autocmd('TextYankPost', {
-  group = yank_group,
-  pattern = '*',
-  callback = function()
-    vim.highlight.on_yank({
-      higroup = 'IncSearch',
-      timeout = 40,
-    })
-  end,
+autocmd("TextYankPost", {
+	group = yank_group,
+	pattern = "*",
+	callback = function()
+		vim.highlight.on_yank({
+			higroup = "IncSearch",
+			timeout = 40,
+		})
+	end,
 })
 vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
