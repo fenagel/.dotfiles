@@ -45,9 +45,6 @@ set -U fish_color_redirections yellow
 set -U fish_color_terminators white
 set -U fish_color_valid_path green
 
-# aliases
-alias aw="~/.config/aw/bin/run"
-
 # abbreviations
 abbr :bd "exit"
 abbr :q "tmux kill-server"
