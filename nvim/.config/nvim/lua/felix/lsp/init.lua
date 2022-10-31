@@ -5,4 +5,5 @@ end
 
 require("felix.lsp.mason")
 require("felix.lsp.handlers").setup()
+require("felix.lsp.lspsaga")
 require("felix.lsp.null-ls")

@@ -13,7 +13,7 @@ opt.ignorecase = true -- Ignore case
 opt.inccommand = "split" -- Get a preview of replacements
 opt.incsearch = true -- Shows the match while typing
 opt.joinspaces = false -- No double spaces with join
-vim.o.lazyredraw = true
+opt.lazyredraw = true
 opt.number = true -- Show line numbers
 opt.list = true -- Show some invisible characters
 opt.listchars = { tab = " ", trail = "·" }

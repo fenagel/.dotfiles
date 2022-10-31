@@ -48,26 +48,31 @@ return packer.startup(function(use)
 	-- Packer can manage itself
 	use("wbthomason/packer.nvim")
 
-	use({ "nathom/filetype.nvim" })
+	use({
+		"lewis6991/impatient.nvim",
+		config = function()
+			require("impatient")
+		end,
+	}) -- measure startup time
+	use({ "nathom/filetype.nvim" }) -- faster loading of filetypes in nvim
 
 	-- Themes
-	use({ "gruvbox-community/gruvbox" })
-	use({ "folke/tokyonight.nvim" })
-	use({ "catppuccin/nvim", as = "catppuccin" })
+	-- use({ "gruvbox-community/gruvbox" })
+	-- use({ "folke/tokyonight.nvim" })
+	-- use({ "catppuccin/nvim", as = "catppuccin" })
+	use("bluz71/vim-nightfly-guicolors")
 
 	use({
 		"norcalli/nvim-colorizer.lua",
 	})
 
-	-- Status line
-	use({ "kyazdani42/nvim-web-devicons" })
+	use({ "kyazdani42/nvim-web-devicons" }) -- icons
 	use({
 		"nvim-lualine/lualine.nvim",
 		event = "VimEnter",
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
-	})
+	}) -- status line
 
-	-- Treesitter
 	use({
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
@@ -78,6 +83,7 @@ return packer.startup(function(use)
 	-- Harpoon window management
 	use({ "ThePrimeagen/harpoon" })
 
+	use("christoomey/vim-tmux-navigator") -- tmux & split window navigation
 	-- Autocompletion
 	use({
 		"hrsh7th/nvim-cmp",
@@ -98,7 +104,6 @@ return packer.startup(function(use)
 	use({ "L3MON4D3/LuaSnip" })
 	use({ "saadparwaiz1/cmp_luasnip" })
 	use({ "onsails/lspkind-nvim", requires = { { "famiu/bufdelete.nvim" } } })
-	use({ "mattn/emmet-vim" })
 	use({ "darrikonn/vim-gofmt" })
 	use({ "rafamadriz/friendly-snippets", module = { "cmp", "cmp_nvim_lsp" }, event = "InsertEnter" })
 
@@ -111,8 +116,6 @@ return packer.startup(function(use)
 		requires = { "nvim-lua/plenary.nvim" },
 		event = "BufReadPre",
 	})
-	use({ "tpope/vim-fugitive" })
-	use({ "junegunn/gv.vim" })
 
 	-- LSP
 	use("williamboman/mason.nvim")
@@ -129,7 +132,7 @@ return packer.startup(function(use)
 		requires = {
 			{ "nvim-lua/popup.nvim" },
 			{ "nvim-lua/plenary.nvim" },
-			{ "nvim-telescope/telescope-fzy-native.nvim" },
+			{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }, -- dependency for better sorting performance
 		},
 	})
 	use({ "nvim-telescope/telescope-file-browser.nvim" })
@@ -137,9 +140,8 @@ return packer.startup(function(use)
 	-- General
 	use({
 		"numToStr/Comment.nvim",
-		opt = true,
-		keys = { "gc", "gcc" },
 	})
+
 	use({ "tpope/vim-repeat" })
 	use({ "tpope/vim-surround" })
 	use({ "glepnir/lspsaga.nvim" })
@@ -147,6 +149,10 @@ return packer.startup(function(use)
 		"simrat39/symbols-outline.nvim",
 		cmd = { "SymbolsOutline" },
 	})
+
+	-- auto closing
+	use("windwp/nvim-autopairs") -- autoclose parens, brackets, quotes, etc...
+	use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" }) -- autoclose tags
 
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
