@@ -48,30 +48,37 @@ return packer.startup(function(use)
 	-- Packer can manage itself
 	use("wbthomason/packer.nvim")
 
+	-- measure startup time
 	use({
 		"lewis6991/impatient.nvim",
 		config = function()
 			require("impatient")
 		end,
-	}) -- measure startup time
-	use({ "nathom/filetype.nvim" }) -- faster loading of filetypes in nvim
+	})
+
+	-- faster loading of filetypes in nvim
+	use({ "nathom/filetype.nvim" })
 
 	-- Themes
-	-- use({ "gruvbox-community/gruvbox" })
+	use({ "gruvbox-community/gruvbox" })
+	use({ "rose-pine/neovim", as = "rose-pine" })
 	-- use({ "folke/tokyonight.nvim" })
 	-- use({ "catppuccin/nvim", as = "catppuccin" })
-	use("bluz71/vim-nightfly-guicolors")
+	-- use("bluz71/vim-nightfly-guicolors")
 
 	use({
 		"norcalli/nvim-colorizer.lua",
 	})
 
-	use({ "kyazdani42/nvim-web-devicons" }) -- icons
+	-- icons
+	use({ "kyazdani42/nvim-web-devicons" })
+
+	-- status line
 	use({
 		"nvim-lualine/lualine.nvim",
 		event = "VimEnter",
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
-	}) -- status line
+	})
 
 	use({
 		"nvim-treesitter/nvim-treesitter",
@@ -83,7 +90,8 @@ return packer.startup(function(use)
 	-- Harpoon window management
 	use({ "ThePrimeagen/harpoon" })
 
-	use("christoomey/vim-tmux-navigator") -- tmux & split window navigation
+	-- tmux & split window navigation
+	use("christoomey/vim-tmux-navigator")
 	-- Autocompletion
 	use({
 		"hrsh7th/nvim-cmp",
@@ -127,14 +135,9 @@ return packer.startup(function(use)
 	use({ "TimUntersberger/neogit", requires = "nvim-lua/plenary.nvim" })
 
 	-- Telescope
-	use({
-		"nvim-telescope/telescope.nvim",
-		requires = {
-			{ "nvim-lua/popup.nvim" },
-			{ "nvim-lua/plenary.nvim" },
-			{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }, -- dependency for better sorting performance
-		},
-	})
+	use("nvim-lua/plenary.nvim")
+	use("nvim-lua/popup.nvim")
+	use("nvim-telescope/telescope.nvim")
 	use({ "nvim-telescope/telescope-file-browser.nvim" })
 
 	-- General

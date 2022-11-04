@@ -28,12 +28,12 @@ keymap.set("n", "<C-u>", "<C-u>zz")
 keymap.set("n", "<leader>y", '"+y')
 keymap.set("v", "<leader>y", '"+y')
 keymap.set("n", "<leader>Y", '"+Y')
-keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
-keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
+keymap.set("n", "<C-n>", "<cmd>cnext<CR>zz")
+keymap.set("n", "<C-m>", "<cmd>cprev<CR>zz")
 -- keymap.set('n', "<leader>k", "<cmd>lnext<CR>zz")
 -- keymap.set('n', "<leader>j", "<cmd>lprev<CR>zz")
 -- Telescope
-keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>") -- find files within current working directory, respects .gitignore
+keymap.set("n", "<C-p>", "<cmd>Telescope git_files<cr>") -- find files within current working directory, respects .gitignore
 keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>") -- find string in current working directory as you type
 keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>") -- find string under cursor in current working directory
 keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>") -- list open buffers in current neovim instance
@@ -120,10 +120,6 @@ keymap.set("n", "<leader>sh", "<C-w>s") -- split window horizontally
 keymap.set("n", "<leader>se", "<C-w>=") -- make split windows equal width & height
 keymap.set("n", "<leader>sx", ":close<CR>") -- close current split window
 
-keymap.set("n", "<leader>to", ":tabnew<CR>") -- open new tab
-keymap.set("n", "<leader>tx", ":tabclose<CR>") -- close current tab
-keymap.set("n", "<leader>tn", ":tabn<CR>") --  go to next tab
-keymap.set("n", "<leader>tp", ":tabp<CR>") --  go to previous tab
 -- Movement
 keymap.set("n", "<leader>=", ":vertical resize +5<CR>")
 keymap.set("n", "<leader>-", ":vertical resize -5<CR>")
@@ -131,7 +127,7 @@ keymap.set("", "<leader>w", ":w<CR>")
 keymap.set("", "<leader>q", ":q<CR>")
 
 -- Search and replace word under cursor
-keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+keymap.set("n", "<leader>sr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- GO error boiler plate macro
 -- keymap.set("n", "<leader>ee", [[oif err != nil {<CR>return nil, err<CR>}<CR><esc>kkI<esc>]])

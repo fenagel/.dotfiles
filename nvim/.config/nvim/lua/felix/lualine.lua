@@ -43,7 +43,7 @@ lualine.setup({
 	options = {
 		icons_enabled = true,
 		globalstatus = true,
-		theme = "nightfly",
+		theme = "gruvbox",
 		component_separators = { " ", " " },
 		section_separators = { left = "", right = "" },
 		disabled_filetypes = {},
