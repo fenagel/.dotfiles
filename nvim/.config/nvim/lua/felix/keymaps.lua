@@ -57,7 +57,7 @@ keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 keymap.set("n", "Y", "yg$")
 
-keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>")
+keymap.set("n", "<leader>et", "<cmd>NvimTreeToggle<CR>")
 
 -- Reselect visual selection after indenting
 keymap.set("v", "<", "<gv")
@@ -129,6 +129,27 @@ keymap.set("", "<leader>q", ":q<CR>")
 -- Search and replace word under cursor
 keymap.set("n", "<leader>sr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
+-- Harpoon
+local silent = { silent = true }
+
+keymap.set("n", "<leader>er", function()
+	require("harpoon.mark").add_file()
+end, silent)
+keymap.set("n", "<leader>x", function()
+	require("harpoon.ui").toggle_quick_menu()
+end, silent)
+keymap.set("n", "<leader>ea", function()
+	require("harpoon.ui").nav_file(1)
+end, silent)
+keymap.set("n", "<leader>es", function()
+	require("harpoon.ui").nav_file(2)
+end, silent)
+keymap.set("n", "<leader>ed", function()
+	require("harpoon.ui").nav_file(3)
+end, silent)
+keymap.set("n", "<leader>ef", function()
+	require("harpoon.ui").nav_file(4)
+end, silent)
 -- GO error boiler plate macro
 -- keymap.set("n", "<leader>ee", [[oif err != nil {<CR>return nil, err<CR>}<CR><esc>kkI<esc>]])
 

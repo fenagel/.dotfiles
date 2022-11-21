@@ -53,6 +53,16 @@ schemes:
       cyan: '0x95E6CB'
       white: '0xFFFFFF'
 
+    dim:
+      black: '0x686868'
+      red: '0xF07178'
+      green: '0xC2D94C'
+      yellow: '0xFFB454'
+      blue: '0x59C2FF'
+      magenta: '0xFFEE99'
+      cyan: '0x95E6CB'
+      white: '0xFFFFFF'
+
   nightfly: &nightfly
     # Colors
     # Default colors
