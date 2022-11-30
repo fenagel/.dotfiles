@@ -3,15 +3,15 @@
 -- 	print("Colorscheme not found!") -- print error if colorscheme not installed
 -- 	return
 -- end
-vim.g.fenagel_colorscheme = "everforest"
--- require("tokyonight").setup({
--- 	style = "storm",
--- 	transparent = true,
--- 	styles = {
--- 		sidebars = "transparent",
--- 		floats = "transparent",
--- 	},
--- })
+vim.g.fenagel_colorscheme = "tokyonight"
+require("tokyonight").setup({
+	style = "storm",
+	transparent = true,
+	styles = {
+		sidebars = "transparent",
+		floats = "transparent",
+	},
+})
 --
 -- require("catppuccin").setup({
 -- 	transparent_background = true,

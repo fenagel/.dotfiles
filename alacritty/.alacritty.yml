@@ -12,7 +12,7 @@ selection:
   save_to_clipboard: true
 
 window:
-  opacity: 0.95
+  opacity: 0.90
   padding:
     x: 18
     y: 16
@@ -182,7 +182,77 @@ schemes:
       - { index: 16, color: '#FAB387' }
       - { index: 17, color: '#F5E0DC' }
 
-colors: *ayu
+    tmrw: &tmrw # Default colors
+      primary:
+        background: '0x000000'
+        foreground: '0xeaeaea'
+
+      # Normal colors
+      normal:
+        black: '0x000000'
+        red: '0xd54e53'
+        green: '0xb9ca4a'
+        yellow: '0xe6c547'
+        blue: '0x7aa6da'
+        magenta: '0xc397d8'
+        cyan: '0x70c0ba'
+        white: '0x424242'
+
+      # Bright colors
+      bright:
+        black: '0x666666'
+        red: '0xff3334'
+        green: '0x9ec400'
+        yellow: '0xe7c547'
+        blue: '0x7aa6da'
+        magenta: '0xb77ee0'
+        cyan: '0x54ced6'
+        white: '0x2a2a2a'
+
+      cursor:
+        text: '#080808'
+        cursor: '#FFFFFF'
+
+    tokyo-night: &tokyo-night # Default colors
+      primary:
+        background: '0x222436'
+        foreground: '0xc8d3f5'
+
+      # Normal colors
+      normal:
+        black: '0x1b1d2b'
+        red: '0xff757f'
+        green: '0xc3e88d'
+        yellow: '0xffc777'
+        blue: '0x82aaff'
+        magenta: '0xc099ff'
+        cyan: '0x86e1fc'
+        white: '0x828bb8'
+
+      # Bright colors
+      bright:
+        black: '0x444a73'
+        red: '0xff757f'
+        green: '0xc3e88d'
+        yellow: '0xffc777'
+        blue: '0x82aaff'
+        magenta: '0xc099ff'
+        cyan: '0x86e1fc'
+        white: '0xc8d3f5'
+
+      indexed_colors:
+        - { index: 16, color: '0xff966c' }
+        - { index: 17, color: '0xc53b53' }
+
+      cursor:
+        text: '#1E1E2E' # base
+        cursor: '#F5E0DC' # rosewater
+
+      vi_mode_cursor:
+        text: '#1E1E2E' # base
+        cursor: '#B4BEFE' # lavender
+
+colors: *tmrw
 
 font:
   normal:
