@@ -12,7 +12,7 @@ selection:
   save_to_clipboard: true
 
 window:
-  opacity: 0.93
+  opacity: 0.95
   padding:
     x: 18
     y: 16
@@ -40,7 +40,7 @@ schemes:
       blue: '0x53BDFA'
       magenta: '0xFAE994'
       cyan: '0x90E1C6'
-      white: '0xC7C7C7'
+      white: '0x424242'
 
     # Bright colors
     bright:
@@ -51,17 +51,7 @@ schemes:
       blue: '0x59C2FF'
       magenta: '0xFFEE99'
       cyan: '0x95E6CB'
-      white: '0xFFFFFF'
-
-    dim:
-      black: '0x686868'
-      red: '0xF07178'
-      green: '0xC2D94C'
-      yellow: '0xFFB454'
-      blue: '0x59C2FF'
-      magenta: '0xFFEE99'
-      cyan: '0x95E6CB'
-      white: '0xFFFFFF'
+      white: '0x2a2a2a'
 
   nightfly: &nightfly
     # Colors
@@ -251,6 +241,55 @@ schemes:
       vi_mode_cursor:
         text: '#1E1E2E' # base
         cursor: '#B4BEFE' # lavender
+
+    nord: &nord
+      primary:
+        background: '#2e3440'
+        foreground: '#d8dee9'
+        # dim_foreground: '#a5abb6'
+      cursor:
+        text: '#2e3440'
+        cursor: '#d8dee9'
+      vi_mode_cursor:
+        text: '#2e3440'
+        cursor: '#d8dee9'
+      selection:
+        text: CellForeground
+        background: '#4c566a'
+      search:
+        matches:
+          foreground: CellBackground
+          background: '#88c0d0'
+        footer_bar:
+          background: '#434c5e'
+          foreground: '#d8dee9'
+      normal:
+        black: '#3b4252'
+        red: '#bf616a'
+        green: '#a3be8c'
+        yellow: '#ebcb8b'
+        blue: '#81a1c1'
+        magenta: '#b48ead'
+        cyan: '#88c0d0'
+        white: '#e5e9f0'
+      bright:
+        black: '#4c566a'
+        red: '#bf616a'
+        green: '#a3be8c'
+        yellow: '#ebcb8b'
+        blue: '#81a1c1'
+        magenta: '#b48ead'
+        cyan: '#8fbcbb'
+        white: '#eceff4'
+      dim:
+        black: '#373e4d'
+        red: '#94545d'
+        green: '#809575'
+        yellow: '#b29e75'
+        blue: '#68809a'
+        magenta: '#8c738c'
+        cyan: '#6d96a5'
+        white: '#aeb3bb'
 
 colors: *tmrw
 
