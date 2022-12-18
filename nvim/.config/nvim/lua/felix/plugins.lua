@@ -61,7 +61,7 @@ return packer.startup(function(use)
 
 	-- Themes
 	use({ "gruvbox-community/gruvbox" })
-	use({ "sainnhe/everforest" })
+	-- use({ "sainnhe/everforest" })
 	-- use({ "rose-pine/neovim", as = "rose-pine" })
 	use({ "folke/tokyonight.nvim" })
 	-- use({ "catppuccin/nvim", as = "catppuccin" })

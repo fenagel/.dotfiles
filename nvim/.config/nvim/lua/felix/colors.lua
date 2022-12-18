@@ -3,7 +3,7 @@
 -- 	print("Colorscheme not found!") -- print error if colorscheme not installed
 -- 	return
 -- end
-vim.g.fenagel_colorscheme = "tokyonight"
+vim.g.fenagel_colorscheme = "gruvbox"
 require("tokyonight").setup({
 	style = "storm",
 	transparent = true,
@@ -25,9 +25,9 @@ require("tokyonight").setup({
 -- 	disable_float_background = true,
 -- })
 function ColorMyPencils()
-	vim.g.everforest_background = "hard"
-	vim.g.everforest_transparent_background = "2"
-	vim.g.everforest_cursor = "purple"
+	-- vim.g.everforest_background = "hard"
+	-- vim.g.everforest_transparent_background = "2"
+	-- vim.g.everforest_cursor = "purple"
 	vim.g.gruvbox_contrast_dark = "hard"
 	vim.g.gruvbox_invert_selection = "0"
 	vim.opt.background = "dark"
