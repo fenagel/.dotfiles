@@ -60,7 +60,8 @@ return packer.startup(function(use)
 	use({ "nathom/filetype.nvim" })
 
 	-- Themes
-	use({ "gruvbox-community/gruvbox" })
+	-- use({ "gruvbox-community/gruvbox" })
+	use({ "ellisonleao/gruvbox.nvim" })
 	-- use({ "sainnhe/everforest" })
 	-- use({ "rose-pine/neovim", as = "rose-pine" })
 	use({ "folke/tokyonight.nvim" })
