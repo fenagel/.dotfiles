@@ -8,6 +8,7 @@ opt.updatetime = 50
 opt.isfname:append("@-@")
 opt.errorbells = false
 opt.expandtab = true -- Use spaces instead of tabs
+opt.equalalways = true
 opt.hidden = true -- Enable background buffers
 opt.ignorecase = true -- Ignore case
 opt.inccommand = "split" -- Get a preview of replacements
@@ -58,4 +59,4 @@ vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
 -- Give me some fenced codeblock goodness
-vim.g.markdown_fenced_languages = { "html", "javascript", "typescript", "css", "scss", "lua", "vim" }
+vim.g.markdown_fenced_languages = { "html", "javascript", "typescript", "css", "scss", "lua", "vim", "go" }

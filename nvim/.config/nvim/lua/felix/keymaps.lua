@@ -34,14 +34,18 @@ keymap.set("n", "<C-m>", "<cmd>cprev<CR>zz")
 -- keymap.set('n', "<leader>j", "<cmd>lprev<CR>zz")
 -- Telescope
 keymap.set("n", "<C-p>", "<cmd>Telescope git_files<cr>") -- find files within current working directory, respects .gitignore
-keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>") -- find string in current working directory as you type
-keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>") -- find string under cursor in current working directory
-keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>") -- list open buffers in current neovim instance
-keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available help tags
-keymap.set("n", "<leader>gc", "<cmd>Telescope git_commits<cr>") -- list all git commits (use <cr> to checkout) ["gc" for git commits]
-keymap.set("n", "<leader>gfc", "<cmd>Telescope git_bcommits<cr>") -- list git commits for current file/buffer (use <cr> to checkout) ["gfc" for git file commits]
+keymap.set("n", "<leader>f", "<cmd>Telescope live_grep<cr>") -- find string in current working directory as you type
+keymap.set("n", "<leader>b", "<cmd>Telescope buffers<cr>") -- list open buffers in current neovim instance
+keymap.set("n", "<leader>h", "<cmd>Telescope help_tags<cr>") -- list available help tags
+keymap.set("n", "<leader>e", function()
+	require("telescope").extensions.file_browser.file_browser()
+end, { desc = "Files Explore" })
+keymap.set("n", "<leader>gc", "<cmd>Telescope git_bcommits<cr>") -- list git commits for current file/buffer (use <cr> to checkout) ["gfc" for git file commits]
 keymap.set("n", "<leader>gb", "<cmd>Telescope git_branches<cr>") -- list git branches (use <cr> to checkout) ["gb" for git branch]
 keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>") -- list current changes per file with diff preview ["gs" for git status]
+keymap.set("n", "<leader>cr", function()
+	require("telescope.builtin").lsp_references()
+end, { desc = "Code References" })
 --
 -- Neogit shortcuts
 keymap.set("n", "<leader>gg", function()
@@ -49,24 +53,18 @@ keymap.set("n", "<leader>gg", function()
 end)
 keymap.set("n", "<leader>ga", "<cmd>!git fetch --all<CR>")
 
--- vim-maximizer
-keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>") -- toggle split window maximization
-
 keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 keymap.set("n", "Y", "yg$")
 
-keymap.set("n", "<leader>et", "<cmd>NvimTreeToggle<CR>")
+keymap.set("n", "<leader>t", "<cmd>NvimTreeToggle<CR>")
 
 -- Reselect visual selection after indenting
 keymap.set("v", "<", "<gv")
 keymap.set("v", ">", ">gv")
 -- Open nvimrc file
 keymap.set("n", "<Leader>v", "<cmd>e $MYVIMRC<CR>")
-
--- Update Packer
-keymap.set("n", "<leader>u", "<cmd> PackerUpdate<CR>")
 
 -- Source nvimrc file
 keymap.set("n", "<Leader>sl", ":luafile %<CR>")
@@ -82,9 +80,6 @@ keymap.set("n", "<Leader>sa", "ggVG<c-$>")
 keymap.set("v", "y", "myy`y")
 keymap.set("v", "Y", "myY`y")
 
--- Paste replace visual selection without copying it
-keymap.set("v", "<leader>p", '"_dP')
-
 -- Make Y behave like the other capitals
 keymap.set("n", "Y", "y$")
 
@@ -95,10 +90,6 @@ keymap.set("n", "Y", "y$")
 -- delete plus additional cmd for custom deletes
 keymap.set("n", "<leader>d", '"_d')
 keymap.set("v", "<leader>d", '"_d')
-
--- Tab to switch buffers in Normal mode
-keymap.set("n", "<Tab>", ":bnext<CR>")
-keymap.set("n", "<S-Tab>", ":bprevious<CR>")
 
 -- Keep search results centred
 keymap.set("n", "n", "nzzzv")
@@ -132,22 +123,22 @@ keymap.set("n", "<leader>sr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Lef
 -- Harpoon
 local silent = { silent = true }
 
-keymap.set("n", "<leader>er", function()
+keymap.set("n", "<leader>jr", function()
 	require("harpoon.mark").add_file()
 end, silent)
 keymap.set("n", "<leader>x", function()
 	require("harpoon.ui").toggle_quick_menu()
 end, silent)
-keymap.set("n", "<leader>ea", function()
+keymap.set("n", "<leader>ja", function()
 	require("harpoon.ui").nav_file(1)
 end, silent)
-keymap.set("n", "<leader>es", function()
+keymap.set("n", "<leader>js", function()
 	require("harpoon.ui").nav_file(2)
 end, silent)
-keymap.set("n", "<leader>ed", function()
+keymap.set("n", "<leader>jd", function()
 	require("harpoon.ui").nav_file(3)
 end, silent)
-keymap.set("n", "<leader>ef", function()
+keymap.set("n", "<leader>jf", function()
 	require("harpoon.ui").nav_file(4)
 end, silent)
 -- GO error boiler plate macro

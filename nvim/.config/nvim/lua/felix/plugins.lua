@@ -102,13 +102,15 @@ return packer.startup(function(use)
 			{ "hrsh7th/cmp-buffer" },
 			{ "hrsh7th/cmp-path" },
 			{ "hrsh7th/cmp-cmdline" },
-			{
-				"tzachar/cmp-tabnine",
-				run = "./install.sh",
-			},
+			-- {
+			-- 	"tzachar/cmp-tabnine",
+			-- 	run = "./install.sh",
+			-- },
 			{ "f3fora/cmp-spell", { "hrsh7th/cmp-calc" }, { "hrsh7th/cmp-emoji" } },
 		},
 	})
+
+	use("github/copilot.vim")
 
 	-- Snippets, Language, Syntax
 	use({ "L3MON4D3/LuaSnip" })
