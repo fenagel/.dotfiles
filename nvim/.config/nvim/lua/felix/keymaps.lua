@@ -37,7 +37,7 @@ keymap.set("n", "<C-p>", "<cmd>Telescope git_files<cr>") -- find files within cu
 keymap.set("n", "<leader>f", "<cmd>Telescope live_grep<cr>") -- find string in current working directory as you type
 keymap.set("n", "<leader>b", "<cmd>Telescope buffers<cr>") -- list open buffers in current neovim instance
 keymap.set("n", "<leader>h", "<cmd>Telescope help_tags<cr>") -- list available help tags
-keymap.set("n", "<leader>e", function()
+keymap.set("n", "<leader>u", function()
 	require("telescope").extensions.file_browser.file_browser()
 end, { desc = "Files Explore" })
 keymap.set("n", "<leader>gc", "<cmd>Telescope git_bcommits<cr>") -- list git commits for current file/buffer (use <cr> to checkout) ["gfc" for git file commits]
@@ -63,6 +63,7 @@ keymap.set("n", "<leader>t", "<cmd>NvimTreeToggle<CR>")
 -- Reselect visual selection after indenting
 keymap.set("v", "<", "<gv")
 keymap.set("v", ">", ">gv")
+
 -- Open nvimrc file
 keymap.set("n", "<Leader>v", "<cmd>e $MYVIMRC<CR>")
 
@@ -142,7 +143,7 @@ keymap.set("n", "<leader>jf", function()
 	require("harpoon.ui").nav_file(4)
 end, silent)
 -- GO error boiler plate macro
--- keymap.set("n", "<leader>ee", [[oif err != nil {<CR>return nil, err<CR>}<CR><esc>kkI<esc>]])
+keymap.set("n", "<leader>e", [[oif err != nil {<CR>return nil, err<CR>}<CR><esc>kkI<esc>]])
 
 -- Go Commands
 -- keymap.set("n", "<leader>oc", ":GoCmt<CR>")
