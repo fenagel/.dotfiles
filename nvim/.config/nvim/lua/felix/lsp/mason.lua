@@ -7,6 +7,7 @@ local servers = {
 	"jsonls",
 	"yamlls",
 	"volar",
+	"gopls",
 }
 
 local settings = {
