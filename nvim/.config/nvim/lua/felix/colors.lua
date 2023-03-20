@@ -4,14 +4,14 @@
 -- 	return
 -- end
 vim.g.fenagel_colorscheme = "gruvbox"
-require("tokyonight").setup({
-	style = "storm",
-	transparent = true,
-	styles = {
-		sidebars = "transparent",
-		floats = "transparent",
-	},
-})
+-- require("tokyonight").setup({
+-- 	style = "storm",
+-- 	transparent = true,
+-- 	styles = {
+-- 		sidebars = "transparent",
+-- 		floats = "transparent",
+-- 	},
+-- })
 --
 -- require("catppuccin").setup({
 -- 	transparent_background = true,

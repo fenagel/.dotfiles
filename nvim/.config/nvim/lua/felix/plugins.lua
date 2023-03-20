@@ -60,11 +60,12 @@ return packer.startup(function(use)
 	use({ "nathom/filetype.nvim" })
 
 	-- Themes
-	-- use({ "gruvbox-community/gruvbox" })
+	-- use("EdenEast/nightfox.nvim")
+	-- use({ "embark-theme/vim", as = "embark" })
 	use({ "ellisonleao/gruvbox.nvim" })
 	-- use({ "sainnhe/everforest" })
 	-- use({ "rose-pine/neovim", as = "rose-pine" })
-	use({ "folke/tokyonight.nvim" })
+	-- use({ "folke/tokyonight.nvim" })
 	-- use({ "catppuccin/nvim", as = "catppuccin" })
 	-- use("bluz71/vim-nightfly-guicolors")
 
