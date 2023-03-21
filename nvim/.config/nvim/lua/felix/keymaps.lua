@@ -34,9 +34,11 @@ keymap.set("n", "<C-m>", "<cmd>cprev<CR>zz")
 -- keymap.set('n', "<leader>j", "<cmd>lprev<CR>zz")
 -- Telescope
 keymap.set("n", "<C-p>", "<cmd>Telescope git_files<cr>") -- find files within current working directory, respects .gitignore
-keymap.set("n", "<leader>f", "<cmd>Telescope live_grep<cr>") -- find string in current working directory as you type
-keymap.set("n", "<leader>b", "<cmd>Telescope buffers<cr>") -- list open buffers in current neovim instance
-keymap.set("n", "<leader>h", "<cmd>Telescope help_tags<cr>") -- list available help tags
+keymap.set("n", "<leader>sf", "<cmd>Telescope find_files<cr>") -- find files within current working directory, respects .gitignore
+keymap.set("n", "<leader>sg", "<cmd>Telescope live_grep<cr>") -- find string in current working directory as you type
+keymap.set("n", "<leader>sb", "<cmd>Telescope buffers<cr>") -- list open buffers in current neovim instance
+keymap.set("n", "<leader>sh", "<cmd>Telescope help_tags<cr>") -- list available help tags
+keymap.set("n", "<leader>sd", "<cmd>Telescope diagnostics<cr>") -- list available diagnostics
 keymap.set("n", "<leader>u", function()
 	require("telescope").extensions.file_browser.file_browser()
 end, { desc = "Files Explore" })
@@ -64,11 +66,8 @@ keymap.set("n", "<leader>t", "<cmd>NvimTreeToggle<CR>")
 keymap.set("v", "<", "<gv")
 keymap.set("v", ">", ">gv")
 
--- Open nvimrc file
-keymap.set("n", "<Leader>v", "<cmd>e $MYVIMRC<CR>")
-
 -- Source nvimrc file
-keymap.set("n", "<Leader>sl", ":luafile %<CR>")
+-- keymap.set("n", "<Leader>sl", ":luafile %<CR>")
 
 -- Quick new file
 keymap.set("n", "<Leader>n", "<cmd>enew<CR>")
@@ -107,9 +106,9 @@ keymap.set("n", "J", "mzJ`z")
 keymap.set("n", "<esc>", ":noh<cr><esc>", { silent = true })
 --
 -- window management
-keymap.set("n", "<leader>sv", "<C-w>v") -- split window vertically
-keymap.set("n", "<leader>sh", "<C-w>s") -- split window horizontally
-keymap.set("n", "<leader>se", "<C-w>=") -- make split windows equal width & height
+-- keymap.set("n", "<leader>sv", "<C-w>v") -- split window vertically
+-- keymap.set("n", "<leader>sh", "<C-w>s") -- split window horizontally
+-- keymap.set("n", "<leader>se", "<C-w>=") -- make split windows equal width & height
 keymap.set("n", "<leader>sx", ":close<CR>") -- close current split window
 
 -- Movement
