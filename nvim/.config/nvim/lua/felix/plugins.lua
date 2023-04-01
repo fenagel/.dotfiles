@@ -136,6 +136,8 @@ return packer.startup(function(use)
 	use("neovim/nvim-lspconfig") -- enable LSP
 	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
 
+	use("mbbill/undotree")
+	use("tpope/vim-fugitive")
 	use({ "nvim-lua/lsp_extensions.nvim" })
 	use({ "TimUntersberger/neogit", requires = "nvim-lua/plenary.nvim" })
 

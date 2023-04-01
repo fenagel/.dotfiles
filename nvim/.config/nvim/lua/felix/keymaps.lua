@@ -34,9 +34,9 @@ keymap.set("n", "<leader>sd", "<cmd>Telescope diagnostics<cr>") -- list availabl
 keymap.set("n", "<leader>u", function()
 	require("telescope").extensions.file_browser.file_browser()
 end, { desc = "Files Explore" })
+keymap.set("n", "<leader>gs", vim.cmd.Git)
 keymap.set("n", "<leader>gc", "<cmd>Telescope git_bcommits<cr>") -- list git commits for current file/buffer (use <cr> to checkout) ["gfc" for git file commits]
 keymap.set("n", "<leader>gb", "<cmd>Telescope git_branches<cr>") -- list git branches (use <cr> to checkout) ["gb" for git branch]
-keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>") -- list current changes per file with diff preview ["gs" for git status]
 keymap.set("n", "<leader>cr", function()
 	require("telescope.builtin").lsp_references()
 end, { desc = "Code References" })
