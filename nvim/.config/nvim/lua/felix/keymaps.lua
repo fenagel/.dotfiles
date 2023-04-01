@@ -1,11 +1,3 @@
---local function map(mode, lhs, rhs, opts)
---  local options = { noremap = true }
---  if opts then
---    options = vim.tbl_extend("force", options, opts)
---  end
---  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
---end
-
 -- AUTO COMMANDS --
 vim.api.nvim_create_autocmd("BufWritePre", {
 	callback = function()
@@ -97,7 +89,7 @@ keymap.set("n", "N", "Nzzzv")
 keymap.set("n", "J", "mzJ`z")
 
 -- Line bubbling
--- keymap.set("n", "<c-j>", "<cmd>m .+1<CR>==", { silent = true })
+-- keymap.set("n", "<c-j>", "<cmd>m .+0<CR>==", { silent = true })
 -- keymap.set("n", "<c-k>", "<cmd>m .-2<CR>==", { silent = true })
 -- keymap.set("v", "<c-j>", ":m '>+1<CR>==gv=gv", { silent = true })
 -- keymap.set("v", "<c-k>", ":m '<-2<CR>==gv=gv", { silent = true })
@@ -109,7 +101,7 @@ keymap.set("n", "<esc>", ":noh<cr><esc>", { silent = true })
 -- keymap.set("n", "<leader>sv", "<C-w>v") -- split window vertically
 -- keymap.set("n", "<leader>sh", "<C-w>s") -- split window horizontally
 -- keymap.set("n", "<leader>se", "<C-w>=") -- make split windows equal width & height
-keymap.set("n", "<leader>sx", ":close<CR>") -- close current split window
+-- keymap.set("n", "<leader>sx", ":close<CR>") -- close current split window
 
 -- Movement
 keymap.set("n", "<leader>=", ":vertical resize +5<CR>")
@@ -123,35 +115,23 @@ keymap.set("n", "<leader>sr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Lef
 -- Harpoon
 local silent = { silent = true }
 
-keymap.set("n", "<leader>jr", function()
+keymap.set("n", "<leader>a", function()
 	require("harpoon.mark").add_file()
 end, silent)
-keymap.set("n", "<leader>x", function()
+keymap.set("n", "<C-e>", function()
 	require("harpoon.ui").toggle_quick_menu()
 end, silent)
-keymap.set("n", "<leader>ja", function()
+keymap.set("n", "<C-h>", function()
 	require("harpoon.ui").nav_file(1)
 end, silent)
-keymap.set("n", "<leader>js", function()
+keymap.set("n", "<C-j>", function()
 	require("harpoon.ui").nav_file(2)
 end, silent)
-keymap.set("n", "<leader>jd", function()
+keymap.set("n", "<C-k>", function()
 	require("harpoon.ui").nav_file(3)
 end, silent)
-keymap.set("n", "<leader>jf", function()
+keymap.set("n", "<C-l>", function()
 	require("harpoon.ui").nav_file(4)
 end, silent)
 -- GO error boiler plate macro
 keymap.set("n", "<leader>e", [[oif err != nil {<CR>return nil, err<CR>}<CR><esc>kkI<esc>]])
-
--- Go Commands
--- keymap.set("n", "<leader>oc", ":GoCmt<CR>")
--- keymap.set("n", "<leader>od", ":GoDoc<CR>")
--- keymap.set("n", "<leader>oat", ":GoAddTag<CR>")
--- keymap.set("n", "<leader>ort", ":GoRmTag<CR>")
--- keymap.set("n", "<leader>op", ":GoFixPlurals<CR>")
--- keymap.set("n", "<leader>otc", ":GoTest -c<CR>")
--- keymap.set("n", "<leader>otf", ":GoTestFunc<CR>")
--- keymap.set("n", "<leader>otp", ":GoTestPkg<CR>")
--- keymap.set("n", "<leader>ol", ":GoLint<CR>")
--- keymap.set("n", "<leader>ol", ":GoCoverage<CR>")

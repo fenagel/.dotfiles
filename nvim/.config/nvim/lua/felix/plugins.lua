@@ -94,7 +94,7 @@ return packer.startup(function(use)
 	use({ "ThePrimeagen/harpoon" })
 
 	-- tmux & split window navigation
-	use("christoomey/vim-tmux-navigator")
+	-- use("christoomey/vim-tmux-navigator")
 	-- Autocompletion
 	use({
 		"hrsh7th/nvim-cmp",
