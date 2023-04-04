@@ -10,7 +10,7 @@
   interactive = auto
   grep = auto
   ui = auto
-[branch "master"]
+[branch "main"]
   mergeoptions = --ff-only
 [user]
 	name = fenagel

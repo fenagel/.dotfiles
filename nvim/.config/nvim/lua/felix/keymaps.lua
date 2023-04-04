@@ -31,7 +31,7 @@ keymap.set("n", "<leader>sg", "<cmd>Telescope live_grep<cr>") -- find string in 
 keymap.set("n", "<leader>sb", "<cmd>Telescope buffers<cr>") -- list open buffers in current neovim instance
 keymap.set("n", "<leader>sh", "<cmd>Telescope help_tags<cr>") -- list available help tags
 keymap.set("n", "<leader>sd", "<cmd>Telescope diagnostics<cr>") -- list available diagnostics
-keymap.set("n", "<leader>u", function()
+keymap.set("n", "<leader>f", function()
 	require("telescope").extensions.file_browser.file_browser()
 end, { desc = "Files Explore" })
 keymap.set("n", "<leader>gs", vim.cmd.Git)
@@ -41,10 +41,12 @@ keymap.set("n", "<leader>cr", function()
 	require("telescope.builtin").lsp_references()
 end, { desc = "Code References" })
 --
+-- undotree
+keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 -- Neogit shortcuts
-keymap.set("n", "<leader>gg", function()
-	require("neogit").open()
-end)
+-- keymap.set("n", "<leader>gg", function()
+-- 	require("neogit").open()
+-- end)
 keymap.set("n", "<leader>ga", "<cmd>!git fetch --all<CR>")
 
 keymap.set("v", "J", ":m '>+1<CR>gv=gv")

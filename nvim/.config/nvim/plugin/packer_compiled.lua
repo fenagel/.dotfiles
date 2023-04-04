@@ -124,15 +124,15 @@ _G.packer_plugins = {
     path = "/Users/felix/.local/share/nvim/site/pack/packer/start/cmp-spell",
     url = "https://github.com/f3fora/cmp-spell"
   },
-  ["cmp-tabnine"] = {
-    loaded = true,
-    path = "/Users/felix/.local/share/nvim/site/pack/packer/start/cmp-tabnine",
-    url = "https://github.com/tzachar/cmp-tabnine"
-  },
   cmp_luasnip = {
     loaded = true,
     path = "/Users/felix/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
+  },
+  ["copilot.vim"] = {
+    loaded = true,
+    path = "/Users/felix/.local/share/nvim/site/pack/packer/start/copilot.vim",
+    url = "https://github.com/github/copilot.vim"
   },
   ["filetype.nvim"] = {
     loaded = true,
@@ -296,10 +296,15 @@ _G.packer_plugins = {
     path = "/Users/felix/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
-  ["tokyonight.nvim"] = {
+  undotree = {
     loaded = true,
-    path = "/Users/felix/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
-    url = "https://github.com/folke/tokyonight.nvim"
+    path = "/Users/felix/.local/share/nvim/site/pack/packer/start/undotree",
+    url = "https://github.com/mbbill/undotree"
+  },
+  ["vim-fugitive"] = {
+    loaded = true,
+    path = "/Users/felix/.local/share/nvim/site/pack/packer/start/vim-fugitive",
+    url = "https://github.com/tpope/vim-fugitive"
   },
   ["vim-gofmt"] = {
     loaded = true,
@@ -315,11 +320,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/felix/.local/share/nvim/site/pack/packer/start/vim-surround",
     url = "https://github.com/tpope/vim-surround"
-  },
-  ["vim-tmux-navigator"] = {
-    loaded = true,
-    path = "/Users/felix/.local/share/nvim/site/pack/packer/start/vim-tmux-navigator",
-    url = "https://github.com/christoomey/vim-tmux-navigator"
   }
 }
 
@@ -379,8 +379,8 @@ vim.cmd [[au!]]
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
 vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'friendly-snippets'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
-vim.cmd [[au BufReadPre * ++once lua require("packer.load")({'gitsigns.nvim'}, { event = "BufReadPre *" }, _G.packer_plugins)]]
 vim.cmd [[au VimEnter * ++once lua require("packer.load")({'lualine.nvim'}, { event = "VimEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au BufReadPre * ++once lua require("packer.load")({'gitsigns.nvim'}, { event = "BufReadPre *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 

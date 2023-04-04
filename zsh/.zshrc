@@ -9,8 +9,6 @@ export DOTFILES=$HOME/.dotfiles
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git zsh-autosuggestions zsh-completions zsh-syntax-highlighting zsh-z)
 
-
-
 # You can change the theme with another one from https://github.com/robbyrussell/oh-my-zsh/wiki/themes
 ZSH_THEME="robbyrussell"
 
@@ -68,7 +66,6 @@ type -a nvm > /dev/null && load-nvmrc
 export PATH="./bin:./node_modules/.bin:${PATH}:/usr/local/sbin"
 export PATH="${HOME}/.config/bin"
 
-export STARSHIP_CONFIG=${HOME}/.config/starship.toml
 # Store your own aliases in the ~/.aliases file and load the here.
 [[ -f "$HOME/.aliases" ]] && source "$HOME/.aliases"
 
@@ -96,7 +93,3 @@ export EDITOR='nvim'
 export go_test() {
   go test $* | sed ''/PASS/s//$(printf "\033[32mPASS\033[0m")/'' | sed ''/SKIP/s//$(printf "\033[34mSKIP\033[0m")/'' | sed ''/FAIL/s//$(printf "\033[31mFAIL\033[0m")/'' | sed ''/FAIL/s//$(printf "\033[31mFAIL\033[0m")/'' | GREP_COLOR="01;33" egrep --color=always '\s*[a-zA-Z0-9\-_.]+[:][0-9]+[:]|^'
 }
-
-alias luamake=/Users/felix/lua-language-server/3rd/luamake/luamake
-
-eval "$(starship init zsh)"
