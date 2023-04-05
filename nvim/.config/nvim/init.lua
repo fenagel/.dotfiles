@@ -135,6 +135,11 @@ local lspkind = require('lspkind')
 require("luasnip/loaders/from_vscode").lazy_load()
 
 cmp.setup({
+  snippet = {
+    expand = function(args)
+      require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
+    end,
+  },
   sources = {
     { name = 'path' },
     { name = 'nvim_lsp' },
