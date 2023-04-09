@@ -336,7 +336,7 @@ end)
 lsp.setup()
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-  signs = false,
+  signs = true,
   virtual_text = true,
   underline = false,
 })
@@ -362,27 +362,35 @@ vim.cmd([[
 		autocmd VimEnter * hi Comment guifg=#2ea542
 	augroup END
 ]])
+-- setup must be called before loading the colorscheme
+-- Default options:
+require("gruvbox").setup({
+  inverse = true,    -- invert background for search, diffs, statuslines and errors
+  contrast = "hard", -- can be "hard", "soft" or empty string
+  palette_overrides = {},
+  overrides = {
+    -- TelescopeMatching = { fg = colors.flamingo },
+    -- TelescopeSelection = { fg = colors.text, bg = colors.surface0, bold = true },
+    -- TelescopePromptPrefix = { bg = colors.surface0 },
+    -- TelescopeResultsNormal = { bg = colors.mantle },
+    -- TelescopePreviewNormal = { bg = colors.mantle },
+    -- TelescopePromptBorder = { bg = colors.surface0, fg = colors.surface0 },
+    -- TelescopeResultsBorder = { bg = colors.mantle, fg = colors.mantle },
+    -- TelescopePreviewBorder = { bg = colors.mantle, fg = colors.mantle },
+    -- TelescopePromptTitle = { bg = colors.pink, fg = colors.mantle },
+    -- TelescopeResultsTitle = { fg = colors.mantle },
+    -- TelescopePreviewTitle = { bg = colors.green, fg = colors.mantle },
+    TelescopePromptNormal = { bg = "#1d2021" },
+  },
+  dim_inactive = false,
+  transparent_mode = false,
+})
+vim.cmd("colorscheme gruvbox")
 vim.cmd 'au ColorScheme * hi! Normal guibg=NONE'
 vim.cmd 'au ColorScheme * hi! SignColumn guibg=NONE'
 vim.cmd 'au ColorScheme * hi! LineNr guibg=NONE'
 vim.cmd 'au ColorScheme * hi! CursorLineNr guibg=NONE'
 vim.cmd 'au ColorScheme * hi! Normal ctermbg=none'
--- Transparent LSP Float Windows
--- vim.cmd 'au ColorScheme * hi! Pmenu guibg=none'
--- vim.cmd 'au ColorScheme * hi! NormalFloat guibg=none'
--- vim.cmd 'au ColorScheme * hi! ErrorFloat guibg=none'
--- vim.cmd 'au ColorScheme * hi! WarningFloat guibg=none'
--- vim.cmd 'au ColorScheme * hi! InfoFloat guibg=none'
--- vim.cmd 'au ColorScheme * hi! HintFloat guibg=none'
--- vim.cmd 'au ColorScheme * hi! FloatBorder guifg=#aaaaaa guibg=NONE'
-
--- Disable annoying match brackets and all the jaz
--- vim.cmd([[
--- 	augroup CustomHI
--- 		autocmd!
--- 		autocmd VimEnter * NoMatchParen
--- 	augroup END
--- ]])
 
 -- Format on save
 vim.api.nvim_create_autocmd("BufWritePre", {
