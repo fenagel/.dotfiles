@@ -12,18 +12,260 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
-	"ellisonleao/gruvbox.nvim",
-	{ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" },
+	{
+		"ellisonleao/gruvbox.nvim",
+		opts = {
+			contrast = "hard",
+			-- palette_overrides = {
+			-- 	gray = "#2ea542",
+			-- },
+			inverse = true, -- invert background for search, diffs, statuslines and errors
+			overrides = {
+				-- TelescopeMatching = { fg = colors.flamingo },
+				-- TelescopeSelection = { fg = colors.text, bg = colors.surface0, bold = true },
+				-- TelescopePromptPrefix = { bg = colors.surface0 },
+				-- TelescopeResultsNormal = { bg = colors.mantle },
+				-- TelescopePreviewNormal = { bg = colors.mantle },
+				-- TelescopePromptBorder = { bg = colors.surface0, fg = colors.surface0 },
+				-- TelescopeResultsBorder = { bg = colors.mantle, fg = colors.mantle },
+				-- TelescopePreviewBorder = { bg = colors.mantle, fg = colors.mantle },
+				-- TelescopePromptTitle = { bg = colors.pink, fg = colors.mantle },
+				-- TelescopeResultsTitle = { fg = colors.mantle },
+				-- TelescopePreviewTitle = { bg = colors.green, fg = colors.mantle },
+				TelescopePromptNormal = { bg = "#1d2021" },
+			},
+			dim_inactive = false,
+			transparent_mode = false,
+		},
+	},
+	{
+		"nvim-treesitter/nvim-treesitter",
+		version = false, -- last release is way too old and doesn't work on Windows
+		build = ":TSUpdate",
+		event = { "BufReadPost", "BufNewFile" },
+		opts = {
+			ensure_installed = { "c", "lua", "vim", "go", "javascript", "typescript", "rust", "vue", "scss", "css" },
+			highlight = { enable = true },
+			indent = { enable = true, disable = { "python" } },
+			context_commentstring = { enable = true, enable_autocmd = false },
+		},
+		config = function(_, opts)
+			require("nvim-treesitter.configs").setup(opts)
+		end,
+	},
+	"nvim-treesitter/nvim-treesitter-textobjects",
+	"nvim-treesitter/nvim-treesitter-context",
 	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = "nvim-lua/plenary.nvim",
-		tag = "0.1.1",
+		version = false,
+		opts = {
+			defaults = {
+				prompt_prefix = " ",
+				selection_caret = " ",
+				mappings = {
+					i = {
+						["<C-j>"] = function(...)
+							return require("telescope.actions").move_selection_next(...)
+						end,
+						["<C-k>"] = function(...)
+							return require("telescope.actions").move_selection_previous(...)
+						end,
+						["<C-u>"] = function(...)
+							return require("telescope.actions").preview_scrolling_down(...)
+						end,
+						["<C-d>"] = function(...)
+							return require("telescope.actions").preview_scrolling_up(...)
+						end,
+					},
+					n = {
+						["q"] = function(...)
+							return require("telescope.actions").close(...)
+						end,
+					},
+				},
+			},
+		},
 	},
+	{ "onsails/lspkind-nvim", dependencies = "famiu/bufdelete.nvim" },
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = "kyazdani42/nvim-web-devicons",
+		opts = function()
+			local function getWords()
+				if vim.bo.filetype == "md" or vim.bo.filetype == "txt" or vim.bo.filetype == "markdown" then
+					if vim.fn.wordcount().visual_words == 1 then
+						return tostring(vim.fn.wordcount().visual_words) .. " word"
+					elseif not (vim.fn.wordcount().visual_words == nil) then
+						return tostring(vim.fn.wordcount().visual_words) .. " words"
+					else
+						return tostring(vim.fn.wordcount().words) .. " words"
+					end
+				else
+					return ""
+				end
+			end
+
+			-- local lineNum = vim.api.nvim_win_get_cursor(0)[1]
+			local function getLines()
+				return tostring(vim.api.nvim_win_get_cursor(0)[1]) .. "/" .. tostring(vim.api.nvim_buf_line_count(0))
+			end
+
+			local function getColumn()
+				local val = vim.api.nvim_win_get_cursor(0)[2]
+				-- pad value to 3 units to stop geometry shift
+				return string.format("%03d", val)
+			end
+
+			local function diff_source()
+				local gitsigns = vim.b.gitsigns_status_dict
+				if gitsigns then
+					return {
+						added = gitsigns.added,
+						modified = gitsigns.changed,
+						removed = gitsigns.removed,
+					}
+				end
+			end
+			return {
+				options = {
+					icons_enabled = true,
+					globalstatus = true,
+					theme = "gruvbox",
+					component_separators = { " ", " " },
+					section_separators = { left = "", right = "" },
+					disabled_filetypes = {},
+				},
+				sections = {
+					lualine_a = { "mode" },
+					lualine_b = {
+						{ "branch", icon = "" },
+						{
+							"diff",
+							source = diff_source,
+							color_added = "#a7c080",
+							color_modified = "#ffdf1b",
+							color_removed = "#ff6666",
+						},
+					},
+					lualine_c = {
+						{ "diagnostics", sources = { "nvim_diagnostic" } },
+						function()
+							return "%="
+						end,
+						"filename",
+						{
+							getWords,
+							color = { fg = "#333333", bg = "#eeeeee" },
+							separator = { left = "", right = "" },
+						},
+					},
+					lualine_x = { "filetype" },
+					lualine_y = {},
+					lualine_z = {
+						{ getColumn, padding = { left = 1, right = 0 } },
+						{ getLines, icon = "", padding = 1 },
+					},
+				},
+				inactive_sections = {
+					lualine_a = {},
+					lualine_b = {},
+					lualine_c = { "filename" },
+					lualine_x = { "location" },
+					lualine_y = {},
+					lualine_z = {},
+				},
+				tabline = {},
+				extensions = {
+					"quickfix",
+				},
+			}
+		end,
 	},
 	"fatih/vim-go",
+	{
+		"hrsh7th/nvim-cmp",
+		opts = function()
+			local lspkind = require("lspkind")
+			local cmp = require("cmp")
+			local luasnip = require("luasnip")
+			local has_words_before = function() end
+			return {
+				completion = {
+					completeopt = "menu,menuone,noinsert",
+				},
+				snippet = {
+					expand = function(args)
+						require("luasnip").lsp_expand(args.body)
+					end,
+				},
+				mapping = cmp.mapping.preset.insert({
+					["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+					["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+					["<C-u>"] = cmp.mapping.scroll_docs(-4),
+					["<C-d>"] = cmp.mapping.scroll_docs(4),
+					["<C-e>"] = cmp.mapping.complete(),
+					["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+					["<S-CR>"] = cmp.mapping.confirm({
+						behavior = cmp.ConfirmBehavior.Replace,
+						select = true,
+					}), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+				}),
+				sources = cmp.config.sources({
+					{ name = "nvim_lsp" },
+					{ name = "copilot" },
+					{ name = "luasnip" },
+					{ name = "buffer" },
+					{ name = "path" },
+				}),
+				formatting = {
+					format = lspkind.cmp_format({
+						with_text = true,
+						maxwidth = 50,
+						menu = {
+							buffer = "",
+							copilot = "",
+							cmp_tabnine = "9",
+							nvim_lsp = "",
+							spell = "",
+							look = "",
+						},
+					}),
+				},
+			}
+		end,
+	}, -- Required
+	{
+		"L3MON4D3/LuaSnip",
+		config = function()
+			require("luasnip.loaders.from_vscode").lazy_load()
+		end,
+		keys = {
+			{
+				"<A-j>",
+				function()
+					return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<tab>"
+				end,
+				expr = true,
+				silent = true,
+				mode = "i",
+			},
+			{
+				"<A-j>",
+				function()
+					require("luasnip").jump(1)
+				end,
+				mode = "s",
+			},
+			{
+				"<A-k>",
+				function()
+					require("luasnip").jump(-1)
+				end,
+				mode = { "i", "s" },
+			},
+		},
+	}, -- Required
 	{
 		"VonHeikemen/lsp-zero.nvim",
 		branch = "v2.x",
@@ -39,30 +281,104 @@ require("lazy").setup({
 			},
 			{ "williamboman/mason-lspconfig.nvim" }, -- Optional
 			-- Autocompletion
-			{ "hrsh7th/nvim-cmp" }, -- Required
+
 			{ "hrsh7th/cmp-nvim-lsp" }, -- Required
-			{ "L3MON4D3/LuaSnip" }, -- Required
 			"hrsh7th/cmp-buffer", -- Optional
 			"hrsh7th/cmp-path", -- Optional
 			"saadparwaiz1/cmp_luasnip", -- Optional
 			"rafamadriz/friendly-snippets", -- Optional
-			{ "onsails/lspkind-nvim", dependencies = "famiu/bufdelete.nvim" },
 		},
 	},
-	{ "akinsho/toggleterm.nvim", version = "*", config = true },
-	"terrortylor/nvim-comment",
+	{
+		"akinsho/toggleterm.nvim",
+		version = "*",
+		config = true,
+		opts = {
+			direction = "horizontal",
+			size = 15,
+			open_mapping = [[<A-h>]],
+		},
+	},
+	{ "numToStr/Comment.nvim", opts = {} },
 	"ThePrimeagen/harpoon",
-	"github/copilot.vim",
-	"jose-elias-alvarez/null-ls.nvim",
+	{
+		"zbirenbaum/copilot.lua",
+		cmd = "Copilot",
+		event = "InsertEnter",
+		build = ":Copilot auth",
+		opts = {
+			cmp = {
+				enabled = true,
+				method = "getCompletionsCycling",
+			},
+			panel = {
+				enabled = false,
+			},
+			suggestion = {
+				enabled = true,
+				auto_trigger = false,
+				debounce = 75,
+				keymap = {
+					accept = "<C-a>",
+					accept_word = false,
+					accept_line = false,
+					next = "<A-j>",
+					prev = "<A-k>",
+					dismiss = "<C-q>",
+				},
+			},
+		},
+		filetypes = {
+			yaml = false,
+			help = false,
+			gitcommit = false,
+			gitrebase = false,
+			hgcommit = false,
+			svn = false,
+			cvs = false,
+			["."] = false,
+		},
+		copilot_node_command = "node", -- Node.js version must be > 16.x
+		server_opts_overrides = {},
+	},
+	{
+		"zbirenbaum/copilot-cmp",
+	},
+	{
+		"jose-elias-alvarez/null-ls.nvim",
+		event = { "BufReadPre", "BufNewFile" },
+		dependencies = { "mason.nvim" },
+		opts = function()
+			local nls = require("null-ls")
+			return {
+				root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", "Makefile", ".git"),
+				sources = {
+					nls.builtins.formatting.fish_indent,
+					nls.builtins.diagnostics.fish,
+					nls.builtins.formatting.stylua,
+					nls.builtins.formatting.shfmt,
+					nls.builtins.diagnostics.flake8,
+					nls.builtins.formatting.prettier.with({
+						extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
+					}),
+				},
+			}
+		end,
+	},
 	{
 		"lewis6991/gitsigns.nvim",
 		dependencies = "nvim-lua/plenary.nvim",
 		event = "BufReadPre",
+		opts = {
+			numhl = true,
+			signcolumn = false,
+		},
 	},
 	{
 		"simrat39/symbols-outline.nvim",
 		cmd = { "SymbolsOutline" },
 	},
+	"NvChad/nvim-colorizer.lua",
 })
 
 -- some
@@ -136,189 +452,20 @@ vim.keymap.set("n", "<C-l>", function()
 	require("harpoon.ui").nav_file(4)
 end, silent)
 
--- CMP
-local cmp = require("cmp")
-local cmp_action = require("lsp-zero").cmp_action()
-local lspkind = require("lspkind")
-require("luasnip/loaders/from_vscode").lazy_load()
-
-cmp.setup({
-	snippet = {
-		expand = function(args)
-			require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
-		end,
-	},
-	sources = {
-		{ name = "path" },
-		{ name = "nvim_lsp" },
-		{ name = "buffer", keyword_length = 3 },
-		{ name = "luasnip", keyword_length = 2 },
-	},
-	mapping = {
-		["<C-f>"] = cmp_action.luasnip_jump_forward(),
-		["<C-b>"] = cmp_action.luasnip_jump_backward(),
-		["<C-k>"] = cmp.mapping.select_prev_item(),
-		["<C-j>"] = cmp.mapping.select_next_item(),
-		["<C-u>"] = cmp.mapping.scroll_docs(-4),
-		["<C-d>"] = cmp.mapping.scroll_docs(4),
-		["<C-Space>"] = cmp.mapping.confirm({ select = true }),
-	},
-	formatting = {
-		format = lspkind.cmp_format({
-			with_text = true,
-			maxwidth = 50,
-			menu = {
-				buffer = "",
-				cmp_tabnine = "9",
-				nvim_lsp = "",
-				spell = "",
-				look = "",
-			},
-		}),
-	},
-})
-
--- Lualine
-local function getWords()
-	if vim.bo.filetype == "md" or vim.bo.filetype == "txt" or vim.bo.filetype == "markdown" then
-		if vim.fn.wordcount().visual_words == 1 then
-			return tostring(vim.fn.wordcount().visual_words) .. " word"
-		elseif not (vim.fn.wordcount().visual_words == nil) then
-			return tostring(vim.fn.wordcount().visual_words) .. " words"
-		else
-			return tostring(vim.fn.wordcount().words) .. " words"
-		end
-	else
-		return ""
-	end
-end
-
--- local lineNum = vim.api.nvim_win_get_cursor(0)[1]
-local function getLines()
-	return tostring(vim.api.nvim_win_get_cursor(0)[1]) .. "/" .. tostring(vim.api.nvim_buf_line_count(0))
-end
-
-local function getColumn()
-	local val = vim.api.nvim_win_get_cursor(0)[2]
-	-- pad value to 3 units to stop geometry shift
-	return string.format("%03d", val)
-end
-
-local function diff_source()
-	local gitsigns = vim.b.gitsigns_status_dict
-	if gitsigns then
-		return {
-			added = gitsigns.added,
-			modified = gitsigns.changed,
-			removed = gitsigns.removed,
-		}
-	end
-end
-
-local status_ok, lualine = pcall(require, "lualine")
-if not status_ok then
-	return
-end
-
-lualine.setup({
-	options = {
-		icons_enabled = true,
-		globalstatus = true,
-		theme = "gruvbox",
-		component_separators = { " ", " " },
-		section_separators = { left = "", right = "" },
-		disabled_filetypes = {},
-	},
-	sections = {
-		lualine_a = { "mode" },
-		lualine_b = {
-			{ "branch", icon = "" },
-			{
-				"diff",
-				source = diff_source,
-				color_added = "#a7c080",
-				color_modified = "#ffdf1b",
-				color_removed = "#ff6666",
-			},
-		},
-		lualine_c = {
-			{ "diagnostics", sources = { "nvim_diagnostic" } },
-			function()
-				return "%="
-			end,
-			"filename",
-			{
-				getWords,
-				color = { fg = "#333333", bg = "#eeeeee" },
-				separator = { left = "", right = "" },
-			},
-		},
-		lualine_x = { "filetype" },
-		lualine_y = {},
-		lualine_z = {
-			{ getColumn, padding = { left = 1, right = 0 } },
-			{ getLines, icon = "", padding = 1 },
-		},
-	},
-	inactive_sections = {
-		lualine_a = {},
-		lualine_b = {},
-		lualine_c = { "filename" },
-		lualine_x = { "location" },
-		lualine_y = {},
-		lualine_z = {},
-	},
-	tabline = {},
-	extensions = {
-		"quickfix",
-	},
-})
-
--- Telescope
-local actions = require("telescope.actions")
-
-require("telescope").setup({
-	defaults = {
-		prompt_prefix = "> ",
-		color_devicons = true,
-		mappings = {
-			i = {
-				["<C-x>"] = false,
-				["<C-q>"] = actions.send_to_qflist,
-				["<C-k>"] = actions.move_selection_previous, -- move to prev result
-				["<C-j>"] = actions.move_selection_next, -- move to next result
-			},
-		},
-	},
-})
--- TREESITTER
-require("nvim-treesitter.configs").setup({
-	ensure_installed = { "c", "lua", "vim", "go", "javascript", "typescript", "rust" },
-	highlight = {
-		enable = true,
-	},
-})
-
--- GRUVBOX
-require("gruvbox").setup({
-	contrast = "hard",
-	palette_overrides = {
-		gray = "#2ea542",
-	},
-})
-
--- LUALINE
-require("lualine").setup({
-	options = {
-		icons_enabled = false,
-		theme = "gruvbox",
-		component_separators = "|",
-		section_separators = "",
-	},
-})
-
 -- LSP
 local lsp = require("lsp-zero")
+require("cmp_nvim_lsp")
+local signs = {
+
+	{ name = "DiagnosticSignError", text = "" },
+	{ name = "DiagnosticSignWarn", text = "" },
+	{ name = "DiagnosticSignHint", text = "" },
+	{ name = "DiagnosticSignInfo", text = "" },
+}
+
+for _, sign in ipairs(signs) do
+	vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+end
 
 lsp.preset("recommended")
 
@@ -346,78 +493,24 @@ lsp.setup()
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
 	signs = true,
 	virtual_text = true,
-	underline = false,
+	update_in_insert = true,
+	underline = true,
+	severity_sort = true,
+})
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+	border = "rounded",
 })
 
--- COMMENT
-require("nvim_comment").setup({
-	operator_mapping = "<leader>/",
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+	border = "rounded",
 })
 
--- TERMINAL SETUP
-require("toggleterm").setup({
-	direction = "horizontal",
-	size = 15,
-	open_mapping = [[<M-j>]],
-})
-
-local null_ls = require("null-ls")
--- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
-local formatting = null_ls.builtins.formatting
--- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
-local diagnostics = null_ls.builtins.diagnostics
-
-null_ls.setup({
-	debug = false,
-	sources = {
-		formatting.prettier.with({ extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" } }),
-		formatting.black.with({ extra_args = { "--fast" } }),
-		formatting.stylua,
-		-- diagnostics.flake8
-	},
-})
-require("gitsigns").setup({
-	numhl = true,
-	signcolumn = false,
-})
--- COLORSCHEME
-vim.cmd("colorscheme gruvbox")
--- Adding the same comment color in each theme
-vim.cmd([[
-	augroup CustomCommentCollor
-		autocmd!
-		autocmd VimEnter * hi Comment guifg=#2ea542
-	augroup END
-]])
--- setup must be called before loading the colorscheme
--- Default options:
-require("gruvbox").setup({
-	inverse = true, -- invert background for search, diffs, statuslines and errors
-	contrast = "hard", -- can be "hard", "soft" or empty string
-	palette_overrides = {},
-	overrides = {
-		-- TelescopeMatching = { fg = colors.flamingo },
-		-- TelescopeSelection = { fg = colors.text, bg = colors.surface0, bold = true },
-		-- TelescopePromptPrefix = { bg = colors.surface0 },
-		-- TelescopeResultsNormal = { bg = colors.mantle },
-		-- TelescopePreviewNormal = { bg = colors.mantle },
-		-- TelescopePromptBorder = { bg = colors.surface0, fg = colors.surface0 },
-		-- TelescopeResultsBorder = { bg = colors.mantle, fg = colors.mantle },
-		-- TelescopePreviewBorder = { bg = colors.mantle, fg = colors.mantle },
-		-- TelescopePromptTitle = { bg = colors.pink, fg = colors.mantle },
-		-- TelescopeResultsTitle = { fg = colors.mantle },
-		-- TelescopePreviewTitle = { bg = colors.green, fg = colors.mantle },
-		TelescopePromptNormal = { bg = "#1d2021" },
-	},
-	dim_inactive = false,
-	transparent_mode = false,
-})
 vim.cmd("colorscheme gruvbox")
 vim.cmd("au ColorScheme * hi! Normal guibg=NONE")
 vim.cmd("au ColorScheme * hi! SignColumn guibg=NONE")
 vim.cmd("au ColorScheme * hi! LineNr guibg=NONE")
 vim.cmd("au ColorScheme * hi! CursorLineNr guibg=NONE")
-vim.cmd("au ColorScheme * hi! Normal ctermbg=none")
+vim.cmd("au ColorScheme * hi! Normal guibg=none")
 
 -- Format on save
 vim.api.nvim_create_autocmd("BufWritePre", {
@@ -450,7 +543,7 @@ vim.opt.backspace = { "indent", "eol", "start" }
 vim.opt.guicursor = "i:block"
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
-vim.opt.number = false
+vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.swapfile = false
 vim.opt.clipboard = "unnamedplus"

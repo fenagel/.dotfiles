@@ -86,6 +86,30 @@ return packer.startup(function(use)
 	use({
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
+		opts = {
+			highlight = { enable = true },
+			indent = { enable = true, disable = { "python" } },
+			context_commentstring = { enable = true, enable_autocmd = false },
+			ensure_installed = {
+				"bash",
+				"c",
+				"help",
+				"html",
+				"javascript",
+				"json",
+				"lua",
+				"luap",
+				"markdown",
+				"markdown_inline",
+				"python",
+				"query",
+				"regex",
+				"tsx",
+				"typescript",
+				"vim",
+				"yaml",
+			},
+		},
 	})
 	use("nvim-treesitter/nvim-treesitter-textobjects")
 	use({ "nvim-treesitter/nvim-treesitter-context" })
