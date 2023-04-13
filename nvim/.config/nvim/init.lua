@@ -188,8 +188,8 @@ require("lazy").setup({
 		opts = function()
 			local lspkind = require("lspkind")
 			local cmp = require("cmp")
-			local luasnip = require("luasnip")
-			local has_words_before = function() end
+			-- local luasnip = require("luasnip")
+			-- local has_words_before = function() end
 			return {
 				completion = {
 					completeopt = "menu,menuone,noinsert",
@@ -204,12 +204,12 @@ require("lazy").setup({
 					["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
 					["<C-u>"] = cmp.mapping.scroll_docs(-4),
 					["<C-d>"] = cmp.mapping.scroll_docs(4),
-					["<C-e>"] = cmp.mapping.complete(),
-					["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-					["<S-CR>"] = cmp.mapping.confirm({
-						behavior = cmp.ConfirmBehavior.Replace,
-						select = true,
-					}), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+					-- ["<C-e>"] = cmp.mapping.complete(),
+					["<C-e>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+					-- ["<S-CR>"] = cmp.mapping.confirm({
+					-- 	behavior = cmp.ConfirmBehavior.Replace,
+					-- 	select = true,
+					-- }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 				}),
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },
