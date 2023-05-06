@@ -12,14 +12,11 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
+	-- { "catppuccin/nvim", name = "catppuccin" },
 	{
-		"ellisonleao/gruvbox.nvim",
+		"folke/tokyonight.nvim",
+		config = { transparent = true },
 		opts = {
-			contrast = "hard",
-			-- palette_overrides = {
-			-- 	gray = "#2ea542",
-			-- },
-			inverse = true, -- invert background for search, diffs, statuslines and errors
 			overrides = {
 				-- TelescopeMatching = { fg = colors.flamingo },
 				-- TelescopeSelection = { fg = colors.text, bg = colors.surface0, bold = true },
@@ -38,6 +35,35 @@ require("lazy").setup({
 			transparent_mode = false,
 		},
 	},
+
+	-- { "olivercederborg/poimandres.nvim", opts = nil },
+	-- { "rmehri01/onenord.nvim", opts = nil },
+	-- {
+	-- 	"ellisonleao/gruvbox.nvim",
+	-- 	opts = {
+	-- 		contrast = "hard",
+	-- 		-- palette_overrides = {
+	-- 		-- 	gray = "#2ea542",
+	-- 		-- },
+	-- 		inverse = true, -- invert background for search, diffs, statuslines and errors
+	-- 		overrides = {
+	-- 			-- TelescopeMatching = { fg = colors.flamingo },
+	-- 			-- TelescopeSelection = { fg = colors.text, bg = colors.surface0, bold = true },
+	-- 			-- TelescopePromptPrefix = { bg = colors.surface0 },
+	-- 			-- TelescopeResultsNormal = { bg = colors.mantle },
+	-- 			-- TelescopePreviewNormal = { bg = colors.mantle },
+	-- 			-- TelescopePromptBorder = { bg = colors.surface0, fg = colors.surface0 },
+	-- 			-- TelescopeResultsBorder = { bg = colors.mantle, fg = colors.mantle },
+	-- 			-- TelescopePreviewBorder = { bg = colors.mantle, fg = colors.mantle },
+	-- 			-- TelescopePromptTitle = { bg = colors.pink, fg = colors.mantle },
+	-- 			-- TelescopeResultsTitle = { fg = colors.mantle },
+	-- 			-- TelescopePreviewTitle = { bg = colors.green, fg = colors.mantle },
+	-- 			TelescopePromptNormal = { bg = "#1d2021" },
+	-- 		},
+	-- 		dim_inactive = false,
+	-- 		transparent_mode = false,
+	-- 	},
+	-- },
 	{
 		"nvim-treesitter/nvim-treesitter",
 		version = false, -- last release is way too old and doesn't work on Windows
@@ -131,7 +157,7 @@ require("lazy").setup({
 				options = {
 					icons_enabled = true,
 					globalstatus = true,
-					theme = "gruvbox",
+					theme = "tokyonight",
 					component_separators = { " ", " " },
 					section_separators = { left = "", right = "" },
 					disabled_filetypes = {},
@@ -505,7 +531,7 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
 	border = "rounded",
 })
 
-vim.cmd("colorscheme gruvbox")
+vim.cmd("colorscheme tokyonight")
 vim.cmd("au ColorScheme * hi! Normal guibg=NONE")
 vim.cmd("au ColorScheme * hi! SignColumn guibg=NONE")
 vim.cmd("au ColorScheme * hi! LineNr guibg=NONE")
