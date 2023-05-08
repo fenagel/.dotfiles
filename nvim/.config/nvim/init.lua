@@ -17,6 +17,11 @@ require("lazy").setup({
 		"folke/tokyonight.nvim",
 		config = { transparent = true },
 		opts = {
+			style = "moon",
+			styles = {
+				floats = "transparent",
+				sidebars = "transparent",
+			},
 			overrides = {
 				-- TelescopeMatching = { fg = colors.flamingo },
 				-- TelescopeSelection = { fg = colors.text, bg = colors.surface0, bold = true },
@@ -32,7 +37,6 @@ require("lazy").setup({
 				TelescopePromptNormal = { bg = "#1d2021" },
 			},
 			dim_inactive = false,
-			transparent_mode = false,
 		},
 	},
 
