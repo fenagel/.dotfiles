@@ -15,28 +15,13 @@ require("lazy").setup({
 	-- { "catppuccin/nvim", name = "catppuccin" },
 	{
 		"folke/tokyonight.nvim",
-		config = { transparent = true },
-		opts = {
-			style = "moon",
+		config = {
+			transparent = true,
 			styles = {
 				floats = "transparent",
 				sidebars = "transparent",
 			},
-			overrides = {
-				-- TelescopeMatching = { fg = colors.flamingo },
-				-- TelescopeSelection = { fg = colors.text, bg = colors.surface0, bold = true },
-				-- TelescopePromptPrefix = { bg = colors.surface0 },
-				-- TelescopeResultsNormal = { bg = colors.mantle },
-				-- TelescopePreviewNormal = { bg = colors.mantle },
-				-- TelescopePromptBorder = { bg = colors.surface0, fg = colors.surface0 },
-				-- TelescopeResultsBorder = { bg = colors.mantle, fg = colors.mantle },
-				-- TelescopePreviewBorder = { bg = colors.mantle, fg = colors.mantle },
-				-- TelescopePromptTitle = { bg = colors.pink, fg = colors.mantle },
-				-- TelescopeResultsTitle = { fg = colors.mantle },
-				-- TelescopePreviewTitle = { bg = colors.green, fg = colors.mantle },
-				TelescopePromptNormal = { bg = "#1d2021" },
-			},
-			dim_inactive = false,
+			style = "moon",
 		},
 	},
 
