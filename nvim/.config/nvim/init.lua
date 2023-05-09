@@ -13,17 +13,27 @@ end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	-- { "catppuccin/nvim", name = "catppuccin" },
+	-- If you are using Packer
 	{
-		"folke/tokyonight.nvim",
-		config = {
-			transparent = true,
-			styles = {
-				floats = "transparent",
-				sidebars = "transparent",
+		"rmehri01/onenord.nvim",
+		opts = {
+			theme = "dark",
+			disable = {
+				background = true,
 			},
-			style = "moon",
 		},
 	},
+	--  {
+	-- 	"folke/tokyonight.nvim",
+	-- 	config = {
+	-- 		transparent = true,
+	-- 		styles = {
+	-- 			floats = "transparent",
+	-- 			sidebars = "transparent",
+	-- 		},
+	-- 		style = "moon",
+	-- 	},
+	-- },
 
 	-- { "olivercederborg/poimandres.nvim", opts = nil },
 	-- { "rmehri01/onenord.nvim", opts = nil },
@@ -72,10 +82,37 @@ require("lazy").setup({
 	"nvim-treesitter/nvim-treesitter-context",
 	{
 		"nvim-telescope/telescope.nvim",
-		dependencies = "nvim-lua/plenary.nvim",
+		dependencies = { "nvim-lua/plenary.nvim", "telescope-fzf-native.nvim" },
 		version = false,
 		opts = {
 			defaults = {
+				pickers = {
+					find_files = {
+						hidden = true,
+					},
+					live_grep = {
+						--@usage don't include the filename in the search results
+						only_sort_text = true,
+					},
+					grep_string = {
+						only_sort_text = true,
+					},
+				},
+				extensions = {
+					fzf = {
+						fuzzy = true, -- false will only do exact matching
+						override_generic_sorter = true, -- override the generic sorter
+						override_file_sorter = true, -- override the file sorter
+						case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+					},
+				},
+				colorscheme = {
+					enable_preview = true,
+				},
+				git_files = {
+					hidden = true,
+					show_untracked = true,
+				},
 				prompt_prefix = " ",
 				selection_caret = " ",
 				mappings = {
@@ -102,6 +139,7 @@ require("lazy").setup({
 			},
 		},
 	},
+	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = true, enabled = true },
 	{ "onsails/lspkind-nvim", dependencies = "famiu/bufdelete.nvim" },
 	{
 		"nvim-lualine/lualine.nvim",
@@ -146,7 +184,7 @@ require("lazy").setup({
 				options = {
 					icons_enabled = true,
 					globalstatus = true,
-					theme = "tokyonight",
+					theme = "onenord",
 					component_separators = { " ", " " },
 					section_separators = { left = "", right = "" },
 					disabled_filetypes = {},
@@ -520,7 +558,7 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
 	border = "rounded",
 })
 
-vim.cmd("colorscheme tokyonight")
+vim.cmd("colorscheme onenord")
 vim.cmd("au ColorScheme * hi! Normal guibg=NONE")
 vim.cmd("au ColorScheme * hi! SignColumn guibg=NONE")
 vim.cmd("au ColorScheme * hi! LineNr guibg=NONE")
@@ -551,6 +589,7 @@ autocmd("TextYankPost", {
 })
 
 vim.o.background = "dark"
+vim.g.transparency = true
 
 vim.keymap.set("i", "jj", "<Esc>")
 
