@@ -14,15 +14,28 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	-- { "catppuccin/nvim", name = "catppuccin" },
 	-- If you are using Packer
-	{
-		"rmehri01/onenord.nvim",
-		opts = {
-			theme = "dark",
-			disable = {
-				background = true,
-			},
-		},
-	},
+	-- {
+	-- 	"nordtheme/vim",
+	-- },
+	-- {
+	-- 	"EdenEast/nightfox.nvim",
+	-- 	config = function()
+	-- 		require("nightfox").setup({
+	-- 			options = {
+	-- 				transparent = true,
+	-- 			},
+	-- 		})
+	-- 	end,
+	-- },
+	-- {
+	--   "rmehri01/onenord.nvim",
+	--   opts = {
+	--     theme = "dark",
+	--     disable = {
+	--       background = true,
+	--     },
+	--   },
+	-- },
 	--  {
 	-- 	"folke/tokyonight.nvim",
 	-- 	config = {
@@ -37,32 +50,40 @@ require("lazy").setup({
 
 	-- { "olivercederborg/poimandres.nvim", opts = nil },
 	-- { "rmehri01/onenord.nvim", opts = nil },
-	-- {
-	-- 	"ellisonleao/gruvbox.nvim",
-	-- 	opts = {
-	-- 		contrast = "hard",
-	-- 		-- palette_overrides = {
-	-- 		-- 	gray = "#2ea542",
-	-- 		-- },
-	-- 		inverse = true, -- invert background for search, diffs, statuslines and errors
-	-- 		overrides = {
-	-- 			-- TelescopeMatching = { fg = colors.flamingo },
-	-- 			-- TelescopeSelection = { fg = colors.text, bg = colors.surface0, bold = true },
-	-- 			-- TelescopePromptPrefix = { bg = colors.surface0 },
-	-- 			-- TelescopeResultsNormal = { bg = colors.mantle },
-	-- 			-- TelescopePreviewNormal = { bg = colors.mantle },
-	-- 			-- TelescopePromptBorder = { bg = colors.surface0, fg = colors.surface0 },
-	-- 			-- TelescopeResultsBorder = { bg = colors.mantle, fg = colors.mantle },
-	-- 			-- TelescopePreviewBorder = { bg = colors.mantle, fg = colors.mantle },
-	-- 			-- TelescopePromptTitle = { bg = colors.pink, fg = colors.mantle },
-	-- 			-- TelescopeResultsTitle = { fg = colors.mantle },
-	-- 			-- TelescopePreviewTitle = { bg = colors.green, fg = colors.mantle },
-	-- 			TelescopePromptNormal = { bg = "#1d2021" },
-	-- 		},
-	-- 		dim_inactive = false,
-	-- 		transparent_mode = false,
-	-- 	},
-	-- },
+	{
+		"rose-pine/neovim",
+		config = function()
+			require("lazy").setup({
+				{ "rose-pine/neovim", name = "rose-pine" },
+			})
+		end,
+	},
+	{
+		"ellisonleao/gruvbox.nvim",
+		opts = {
+			contrast = "hard",
+			-- palette_overrides = {
+			-- 	gray = "#2ea542",
+			-- },
+			inverse = true, -- invert background for search, diffs, statuslines and errors
+			-- overrides = {
+			-- 	-- TelescopeMatching = { fg = colors.flamingo },
+			-- 	-- TelescopeSelection = { fg = colors.text, bg = colors.surface0, bold = true },
+			-- 	-- TelescopePromptPrefix = { bg = colors.surface0 },
+			-- 	-- TelescopeResultsNormal = { bg = colors.mantle },
+			-- 	-- TelescopePreviewNormal = { bg = colors.mantle },
+			-- 	-- TelescopePromptBorder = { bg = colors.surface0, fg = colors.surface0 },
+			-- 	-- TelescopeResultsBorder = { bg = colors.mantle, fg = colors.mantle },
+			-- 	-- TelescopePreviewBorder = { bg = colors.mantle, fg = colors.mantle },
+			-- 	-- TelescopePromptTitle = { bg = colors.pink, fg = colors.mantle },
+			-- 	-- TelescopeResultsTitle = { fg = colors.mantle },
+			-- 	-- TelescopePreviewTitle = { bg = colors.green, fg = colors.mantle },
+			-- 	TelescopePromptNormal = { bg = "#1d2021" },
+			-- },
+			dim_inactive = false,
+			transparent_mode = true,
+		},
+	},
 	{
 		"nvim-treesitter/nvim-treesitter",
 		version = false, -- last release is way too old and doesn't work on Windows
@@ -184,7 +205,7 @@ require("lazy").setup({
 				options = {
 					icons_enabled = true,
 					globalstatus = true,
-					theme = "onenord",
+					theme = "rose-pine",
 					component_separators = { " ", " " },
 					section_separators = { left = "", right = "" },
 					disabled_filetypes = {},
@@ -558,13 +579,15 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
 	border = "rounded",
 })
 
-vim.cmd("colorscheme onenord")
-vim.cmd("au ColorScheme * hi! Normal guibg=NONE")
-vim.cmd("au ColorScheme * hi! SignColumn guibg=NONE")
-vim.cmd("au ColorScheme * hi! LineNr guibg=NONE")
-vim.cmd("au ColorScheme * hi! CursorLineNr guibg=NONE")
-vim.cmd("au ColorScheme * hi! Normal guibg=none")
+vim.cmd("colorscheme rose-pine")
+-- vim.cmd("au ColorScheme * hi! Normal guibg=NONE")
+-- vim.cmd("au ColorScheme * hi! SignColumn guibg=NONE")
+-- vim.cmd("au ColorScheme * hi! LineNr guibg=NONE")
+-- vim.cmd("au ColorScheme * hi! CursorLineNr guibg=NONE")
+-- vim.cmd("au ColorScheme * hi! Normal guibg=none")
 
+vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 -- Format on save
 vim.api.nvim_create_autocmd("BufWritePre", {
 	callback = function()
