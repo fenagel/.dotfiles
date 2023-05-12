@@ -12,8 +12,8 @@ colors:
     background: '0x191724'
     foreground: '0xe0def4'
   cursor:
-    text: '0xe0def4'
-    cursor: '0x524f67'
+    text: '0x26233a'
+    cursor: '0xe0def4'
   vi_mode_cursor:
     text: '0xe0def4'
     cursor: '0x524f67'
