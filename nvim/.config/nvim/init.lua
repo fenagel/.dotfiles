@@ -164,7 +164,7 @@ require("lazy").setup({
 	{ "onsails/lspkind-nvim", dependencies = "famiu/bufdelete.nvim" },
 	{
 		"nvim-lualine/lualine.nvim",
-		dependencies = "kyazdani42/nvim-web-devicons",
+		dependencies = "nvim-tree/nvim-web-devicons",
 		opts = function()
 			local function getWords()
 				if vim.bo.filetype == "md" or vim.bo.filetype == "txt" or vim.bo.filetype == "markdown" then
@@ -256,6 +256,32 @@ require("lazy").setup({
 			}
 		end,
 	},
+	{
+		"folke/trouble.nvim",
+		dependencies = "nvim-tree/nvim-web-devicons",
+		config = function()
+			require("trouble").setup({
+				-- your configuration comes here
+				-- or leave it empty to use the default settings
+				-- refer to the configuration section below
+			})
+		end,
+	},
+
+	{
+		"folke/todo-comments.nvim",
+		dependecies = "nvim-lua/plenary.nvim",
+		config = function()
+			require("todo-comments").setup({
+				-- your configuration comes here
+				-- or leave it empty to use the default settings
+				-- refer to the configuration section below
+			})
+		end,
+	},
+	-- Git related plugins
+	"tpope/vim-fugitive",
+	"tpope/vim-rhubarb",
 	"fatih/vim-go",
 	{
 		"hrsh7th/nvim-cmp",
@@ -370,7 +396,7 @@ require("lazy").setup({
 		opts = {
 			direction = "horizontal",
 			size = 15,
-			open_mapping = [[<A-h>]],
+			open_mapping = [[<leader>t]],
 		},
 	},
 	{ "numToStr/Comment.nvim", opts = {} },
@@ -441,6 +467,69 @@ require("lazy").setup({
 	},
 	{
 		"lewis6991/gitsigns.nvim",
+		config = function()
+			require("gitsigns").setup({
+				signs = {
+					add = { text = "+" },
+					change = { text = "~" },
+					delete = { text = "_" },
+					topdelete = { text = "‾" },
+					changedelete = { text = "~" },
+				},
+				current_line_blame = false,
+				on_attach = function(bufnr)
+					local gs = package.loaded.gitsigns
+
+					local function map(mode, l, r, opts)
+						opts = opts or {}
+						opts.buffer = bufnr
+						vim.keymap.set(mode, l, r, opts)
+					end
+
+					-- Navigation
+					map("n", "]c", function()
+						if vim.wo.diff then
+							return "]c"
+						end
+						vim.schedule(function()
+							gs.next_hunk()
+						end)
+						return "<Ignore>"
+					end, { expr = true })
+
+					map("n", "[c", function()
+						if vim.wo.diff then
+							return "[c"
+						end
+						vim.schedule(function()
+							gs.prev_hunk()
+						end)
+						return "<Ignore>"
+					end, { expr = true })
+
+					-- Actions
+					map({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>")
+					map({ "n", "v" }, "<leader>hr", ":Gitsigns reset_hunk<CR>")
+					map("n", "<leader>hS", gs.stage_buffer)
+					map("n", "<leader>ha", gs.stage_hunk)
+					map("n", "<leader>hu", gs.undo_stage_hunk)
+					map("n", "<leader>hR", gs.reset_buffer)
+					map("n", "<leader>hp", gs.preview_hunk)
+					map("n", "<leader>hb", function()
+						gs.blame_line({ full = true })
+					end)
+					map("n", "<leader>tb", gs.toggle_current_line_blame)
+					map("n", "<leader>hd", gs.diffthis)
+					map("n", "<leader>hD", function()
+						gs.diffthis("~")
+					end)
+					map("n", "<leader>td", gs.toggle_deleted)
+
+					-- Text object
+					map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")
+				end,
+			})
+		end,
 		dependencies = "nvim-lua/plenary.nvim",
 		event = "BufReadPre",
 		opts = {
@@ -455,13 +544,21 @@ require("lazy").setup({
 	"NvChad/nvim-colorizer.lua",
 })
 
+vim.keymap.set("n", "<leader>xx", "<cmd>TroubleToggle<cr>", { silent = true, noremap = true })
+vim.keymap.set("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>", { silent = true, noremap = true })
+vim.keymap.set("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>", { silent = true, noremap = true })
+vim.keymap.set("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>", { silent = true, noremap = true })
+vim.keymap.set("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", { silent = true, noremap = true })
+vim.keymap.set("n", "gR", "<cmd>TroubleToggle lsp_references<cr>", { silent = true, noremap = true })
+
+vim.api.nvim_set_keymap("n", "<leader>gc", ':Git commit -m "', { noremap = false })
+vim.api.nvim_set_keymap("n", "<leader>gp", ":Git push -u origin HEAD<CR>", { noremap = false })
 -- some
-vim.keymap.set("n", "<M-b>", ":Ex<CR>")
+vim.keymap.set("n", "<A-b>", ":Ex<CR>")
 
 -- split screen and navigation
-vim.keymap.set("n", "<leader>v", ":vsplit<CR><C-w>l", { noremap = true })
-vim.keymap.set("n", "<leader>h", ":wincmd h<CR>", { noremap = true })
-vim.keymap.set("n", "<leader>l", ":wincmd l<CR>", { noremap = true })
+vim.keymap.set("n", "<C-h>", ":wincmd h<CR>", { noremap = true })
+vim.keymap.set("n", "<C-l>", ":wincmd l<CR>", { noremap = true })
 
 -- See `:help telescope.builtin`
 vim.keymap.set("n", "<leader>?", require("telescope.builtin").oldfiles, { desc = "[?] Find recently opened files" })
@@ -472,8 +569,8 @@ vim.keymap.set("n", "<leader>f", function()
 	}))
 end, { desc = "[/] Fuzzily search in current buffer" })
 
-vim.keymap.set("n", "<leader>p", require("telescope.builtin").find_files, { desc = "[S]earch [F]iles" })
 vim.keymap.set("n", "<C-p>", require("telescope.builtin").git_files, { desc = "[S]earch [F]iles" })
+vim.keymap.set("n", "<leader>sf", require("telescope.builtin").find_files, { desc = "[S]earch [F]iles" })
 vim.keymap.set("n", "<leader>sh", require("telescope.builtin").help_tags, { desc = "[S]earch [H]elp" })
 vim.keymap.set("n", "<leader>sw", require("telescope.builtin").grep_string, { desc = "[S]earch current [W]ord" })
 vim.keymap.set("n", "<leader>sg", require("telescope.builtin").live_grep, { desc = "[S]earch by [G]rep" })
@@ -513,16 +610,16 @@ end, silent)
 vim.keymap.set("n", "<C-e>", function()
 	require("harpoon.ui").toggle_quick_menu()
 end, silent)
-vim.keymap.set("n", "<C-h>", function()
+vim.keymap.set("n", "<leader>h", function()
 	require("harpoon.ui").nav_file(1)
 end, silent)
-vim.keymap.set("n", "<C-j>", function()
+vim.keymap.set("n", "<leader>j", function()
 	require("harpoon.ui").nav_file(2)
 end, silent)
-vim.keymap.set("n", "<C-k>", function()
+vim.keymap.set("n", "<leader>k", function()
 	require("harpoon.ui").nav_file(3)
 end, silent)
-vim.keymap.set("n", "<C-l>", function()
+vim.keymap.set("n", "<leader>l", function()
 	require("harpoon.ui").nav_file(4)
 end, silent)
 

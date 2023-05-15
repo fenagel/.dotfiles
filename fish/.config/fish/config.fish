@@ -61,7 +61,7 @@ set -U fish_color_terminators white
 set -U fish_color_valid_path green
 
 # abbreviations
-abbr :bd "exit"
+abbr :bd exit
 abbr :q "tmux kill-server"
 abbr ast "aw set -t (aw list | fzf-tmux -p --reverse --preview 'aw set -t {}')"
 abbr bc "brew cleanup"
@@ -75,24 +75,24 @@ abbr bs "brew services"
 abbr bsr "brew services restart"
 abbr bu "brew update"
 abbr bug "brew upgrade"
-abbr c "clear"
-abbr cl "clear"
-abbr claer "clear"
-abbr clera "clear"
+abbr c clear
+abbr cl clear
+abbr claer clear
+abbr clera clear
 abbr cx "chmod +x"
 abbr dc "docker compose"
 abbr dcd "docker compose down"
 abbr dcdv "docker compose down -v"
 abbr dcr "docker compose restart"
-abbr dcu "docker compose up -d" 
+abbr dcu "docker compose up -d"
 abbr dps "docker ps --format 'table {{.Names}}\t{{.Status}}'"
-abbr e "exit"
+abbr e exit
 abbr ee "espanso edit"
 abbr er "espanso restart"
 abbr g "git status"
 abbr ga "git add ."
 abbr gb "git branch -v"
-abbr gc "git commit"
+abbr gc "git commit -m "
 abbr gca "git commit -av"
 abbr gcl "git clone"
 abbr gco "git checkout -b"
@@ -116,8 +116,8 @@ abbr gs "git status"
 abbr gst "git status"
 abbr hd "history delete --exact --case-sensitive \'(history | fzf-tmux -p -m --reverse)\'"
 abbr l "lsd  --group-dirs first -A"
-abbr ld "lazydocker"
-abbr lg "lazygit"
+abbr ld lazydocker
+abbr lg lazygit
 abbr ll "lsd  --group-dirs first -Al"
 abbr lt "lsd  --group-dirs last -A --tree"
 abbr nb "npm run build"
@@ -146,7 +146,7 @@ abbr vpc "nvim +PackerClean"
 abbr vpi "nvim +PackerInstall"
 abbr vpu "nvim +PackerUpdate"
 abbr vt "nvim ~/.config/tmux/tmux.conf"
-abbr y "yarn"
+abbr y yarn
 abbr ya "yarn add"
 abbr yad "yarn add -D"
 abbr yb "yarn build"
