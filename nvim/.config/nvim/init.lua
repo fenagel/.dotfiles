@@ -1,3 +1,70 @@
+vim.o.background = "dark"
+vim.g.transparency = true
+
+vim.keymap.set("i", "jj", "<Esc>")
+
+vim.opt.backspace = { "indent", "eol", "start" }
+vim.opt.guicursor = "i:block"
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.swapfile = false
+vim.opt.clipboard = "unnamedplus"
+vim.opt.wrap = false
+
+vim.opt.hlsearch = true
+vim.opt.mouse = "a"
+vim.opt.breakindent = true
+vim.opt.undofile = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.smartindent = true
+vim.opt.updatetime = 250
+vim.opt.timeout = true
+vim.opt.timeoutlen = 300
+vim.opt.completeopt = "menu,menuone,noselect"
+vim.opt.termguicolors = true
+vim.opt.expandtab = true
+vim.opt.inccommand = "split" -- Get a preview of replacements
+vim.opt.scrolloff = 8
+vim.opt.sidescrolloff = 8
+vim.opt.signcolumn = "yes:1" -- always show signcolumns
+vim.opt.colorcolumn = "80"
+
+vim.o.background = "dark"
+vim.g.transparency = true
+
+vim.keymap.set("i", "jj", "<Esc>")
+
+vim.opt.backspace = { "indent", "eol", "start" }
+vim.opt.guicursor = "i:block"
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.swapfile = false
+vim.opt.clipboard = "unnamedplus"
+vim.opt.wrap = false
+
+vim.opt.hlsearch = true
+vim.opt.mouse = "a"
+vim.opt.breakindent = true
+vim.opt.undofile = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.smartindent = true
+vim.opt.updatetime = 250
+vim.opt.timeout = true
+vim.opt.timeoutlen = 300
+vim.opt.completeopt = "menu,menuone,noselect"
+vim.opt.termguicolors = true
+vim.opt.expandtab = true
+vim.opt.inccommand = "split" -- Get a preview of replacements
+vim.opt.scrolloff = 8
+vim.opt.sidescrolloff = 8
+vim.opt.signcolumn = "yes:1" -- always show signcolumns
+vim.opt.colorcolumn = "80"
 vim.g.mapleader = " "
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -13,7 +80,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	-- { "catppuccin/nvim", name = "catppuccin" },
-	-- If you are using Packer
 	-- {
 	-- 	"nordtheme/vim",
 	-- },
@@ -37,19 +103,22 @@ require("lazy").setup({
 	--   },
 	-- },
 	--  {
-	-- 	"folke/tokyonight.nvim",
-	-- 	config = {
-	-- 		transparent = true,
-	-- 		styles = {
-	-- 			floats = "transparent",
-	-- 			sidebars = "transparent",
-	-- 		},
-	-- 		style = "moon",
-	-- 	},
+	{
+		"folke/tokyonight.nvim",
+		config = function()
+			require("tokyonight").setup({
+				transparent = true,
+				styles = {
+					floats = "transparent",
+					sidebars = "transparent",
+				},
+				style = "night",
+			})
+		end,
+	},
 	-- },
 
 	-- { "olivercederborg/poimandres.nvim", opts = nil },
-	-- { "rmehri01/onenord.nvim", opts = nil },
 	{
 		"rose-pine/neovim",
 		config = function()
@@ -160,7 +229,16 @@ require("lazy").setup({
 			},
 		},
 	},
-	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = true, enabled = true },
+	{
+		"telescope.nvim",
+		dependencies = {
+			"nvim-telescope/telescope-fzf-native.nvim",
+			build = "make",
+			config = function()
+				require("telescope").load_extension("fzf")
+			end,
+		},
+	},
 	{ "onsails/lspkind-nvim", dependencies = "famiu/bufdelete.nvim" },
 	{
 		"nvim-lualine/lualine.nvim",
@@ -205,7 +283,7 @@ require("lazy").setup({
 				options = {
 					icons_enabled = true,
 					globalstatus = true,
-					theme = "rose-pine",
+					theme = "tokyonight",
 					component_separators = { " ", " " },
 					section_separators = { left = "", right = "" },
 					disabled_filetypes = {},
@@ -366,6 +444,88 @@ require("lazy").setup({
 			},
 		},
 	}, -- Required
+
+	{
+		"nvim-tree/nvim-tree.lua",
+		keys = {
+			{ "<leader>tf", "<cmd>NvimTreeToggle<cr>", desc = "Toggle nvimtree" },
+		},
+		config = function()
+			require("nvim-tree").setup({
+				disable_netrw = true,
+				hijack_netrw = true,
+				hijack_cursor = true,
+				hijack_unnamed_buffer_when_opening = false,
+				sync_root_with_cwd = true,
+				update_focused_file = {
+					enable = true,
+					update_root = false,
+				},
+				view = {
+					adaptive_size = false,
+					side = "left",
+					width = 30,
+					preserve_window_proportions = true,
+				},
+				git = {
+					enable = false,
+					ignore = true,
+				},
+				filesystem_watchers = {
+					enable = true,
+				},
+				actions = {
+					open_file = {
+						resize_window = true,
+					},
+				},
+				renderer = {
+					root_folder_label = false,
+					highlight_git = false,
+					highlight_opened_files = "none",
+
+					indent_markers = {
+						enable = false,
+					},
+
+					icons = {
+						show = {
+							file = true,
+							folder = true,
+							folder_arrow = true,
+							git = false,
+						},
+
+						glyphs = {
+							default = "󰈚",
+							symlink = "",
+							folder = {
+								default = "󰉋",
+								empty = "",
+								empty_open = "",
+								open = "",
+								symlink = "",
+								symlink_open = "",
+								arrow_open = "",
+								arrow_closed = "",
+							},
+							git = {
+								unstaged = "✗",
+								staged = "✓",
+								unmerged = "",
+								renamed = "➜",
+								untracked = "★",
+								deleted = "",
+								ignored = "◌",
+							},
+						},
+					},
+				},
+			})
+		end,
+	},
+	"folke/which-key.nvim",
+
 	{
 		"VonHeikemen/lsp-zero.nvim",
 		branch = "v2.x",
@@ -396,7 +556,7 @@ require("lazy").setup({
 		opts = {
 			direction = "horizontal",
 			size = 15,
-			open_mapping = [[<leader>t]],
+			open_mapping = [[<leader>te]],
 		},
 	},
 	{ "numToStr/Comment.nvim", opts = {} },
@@ -541,7 +701,37 @@ require("lazy").setup({
 		"simrat39/symbols-outline.nvim",
 		cmd = { "SymbolsOutline" },
 	},
-	"NvChad/nvim-colorizer.lua",
+	{
+		"NvChad/nvim-colorizer.lua",
+		config = {
+			require("colorizer").setup({
+				filetypes = { "*" },
+				user_default_options = {
+					RGB = true, -- #RGB hex codes
+					RRGGBB = true, -- #RRGGBB hex codes
+					names = true, -- "Name" codes like Blue or blue
+					RRGGBBAA = true, -- #RRGGBBAA hex codes
+					AARRGGBB = true, -- 0xAARRGGBB hex codes
+					rgb_fn = true, -- CSS rgb() and rgba() functions
+					hsl_fn = true, -- CSS hsl() and hsla() functions
+					css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+					css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
+					-- Available modes for `mode`: foreground, background,  virtualtext
+					mode = "background", -- Set the display mode.
+					-- Available methods are false / true / "normal" / "lsp" / "both"
+					-- True is same as normal
+					tailwind = false, -- Enable tailwind colors
+					-- parsers can contain values used in |user_default_options|
+					sass = { enable = true }, -- Enable sass colors
+					virtualtext = "■",
+					-- update color values even if buffer is not focused
+					-- example use: cmp_menu, cmp_docs
+					always_update = false,
+				},
+				buftypes = {},
+			}),
+		},
+	},
 })
 
 vim.keymap.set("n", "<leader>xx", "<cmd>TroubleToggle<cr>", { silent = true, noremap = true })
@@ -553,11 +743,11 @@ vim.keymap.set("n", "gR", "<cmd>TroubleToggle lsp_references<cr>", { silent = tr
 
 vim.api.nvim_set_keymap("n", "<leader>gc", ':Git commit -m "', { noremap = false })
 vim.api.nvim_set_keymap("n", "<leader>gp", ":Git push -u origin HEAD<CR>", { noremap = false })
--- some
-vim.keymap.set("n", "<A-b>", ":Ex<CR>")
 
 -- split screen and navigation
 vim.keymap.set("n", "<C-h>", ":wincmd h<CR>", { noremap = true })
+vim.keymap.set("n", "<C-j>", ":wincmd j<CR>", { noremap = true })
+vim.keymap.set("n", "<C-k>", ":wincmd k<CR>", { noremap = true })
 vim.keymap.set("n", "<C-l>", ":wincmd l<CR>", { noremap = true })
 
 -- See `:help telescope.builtin`
@@ -610,16 +800,16 @@ end, silent)
 vim.keymap.set("n", "<C-e>", function()
 	require("harpoon.ui").toggle_quick_menu()
 end, silent)
-vim.keymap.set("n", "<leader>h", function()
+vim.keymap.set("n", "<leader>1", function()
 	require("harpoon.ui").nav_file(1)
 end, silent)
-vim.keymap.set("n", "<leader>j", function()
+vim.keymap.set("n", "<leader>2", function()
 	require("harpoon.ui").nav_file(2)
 end, silent)
-vim.keymap.set("n", "<leader>k", function()
+vim.keymap.set("n", "<leader>3", function()
 	require("harpoon.ui").nav_file(3)
 end, silent)
-vim.keymap.set("n", "<leader>l", function()
+vim.keymap.set("n", "<leader>4", function()
 	require("harpoon.ui").nav_file(4)
 end, silent)
 
@@ -676,7 +866,7 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
 	border = "rounded",
 })
 
-vim.cmd("colorscheme rose-pine")
+vim.cmd("colorscheme tokyonight-night")
 -- vim.cmd("au ColorScheme * hi! Normal guibg=NONE")
 -- vim.cmd("au ColorScheme * hi! SignColumn guibg=NONE")
 -- vim.cmd("au ColorScheme * hi! LineNr guibg=NONE")
@@ -707,37 +897,3 @@ autocmd("TextYankPost", {
 		})
 	end,
 })
-
-vim.o.background = "dark"
-vim.g.transparency = true
-
-vim.keymap.set("i", "jj", "<Esc>")
-
-vim.opt.backspace = { "indent", "eol", "start" }
-vim.opt.guicursor = "i:block"
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.swapfile = false
-vim.opt.clipboard = "unnamedplus"
-vim.opt.wrap = false
-
-vim.opt.hlsearch = true
-vim.opt.mouse = "a"
-vim.opt.breakindent = true
-vim.opt.undofile = true
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.smartindent = true
-vim.opt.updatetime = 250
-vim.opt.timeout = true
-vim.opt.timeoutlen = 300
-vim.opt.completeopt = "menu,menuone,noselect"
-vim.opt.termguicolors = true
-vim.opt.expandtab = true
-vim.opt.inccommand = "split" -- Get a preview of replacements
-vim.opt.scrolloff = 8
-vim.opt.sidescrolloff = 8
-vim.opt.signcolumn = "yes:1" -- always show signcolumns
-vim.opt.colorcolumn = "80"
