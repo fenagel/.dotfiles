@@ -1,8 +1,6 @@
 vim.o.background = "dark"
 vim.g.transparency = true
 
-vim.keymap.set("i", "jj", "<Esc>")
-
 vim.opt.backspace = { "indent", "eol", "start" }
 vim.opt.guicursor = "i:block"
 vim.opt.tabstop = 2
@@ -32,36 +30,6 @@ vim.opt.sidescrolloff = 8
 vim.opt.signcolumn = "yes:1" -- always show signcolumns
 vim.opt.colorcolumn = "80"
 
-vim.keymap.set("i", "jj", "<Esc>")
-
-vim.opt.backspace = { "indent", "eol", "start" }
-vim.opt.guicursor = "i:block"
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.swapfile = false
-vim.opt.clipboard = "unnamedplus"
-vim.opt.wrap = false
-
-vim.opt.hlsearch = true
-vim.opt.mouse = "a"
-vim.opt.breakindent = true
-vim.opt.undofile = true
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.smartindent = true
-vim.opt.updatetime = 250
-vim.opt.timeout = true
-vim.opt.timeoutlen = 300
-vim.opt.completeopt = "menu,menuone,noselect"
-vim.opt.termguicolors = true
-vim.opt.expandtab = true
-vim.opt.inccommand = "split" -- Get a preview of replacements
-vim.opt.scrolloff = 8
-vim.opt.sidescrolloff = 8
-vim.opt.signcolumn = "yes:1" -- always show signcolumns
-vim.opt.colorcolumn = "80"
 vim.g.mapleader = " "
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -480,11 +448,9 @@ require("lazy").setup({
 					root_folder_label = false,
 					highlight_git = false,
 					highlight_opened_files = "none",
-
 					indent_markers = {
 						enable = false,
 					},
-
 					icons = {
 						show = {
 							file = true,
@@ -492,7 +458,6 @@ require("lazy").setup({
 							folder_arrow = true,
 							git = false,
 						},
-
 						glyphs = {
 							default = "󰈚",
 							symlink = "",
@@ -731,6 +696,7 @@ require("lazy").setup({
 	},
 })
 
+vim.keymap.set("i", "jj", "<Esc>")
 vim.keymap.set("n", "<leader>xx", "<cmd>TroubleToggle<cr>", { silent = true, noremap = true })
 vim.keymap.set("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>", { silent = true, noremap = true })
 vim.keymap.set("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>", { silent = true, noremap = true })
