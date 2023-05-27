@@ -32,9 +32,6 @@ vim.opt.sidescrolloff = 8
 vim.opt.signcolumn = "yes:1" -- always show signcolumns
 vim.opt.colorcolumn = "80"
 
-vim.o.background = "dark"
-vim.g.transparency = true
-
 vim.keymap.set("i", "jj", "<Esc>")
 
 vim.opt.backspace = { "indent", "eol", "start" }
@@ -119,14 +116,14 @@ require("lazy").setup({
 	-- },
 
 	-- { "olivercederborg/poimandres.nvim", opts = nil },
-	{
-		"rose-pine/neovim",
-		config = function()
-			require("lazy").setup({
-				{ "rose-pine/neovim", name = "rose-pine" },
-			})
-		end,
-	},
+	-- {
+	-- 	"rose-pine/neovim",
+	-- 	config = function()
+	-- 		require("lazy").setup({
+	-- 			{ "rose-pine/neovim", name = "rose-pine" },
+	-- 		})
+	-- 	end,
+	-- },
 	{
 		"ellisonleao/gruvbox.nvim",
 		opts = {
@@ -283,7 +280,7 @@ require("lazy").setup({
 				options = {
 					icons_enabled = true,
 					globalstatus = true,
-					theme = "tokyonight",
+					theme = "grubox",
 					component_separators = { " ", " " },
 					section_separators = { left = "", right = "" },
 					disabled_filetypes = {},
@@ -448,7 +445,7 @@ require("lazy").setup({
 	{
 		"nvim-tree/nvim-tree.lua",
 		keys = {
-			{ "<leader>tf", "<cmd>NvimTreeToggle<cr>", desc = "Toggle nvimtree" },
+			{ "<leader>tt", "<cmd>NvimTreeToggle<cr>", desc = "Toggle nvimtree" },
 		},
 		config = function()
 			require("nvim-tree").setup({
@@ -866,7 +863,7 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
 	border = "rounded",
 })
 
-vim.cmd("colorscheme tokyonight-night")
+vim.cmd("colorscheme gruvbox")
 -- vim.cmd("au ColorScheme * hi! Normal guibg=NONE")
 -- vim.cmd("au ColorScheme * hi! SignColumn guibg=NONE")
 -- vim.cmd("au ColorScheme * hi! LineNr guibg=NONE")
