@@ -20,8 +20,7 @@ export HOMEBREW_NO_ANALYTICS=1
 # Disable warning about insecure completion-dependent directories
 ZSH_DISABLE_COMPFIX=true
 
-# Load rbenv if installed (to manage your Ruby versions)
-export PATH="${HOME}/.rbenv/bin:${PATH}" # Needed for Linux/WSL
+export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:${HOME}/.local/bin:$HOME/.config/tmux/plugins/tmux-nvr/bin:$HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin:$HOME/.config/bin:${HOME}/.rbenv/bin:${PATH}:./bin:./node_modules/.bin:${PATH}:/usr/local/sbin:${HOME}/.config/bin
 type -a rbenv > /dev/null && eval "$(rbenv init -)"
 
 # Load pyenv (to manage your Python versions)
@@ -63,8 +62,6 @@ type -a nvm > /dev/null && load-nvmrc
 # Rails and Ruby uses the local `bin` folder to store binstubs.
 # So instead of running `bin/rails` like the doc says, just run `rails`
 # Same for `./node_modules/.bin` and nodejs
-export PATH="./bin:./node_modules/.bin:${PATH}:/usr/local/sbin"
-export PATH="${HOME}/.config/bin"
 
 # Store your own aliases in the ~/.aliases file and load the here.
 [[ -f "$HOME/.aliases" ]] && source "$HOME/.aliases"
