@@ -69,18 +69,56 @@ require("lazy").setup({
 	-- },
 	--  {
 	{
-		"folke/tokyonight.nvim",
+		"svrana/neosolarized.nvim",
+		dependencies = { "tjdevries/colorbuddy.nvim" },
 		config = function()
-			require("tokyonight").setup({
-				transparent = true,
-				styles = {
-					floats = "transparent",
-					sidebars = "transparent",
-				},
-				style = "night",
+			require("neosolarized").setup({
+				comment_italics = true,
 			})
+			local cb = require("colorbuddy.init")
+			local Color = cb.Color
+			local colors = cb.colors
+			local Group = cb.Group
+			local groups = cb.groups
+			local styles = cb.styles
+
+			Color.new("white", "#ffffff")
+			Color.new("black", "#000000")
+			Group.new("Normal", colors.base1, colors.NONE, styles.NONE)
+			Group.new("CursorLine", colors.none, colors.base03, styles.NONE, colors.base1)
+			Group.new("CursorLineNr", colors.yellow, colors.black, styles.NONE, colors.base1)
+			Group.new("Visual", colors.none, colors.base03, styles.reverse)
+
+			local cError = groups.Error.fg
+			local cInfo = groups.Information.fg
+			local cWarn = groups.Warning.fg
+			local cHint = groups.Hint.fg
+
+			Group.new("DiagnosticVirtualTextError", cError, cError:dark():dark():dark():dark(), styles.NONE)
+			Group.new("DiagnosticVirtualTextInfo", cInfo, cInfo:dark():dark():dark(), styles.NONE)
+			Group.new("DiagnosticVirtualTextWarn", cWarn, cWarn:dark():dark():dark(), styles.NONE)
+			Group.new("DiagnosticVirtualTextHint", cHint, cHint:dark():dark():dark(), styles.NONE)
+			Group.new("DiagnosticUnderlineError", colors.none, colors.none, styles.undercurl, cError)
+			Group.new("DiagnosticUnderlineWarn", colors.none, colors.none, styles.undercurl, cWarn)
+			Group.new("DiagnosticUnderlineInfo", colors.none, colors.none, styles.undercurl, cInfo)
+			Group.new("DiagnosticUnderlineHint", colors.none, colors.none, styles.undercurl, cHint)
+
+			Group.new("HoverBorder", colors.yellow, colors.none, styles.NONE)
 		end,
 	},
+	-- {
+	-- 	"folke/tokyonight.nvim",
+	-- 	config = function()
+	-- 		require("tokyonight").setup({
+	-- 			transparent = true,
+	-- 			styles = {
+	-- 				floats = "transparent",
+	-- 				sidebars = "transparent",
+	-- 			},
+	-- 			style = "night",
+	-- 		})
+	-- 	end,
+	-- },
 	-- },
 
 	-- { "olivercederborg/poimandres.nvim", opts = nil },
@@ -100,20 +138,6 @@ require("lazy").setup({
 			-- 	gray = "#2ea542",
 			-- },
 			inverse = true, -- invert background for search, diffs, statuslines and errors
-			-- overrides = {
-			-- 	-- TelescopeMatching = { fg = colors.flamingo },
-			-- 	-- TelescopeSelection = { fg = colors.text, bg = colors.surface0, bold = true },
-			-- 	-- TelescopePromptPrefix = { bg = colors.surface0 },
-			-- 	-- TelescopeResultsNormal = { bg = colors.mantle },
-			-- 	-- TelescopePreviewNormal = { bg = colors.mantle },
-			-- 	-- TelescopePromptBorder = { bg = colors.surface0, fg = colors.surface0 },
-			-- 	-- TelescopeResultsBorder = { bg = colors.mantle, fg = colors.mantle },
-			-- 	-- TelescopePreviewBorder = { bg = colors.mantle, fg = colors.mantle },
-			-- 	-- TelescopePromptTitle = { bg = colors.pink, fg = colors.mantle },
-			-- 	-- TelescopeResultsTitle = { fg = colors.mantle },
-			-- 	-- TelescopePreviewTitle = { bg = colors.green, fg = colors.mantle },
-			-- 	TelescopePromptNormal = { bg = "#1d2021" },
-			-- },
 			dim_inactive = false,
 			transparent_mode = true,
 		},
@@ -248,7 +272,7 @@ require("lazy").setup({
 				options = {
 					icons_enabled = true,
 					globalstatus = true,
-					theme = "grubox",
+					theme = "gruvbox",
 					component_separators = { " ", " " },
 					section_separators = { left = "", right = "" },
 					disabled_filetypes = {},
@@ -345,14 +369,14 @@ require("lazy").setup({
 				mapping = cmp.mapping.preset.insert({
 					["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
 					["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-					["<C-u>"] = cmp.mapping.scroll_docs(-4),
-					["<C-d>"] = cmp.mapping.scroll_docs(4),
-					-- ["<C-e>"] = cmp.mapping.complete(),
-					["<C-e>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-					-- ["<S-CR>"] = cmp.mapping.confirm({
-					-- 	behavior = cmp.ConfirmBehavior.Replace,
-					-- 	select = true,
-					-- }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+					["<C-d>"] = cmp.mapping.scroll_docs(-4),
+					["<C-f>"] = cmp.mapping.scroll_docs(4),
+					["<C-Space>"] = cmp.mapping.complete(),
+					["<C-e>"] = cmp.mapping.close(),
+					["<CR>"] = cmp.mapping.confirm({
+						behavior = cmp.ConfirmBehavior.Replace,
+						select = true,
+					}),
 				}),
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },
@@ -694,6 +718,8 @@ require("lazy").setup({
 			}),
 		},
 	},
+	"windwp/nvim-autopairs",
+	"windwp/nvim-ts-autotag",
 })
 
 vim.keymap.set("i", "jj", "<Esc>")
@@ -829,7 +855,7 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
 	border = "rounded",
 })
 
-vim.cmd("colorscheme gruvbox")
+vim.cmd("colorscheme neosolarized")
 -- vim.cmd("au ColorScheme * hi! Normal guibg=NONE")
 -- vim.cmd("au ColorScheme * hi! SignColumn guibg=NONE")
 -- vim.cmd("au ColorScheme * hi! LineNr guibg=NONE")
