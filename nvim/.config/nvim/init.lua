@@ -272,7 +272,7 @@ require("lazy").setup({
 				options = {
 					icons_enabled = true,
 					globalstatus = true,
-					theme = "gruvbox",
+					theme = "solarized_dark",
 					component_separators = { " ", " " },
 					section_separators = { left = "", right = "" },
 					disabled_filetypes = {},
