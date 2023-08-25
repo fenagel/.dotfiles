@@ -7,77 +7,46 @@
 # A cross-platform, OpenGL terminal emulator.
 # https://alacritty.org
 
-# Colors (Poimandres)
+draw_bold_text_with_bright_colors: true
+# Colors
 colors:
-    # Default colors
-    primary:
-        background: "0x1b1e28"
-        foreground: "0xa6accd"
+  # Default colors
+  primary:
+    background:        '#011627'
+    foreground:        '#bdc1c6'
+    bright_foreground: '#eeeeee'
 
-    # Cursor colors
-    cursor:
-        text: CellBackground
-        cursor: CellForeground
+  # Cursor colors
+  cursor:
+    text:   '#080808'
+    cursor: '#9ca1aa'
 
-    # Search colors
-    #
-    # Colors used for the search bar and match highlighting.
-    search:
-        # Allowed values are CellForeground/CellBackground, which reference the
-        # affected cell, or hexadecimal colors like #ff00ff.
-        matches:
-            foreground: "0x1b1e28"
-            background: "0xadd7ff"
+  # Selection colors
+  selection:
+    text:       '#080808'
+    background: '#b2ceee'
 
-        focused_match:
-            foreground: "0x1b1e28"
-            background: "0xadd7ff"
+  # Normal colors
+  normal:
+    black:   '#1d3b53'
+    red:     '#fc514e'
+    green:   '#a1cd5e'
+    yellow:  '#e3d18a'
+    blue:    '#82aaff'
+    magenta: '#c792ea'
+    cyan:    '#7fdbca'
+    white:   '#a1aab8'
 
-        footer_bar:
-            foreground: "0x1b1e28"
-            background: "0xadd7ff"
-
-    # Selection colors
-    #
-    # Colors which should be used to draw the selection area.
-    #
-    # Allowed values are CellForeground/CellBackground, which reference the
-    # affected cell, or hexadecimal colors like #ff00ff.
-    selection:
-        text: CellForeground
-        background: "0x303340"
-
-    # Vi mode cursor colors
-    #
-    # Colors for the cursor when the vi mode is active.
-    #
-    # Allowed values are CellForeground/CellBackground, which reference the
-    # affected cell, or hexadecimal colors like #ff00ff.
-    vi_mode_cursor:
-        text: CellBackground
-        cursor: CellForeground
-
-    # Normal colors
-    normal:
-        black: "0x1b1e28"
-        red: "0xd0679d"
-        green: "0x5de4c7"
-        yellow: "0xfffac2"
-        blue: "0x89ddff"
-        magenta: "0xfcc5e9"
-        cyan: "0xadd7ff"
-        white: "0xffffff"
-
-    # Bright colors
-    bright:
-        black: "0xa6accd"
-        red: "0xd0679d"
-        green: "0x5de4c7"
-        yellow: "0xfffac2"
-        blue: "0xadd7ff"
-        magenta: "0xfae4fc"
-        cyan: "0x89ddff"
-        white: "0xffffff"
+  # Bright colors
+  bright:
+    black:   '#7c8f8f'
+    red:     '#ff5874'
+    green:   '#21c7a8'
+    yellow:  '#ecc48d'
+    blue:    '#82aaff'
+    magenta: '#ae81ff'
+    cyan:    '#7fdbca'
+    white:   '#d6deeb'
 
 live_config_reload: true
 
