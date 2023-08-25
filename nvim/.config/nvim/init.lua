@@ -10,6 +10,7 @@ vim.opt.relativenumber = true
 vim.opt.swapfile = false
 vim.opt.clipboard = ""
 vim.opt.wrap = false
+vim.opt.clipboard:append("unnamedplus") -- use system clipboard as default register
 
 vim.opt.hlsearch = true
 vim.opt.mouse = "a"
@@ -45,42 +46,49 @@ end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   {
-    "catppuccin/nvim",
-    lazy = true,
-    name = "catppuccin",
-    opts = {
-      flavour = "mocha",
-      transparent_background = true,
-      integrations = {
-        alpha = true,
-        cmp = true,
-        gitsigns = true,
-        illuminate = true,
-        indent_blankline = { enabled = true },
-        lsp_trouble = true,
-        mason = true,
-        mini = true,
-        native_lsp = {
-          enabled = true,
-          underlines = {
-            errors = { "undercurl" },
-            hints = { "undercurl" },
-            warnings = { "undercurl" },
-            information = { "undercurl" },
-          },
-        },
-        navic = { enabled = true },
-        neotest = true,
-        noice = true,
-        notify = true,
-        neotree = true,
-        semantic_tokens = true,
-        telescope = true,
-        treesitter = true,
-        which_key = true,
-      },
-    },
+    "bluz71/vim-nightfly-colors",
+    name = "nightfly",
+    lazy = false,
+    priority = 1000
   },
+  -- {
+  --   "catppuccin/nvim",
+  --   lazy = true,
+  --   name = "catppuccin",
+  --   opts = {
+  --     flavour = "mocha",
+  --     transparent_background = true,
+  --     integrations = {
+  --       alpha = true,
+  --       cmp = true,
+  --       gitsigns = true,
+  --       illuminate = true,
+  --       indent_blankline = { enabled = true },
+  --       lsp_trouble = true,
+  --       mason = true,
+  --       mini = true,
+  --       native_lsp = {
+  --         enabled = true,
+  --         underlines = {
+  --           errors = { "undercurl" },
+  --           hints = { "undercurl" },
+  --           warnings = { "undercurl" },
+  --           information = { "undercurl" },
+  --         },
+  --       },
+  --       navic = { enabled = true },
+  --       neotest = true,
+  --       noice = true,
+  --       notify = true,
+  --       neotree = true,
+  --       semantic_tokens = true,
+  --       telescope = true,
+  --       treesitter = true,
+  --       which_key = true,
+  --     },
+  --   },
+  -- },
+  -- { 'rose-pine/neovim',     name = 'rose-pine' },
   -- {
   -- 	"nordtheme/vim",
   -- },
@@ -95,29 +103,24 @@ require("lazy").setup({
   -- 	end,
   -- },
   -- {
-  -- 	"folke/tokyonight.nvim",
-  -- 	config = function()
-  -- 		require("tokyonight").setup({
-  -- 			transparent = true,
-  -- 			styles = {
-  -- 				floats = "transparent",
-  -- 				sidebars = "transparent",
-  -- 			},
-  -- 			style = "night",
-  -- 		})
-  -- 	end,
+  --   'sainnhe/everforest'
+  -- },
+  -- {
+  --   "folke/tokyonight.nvim",
+  --   config = function()
+  --     require("tokyonight").setup({
+  --       transparent = true,
+  --       styles = {
+  --         floats = "transparent",
+  --         sidebars = "transparent",
+  --       },
+  --       style = "night",
+  --     })
+  --   end,
   -- },
   -- },
 
   -- { "olivercederborg/poimandres.nvim", opts = nil },
-  -- {
-  -- 	"rose-pine/neovim",
-  -- 	config = function()
-  -- 		require("lazy").setup({
-  -- 			{ "rose-pine/neovim", name = "rose-pine" },
-  -- 		})
-  -- 	end,
-  -- },
   {
     "ellisonleao/gruvbox.nvim",
     opts = {
@@ -282,7 +285,7 @@ require("lazy").setup({
         options = {
           icons_enabled = true,
           globalstatus = true,
-          theme = "catppuccin",
+          theme = "nightfly",
           component_separators = { " ", " " },
           section_separators = { left = "", right = "" },
           disabled_filetypes = {},
@@ -557,125 +560,125 @@ require("lazy").setup({
     event = "VeryLazy",
     opts = {},
   }, { "MunifTanjim/nui.nvim", lazy = true },
-  {
-    "folke/noice.nvim",
-    event = "VeryLazy",
-    opts = {
-      lsp = {
-        override = {
-          ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-          ["vim.lsp.util.stylize_markdown"] = true,
-          ["cmp.entry.get_documentation"] = true,
-        },
-      },
-      routes = {
-        {
-          filter = {
-            event = "msg_show",
-            any = {
-              { find = "%d+L, %d+B" },
-              { find = "; after #%d+" },
-              { find = "; before #%d+" },
-            },
-          },
-          view = "mini",
-        },
-      },
-      presets = {
-        bottom_search = true,
-        command_palette = true,
-        long_message_to_split = true,
-        inc_rename = true,
-      },
-    },
-    -- stylua: ignore
-    keys = {
-      {
-        "<S-Enter>",
-        function() require("noice").redirect(vim.fn.getcmdline()) end,
-        mode = "c",
-        desc =
-        "Redirect Cmdline"
-      },
-      {
-        "<leader>snl",
-        function() require("noice").cmd("last") end,
-        desc =
-        "Noice Last Message"
-      },
-      {
-        "<leader>snh",
-        function() require("noice").cmd("history") end,
-        desc =
-        "Noice History"
-      },
-      { "<leader>sna", function() require("noice").cmd("all") end, desc = "Noice All" },
-      {
-        "<leader>snd",
-        function() require("noice").cmd("dismiss") end,
-        desc =
-        "Dismiss All"
-      },
-      {
-        "<c-f>",
-        function() if not require("noice.lsp").scroll(4) then return "<c-f>" end end,
-        silent = true,
-        expr = true,
-        desc =
-        "Scroll forward",
-        mode = {
-          "i", "n", "s" }
-      },
-      {
-        "<c-b>",
-        function() if not require("noice.lsp").scroll(-4) then return "<c-b>" end end,
-        silent = true,
-        expr = true,
-        desc =
-        "Scroll backward",
-        mode = {
-          "i", "n", "s" }
-      },
-    },
-  },
-  {
-    "rcarriga/nvim-notify",
-    keys = {
-      {
-        "<leader>un",
-        function()
-          require("notify").dismiss({ silent = true, pending = true })
-        end,
-        desc = "Dismiss all Notifications",
-      },
-    },
-    opts = {
-      timeout = 3000,
-      background_colour = "#000000",
-      max_height = function()
-        return math.floor(vim.o.lines * 0.75)
-      end,
-      max_width = function()
-        return math.floor(vim.o.columns * 0.75)
-      end,
-    },
-  },
-  {
-    "stevearc/dressing.nvim",
-    lazy = true,
-    init = function()
-      ---@diagnostic disable-next-line: duplicate-set-field
-      vim.ui.select = function(...)
-        require("lazy").load({ plugins = { "dressing.nvim" } })
-        return vim.ui.select(...)
-      end
-      ---@diagnostic disable-next-line: duplicate-set-field
-      vim.ui.input = function(...)
-        require("lazy").load({ plugins = { "dressing.nvim" } })
-        return vim.ui.input(...)
-      end
-    end,
-  },
+  -- {
+  --   "folke/noice.nvim",
+  --   event = "VeryLazy",
+  --   opts = {
+  --     lsp = {
+  --       override = {
+  --         ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+  --         ["vim.lsp.util.stylize_markdown"] = true,
+  --         ["cmp.entry.get_documentation"] = true,
+  --       },
+  --     },
+  --     routes = {
+  --       {
+  --         filter = {
+  --           event = "msg_show",
+  --           any = {
+  --             { find = "%d+L, %d+B" },
+  --             { find = "; after #%d+" },
+  --             { find = "; before #%d+" },
+  --           },
+  --         },
+  --         view = "mini",
+  --       },
+  --     },
+  --     presets = {
+  --       bottom_search = true,
+  --       command_palette = true,
+  --       long_message_to_split = true,
+  --       inc_rename = true,
+  --     },
+  --   },
+  --   -- stylua: ignore
+  --   keys = {
+  --     {
+  --       "<S-Enter>",
+  --       function() require("noice").redirect(vim.fn.getcmdline()) end,
+  --       mode = "c",
+  --       desc =
+  --       "Redirect Cmdline"
+  --     },
+  --     {
+  --       "<leader>snl",
+  --       function() require("noice").cmd("last") end,
+  --       desc =
+  --       "Noice Last Message"
+  --     },
+  --     {
+  --       "<leader>snh",
+  --       function() require("noice").cmd("history") end,
+  --       desc =
+  --       "Noice History"
+  --     },
+  --     { "<leader>sna", function() require("noice").cmd("all") end, desc = "Noice All" },
+  --     {
+  --       "<leader>snd",
+  --       function() require("noice").cmd("dismiss") end,
+  --       desc =
+  --       "Dismiss All"
+  --     },
+  --     {
+  --       "<c-f>",
+  --       function() if not require("noice.lsp").scroll(4) then return "<c-f>" end end,
+  --       silent = true,
+  --       expr = true,
+  --       desc =
+  --       "Scroll forward",
+  --       mode = {
+  --         "i", "n", "s" }
+  --     },
+  --     {
+  --       "<c-b>",
+  --       function() if not require("noice.lsp").scroll(-4) then return "<c-b>" end end,
+  --       silent = true,
+  --       expr = true,
+  --       desc =
+  --       "Scroll backward",
+  --       mode = {
+  --         "i", "n", "s" }
+  --     },
+  --   },
+  -- },
+  -- {
+  --   "rcarriga/nvim-notify",
+  --   keys = {
+  --     {
+  --       "<leader>un",
+  --       function()
+  --         require("notify").dismiss({ silent = true, pending = true })
+  --       end,
+  --       desc = "Dismiss all Notifications",
+  --     },
+  --   },
+  --   opts = {
+  --     timeout = 3000,
+  --     background_colour = "#000000",
+  --     max_height = function()
+  --       return math.floor(vim.o.lines * 0.75)
+  --     end,
+  --     max_width = function()
+  --       return math.floor(vim.o.columns * 0.75)
+  --     end,
+  --   },
+  -- },
+  -- {
+  --   "stevearc/dressing.nvim",
+  --   lazy = true,
+  --   init = function()
+  --     ---@diagnostic disable-next-line: duplicate-set-field
+  --     vim.ui.select = function(...)
+  --       require("lazy").load({ plugins = { "dressing.nvim" } })
+  --       return vim.ui.select(...)
+  --     end
+  --     ---@diagnostic disable-next-line: duplicate-set-field
+  --     vim.ui.input = function(...)
+  --       require("lazy").load({ plugins = { "dressing.nvim" } })
+  --       return vim.ui.input(...)
+  --     end
+  --   end,
+  -- },
   { "norcalli/nvim-colorizer.lua",
   },
   {
@@ -701,16 +704,16 @@ require("lazy").setup({
       "rafamadriz/friendly-snippets", -- Optional
     },
   },
-  {
-    "akinsho/toggleterm.nvim",
-    version = "*",
-    config = true,
-    opts = {
-      direction = "horizontal",
-      size = 15,
-      open_mapping = [[<leader>te]],
-    },
-  },
+  -- {
+  --   "akinsho/toggleterm.nvim",
+  --   version = "*",
+  --   config = true,
+  --   opts = {
+  --     direction = "horizontal",
+  --     size = 15,
+  --     open_mapping = [[<leader>te]],
+  --   },
+  -- },
   { "numToStr/Comment.nvim", opts = {} },
   "ThePrimeagen/harpoon",
   {
@@ -1018,15 +1021,22 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
   border = "rounded",
 })
 
-vim.cmd("colorscheme catppuccin")
+vim.cmd("colorscheme nightfly")
 -- vim.cmd("au ColorScheme * hi! Normal guibg=NONE")
 -- vim.cmd("au ColorScheme * hi! SignColumn guibg=NONE")
 -- vim.cmd("au ColorScheme * hi! LineNr guibg=NONE")
 -- vim.cmd("au ColorScheme * hi! CursorLineNr guibg=NONE")
 -- vim.cmd("au ColorScheme * hi! Normal guibg=none")
+vim.g.everforest_diagnostic_line_highlight = 1
+vim.g.nightflyTransparent = true
 
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
+vim.api.nvim_set_hl(0, 'LineNr', { bg = "none" })
+vim.api.nvim_set_hl(0, 'CursorLineNr', { bg = "none" })
+vim.api.nvim_set_hl(0, 'FloatBorder', { bg = "none" })
+
 -- Format on save
 vim.api.nvim_create_autocmd("BufWritePre", {
   callback = function()
