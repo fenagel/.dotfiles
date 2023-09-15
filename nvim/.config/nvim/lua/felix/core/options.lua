@@ -41,13 +41,6 @@ opt.splitbelow = true -- split horizontal window to the bottom
 -- turn off swapfile
 opt.swapfile = false
 
-vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
-vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
-vim.api.nvim_set_hl(0, "CursorLineNr", { bg = "none" })
-vim.api.nvim_set_hl(0, "FloatBoarder", { bg = "none" })
-
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 local yank_group = augroup("HighlightYank", {})

@@ -11,10 +11,25 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({ { import = "felix.plugins" }, { import = "felix.plugins.lsp" } }, {
-	-- install = {
-	-- 	colorscheme = { "nightfly" },
-	-- },
+require("lazy").setup({
+	-- -- add LazyVim and import its plugins
+	-- { "LazyVim/LazyVim", import = "lazyvim.plugins" },
+
+	-- additional plugins
+	-- { import = "lazyvim.plugins.extras.lang.go" },
+	-- { import = "lazyvim.plugins.extras.lang.json" },
+	-- { import = "lazyvim.plugins.extras.lang.tailwind" },
+	-- { import = "lazyvim.plugins.extras.lang.typescript" },
+	-- { import = "lazyvim.plugins.extras.util.mini-hipatterns" },
+
+	-- import all plugins from the plugins folder
+	{ import = "felix.plugins" },
+	{ import = "felix.plugins.lsp" },
+}, {
+	install = { colorscheme = { "catppuccin", "tokyonight" } },
+	ui = {
+		border = "single",
+	},
 	checker = {
 		enabled = true,
 		notify = false,
