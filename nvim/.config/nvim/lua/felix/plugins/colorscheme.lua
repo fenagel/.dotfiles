@@ -1,31 +1,59 @@
 return {
 	{
-		"bluz71/vim-nightfly-guicolors",
+		"catppuccin/nvim",
+		name = "catppuccin",
 		priority = 1000, -- make sure to load this before all the other start plugins
-		config = function()
-			-- load the colorscheme here
-			vim.cmd([[colorscheme nightfly]])
-			vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-			vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-			vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
-			vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
-			vim.api.nvim_set_hl(0, "CursorLineNr", { bg = "none" })
-			vim.api.nvim_set_hl(0, "FloatBoarder", { bg = "none" })
-
-			local augroup = vim.api.nvim_create_augroup
-			local autocmd = vim.api.nvim_create_autocmd
-			local yank_group = augroup("HighlightYank", {})
-
-			autocmd("TextYankPost", {
-				group = yank_group,
-				pattern = "*",
-				callback = function()
-					vim.highlight.on_yank({
-						higroup = "IncSearch",
-						timout = 40,
-					})
-				end,
-			})
-		end,
+		opts = {
+			flavour = "mocha",
+			transparent_background = true,
+			integrations = {
+				cmp = true,
+				fidget = true,
+				gitsigns = true,
+				harpoon = true,
+				lsp_trouble = true,
+				mason = true,
+				neotest = true,
+				noice = true,
+				notify = true,
+				octo = true,
+				telescope = {
+					enabled = true,
+				},
+				treesitter = true,
+				treesitter_context = false,
+				symbols_outline = true,
+				illuminate = true,
+				which_key = true,
+				barbecue = {
+					dim_dirname = true,
+					bold_basename = true,
+					dim_context = false,
+					alt_background = false,
+				},
+				native_lsp = {
+					enabled = true,
+					virtual_text = {
+						errors = { "italic" },
+						hints = { "italic" },
+						warnings = { "italic" },
+						information = { "italic" },
+					},
+					underlines = {
+						errors = { "underline" },
+						hints = { "underline" },
+						warnings = { "underline" },
+						information = { "underline" },
+					},
+				},
+			},
+		},
+	},
+	-- Configure LazyVim to load colorscheme
+	{
+		"LazyVim/LazyVim",
+		opts = {
+			colorscheme = "catppuccin",
+		},
 	},
 }
