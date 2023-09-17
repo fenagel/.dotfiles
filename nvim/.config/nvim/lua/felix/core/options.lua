@@ -21,6 +21,8 @@ opt.smartcase = true -- if you include mixed case in your search, assumes you wa
 opt.cursorline = true -- highlight the current cursor line
 
 -- appearance
+-- nightfly specific setting
+vim.g.nightflyTransparent = true
 
 -- turn on termguicolors for nightfly colorscheme to work
 -- (have to use iterm2 or any other true color terminal)

@@ -5,7 +5,6 @@ return {
 		config = function()
 			-- -- load the colorscheme here
 			vim.cmd([[colorscheme nightfly]])
-			vim.nightflyTransparent = true
 		end,
 	},
 	-- {
