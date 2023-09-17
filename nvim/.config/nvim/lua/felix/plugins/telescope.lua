@@ -13,6 +13,16 @@ return {
 		telescope.setup({
 			-- configure custom mappings
 			defaults = {
+				file_ignore_patterns = { ".git/", "node_modules" },
+				layout_config = {
+					height = 0.90,
+					width = 0.90,
+					preview_cutoff = 0,
+					horizontal = { preview_width = 0.60 },
+					vertical = { width = 0.55, height = 0.9, preview_cutoff = 0 },
+					prompt_position = "top",
+				},
+				sorting_strategy = "ascending",
 				path_display = { "truncate" },
 				mappings = {
 					i = {
