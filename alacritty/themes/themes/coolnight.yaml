@@ -25,3 +25,27 @@ colors:
     magenta: "0xae81ff"
     cyan: "0xff6ad7"
     white: "0x60fbbf"
+# Warp
+# accent: "#38ff9c" # Accent color for UI elements
+# background: "#010B17" # Terminal background color
+# details: darker # Whether the theme is lighter or darker.
+# foreground: "#ebddf4" # The foreground color.
+# terminal_colors:
+#   bright:
+#     black: "#62686c"
+#     red: "#FF54B0"
+#     green: "#74FFD8"
+#     yellow: "#FCF5AE"
+#     blue: "#388EFF"
+#     magenta: "#AE81FF"
+#     cyan: "#ff69d7"
+#     white: "#5ffbbe"
+#   normal:
+#     black: "#0B3B61"
+#     red: "#FF3A3A"
+#     green: "#52ffcf"
+#     yellow: "#fcf4ad"
+#     blue: "#378dfe"
+#     magenta: "#ae81ff"
+#     cyan: "#ff5dd4"
+#     white: "#15fca2"

@@ -26,7 +26,7 @@ require("lazy").setup({
 	{ import = "felix.plugins" },
 	{ import = "felix.plugins.lsp" },
 }, {
-	install = { colorscheme = { "nightfly", "catppuccin", "tokyonight" } },
+	install = { colorscheme = { "rose-pine", "nightfly", "catppuccin", "tokyonight" } },
 	ui = {
 		border = "single",
 	},
