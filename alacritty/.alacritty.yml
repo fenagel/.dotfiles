@@ -62,7 +62,7 @@ selection:
   save_to_clipboard: true
 
 window:
-  opacity: 0.95
+  opacity: 1
   padding:
     x: 18
     y: 16
