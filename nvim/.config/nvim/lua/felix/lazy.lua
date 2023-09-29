@@ -23,8 +23,8 @@ require("lazy").setup({
 	-- { import = "lazyvim.plugins.extras.util.mini-hipatterns" },
 
 	-- import all plugins from the plugins folder
-	{ import = "felix.plugins.lsp" },
 	{ import = "felix.plugins" },
+	{ import = "felix.plugins.lsp" },
 }, {
 	install = { colorscheme = { "rose-pine", "nightfly", "catppuccin", "tokyonight" } },
 	ui = {
