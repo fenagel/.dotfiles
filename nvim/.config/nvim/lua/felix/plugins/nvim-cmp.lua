@@ -47,7 +47,7 @@ return {
 			}),
 			-- configure lspkind for vs-code like pictograms in completion menu
 			formatting = {
-				fields = { cmp.ItemField.Menu, cmp.ItemField.Abbr, cmp.ItemField.Kind },
+				fields = { "menu", "abbr", "kind" },
 				format = lspkind.cmp_format({
 					mode = "symbol_text",
 					maxwidth = 50,
