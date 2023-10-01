@@ -33,5 +33,15 @@ return {
       format_kinds(entry, item) -- add icons
       return require("tailwindcss-colorizer-cmp").formatter(entry, item)
     end
+
+    opts.mapping = require("cmp").mapping.preset.insert({
+      ["<C-k>"] = require("cmp").mapping.select_prev_item(), -- previous suggestion
+      ["<C-j>"] = require("cmp").mapping.select_next_item(), -- next suggestion
+      ["<C-d>"] = require("cmp").mapping.scroll_docs(-4),
+      ["<C-u>"] = require("cmp").mapping.scroll_docs(4),
+      ["<C-Space>"] = require("cmp").mapping.complete(),
+      ["<C-e>"] = require("cmp").mapping.abort(),
+      ["<CR>"] = require("cmp").mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    })
   end,
 }
