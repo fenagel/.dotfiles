@@ -51,8 +51,8 @@ keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
 
-keymap.set("n", "<S-h>", "<cmd>bn<cr>", { desc = "Next" })
-keymap.set("n", "<S-l>", "<cmd>bp<cr>", { desc = "Previous" })
+keymap.set("n", "<S-h>", "<cmd>bp<cr>", { desc = "Previous" })
+keymap.set("n", "<S-l>", "<cmd>bn<cr>", { desc = "Next" })
 -- GO Keymaps
 -- GO error boiler plate macro
 keymap.set("n", "<leader>ge", [[oif err != nil {<CR>return nil, err<CR>}<CR><esc>kkI<esc>]])
