@@ -53,6 +53,7 @@ return {
 				-- https://github.com/rose-pine/neovim/wiki/Recipes
 				highlight_groups = {
 					ColorColumn = { bg = "rose" },
+					SignColumn = { bg = "none", fg="none" },
 
 					-- Blend colours against the "base" background
 					CursorLine = { bg = "foam", blend = 10 },
