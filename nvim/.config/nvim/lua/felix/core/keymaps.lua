@@ -17,7 +17,7 @@ keymap.set("n", "<Leader>sa", "ggVG<c-$>")
 keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
 
 -- clear search highlights
-keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
+keymap.set("n", "<leader>n", ":nohl<CR>", { desc = "Clear search highlights" })
 
 -- center after scrolling
 keymap.set("n", "<C-d>", "<C-d>zz")
