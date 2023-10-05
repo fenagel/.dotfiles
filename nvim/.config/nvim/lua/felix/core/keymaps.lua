@@ -17,13 +17,13 @@ keymap.set("n", "<Leader>sa", "ggVG<c-$>")
 keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
 
 -- clear search highlights
-keymap.set("n", "<leader>n", ":nohl<CR>", { desc = "Clear search highlights" })
+keymap.set("n", "<C-n>", ":nohl<CR>", { desc = "Clear search highlights" })
 
 -- center after scrolling
 keymap.set("n", "<C-d>", "<C-d>zz")
 keymap.set("n", "<C-u>", "<C-u>zz")
-keymap.set("n", "<C-n>", "<cmd>cnext<CR>zz")
-keymap.set("n", "<C-m>", "<cmd>cprev<CR>zz")
+-- keymap.set("n", "<C-n>", "<cmd>cnext<CR>zz")
+-- keymap.set("n", "<C-m>", "<cmd>cprev<CR>zz")
 
 -- move lines up and down
 keymap.set("v", "J", ":m '>+1<CR>gv=gv")
