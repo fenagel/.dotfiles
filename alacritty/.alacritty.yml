@@ -18,7 +18,6 @@ colors:
   vi_mode_cursor:
     text: "#1E1E2E" # base
     cursor: "#B4BEFE" # lavender
-
   # Search colors
   search:
     matches:
@@ -34,8 +33,8 @@ colors:
     foreground: None
     background: None
   selection:
-    text: "0xe0def4"
-    background: "0x403d52"
+    text: "#1E1E2E" # base
+    background: "#F5E0DC" # rosewater
   normal:
     black: "0x26233a"
     red: "0xeb6f92"
