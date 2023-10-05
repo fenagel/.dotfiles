@@ -1,30 +1,26 @@
 colors:
   # Default colors
   primary:
-    background: "0x010c18"
-    foreground: "0xecdef4"
-
-  # Normal colors
-  normal:
-    black: "0x0b3b61"
-    red: "0xff3a3a"
-    green: "0x52ffd0"
-    yellow: "0xfff383"
-    blue: "0x1376f9"
-    magenta: "0xc792ea"
-    cyan: "0xff5ed4"
-    white: "0x16fda2"
-
-  # Bright colors
+    background: "#010B17"
+    foreground: "#ebddf4"
   bright:
-    black: "0x63686d"
-    red: "0xff54b0"
-    green: "0x74ffd8"
-    yellow: "0xfcf5ae"
-    blue: "0x388eff"
-    magenta: "0xae81ff"
-    cyan: "0xff6ad7"
-    white: "0x60fbbf"
+    black: "#62686c"
+    red: "#FF54B0"
+    green: "#74FFD8"
+    yellow: "#FCF5AE"
+    blue: "#388EFF"
+    magenta: "#AE81FF"
+    cyan: "#ff69d7"
+    white: "#5ffbbe"
+  normal:
+    black: "#0B3B61"
+    red: "#FF3A3A"
+    green: "#52ffcf"
+    yellow: "#fcf4ad"
+    blue: "#378dfe"
+    magenta: "#ae81ff"
+    cyan: "#ff5dd4"
+    white: "#15fca2"
 # Warp
 # accent: "#38ff9c" # Accent color for UI elements
 # background: "#010B17" # Terminal background color
