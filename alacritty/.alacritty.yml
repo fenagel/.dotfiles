@@ -92,7 +92,7 @@ font:
     family: "MesloLGM Nerd Font"
   bold_italic:
     family: "MesloLGM Nerd Font"
-  size: 20
+  size: 22
 
 mouse:
   hide_when_typing: true
