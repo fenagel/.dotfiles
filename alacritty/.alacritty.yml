@@ -8,58 +8,31 @@
 # https://alacritty.org
 
 colors:
+  # Default colors
   primary:
-    background: "0x191724"
-    foreground: "0xe0def4"
-  # Cursor colors
-  cursor:
-    text: "#1E1E2E" # base
-    cursor: "#F5E0DC" # rosewater
-  vi_mode_cursor:
-    text: "#1E1E2E" # base
-    cursor: "#B4BEFE" # lavender
-  # Search colors
-  search:
-    matches:
-      foreground: "#1E1E2E" # base
-      background: "#A6ADC8" # subtext0
-    focused_match:
-      foreground: "#1E1E2E" # base
-      background: "#A6E3A1" # green
-    footer_bar:
-      foreground: "#1E1E2E" # base
-      background: "#A6ADC8" # subtext0
-  line_indicator:
-    foreground: None
-    background: None
-  selection:
-    text: "#1E1E2E" # base
-    background: "#F5E0DC" # rosewater
+    background: "0x000000"
+    foreground: "0xffffff"
+  # Normal colors
   normal:
-    black: "0x26233a"
-    red: "0xeb6f92"
-    green: "0x31748f"
-    yellow: "0xf6c177"
-    blue: "0x9ccfd8"
-    magenta: "0xc4a7e7"
-    cyan: "0xebbcba"
-    white: "0xe0def4"
+    black: "0x000000"
+    red: "0xcd0000"
+    green: "0x00cd00"
+    yellow: "0xcdcd00"
+    blue: "0x0000ee"
+    magenta: "0xcd00cd"
+    cyan: "0x00cdcd"
+    white: "0xe5e5e5"
+
+  # Bright colors
   bright:
-    black: "0x6e6a86"
-    red: "0xeb6f92"
-    green: "0x31748f"
-    yellow: "0xf6c177"
-    blue: "0x9ccfd8"
-    magenta: "0xc4a7e7"
-    cyan: "0xebbcba"
-    white: "0xe0def4"
-  hints:
-    start:
-      foreground: "#908caa"
-      background: "#1f1d2e"
-    end:
-      foreground: "#6e6a86"
-      background: "#1f1d2e"
+    black: "0x7f7f7f"
+    red: "0xff0000"
+    green: "0x00ff00"
+    yellow: "0xffff00"
+    blue: "0x5c5cff"
+    magenta: "0xff00ff"
+    cyan: "0x00ffff"
+    white: "0xffffff"
 
 live_config_reload: true
 
@@ -92,7 +65,7 @@ font:
     family: "MesloLGM Nerd Font"
   bold_italic:
     family: "MesloLGM Nerd Font"
-  size: 22
+  size: 20
 
 mouse:
   hide_when_typing: true
