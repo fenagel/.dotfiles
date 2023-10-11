@@ -1,10 +1,27 @@
 return {
+	{
+		"LunarVim/primer.nvim",
+		lazy = false, -- make sure we load this during startup if it is your main colorscheme
+		priority = 1000, -- make sure to load this before all the other start plugins
+		config = function()
+			vim.cmd([[colorscheme primer_dark]])
+		end,
+	},
 	-- {
 	-- 	"bluz71/vim-nightfly-guicolors",
 	-- 	priority = 1000, -- make sure to load this before all the other start plugins
 	-- 	config = function()
 	-- 		-- -- load the colorscheme here
 	-- 		vim.cmd([[colorscheme nightfly]])
+	-- 	end,
+	-- },
+	-- {
+	-- 	"luisiacc/gruvbox-baby",
+	-- 	priority = 1000, -- make sure to load this before all the other start plugins
+	-- 	config = function()
+	-- 		-- -- load the colorscheme here
+	-- 		vim.g.gruvbox_baby_transparent_mode = 1
+	-- 		vim.cmd([[colorscheme gruvbox-baby]])
 	-- 	end,
 	-- },
 	-- {
@@ -70,63 +87,63 @@ return {
 	-- 		vim.cmd("colorscheme rose-pine")
 	-- 	end,
 	-- },
-	{
-		"catppuccin/nvim",
-		name = "catppuccin",
-		priority = 1000, -- make sure to load this before all the other start plugins
-		opts = {
-			flavour = "mocha",
-			transparent_background = true,
-			integrations = {
-				cmp = true,
-				fidget = true,
-				gitsigns = true,
-				harpoon = true,
-				lsp_trouble = true,
-				mason = true,
-				neotest = true,
-				noice = true,
-				notify = true,
-				octo = true,
-				telescope = {
-					enabled = true,
-				},
-				treesitter = true,
-				treesitter_context = false,
-				symbols_outline = true,
-				illuminate = true,
-				which_key = true,
-				barbecue = {
-					dim_dirname = true,
-					bold_basename = true,
-					dim_context = false,
-					alt_background = false,
-				},
-				native_lsp = {
-					enabled = true,
-					virtual_text = {
-						errors = { "italic" },
-						hints = { "italic" },
-						warnings = { "italic" },
-						information = { "italic" },
-					},
-					underlines = {
-						errors = { "underline" },
-						hints = { "underline" },
-						warnings = { "underline" },
-						information = { "underline" },
-					},
-				},
-			},
-		},
-	},
-	-- Configure LazyVim to load colorscheme
-	{
-		"LazyVim/LazyVim",
-		opts = {
-			colorscheme = "catppuccin",
-		},
-	},
+	-- {
+	-- 	"catppuccin/nvim",
+	-- 	name = "catppuccin",
+	-- 	priority = 1000, -- make sure to load this before all the other start plugins
+	-- 	opts = {
+	-- 		flavour = "mocha",
+	-- 		transparent_background = true,
+	-- 		integrations = {
+	-- 			cmp = true,
+	-- 			fidget = true,
+	-- 			gitsigns = true,
+	-- 			harpoon = true,
+	-- 			lsp_trouble = true,
+	-- 			mason = true,
+	-- 			neotest = true,
+	-- 			noice = true,
+	-- 			notify = true,
+	-- 			octo = true,
+	-- 			telescope = {
+	-- 				enabled = true,
+	-- 			},
+	-- 			treesitter = true,
+	-- 			treesitter_context = false,
+	-- 			symbols_outline = true,
+	-- 			illuminate = true,
+	-- 			which_key = true,
+	-- 			barbecue = {
+	-- 				dim_dirname = true,
+	-- 				bold_basename = true,
+	-- 				dim_context = false,
+	-- 				alt_background = false,
+	-- 			},
+	-- 			native_lsp = {
+	-- 				enabled = true,
+	-- 				virtual_text = {
+	-- 					errors = { "italic" },
+	-- 					hints = { "italic" },
+	-- 					warnings = { "italic" },
+	-- 					information = { "italic" },
+	-- 				},
+	-- 				underlines = {
+	-- 					errors = { "underline" },
+	-- 					hints = { "underline" },
+	-- 					warnings = { "underline" },
+	-- 					information = { "underline" },
+	-- 				},
+	-- 			},
+	-- 		},
+	-- 	},
+	-- },
+	-- -- Configure LazyVim to load colorscheme
+	-- {
+	-- 	"LazyVim/LazyVim",
+	-- 	opts = {
+	-- 		colorscheme = "catppuccin",
+	-- 	},
+	-- },
 	-- {
 	-- 	"folke/tokyonight.nvim",
 	-- 	priority = 1000, -- make sure to load this before all the other start plugins
@@ -180,6 +197,38 @@ return {
 	-- 		})
 	-- 		-- -- load the colorscheme here
 	-- 		vim.cmd([[colorscheme dracula]])
+	-- 	end,
+	-- },
+	-- {
+	-- 	"ellisonleao/gruvbox.nvim",
+	-- 	priority = 1000,
+	-- 	config = function()
+	-- 		local gruvbox = require("gruvbox")
+	-- 		gruvbox.setup({
+	-- 			terminal_colors = true, -- add neovim terminal colors
+	-- 			undercurl = true,
+	-- 			underline = true,
+	-- 			bold = true,
+	-- 			italic = {
+	-- 				strings = true,
+	-- 				emphasis = true,
+	-- 				comments = true,
+	-- 				operators = false,
+	-- 				folds = true,
+	-- 			},
+	-- 			strikethrough = true,
+	-- 			invert_selection = false,
+	-- 			invert_signs = false,
+	-- 			invert_tabline = false,
+	-- 			invert_intend_guides = false,
+	-- 			inverse = true, -- invert background for search, diffs, statuslines and errors
+	-- 			contrast = "", -- can be "hard", "soft" or empty string
+	-- 			palette_overrides = {},
+	-- 			overrides = {},
+	-- 			dim_inactive = false,
+	-- 			transparent_mode = true,
+	-- 		})
+	-- 		vim.cmd([[colorscheme gruvbox]])
 	-- 	end,
 	-- },
 }

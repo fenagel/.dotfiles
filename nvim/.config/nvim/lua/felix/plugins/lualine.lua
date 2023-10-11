@@ -54,7 +54,9 @@ return {
 			options = {
 				-- theme = my_lualine_theme,
 				-- theme = "rose-pine",
-				theme = "catppuccin",
+				theme = "primer_dark",
+				-- theme = "catppuccin",
+				-- theme = "gruvbox-baby",
 			},
 			sections = {
 				lualine_x = {
