@@ -8,41 +8,46 @@
 # https://alacritty.org
 
 colors:
-  # Default colors
   primary:
-    background: "#21262d"
-    foreground: "#f0f6fc"
-
-  # Colors the cursor will use if `custom_cursor_colors` is true
+    background: "0x191724"
+    foreground: "0xe0def4"
   cursor:
-    text: "#21262d"
-    cursor: "#b1cad8"
-
+    text: "0xe0def4"
+    cursor: "0x524f67"
+  vi_mode_cursor:
+    text: "0xe0def4"
+    cursor: "0x524f67"
+  line_indicator:
+    foreground: None
+    background: None
   selection:
-    text: "#21262d"
-    background: "#2A4668"
-
-  # Normal colors
+    text: "0xe0def4"
+    background: "0x403d52"
   normal:
-    black: "#8b949e"
-    red: "#ff7b72"
-    green: "#aff5b4"
-    yellow: "#FFE08C"
-    blue: "#79c0ff"
-    magenta: "#d2a8ff"
-    cyan: "#a5d6ff"
-    white: "#c9d1d9"
-
-  # Bright colors
+    black: "0x26233a"
+    red: "0xeb6f92"
+    green: "0x31748f"
+    yellow: "0xf6c177"
+    blue: "0x9ccfd8"
+    magenta: "0xc4a7e7"
+    cyan: "0xebbcba"
+    white: "0xe0def4"
   bright:
-    black: "#8b949e"
-    red: "#ff7b72"
-    green: "#aff5b4"
-    yellow: "#FFE08C"
-    blue: "#79c0ff"
-    magenta: "#d2a8ff"
-    cyan: "#a5d6ff"
-    white: "#c9d1d9"
+    black: "0x6e6a86"
+    red: "0xeb6f92"
+    green: "0x31748f"
+    yellow: "0xf6c177"
+    blue: "0x9ccfd8"
+    magenta: "0xc4a7e7"
+    cyan: "0xebbcba"
+    white: "0xe0def4"
+  hints:
+    start:
+      foreground: "#908caa"
+      background: "#1f1d2e"
+    end:
+      foreground: "#6e6a86"
+      background: "#1f1d2e"
 
 live_config_reload: true
 
@@ -67,20 +72,20 @@ window:
 draw_bold_text_with_bright_colors: true
 
 font:
+  # normal:
+  #   family: "MonoLisa Nerd Font"
+  #   style: "Regular"
+  # size: 20
+font:
   normal:
-    family: "MonoLisa Nerd Font"
-    style: "Regular"
+    family: "JetBrainsMono Nerd Font"
+  italic:
+    family: "JetBrainsMono Nerd Font"
+  bold:
+    family: "JetBrainsMono Nerd Font"
+  bold_italic:
+    family: "JetBrainsMono Nerd Font"
   size: 20
-# font:
-#   normal:
-#     family: "JetBrainsMono Nerd Font"
-#   italic:
-#     family: "JetBrainsMono Nerd Font"
-#   bold:
-#     family: "JetBrainsMono Nerd Font"
-#   bold_italic:
-#     family: "JetBrainsMono Nerd Font"
-#   size: 20
 
 mouse:
   hide_when_typing: true
