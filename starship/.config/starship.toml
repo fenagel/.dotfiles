@@ -9,9 +9,9 @@
 # https://starship.rs
 
 [character]
-success_symbol = "[](white)"
-error_symbol = "[](red)"
-vicmd_symbol = "[](green)"
+success_symbol = "[\uf054](white)" # 
+vicmd_symbol = "[\ue62b](white)" # 
+error_symbol = "[\uf467](red)" # 
 
 [directory]
 style = "blue bold"
