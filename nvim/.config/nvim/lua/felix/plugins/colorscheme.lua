@@ -1,31 +1,40 @@
 return {
-	-- {
-	-- 	"LunarVim/primer.nvim",
-	-- 	lazy = false, -- make sure we load this during startup if it is your main colorscheme
-	-- 	priority = 1000, -- make sure to load this before all the other start plugins
-	-- 	config = function()
-	-- 		vim.cmd([[colorscheme primer_dark]])
-	-- 	end,
-	-- },
-	-- {
-	-- 	"bluz71/vim-nightfly-guicolors",
-	-- 	priority = 1000, -- make sure to load this before all the other start plugins
-	-- 	config = function()
-	-- 		-- -- load the colorscheme here
-	-- 		vim.cmd([[colorscheme nightfly]])
-	-- 	end,
-	-- },
-	-- {
-	-- 	"luisiacc/gruvbox-baby",
-	-- 	priority = 1000, -- make sure to load this before all the other start plugins
-	-- 	config = function()
-	-- 		-- -- load the colorscheme here
-	-- 		vim.g.gruvbox_baby_transparent_mode = 1
-	-- 		vim.cmd([[colorscheme gruvbox-baby]])
-	-- 	end,
-	-- },
+	{
+		"LunarVim/primer.nvim",
+		enabled = false,
+		lazy = false, -- make sure we load this during startup if it is your main colorscheme
+		priority = 1000, -- make sure to load this before all the other start plugins
+		-- config = function()
+		-- 	vim.cmd([[colorscheme primer_dark]])
+		-- end,
+	},
+	{
+		"bluz71/vim-nightfly-guicolors",
+		enabled = false,
+		priority = 1000, -- make sure to load this before all the other start plugins
+		-- config = function()
+		-- 	-- -- load the colorscheme here
+		-- 	vim.cmd([[colorscheme nightfly]])
+		-- end,
+	},
+	{
+		"luisiacc/gruvbox-baby",
+		enabled = true,
+		priority = 1000, -- make sure to load this before all the other start plugins
+		config = function()
+			-- -- load the colorscheme here
+			vim.g.gruvbox_baby_color_overrides = {
+				blue_gray = "#dedede",
+				-- light_blue = "#dedede",
+				-- dark_gray = "#dedede",
+			}
+			vim.g.gruvbox_baby_transparent_mode = 1
+			-- vim.cmd([[colorscheme gruvbox-baby]])
+		end,
+	},
 	{
 		"rose-pine/neovim",
+		enabled = false,
 		name = "rose-pine",
 		config = function()
 			require("rose-pine").setup({ --- @usage 'auto'|'main'|'moon'|'dawn'
@@ -84,151 +93,181 @@ return {
 			})
 
 			-- Set colorscheme after options
-			vim.cmd("colorscheme rose-pine")
+			-- vim.cmd("colorscheme rose-pine")
 		end,
 	},
-	-- {
-	-- 	"catppuccin/nvim",
-	-- 	name = "catppuccin",
-	-- 	priority = 1000, -- make sure to load this before all the other start plugins
-	-- 	opts = {
-	-- 		flavour = "mocha",
-	-- 		transparent_background = true,
-	-- 		integrations = {
-	-- 			cmp = true,
-	-- 			fidget = true,
-	-- 			gitsigns = true,
-	-- 			harpoon = true,
-	-- 			lsp_trouble = true,
-	-- 			mason = true,
-	-- 			neotest = true,
-	-- 			noice = true,
-	-- 			notify = true,
-	-- 			octo = true,
-	-- 			telescope = {
-	-- 				enabled = true,
-	-- 			},
-	-- 			treesitter = true,
-	-- 			treesitter_context = false,
-	-- 			symbols_outline = true,
-	-- 			illuminate = true,
-	-- 			which_key = true,
-	-- 			barbecue = {
-	-- 				dim_dirname = true,
-	-- 				bold_basename = true,
-	-- 				dim_context = false,
-	-- 				alt_background = false,
-	-- 			},
-	-- 			native_lsp = {
-	-- 				enabled = true,
-	-- 				virtual_text = {
-	-- 					errors = { "italic" },
-	-- 					hints = { "italic" },
-	-- 					warnings = { "italic" },
-	-- 					information = { "italic" },
-	-- 				},
-	-- 				underlines = {
-	-- 					errors = { "underline" },
-	-- 					hints = { "underline" },
-	-- 					warnings = { "underline" },
-	-- 					information = { "underline" },
-	-- 				},
-	-- 			},
-	-- 		},
-	-- 	},
-	-- },
-	-- -- Configure LazyVim to load colorscheme
-	-- {
-	-- 	"LazyVim/LazyVim",
-	-- 	opts = {
-	-- 		colorscheme = "catppuccin",
-	-- 	},
-	-- },
-	-- {
-	-- 	"folke/tokyonight.nvim",
-	-- 	priority = 1000, -- make sure to load this before all the other start plugins
-	-- 	config = function()
-	-- 		-- local bg = "#011628"
-	-- 		-- local bg_dark = "#011423"
-	-- 		-- local bg_highlight = "#143652"
-	-- 		-- local bg_search = "#0A64AC"
-	-- 		-- local bg_visual = "#275378"
-	-- 		-- local fg = "#CBE0F0"
-	-- 		-- local fg_dark = "#B4D0E9"
-	-- 		-- local fg_gutter = "#627E97"
-	-- 		-- local border = "#547998"
-	--
-	-- 		require("tokyonight").setup({
-	-- 			style = "night",
-	-- 			-- on_colors = function(colors)
-	-- 			-- 	colors.bg = bg
-	-- 			-- 	colors.bg_dark = bg_dark
-	-- 			-- 	colors.bg_float = bg_dark
-	-- 			-- 	colors.bg_highlight = bg_highlight
-	-- 			-- 	colors.bg_popup = bg_dark
-	-- 			-- 	colors.bg_search = bg_search
-	-- 			-- 	colors.bg_sidebar = bg_dark
-	-- 			-- 	colors.bg_statusline = bg_dark
-	-- 			-- 	colors.bg_visual = bg_visual
-	-- 			-- 	colors.border = border
-	-- 			-- 	colors.fg = fg
-	-- 			-- 	colors.fg_dark = fg_dark
-	-- 			-- 	colors.fg_float = fg
-	-- 			-- 	colors.fg_gutter = fg_gutter
-	-- 			-- 	colors.fg_sidebar = fg_dark
-	-- 			-- end,
-	-- 			transparent = true,
-	-- 			styles = {
-	-- 				sidebars = "transparent",
-	-- 				floats = "transparent",
-	-- 			},
-	-- 		})
-	-- 		-- load the colorscheme here
-	-- 		vim.cmd([[colorscheme tokyonight]])
-	-- 	end,
-	-- },
-	-- {
-	-- 	"Mofiqul/dracula.nvim",
-	-- 	priority = 1000, -- make sure to load this before all the other start plugins
-	-- 	config = function()
-	-- 		local dracula = require("dracula")
-	-- 		dracula.setup({
-	-- 			transparent_bg = true,
-	-- 		})
-	-- 		-- -- load the colorscheme here
-	-- 		vim.cmd([[colorscheme dracula]])
-	-- 	end,
-	-- },
-	-- {
-	-- 	"ellisonleao/gruvbox.nvim",
-	-- 	priority = 1000,
-	-- 	config = function()
-	-- 		local gruvbox = require("gruvbox")
-	-- 		gruvbox.setup({
-	-- 			terminal_colors = true, -- add neovim terminal colors
-	-- 			undercurl = true,
-	-- 			underline = true,
-	-- 			bold = true,
-	-- 			italic = {
-	-- 				strings = true,
-	-- 				emphasis = true,
-	-- 				comments = true,
-	-- 				operators = false,
-	-- 				folds = true,
-	-- 			},
-	-- 			strikethrough = true,
-	-- 			invert_selection = false,
-	-- 			invert_signs = false,
-	-- 			invert_tabline = false,
-	-- 			invert_intend_guides = false,
-	-- 			inverse = true, -- invert background for search, diffs, statuslines and errors
-	-- 			contrast = "", -- can be "hard", "soft" or empty string
-	-- 			palette_overrides = {},
-	-- 			overrides = {},
-	-- 			dim_inactive = false,
-	-- 			transparent_mode = true,
-	-- 		})
-	-- 		vim.cmd([[colorscheme gruvbox]])
-	-- 	end,
-	-- },
+	{
+		"catppuccin/nvim",
+		enabled = false,
+		name = "catppuccin",
+		priority = 1000, -- make sure to load this before all the other start plugins
+		opts = {
+			flavour = "mocha",
+			transparent_background = true,
+			integrations = {
+				cmp = true,
+				fidget = true,
+				gitsigns = true,
+				harpoon = true,
+				lsp_trouble = true,
+				mason = true,
+				neotest = true,
+				noice = true,
+				notify = true,
+				octo = true,
+				telescope = {
+					enabled = true,
+				},
+				treesitter = true,
+				treesitter_context = false,
+				symbols_outline = true,
+				illuminate = true,
+				which_key = true,
+				barbecue = {
+					dim_dirname = true,
+					bold_basename = true,
+					dim_context = false,
+					alt_background = false,
+				},
+				native_lsp = {
+					enabled = true,
+					virtual_text = {
+						errors = { "italic" },
+						hints = { "italic" },
+						warnings = { "italic" },
+						information = { "italic" },
+					},
+					underlines = {
+						errors = { "underline" },
+						hints = { "underline" },
+						warnings = { "underline" },
+						information = { "underline" },
+					},
+				},
+			},
+		},
+	},
+	{
+		"folke/tokyonight.nvim",
+		enabled = false,
+		priority = 1000, -- make sure to load this before all the other start plugins
+		config = function()
+			-- local bg = "#011628"
+			-- local bg_dark = "#011423"
+			-- local bg_highlight = "#143652"
+			-- local bg_search = "#0A64AC"
+			-- local bg_visual = "#275378"
+			-- local fg = "#CBE0F0"
+			-- local fg_dark = "#B4D0E9"
+			-- local fg_gutter = "#627E97"
+			-- local border = "#547998"
+
+			require("tokyonight").setup({
+				style = "night",
+				-- on_colors = function(colors)
+				-- 	colors.bg = bg
+				-- 	colors.bg_dark = bg_dark
+				-- 	colors.bg_float = bg_dark
+				-- 	colors.bg_highlight = bg_highlight
+				-- 	colors.bg_popup = bg_dark
+				-- 	colors.bg_search = bg_search
+				-- 	colors.bg_sidebar = bg_dark
+				-- 	colors.bg_statusline = bg_dark
+				-- 	colors.bg_visual = bg_visual
+				-- 	colors.border = border
+				-- 	colors.fg = fg
+				-- 	colors.fg_dark = fg_dark
+				-- 	colors.fg_float = fg
+				-- 	colors.fg_gutter = fg_gutter
+				-- 	colors.fg_sidebar = fg_dark
+				-- end,
+				transparent = true,
+				styles = {
+					sidebars = "transparent",
+					floats = "transparent",
+				},
+			})
+			-- load the colorscheme here
+			-- vim.cmd([[colorscheme tokyonight]])
+		end,
+	},
+	{
+		"Mofiqul/dracula.nvim",
+		enabled = false,
+		priority = 1000, -- make sure to load this before all the other start plugins
+		config = function()
+			local dracula = require("dracula")
+			dracula.setup({
+				transparent_bg = true,
+			})
+			-- -- load the colorscheme here
+			-- vim.cmd([[colorscheme dracula]])
+		end,
+	},
+	{
+		"ellisonleao/gruvbox.nvim",
+		enabled = false,
+		priority = 1000,
+		config = function()
+			local gruvbox = require("gruvbox")
+			gruvbox.setup({
+				terminal_colors = true, -- add neovim terminal colors
+				undercurl = true,
+				underline = true,
+				bold = true,
+				italic = {
+					strings = true,
+					emphasis = true,
+					comments = true,
+					operators = false,
+					folds = true,
+				},
+				strikethrough = true,
+				invert_selection = false,
+				invert_signs = false,
+				invert_tabline = false,
+				invert_intend_guides = false,
+				inverse = true, -- invert background for search, diffs, statuslines and errors
+				contrast = "", -- can be "hard", "soft" or empty string
+				palette_overrides = {},
+				overrides = {},
+				dim_inactive = false,
+				transparent_mode = true,
+			})
+			-- vim.cmd([[colorscheme gruvbox]])
+		end,
+	},
+	{
+		"olivercederborg/poimandres.nvim",
+		lazy = false,
+		enabled = false,
+		priority = 1000,
+		config = function()
+			require("poimandres").setup({
+				bold_vert_split = false, -- use bold vertical separators
+				dim_nc_background = false, -- dim 'non-current' window backgrounds
+				disable_background = true, -- disable background
+				disable_float_background = true, -- disable background for floats
+				disable_italics = false, -- disable italics
+			})
+		end,
+	},
+	{
+		"gbprod/nord.nvim",
+		lazy = false,
+		enabled = false,
+		priority = 1000,
+		config = function()
+			require("nord").setup({
+				transparent = true,
+			})
+		end,
+	},
+	-- Configure LazyVim to load colorscheme
+	{
+		"LazyVim/LazyVim",
+		opts = {
+			colorscheme = "gruvbox-baby",
+		},
+	},
 }

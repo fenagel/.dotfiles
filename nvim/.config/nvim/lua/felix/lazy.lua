@@ -12,9 +12,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({ { import = "felix.plugins" }, { import = "felix.plugins.lsp" } }, {
-	install = {
-		colorscheme = { "tokyonight" },
-	},
 	checker = {
 		enabled = true,
 		notify = false,
