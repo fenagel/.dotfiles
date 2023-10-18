@@ -1,0 +1,30 @@
+-- cspell:words xiyaowong octo
+return {
+	"xiyaowong/nvim-transparent",
+	opts = {
+		groups = {
+			"Normal",
+			"NormalNC",
+			"Comment",
+			"Constant",
+			"Special",
+			"Identifier",
+			"Statement",
+			"PreProc",
+			"Type",
+			"Underlined",
+			"Todo",
+			"String",
+			"Function",
+			"Conditional",
+			"Repeat",
+			"Operator",
+			"Structure",
+			"LineNr",
+			"NonText",
+			"SignColumn",
+			"CursorLineNr",
+			"EndOfBuffer",
+		},
+	},
+}

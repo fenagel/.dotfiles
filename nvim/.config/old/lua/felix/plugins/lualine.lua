@@ -2,6 +2,15 @@ return {
 	"nvim-lualine/lualine.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
+		local theme = require("lualine.themes.nightfox")
+
+		-- set bg transparency in all modes
+		theme.normal.c.bg = nil
+		theme.insert.c.bg = nil
+		theme.visual.c.bg = nil
+		theme.replace.c.bg = nil
+		theme.command.c.bg = nil
+
 		local lualine = require("lualine")
 		local lazy_status = require("lazy.status") -- to configure lazy pending updates count
 
@@ -52,13 +61,8 @@ return {
 		-- configure lualine with modified theme
 		lualine.setup({
 			options = {
-				-- theme = my_lualine_theme,
-				-- theme = "rose-pine",
-				-- theme = "poimandres",
-				-- theme = "nord",
-				-- theme = "primer_dark",
-				-- theme = "catppuccin",
-				theme = "gruvbox-baby",
+				theme = theme,
+				globalStatus = true,
 			},
 			sections = {
 				lualine_x = {
