@@ -58,7 +58,8 @@ return {
 				-- theme = "nord",
 				-- theme = "primer_dark",
 				-- theme = "catppuccin",
-				theme = "gruvbox-baby",
+				-- theme = "gruvbox-baby",
+				theme = "nightfox",
 			},
 			sections = {
 				lualine_x = {

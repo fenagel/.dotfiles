@@ -1,5 +1,19 @@
 return {
 	{
+		"EdenEast/nightfox.nvim",
+		lazy = false,
+		enabled = true,
+		priority = 1000,
+		config = function()
+			require("nightfox").setup({
+				options = {
+					transparent = true,
+				},
+			})
+			-- vim.cmd("colorscheme nightfox")
+		end,
+	},
+	{
 		"LunarVim/primer.nvim",
 		enabled = false,
 		lazy = false, -- make sure we load this during startup if it is your main colorscheme
@@ -19,7 +33,7 @@ return {
 	},
 	{
 		"luisiacc/gruvbox-baby",
-		enabled = true,
+		enabled = false,
 		priority = 1000, -- make sure to load this before all the other start plugins
 		config = function()
 			-- -- load the colorscheme here
@@ -267,7 +281,7 @@ return {
 	{
 		"LazyVim/LazyVim",
 		opts = {
-			colorscheme = "gruvbox-baby",
+			colorscheme = "nightfox",
 		},
 	},
 }
