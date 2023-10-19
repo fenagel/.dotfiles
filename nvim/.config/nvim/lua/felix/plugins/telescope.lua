@@ -151,10 +151,10 @@ return {
 		local keymap = vim.keymap -- for conciseness
 
 		keymap.set("n", "<c-p>", "<cmd>Telescope find_files hidden=true<cr>", { desc = "Fuzzy find files in cwd" }) -- find files within current working directory, respects .gitignore
-		keymap.set("n", "<leader>ff", "<cmd>Telescope find_files hidden=true<cr>", { desc = "Fuzzy find files in cwd" }) -- find files within current working directory, respects .gitignore
-		keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" }) -- find previously opened files
-		keymap.set("n", "<leader>fw", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" }) -- find string in current working directory as you type
-		keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" }) -- find string under cursor in current working directory
-		keymap.set("n", "<leader>fh", "<cmd>Telescope harpoon marks<cr>", { desc = "Show harpoon marks" }) -- show harpoon marks
+		keymap.set("n", "<leader>sf", "<cmd>Telescope find_files hidden=true<cr>", { desc = "Fuzzy find files in cwd" }) -- find files within current working directory, respects .gitignore
+		keymap.set("n", "<leader>sr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" }) -- find previously opened files
+		keymap.set("n", "<leader>sw", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" }) -- find string in current working directory as you type
+		keymap.set("n", "<leader>sg", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" }) -- find string under cursor in current working directory
+		keymap.set("n", "<leader>sh", "<cmd>Telescope harpoon marks<cr>", { desc = "Show harpoon marks" }) -- show harpoon marks
 	end,
 }
