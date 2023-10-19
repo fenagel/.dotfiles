@@ -23,7 +23,7 @@ return {
 			"LineNr",
 			"NonText",
 			"SignColumn",
-			"CursorLineNr",
+			-- "CursorLineNr",
 			"EndOfBuffer",
 		},
 	},

@@ -25,11 +25,9 @@ return {
 				"LineNr",
 				"NonText",
 				"SignColumn",
-				"CursorLineNr",
 				"EndOfBuffer",
 			},
 			extra_groups = {
-				"CursorLine",
 				"NormalFloat",
 				"TablineFill",
 				"NvimTreeNormal",
