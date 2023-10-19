@@ -262,6 +262,23 @@ local config = function()
 	})
 end
 
+local default_diagnostic_config = {
+  virtual_text = true,
+  update_in_insert = false,
+  underline = true,
+  severity_sort = true,
+  float = {
+    focusable = true,
+    style = "minimal",
+    border = false,
+    source = "always",
+    header = "",
+    prefix = "",
+  },
+}
+
+vim.diagnostic.config(default_diagnostic_config)
+
 return {
 	"neovim/nvim-lspconfig",
 	config = config,
