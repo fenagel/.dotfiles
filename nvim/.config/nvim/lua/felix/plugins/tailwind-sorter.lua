@@ -15,6 +15,7 @@ return {
 			"*.heex",
 			"*.astro",
 			"*.vue",
+			"*.gohtml",
 		}, -- The file patterns to watch and sort.
 		node_path = "node",
 	},
