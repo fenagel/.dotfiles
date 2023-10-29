@@ -57,9 +57,11 @@ return {
 				-- theme = "poimandres",
 				-- theme = "nord",
 				-- theme = "primer_dark",
-				-- theme = "catppuccin",
+				theme = "catppuccin",
 				-- theme = "gruvbox-baby",
-				theme = "nightfox",
+				-- theme = "everforest",
+				-- theme = "gruvbox",
+				-- theme = "nightfox",
 			},
 			sections = {
 				lualine_x = {
