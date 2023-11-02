@@ -48,6 +48,9 @@ fish_add_path $HOME/.config/tmux/plugins/tmux-nvr/bin
 fish_add_path $HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin
 fish_add_path $HOME/.config/bin # my custom scripts
 
+# enable rbenv
+status --is-interactive; and rbenv init - fish | source
+
 # pnpm autocomplete
 [ -f ~/.config/tabtab/fish/__tabtab.fish ]; and . ~/.config/tabtab/fish/__tabtab.fish; or true
 
