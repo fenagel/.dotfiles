@@ -48,7 +48,7 @@ return {
 	},
 	{
 		"rose-pine/neovim",
-		enabled = false,
+		enabled = true,
 		name = "rose-pine",
 		config = function()
 			require("rose-pine").setup({ --- @usage 'auto'|'main'|'moon'|'dawn'
@@ -292,7 +292,7 @@ return {
 		"catppuccin/nvim",
 		name = "catppuccin",
 		lazy = false,
-		enabled = true,
+		enabled = false,
 		priority = 1000,
 		config = function()
 			require("catppuccin").setup({
@@ -652,7 +652,7 @@ return {
 	{
 		"LazyVim/LazyVim",
 		opts = {
-			colorscheme = "catppuccin",
+			colorscheme = "rose-pine",
 		},
 	},
 }

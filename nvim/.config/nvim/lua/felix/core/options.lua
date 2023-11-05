@@ -44,15 +44,15 @@ opt.splitbelow = true -- split horizontal window to the bottom
 -- turn off swapfile
 opt.swapfile = false
 
-vim.cmd([[
-augroup MyColors
-autocmd!
-autocmd ColorScheme * highlight SignColumn guibg=NONE
-autocmd ColorScheme * highlight GitSignsAdd guibg=NONE
-autocmd ColorScheme * highlight GitSignsChange guibg=NONE
-autocmd ColorScheme * highlight GitSignsDelete guibg=NONE
-augroup end
-]])
+-- vim.cmd([[
+-- augroup MyColors
+-- autocmd!
+-- autocmd ColorScheme * highlight SignColumn guibg=NONE
+-- autocmd ColorScheme * highlight GitSignsAdd guibg=NONE
+-- autocmd ColorScheme * highlight GitSignsChange guibg=NONE
+-- autocmd ColorScheme * highlight GitSignsDelete guibg=NONE
+-- augroup end
+-- ]])
 
 -- highlight yank autocmd
 local augroup = vim.api.nvim_create_augroup
