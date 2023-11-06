@@ -53,11 +53,11 @@ return {
 		lualine.setup({
 			options = {
 				-- theme = my_lualine_theme,
-				theme = "rose-pine",
+				-- theme = "rose-pine",
 				-- theme = "poimandres",
 				-- theme = "nord",
 				-- theme = "primer_dark",
-				-- theme = "gruvbox-baby",
+				theme = "gruvbox-baby",
 				-- theme = "everforest",
 				-- theme = "gruvbox",
 				-- theme = "nightfox",

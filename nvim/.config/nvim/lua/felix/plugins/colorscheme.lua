@@ -34,6 +34,7 @@ return {
 	{
 		"luisiacc/gruvbox-baby",
 		enabled = true,
+		lazy = false,
 		priority = 1000, -- make sure to load this before all the other start plugins
 		config = function()
 			-- -- load the colorscheme here
@@ -48,7 +49,8 @@ return {
 	},
 	{
 		"rose-pine/neovim",
-		enabled = true,
+		enabled = false,
+		lazy = false,
 		name = "rose-pine",
 		config = function()
 			require("rose-pine").setup({ --- @usage 'auto'|'main'|'moon'|'dawn'
@@ -652,7 +654,7 @@ return {
 	{
 		"LazyVim/LazyVim",
 		opts = {
-			colorscheme = "rose-pine",
+			colorscheme = "gruvbox-baby",
 		},
 	},
 }
