@@ -1,7 +1,9 @@
 return {
 	"jackMort/ChatGPT.nvim",
 	event = "VeryLazy",
+	enabled = false,
 	config = function()
+		-- local openai = os.getenv("NEOVIM_OPENAI")
 		local wk = require("which-key")
 		wk.register({
 			a = {
@@ -35,7 +37,7 @@ return {
 			expr = false, -- use `expr` when creating keymaps
 		})
 		require("chatgpt").setup({
-			api_key_cmd = "op read op://personal/OpenAI/credential --no-newline",
+			api_key_cmd = "op read op://Personal/OpenAI/credential",
 			yank_register = "+",
 			edit_with_instructions = {
 				diff = false,

@@ -223,8 +223,17 @@ return {
 		-- })
 
 		lspconfig.unocss.setup({
-			capabilities = capabilities,
 			on_attach = on_attach,
+			capabilities = capabilities,
+			filetypes = { "vue" },
+			root_dir = function(fname)
+				return require("lspconfig.util").root_pattern(
+					"unocss.config.js",
+					"unocss.config.ts",
+					"uno.config.js",
+					"uno.config.ts"
+				)(fname)
+			end,
 		})
 
 		-- configure prisma orm server

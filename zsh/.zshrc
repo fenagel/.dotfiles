@@ -13,7 +13,8 @@ plugins=(git zsh-autosuggestions zsh-completions zsh-syntax-highlighting zsh-z)
 ZSH_THEME="robbyrussell"
 
 source $ZSH/oh-my-zsh.sh
-
+  
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # (macOS-only) Prevent Homebrew from reporting - https://github.com/Homebrew/brew/blob/master/docs/Analytics.md
 export HOMEBREW_NO_ANALYTICS=1
 
