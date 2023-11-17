@@ -10,14 +10,15 @@ local act = wezterm.action
 
 local config = {
 	-- background
-	-- background = {
-	-- 	w.get_wallpaper(),
-	-- 	b.get_background(),
-	-- },
+	background = {
+		w.get_wallpaper(),
+		b.get_background(),
+	},
 
 	-- font
 	font = f.get_font(),
-	font_size = 20,
+	font_size = 18,
+	line_height = 1.2,
 
 	-- colors
 	color_scheme = cs.get_color_scheme(),
@@ -46,6 +47,30 @@ local config = {
 	window_decorations = "RESIZE",
 	window_background_opacity = 0.9,
 	macos_window_background_blur = 30,
+
+	-- ZenMode Nvim Plugin
+	wezterm.on("user-var-changed", function(window, pane, name, value)
+		local overrides = window:get_config_overrides() or {}
+		if name == "ZEN_MODE" then
+			local incremental = value:find("+")
+			local number_value = tonumber(value)
+			if incremental ~= nil then
+				while number_value > 0 do
+					window:perform_action(wezterm.action.IncreaseFontSize, pane)
+					number_value = number_value - 1
+				end
+				overrides.enable_tab_bar = false
+			elseif number_value < 0 then
+				window:perform_action(wezterm.action.ResetFontSize, pane)
+				overrides.font_size = nil
+				overrides.enable_tab_bar = true
+			else
+				overrides.font_size = number_value
+				overrides.enable_tab_bar = false
+			end
+		end
+		window:set_config_overrides(overrides)
+	end),
 
 	-- keys
 	keys = {
