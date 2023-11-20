@@ -54,7 +54,7 @@ return {
 					},
 				},
 				-- enable nvim-ts-context-commentstring plugin for commenting tsx and jsx
-				context_commentstring = {
+				ts_context_commentstring = {
 					enable = true,
 					enable_autocmd = false,
 				},
