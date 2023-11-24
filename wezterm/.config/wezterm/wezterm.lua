@@ -17,7 +17,7 @@ local config = {
 
 	-- font
 	font = f.get_font(),
-	font_size = 16,
+	font_size = 18,
 	line_height = 1,
 
 	-- colors
