@@ -115,7 +115,7 @@ return {
 	},
 	{
 		"catppuccin/nvim",
-		enabled = true,
+		enabled = false,
 		lazy = false,
 		name = "catppuccin",
 		priority = 1000, -- make sure to load this before all the other start plugins
@@ -167,7 +167,7 @@ return {
 	},
 	{
 		"folke/tokyonight.nvim",
-		enabled = false,
+		enabled = true,
 		priority = 1000, -- make sure to load this before all the other start plugins
 		config = function()
 			-- local bg = "#011628"
@@ -657,7 +657,7 @@ return {
 	{
 		"LazyVim/LazyVim",
 		opts = {
-			colorscheme = "catppuccin",
+			colorscheme = "tokyonight",
 		},
 	},
 }
