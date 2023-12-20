@@ -9,9 +9,11 @@ M.get_font = function()
 		"Monaspace Neon",
 		"Monaspace Radon",
 		"Monaspace Xenon",
+		"JetBrainsMono Nerd Font",
 	}
 	local family = h.get_random_entry(fonts)
-	return wezterm.font_with_fallback({ { family = "Monaspace Krypton", weight = "Bold" } })
+	-- return wezterm.font_with_fallback({ { family = "JetBrainsMonoNLNerdFont", weight = "italic" } })
+	return wezterm.font("JetBrainsMono Nerd Font", { italic = true })
 end
 
 return M

@@ -60,10 +60,10 @@ return {
 			},
 			window = {
 				completion = {
-					-- border = "rounded",
+					border = "rounded",
 					-- winhighlight = "Normal:Pmenu,CursorLine:PmenuSel,FloatBorder:FloatBorder,Search:None",
 					col_offset = 0,
-					side_padding = 1,
+					side_padding = 0,
 					scrollbar = false,
 					scrolloff = 8,
 				},
