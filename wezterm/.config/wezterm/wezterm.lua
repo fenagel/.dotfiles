@@ -10,15 +10,15 @@ local act = wezterm.action
 
 local config = {
 	-- background
-	-- background = {
-	-- 	w.get_wallpaper(),
-	-- 	b.get_background(),
-	-- },
+	background = {
+		w.get_wallpaper(),
+		b.get_background(),
+	},
 
 	-- font
 	font = f.get_font(),
-	font_size = 18,
-	line_height = 1.1,
+	font_size = 20,
+	line_height = 1,
 
 	-- colors
 	color_scheme = cs.get_color_scheme(),

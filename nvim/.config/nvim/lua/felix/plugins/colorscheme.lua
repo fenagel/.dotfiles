@@ -284,7 +284,7 @@ return {
 	{
 		"sainnhe/everforest",
 		lazy = false,
-		enabled = true,
+		enabled = false,
 		priority = 1000,
 		config = function()
 			vim.g.everforest_better_performance = 1
@@ -664,7 +664,7 @@ return {
 	{
 		"LazyVim/LazyVim",
 		opts = {
-			colorscheme = "everforest",
+			colorscheme = "catppuccin",
 		},
 	},
 }
