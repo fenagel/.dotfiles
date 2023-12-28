@@ -1,5 +1,6 @@
 return {
 	"stevearc/conform.nvim",
+	enabled = true,
 	lazy = true,
 	event = { "BufReadPre", "BufNewFile" }, -- to disable, comment this out
 	config = function()
@@ -22,6 +23,7 @@ return {
 				lua = { "stylua" },
 				python = { "isort", "black" },
 				go = { "gofmt", "goimports" },
+				ruby = { "rubocop" },
 			},
 			format_on_save = {
 				lsp_fallback = true,
