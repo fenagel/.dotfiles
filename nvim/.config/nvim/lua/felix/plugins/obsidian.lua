@@ -1,4 +1,4 @@
-local path = vim.fn.expand("$HOME") .. "/Documents/Obsidian Vault"
+local path = vim.fn.expand("$HOME") .. "/Library/Mobile Documents/iCloud~md~obsidian/Documents"
 
 return {
 	"epwalsh/obsidian.nvim",
