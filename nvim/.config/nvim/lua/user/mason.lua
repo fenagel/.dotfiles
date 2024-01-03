@@ -19,6 +19,7 @@ M.servers = {
   "marksman",
   "tailwindcss",
   "gopls",
+  "volar",
 }
 
 function M.config()
