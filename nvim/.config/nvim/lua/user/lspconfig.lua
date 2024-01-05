@@ -25,7 +25,6 @@ local function lsp_keymaps(bufnr)
   keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 end
 
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 M.on_attach = function(client, bufnr)
   lsp_keymaps(bufnr)
 
@@ -42,9 +41,6 @@ M.on_attach = function(client, bufnr)
       end,
     })
   end
-  if client.supports_method "textDocument/inlayHint" then
-    vim.lsp.inlay_hint.enable(bufnr, true)
-  end
 end
 
 M.toggle_inlay_hints = function()
@@ -53,24 +49,8 @@ M.toggle_inlay_hints = function()
 end
 
 function M.common_capabilities()
-  local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-  if status_ok then
-    return cmp_nvim_lsp.default_capabilities()
-  end
-
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities.textDocument.completion.completionItem.snippetSupport = true
-  capabilities.textDocument.completion.completionItem.resolveSupport = {
-    properties = {
-      "documentation",
-      "detail",
-      "additionalTextEdits",
-    },
-  }
-  capabilities.textDocument.foldingRange = {
-    dynamicRegistration = false,
-    lineFoldingOnly = true,
-  }
 
   return capabilities
 end
@@ -107,18 +87,14 @@ function M.config()
     "cssls",
     "html",
     "tsserver",
+    "astro",
     "pyright",
     "bashls",
-    "lemminx",
     "jsonls",
     "yamlls",
-    "gopls",
     "marksman",
     "tailwindcss",
-    "eslint",
-    "rust_analyzer",
     "volar",
-    -- "prismals",
   }
 
   local default_diagnostic_config = {
