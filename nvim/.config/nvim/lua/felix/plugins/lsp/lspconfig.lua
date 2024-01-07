@@ -248,6 +248,11 @@ return {
 			on_attach = on_attach,
 		})
 
+		lspconfig["marksman"].setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+		})
+
 		-- configure graphql language server
 		lspconfig["graphql"].setup({
 			capabilities = capabilities,
@@ -337,12 +342,13 @@ return {
 		-- 	})
 		-- end
 		--
-		-- require("lspconfig").ruby_ls.setup({
-		-- 	capabilities = capabilities,
-		-- 	on_attach = function(client, buffer)
-		-- 		setup_diagnostics(client, buffer)
-		-- 	end,
-		-- })
+		require("lspconfig").ruby_ls.setup({
+			capabilities = capabilities,
+			-- on_attach = function(client, buffer)
+			-- 	setup_diagnostics(client, buffer)
+			-- end,
+			on_attach = on_attach,
+		})
 
 		local default_diagnostic_config = {
 			virtual_text = true,
