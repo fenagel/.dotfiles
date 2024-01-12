@@ -1,6 +1,7 @@
 return {
 	"nvim-telescope/telescope.nvim",
 	branch = "0.1.x",
+	tag = "0.1.5",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
@@ -8,7 +9,7 @@ return {
 		"nvim-tree/nvim-web-devicons",
 	},
 	config = function()
-		local icons = require("felix.utils.icons")
+		local icons = require("user.utils.icons")
 		local actions = require("telescope.actions")
 		local telescope = require("telescope")
 
@@ -60,20 +61,6 @@ return {
 					theme = "dropdown",
 					previewer = false,
 				},
-
-				-- buffers = {
-				-- 	theme = "dropdown",
-				-- 	previewer = false,
-				-- 	initial_mode = "normal",
-				-- 	mappings = {
-				-- 		i = {
-				-- 			["<C-d>"] = actions.delete_buffer,
-				-- 		},
-				-- 		n = {
-				-- 			["dd"] = actions.delete_buffer,
-				-- 		},
-				-- 	},
-				-- },
 
 				planets = {
 					show_pluto = true,
