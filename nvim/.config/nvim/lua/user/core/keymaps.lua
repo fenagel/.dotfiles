@@ -99,6 +99,8 @@ map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
 -- windows
 map("n", "<leader>v", "<C-W>v", { desc = "Split window right" })
 
+map({ "n", "o", "x" }, "<S-h>", "^")
+map({ "n", "o", "x" }, "<S-l>", "g_")
 -- tabs
 map("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" }) -- open new tab
 map("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" }) -- close current tab
