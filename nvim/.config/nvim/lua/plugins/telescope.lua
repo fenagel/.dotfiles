@@ -40,15 +40,25 @@ return {
 
       telescope.setup({
         file_ignore_patterns = { "%.git/." },
-        -- borderchars = { "█", " ", "▀", "█", "█", " ", " ", "▀" },
         defaults = {
           mappings = {
             i = {
+              ["<C-n>"] = actions.cycle_history_next,
+              ["<C-p>"] = actions.cycle_history_prev,
+              ["<C-j>"] = actions.move_selection_next,
+              ["<C-k>"] = actions.move_selection_previous,
+              ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist, -- send selected to quickfixlist
               ["<esc>"] = actions.close,
               ["<C-t>"] = trouble.open_with_trouble,
             },
 
-            n = { ["<C-t>"] = trouble.open_with_trouble },
+            n = {
+              ["<C-t>"] = trouble.open_with_trouble,
+              ["<esc>"] = actions.close,
+              ["j"] = actions.move_selection_next,
+              ["k"] = actions.move_selection_previous,
+              ["q"] = actions.close,
+            },
           },
           previewer = false,
           prompt_prefix = " " .. icons.ui.Telescope .. " ",
@@ -98,10 +108,10 @@ return {
             path_display = formattedName,
             mappings = {
               i = {
-                ["<c-d>"] = actions.delete_buffer,
+                ["<c-b>"] = actions.delete_buffer,
               },
               n = {
-                ["<c-d>"] = actions.delete_buffer,
+                ["<c-b>"] = actions.delete_buffer,
               },
             },
             previewer = false,

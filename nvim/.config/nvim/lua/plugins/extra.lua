@@ -22,8 +22,30 @@ return {
   -- comments
   {
     "numToStr/Comment.nvim",
-    opts = {},
-    lazy = false,
+    event = { "BufReadPre", "BufNewFile" },
+    dependencies = {
+      "JoosepAlviste/nvim-ts-context-commentstring",
+    },
+    config = function()
+      local wk = require("which-key")
+      wk.register({
+        ["<leader>/"] = { "<Plug>(comment_toggle_linewise_current)", "Comment" },
+      })
+
+      wk.register({
+        ["<leader>/"] = { "<Plug>(comment_toggle_linewise_visual)", "Comment", mode = "v" },
+      })
+
+      vim.g.skip_ts_context_commentstring_module = true
+      ---@diagnostic disable: missing-fields
+      require("ts_context_commentstring").setup({
+        enable_autocmd = false,
+      })
+
+      require("Comment").setup({
+        pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+      })
+    end,
   },
   -- useful when there are embedded languages in certain types of files (e.g. Vue or React)
   { "joosepalviste/nvim-ts-context-commentstring", lazy = true },
@@ -135,35 +157,14 @@ return {
     "editorconfig/editorconfig-vim",
   },
 
-  -- Enhanced f/t motions for Leap
+  -- highlight keys after f/t
   {
-    "ggandor/flit.nvim",
-    keys = function()
-      ---@type LazyKeys[]
-      local ret = {}
-      for _, key in ipairs({ "f", "F", "t", "T" }) do
-        ret[#ret + 1] = { key, mode = { "n", "x", "o" }, desc = key }
-      end
-      return ret
-    end,
-    opts = { labeled_modes = "nx" },
-  },
-  -- mouse replacement
-  {
-    "ggandor/leap.nvim",
-    keys = {
-      { "s",  mode = { "n", "x", "o" }, desc = "Leap forward to" },
-      { "S",  mode = { "n", "x", "o" }, desc = "Leap backward to" },
-      { "gs", mode = { "n", "x", "o" }, desc = "Leap from windows" },
-    },
-    config = function(_, opts)
-      local leap = require("leap")
-      for k, v in pairs(opts) do
-        leap.opts[k] = v
-      end
-      leap.add_default_mappings(true)
-      vim.keymap.del({ "x", "o" }, "x")
-      vim.keymap.del({ "x", "o" }, "X")
+    "jinh0/eyeliner.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("eyeliner").setup({
+        highlight_on_key = true,
+      })
     end,
   },
 
@@ -219,12 +220,5 @@ return {
         },
       })
     end,
-  },
-
-  -- persist sessions
-  {
-    "folke/persistence.nvim",
-    event = "BufReadPre", -- this will only start session saving when an actual file was opened
-    opts = {},
   },
 }

@@ -17,12 +17,12 @@ return {
     v = { require("config.utils").toggle_set_color_column, "Toggle Color Line" },
     c = { require("config.utils").toggle_cursor_line, "Toggle Cursor Line" },
   },
-  i = {
-    name = "Sessions",
-    s = { "<cmd>lua require('persistence').load()<cr>", "Load Session" },
-    l = { "<cmd>lua require('persistence').load({ last = true })<cr>", "Load Last Session" },
-    d = { "<cmd>lua require('persistence').stop()<cr>", "Stop Persistence" },
-  },
+  -- i = {
+  --   name = "Sessions",
+  --   s = { "<cmd>lua require('persistence').load()<cr>", "Load Session" },
+  --   l = { "<cmd>lua require('persistence').load({ last = true })<cr>", "Load Last Session" },
+  --   d = { "<cmd>lua require('persistence').stop()<cr>", "Stop Persistence" },
+  -- },
   r = {
     name = "Replace (Spectre)",
     r = { "<cmd>lua require('spectre').open()<cr>", "Replace" },
