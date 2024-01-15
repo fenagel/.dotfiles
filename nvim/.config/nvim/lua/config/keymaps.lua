@@ -5,6 +5,10 @@ local map = vim.keymap.set
 map("n", "<C-d>", "<C-d>zz", opts)
 map("n", "<C-u>", "<C-u>zz", opts)
 
+map("n", "<C-h>", "<C-w>h", { desc = "Go to left window", remap = true })
+map("n", "<C-j>", "<C-w>j", { desc = "Go to lower window", remap = true })
+map("n", "<C-k>", "<C-w>k", { desc = "Go to upper window", remap = true })
+map("n", "<C-l>", "<C-w>l", { desc = "Go to right window", remap = true })
 -- Move selected line / block of text in visual mode
 map("v", "J", ":m '>+1<CR>gv=gv", opts)
 map("v", "K", ":m '<-2<CR>gv=gv", opts)
@@ -74,6 +78,23 @@ map("n", "X", ":keeppatterns substitute/\\s*\\%#\\s*/\\r/e <bar> normal! ==^<cr>
 -- Select all
 map("n", "<C-a>", "ggVG", opts)
 
+-- Split window
+map("n", "ss", ":split<Return>", opts)
+map("n", "sv", ":vsplit<Return>", opts)
+
+-- Do things without affecting the registers
+map("n", "x", '"_x')
+map("n", "<Leader>p", '"0p')
+map("n", "<Leader>P", '"0P')
+map("v", "<Leader>p", '"0p')
+map("n", "<Leader>c", '"_c')
+map("n", "<Leader>C", '"_C')
+map("v", "<Leader>c", '"_c')
+map("v", "<Leader>C", '"_C')
+map("n", "<Leader>d", '"_d')
+map("n", "<Leader>D", '"_D')
+map("v", "<Leader>d", '"_d')
+map("v", "<Leader>D", '"_D')
 -- write file in current directory
 -- :w %:h/<new-file-name>
 map("n", "<C-n>", ":w %:h/", opts)
