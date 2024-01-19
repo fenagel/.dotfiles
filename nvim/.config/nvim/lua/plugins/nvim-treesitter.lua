@@ -44,6 +44,7 @@ return {
           "vimdoc",
           "yaml",
           "rust",
+          "ruby",
           "go",
           "gomod",
           "gowork",

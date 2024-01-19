@@ -27,6 +27,7 @@ return {
           -- "gofumpt", -- go formatter
           "yamlfmt", -- yaml formatter
           "spell", -- spell checker
+          "rubocop",
         },
       })
 
@@ -47,6 +48,7 @@ return {
           formatting.buf,
           formatting.beautysh,
           formatting.yamlfmt,
+          formatting.rubocop,
           -- diagnostics.eslint_d,
           diagnostics.eslint_d.with({ -- js/ts linter
             condition = function(utils)
@@ -60,7 +62,8 @@ return {
 
           code_actions.gitsigns,
           code_actions.refactoring,
-          },
+          diagnostics.rubocop,
+        },
         -- configure format on save
         on_attach = function(current_client, bufnr)
           if current_client.supports_method("textDocument/formatting") then

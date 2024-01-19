@@ -19,6 +19,10 @@ return {
     end,
   },
 
+  {
+    "tpope/vim-fugitive",
+  },
+
   -- comments
   {
     "numToStr/Comment.nvim",
@@ -92,14 +96,7 @@ return {
   },
 
   -- Add/change/delete surrounding delimiter pairs with ease
-  {
-    "kylechui/nvim-surround",
-    version = "*",
-    event = "VeryLazy",
-    config = function()
-      require("nvim-surround").setup()
-    end,
-  },
+  { "echasnovski/mini.surround", version = "*" },
 
   -- Heuristically set buffer options
   {
