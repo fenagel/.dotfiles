@@ -19,10 +19,6 @@ return {
     end,
   },
 
-  {
-    "tpope/vim-fugitive",
-  },
-
   -- comments
   {
     "numToStr/Comment.nvim",
@@ -87,12 +83,6 @@ return {
         cursor_scrolls_alone = true,
       })
     end,
-  },
-
-  -- find and replace
-  {
-    "windwp/nvim-spectre",
-    event = "BufRead",
   },
 
   -- Add/change/delete surrounding delimiter pairs with ease

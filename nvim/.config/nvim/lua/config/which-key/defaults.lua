@@ -29,7 +29,7 @@ return {
     w = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", "Replace Word" },
     f = { "<cmd>lua require('spectre').open_file_search()<cr>", "Replace Buffer" },
   },
-  G = {
+  g = {
     name = "+Git",
     k = { "<cmd>lua require 'gitsigns'.prev_hunk({navigation_message = false})<cr>", "Prev Hunk" },
     l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
@@ -65,7 +65,7 @@ return {
     i = { require("telescope.builtin").lsp_implementations, "Implementation" },
     l = { "<cmd>TroubleToggle document_diagnostics<cr>", "Document Diagnostics (Trouble)" },
     L = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Workspace Diagnostics (Trouble)" },
-    w = { require("telescope.builtin").diagnostics, "Diagnostics" },
+    e = { require("telescope.builtin").diagnostics, "Diagnostics" },
     t = { require("telescope").extensions.refactoring.refactors, "Refactor" },
     c = { require("config.utils").copyFilePathAndLineNumber, "Copy File Path and Line Number" },
 

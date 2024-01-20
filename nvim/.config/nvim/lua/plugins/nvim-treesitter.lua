@@ -41,7 +41,6 @@ return {
           "tsx",
           "typescript",
           "vim",
-          "vimdoc",
           "yaml",
           "rust",
           "ruby",

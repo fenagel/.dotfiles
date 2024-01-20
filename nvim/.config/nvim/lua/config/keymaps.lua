@@ -76,7 +76,7 @@ map("n", "<leader>m", ":Telescope git_status<CR>", opts)
 map("n", "X", ":keeppatterns substitute/\\s*\\%#\\s*/\\r/e <bar> normal! ==^<cr>", { silent = true })
 
 -- Select all
-map("n", "<C-a>", "ggVG", opts)
+map("n", "sa", "ggVG", opts)
 
 -- Split window
 map("n", "ss", ":split<Return>", opts)
