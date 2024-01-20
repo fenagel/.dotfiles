@@ -16,7 +16,8 @@ end
 M.get_color_scheme = function()
 	-- return get_color_scheme()
 	-- return h.is_dark() and "Catppuccin Mocha" or "Catppuccin Latte"
-	return "Tomorrow Night"
+	return "Catppuccin Mocha"
+	-- return "Tomorrow Night"
 end
 
 -- wezterm.on("user-var-changed", function(window, _, name, value)

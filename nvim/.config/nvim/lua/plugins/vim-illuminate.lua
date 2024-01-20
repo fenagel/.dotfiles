@@ -28,6 +28,7 @@ return {
     },
   },
   lazy = false,
+  enabled = false,
   config = function(_, opts)
     require("illuminate").configure(opts)
 
