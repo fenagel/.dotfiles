@@ -46,7 +46,7 @@
 # [git_status]
 # disabled = true
 
-add_newline = false
+add_newline = true
 # A minimal left prompt
 format = """$directory$character"""
 palette = "catppuccin_mocha"
