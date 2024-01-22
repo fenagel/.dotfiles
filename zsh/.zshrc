@@ -13,7 +13,7 @@ plugins=(git zsh-autosuggestions zsh-completions zsh-syntax-highlighting zsh-z)
 ZSH_THEME="robbyrussell"
 
 source $ZSH/oh-my-zsh.sh
-  
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # (macOS-only) Prevent Homebrew from reporting - https://github.com/Homebrew/brew/blob/master/docs/Analytics.md
 export HOMEBREW_NO_ANALYTICS=1
@@ -34,28 +34,28 @@ test -e /usr/share/nvm/init-nvm.sh && source /usr/share/nvm/init-nvm.sh
 
 # Load nvm (to manage your node versions)
 export NVM_DIR="$HOME/.nvm"
-  [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 # Call `nvm use` automatically in a directory with a `.nvmrc` file
 autoload -U add-zsh-hook
 load-nvmrc() {
-  if nvm -v &> /dev/null; then
-    local node_version="$(nvm version)"
-    local nvmrc_path="$(nvm_find_nvmrc)"
+    if nvm -v &> /dev/null; then
+        local node_version="$(nvm version)"
+        local nvmrc_path="$(nvm_find_nvmrc)"
 
-    if [ -n "$nvmrc_path" ]; then
-      local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+        if [ -n "$nvmrc_path" ]; then
+            local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
 
-      if [ "$nvmrc_node_version" = "N/A" ]; then
-        nvm install
-      elif [ "$nvmrc_node_version" != "$node_version" ]; then
-        nvm use --silent
-      fi
-    elif [ "$node_version" != "$(nvm version default)" ]; then
-      nvm use default --silent
+            if [ "$nvmrc_node_version" = "N/A" ]; then
+                nvm install
+            elif [ "$nvmrc_node_version" != "$node_version" ]; then
+                nvm use --silent
+            fi
+        elif [ "$node_version" != "$(nvm version default)" ]; then
+            nvm use default --silent
+        fi
     fi
-  fi
 }
 type -a nvm > /dev/null && add-zsh-hook chpwd load-nvmrc
 type -a nvm > /dev/null && load-nvmrc
@@ -79,7 +79,14 @@ alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
 alias speedtest="wget -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip"
 
 alias v='nvim'
-alias lg='lazygit'
+alias c='clear'
+alias g='lazygit'
+alias gs='git status'
+alias gl='git pull'
+alias gp='git push'
+alias gc='git commit -m'
+alias pd='pnpm dev'
+alias pi='pnpm install'
 
 # Encoding stuff for the terminal
 export LANG=en_US.UTF-8
@@ -89,7 +96,7 @@ export BUNDLER_EDITOR=nvim
 export EDITOR='nvim'
 
 export go_test() {
-  go test $* | sed ''/PASS/s//$(printf "\033[32mPASS\033[0m")/'' | sed ''/SKIP/s//$(printf "\033[34mSKIP\033[0m")/'' | sed ''/FAIL/s//$(printf "\033[31mFAIL\033[0m")/'' | sed ''/FAIL/s//$(printf "\033[31mFAIL\033[0m")/'' | GREP_COLOR="01;33" egrep --color=always '\s*[a-zA-Z0-9\-_.]+[:][0-9]+[:]|^'
+    go test $* | sed ''/PASS/s//$(printf "\033[32mPASS\033[0m")/'' | sed ''/SKIP/s//$(printf "\033[34mSKIP\033[0m")/'' | sed ''/FAIL/s//$(printf "\033[31mFAIL\033[0m")/'' | sed ''/FAIL/s//$(printf "\033[31mFAIL\033[0m")/'' | GREP_COLOR="01;33" egrep --color=always '\s*[a-zA-Z0-9\-_.]+[:][0-9]+[:]|^'
 }
 eval "$(starship init zsh)"
 
