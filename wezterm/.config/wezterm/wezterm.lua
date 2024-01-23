@@ -50,6 +50,7 @@ local config = {
 	set_environment_variables = {
 		-- THEME_FLAVOUR = "latte",
 		TERM = "xterm-256color",
+		BAT_THEME = "Catppuccin-mocha",
 	},
 
 	-- general options
