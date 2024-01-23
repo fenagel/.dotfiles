@@ -45,7 +45,7 @@ local config = {
 	},
 
 	macos_window_background_blur = 30,
-	window_background_opacity = 0.92,
+	window_background_opacity = 1,
 
 	set_environment_variables = {
 		-- THEME_FLAVOUR = "latte",
