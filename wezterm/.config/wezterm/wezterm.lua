@@ -26,8 +26,8 @@ local config = {
 
 	font_size = 18,
 	font = f.get_font({
-		"SF Mono",
-		-- "JetBrainsMono Nerd Font",
+		-- "SF Mono",
+		"JetBrainsMono Nerd Font",
 		-- "Monaspace Argon",
 		-- "Monaspace Krypton",
 		-- "Monaspace Neon",
@@ -45,7 +45,7 @@ local config = {
 	},
 
 	macos_window_background_blur = 30,
-	window_background_opacity = 1,
+	window_background_opacity = 0.92,
 
 	set_environment_variables = {
 		-- THEME_FLAVOUR = "latte",
