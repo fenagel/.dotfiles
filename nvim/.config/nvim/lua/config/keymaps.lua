@@ -76,11 +76,11 @@ map("n", "<leader>m", ":Telescope git_status<CR>", opts)
 map("n", "X", ":keeppatterns substitute/\\s*\\%#\\s*/\\r/e <bar> normal! ==^<cr>", { silent = true })
 
 -- Select all
-map("n", "sa", "ggVG", opts)
+map("n", "<c-f>", "ggVG", opts)
 
 -- Split window
-map("n", "ss", ":split<Return>", opts)
-map("n", "sv", ":vsplit<Return>", opts)
+-- map("n", "ss", ":split<Return>", opts)
+-- map("n", "sv", ":vsplit<Return>", opts)
 
 -- Do things without affecting the registers
 map("n", "x", '"_x')
