@@ -1,2 +1,2 @@
-require("felix.core")
-require("felix.lazy")
+-- bootstrap lazy.nvim, LazyVim and your plugins
+require("config.lazy")
