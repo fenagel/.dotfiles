@@ -36,21 +36,6 @@ map("n", "<leader>m", ":Telescope git_status<CR>", opts)
 -- Split line with X
 map("n", "X", ":keeppatterns substitute/\\s*\\%#\\s*/\\r/e <bar> normal! ==^<cr>", { silent = true })
 
--- Do things without affecting the registers
-map("n", "x", '"_x')
--- not needed right now
--- map("n", "<Leader>p", '"0p')
--- map("n", "<Leader>P", '"0P')
--- map("v", "<Leader>p", '"0p')
-map("n", "<Leader>c", '"_c')
-map("n", "<Leader>C", '"_C')
-map("v", "<Leader>c", '"_c')
-map("v", "<Leader>C", '"_C')
-map("n", "<Leader>d", '"_d')
-map("n", "<Leader>D", '"_D')
-map("v", "<Leader>d", '"_d')
-map("v", "<Leader>D", '"_D')
-
 -- Select all
 map("n", "<c-f>", "ggVG", opts)
 
@@ -63,3 +48,5 @@ map({ "n", "x", "o" }, "L", "g_", opts)
 -- P puts text before the cursor.
 -- TODO: fix, does not work
 -- map("n", "YY", "va{Vy", opts)
+map("n", "<leader>h", ":nohlsearch<CR>", { desc = "No Highlight" })
+map("v", "<leader>h", ":nohlsearch<CR>", { desc = "No Highlight" })

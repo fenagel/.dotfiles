@@ -66,21 +66,44 @@ return {
           col = 1,
         },
         yadm = { enable = false },
-
-        on_attach = function(bufnr)
-          vim.keymap.set(
-            "n",
-            "<leader>H",
-            require("gitsigns").preview_hunk,
-            { buffer = bufnr, desc = "Preview git hunk" }
-          )
-
-          vim.keymap.set("n", "]]", require("gitsigns").next_hunk, { buffer = bufnr, desc = "Next git hunk" })
-
-          vim.keymap.set("n", "[[", require("gitsigns").prev_hunk, { buffer = bufnr, desc = "Previous git hunk" })
-        end,
       })
     end,
+    keys = {
+      {
+        "<leader>gk",
+        "<cmd>lua require 'gitsigns'.prev_hunk({navigation_message = false})<cr>",
+        { desc = "Prev Hunk" },
+      },
+      { "<leader>gl", "<cmd>lua require 'gitsigns'.blame_line()<cr>", { desc = "Blame" } },
+      { "<leader>gp", "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", { desc = "Preview Hunk" } },
+      { "<leader>gr", "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", { desc = "Reset Hunk" } },
+      { "<leader>gR", "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", { desc = "Reset Buffer" } },
+      {
+        "<leader>gj",
+        "<cmd>lua require 'gitsigns'.next_hunk({navigation_message = false})<cr>",
+        { desc = "Next Hunk" },
+      },
+      { "<leader>gs", "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", { desc = "Stage Hunk" } },
+      {
+        "<leader>gu",
+        "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
+        { desc = "Undo Stage Hunk" },
+      },
+      { "<leader>go", require("telescope.builtin").git_status, { desc = "Open changed file" } },
+      { "<leader>gb", require("telescope.builtin").git_branches, { desc = "Checkout branch" } },
+      { "<leader>gc", require("telescope.builtin").git_commits, { desc = "Checkout commit" } },
+      {
+        "<leader>gC",
+        require("telescope.builtin").git_bcommits,
+        { desc = "Checkout commit(for current file)" },
+      },
+      {
+        "<leader>gS",
+        "<cmd>Gitsigns diffthis HEAD<cr>",
+        { desc = "Git Diff" },
+      },
+      { "<leader>gU", ":UndotreeToggle<CR>", { desc = "Toggle UndoTree" } },
+    },
   },
   {
     "sindrets/diffview.nvim",
