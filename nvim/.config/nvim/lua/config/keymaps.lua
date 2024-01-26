@@ -26,6 +26,10 @@ map("n", "#", "#zz", opts)
 map("n", "g*", "g*zz", opts)
 map("n", "g#", "g#zz", opts)
 
+-- Split window
+map("n", "ss", ":split<Return>", opts)
+map("n", "sv", ":vsplit<Return>", opts)
+
 -- search modified files
 map("n", "<leader>m", ":Telescope git_status<CR>", opts)
 
