@@ -70,6 +70,11 @@ return {
     end,
     keys = {
       {
+        "<leader>gg",
+        "<cmd>:G<cr>",
+        { desc = "Fugitive" },
+      },
+      {
         "<leader>gk",
         "<cmd>lua require 'gitsigns'.prev_hunk({navigation_message = false})<cr>",
         { desc = "Prev Hunk" },

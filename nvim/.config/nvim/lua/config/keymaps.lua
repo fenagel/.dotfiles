@@ -37,7 +37,7 @@ map("n", "<leader>m", ":Telescope git_status<CR>", opts)
 map("n", "X", ":keeppatterns substitute/\\s*\\%#\\s*/\\r/e <bar> normal! ==^<cr>", { silent = true })
 
 -- Select all
-map("n", "<c-f>", "ggVG", opts)
+map("n", "<c-a>", "ggVG", opts)
 
 -- Move to start/end of line
 map({ "n", "x", "o" }, "H", "^", opts)
