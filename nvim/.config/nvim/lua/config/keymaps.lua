@@ -48,5 +48,18 @@ map({ "n", "x", "o" }, "L", "g_", opts)
 -- P puts text before the cursor.
 -- TODO: fix, does not work
 -- map("n", "YY", "va{Vy", opts)
+
+map("n", "<leader>i", '<cmd>lua require("cmp").setup { enabled = true }<cr>', { desc = "Enable completion" })
+map("n", "<leader>I", '<cmd>lua require("cmp").setup { enabled = false }<cr>', { desc = "Disable completion" })
+
+--- convert current line to title cases
+--  TODO: build or copy to have this
+-- map(
+--   "n",
+--   "<leader>rlt",
+--   "<cmd>lua require('textcase').current_word('to_title_case')<CR>",
+--   { desc = "Replace Line Title" }
+-- )
+
 map("n", "<leader>h", ":nohlsearch<CR>", { desc = "No Highlight" })
 map("v", "<leader>h", ":nohlsearch<CR>", { desc = "No Highlight" })
