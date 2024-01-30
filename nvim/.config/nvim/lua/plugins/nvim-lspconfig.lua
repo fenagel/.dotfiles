@@ -2,6 +2,7 @@ return {
   "neovim/nvim-lspconfig",
   opts = {
     servers = {
+      lua_ls = {},
       eslint = {},
       html = {
         filetypes = { "html", "templ" },

@@ -8,7 +8,7 @@ return {
   ---@class NoiceConfig
   opts = {
     ---@type NoicePresets
-    presets = { inc_rename = true },
+    presets = { inc_rename = true, lsp_doc_border = true },
     ---@type NoiceConfigViews
     views = {
       cmdline_popup = {
