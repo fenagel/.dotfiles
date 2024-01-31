@@ -6,6 +6,8 @@ local opts = { noremap = true, silent = true }
 -- Fast saving
 map("n", "<Leader>w", ":write!<CR>", opts)
 map("n", "<Leader>q", ":q!<CR>", opts)
+map("v", "<Leader>w", ":write!<CR>", opts)
+map("v", "<Leader>q", ":q!<CR>", opts)
 
 -- paste over currently selected text without yanking it
 map("v", "p", '"_dp')
@@ -29,9 +31,6 @@ map("n", "g#", "g#zz", opts)
 -- Split window
 map("n", "ss", ":split<Return>", opts)
 map("n", "sv", ":vsplit<Return>", opts)
-
--- search modified files
-map("n", "<leader>m", ":Telescope git_status<CR>", opts)
 
 -- Split line with X
 map("n", "X", ":keeppatterns substitute/\\s*\\%#\\s*/\\r/e <bar> normal! ==^<cr>", { silent = true })
