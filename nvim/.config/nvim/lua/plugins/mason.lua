@@ -12,6 +12,7 @@ return {
       "html-lsp",
       "css-lsp",
       "vue-language-server",
+      "tailwindcss-language-server",
       "templ",
     }
     vim.list_extend(opts.ensure_installed, servers)
