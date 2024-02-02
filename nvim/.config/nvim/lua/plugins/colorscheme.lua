@@ -1,4 +1,54 @@
 -- return {
+--   "olivercederborg/poimandres.nvim",
+--   lazy = false,
+--   priority = 1000,
+--   config = function()
+--     local poimandres = require("poimandres")
+--     poimandres.setup({
+--       -- disable_background = true, -- disable background
+--       -- disable_float_background = true, -- disable background for floats
+--     })
+--     --   end,
+--
+--     -- optionally set the colorscheme within lazy config
+--     init = function()
+--       vim.cmd("colorscheme poimandres")
+--       vim.g.poimandres_variant = "storm"
+--     end
+--   end,
+-- }
+return {
+  "crispybaccoon/aki",
+  opts = {
+    theme = "default",
+    override_terminal = true,
+    transparent_background = false,
+    contrast_dark = "medium",
+    contrast_light = "medium",
+    emphasis = {
+      general = { italic = true },
+      comment = {},
+      keyword = { italic = true },
+      type = { type = true },
+    },
+    style = {
+      cursorline = { soft = true, contrast_currentline = false },
+      tabline = { reverse = true, color = "seiun" },
+      search = { reverse = false, color = "sakaeru" },
+    },
+    overrides = {},
+    plugins = true,
+  },
+}
+-- return {
+--   "crispybaccoon/evergarden",
+--   opts = {
+--     transparent_background = true,
+--     contrast_dark = "hard", -- 'hard'|'medium'|'soft'
+--     overrides = {}, -- add custom overrides
+--   },
+-- }
+-- return {
 --   "sainnhe/gruvbox-material",
 --   enabled = true,
 --   priority = 1000,
@@ -38,12 +88,12 @@
 --     vim.cmd.colorscheme("everforest")
 --   end,
 -- }
-return {
-  "catppuccin/nvim",
-  priority = 150,
-  name = "catppuccin",
-  opts = { transparent_background = true },
-}
+-- return {
+--   "catppuccin/nvim",
+--   priority = 150,
+--   name = "catppuccin",
+--   opts = { transparent_background = true },
+-- }
 -- return {
 --   "catppuccin/nvim",
 --   priority = 150,

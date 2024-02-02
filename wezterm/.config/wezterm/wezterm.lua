@@ -21,7 +21,8 @@ local config = {
 	line_height = 1,
 
 	-- colors
-	color_scheme = cs.get_color_scheme(),
+	color_scheme = "aki",
+	-- color_scheme = cs.get_color_scheme(),
 
 	-- padding
 	window_padding = {
@@ -45,7 +46,7 @@ local config = {
 	native_macos_fullscreen_mode = false,
 	window_close_confirmation = "NeverPrompt",
 	window_decorations = "RESIZE",
-	window_background_opacity = 0.95,
+	window_background_opacity = 0.98,
 	macos_window_background_blur = 30,
 
 	-- ZenMode Nvim Plugin
