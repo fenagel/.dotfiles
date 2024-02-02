@@ -17,29 +17,32 @@
 --     end
 --   end,
 -- }
-return {
-  "crispybaccoon/aki",
-  opts = {
-    theme = "default",
-    override_terminal = true,
-    transparent_background = false,
-    contrast_dark = "medium",
-    contrast_light = "medium",
-    emphasis = {
-      general = { italic = true },
-      comment = {},
-      keyword = { italic = true },
-      type = { type = true },
-    },
-    style = {
-      cursorline = { soft = true, contrast_currentline = false },
-      tabline = { reverse = true, color = "seiun" },
-      search = { reverse = false, color = "sakaeru" },
-    },
-    overrides = {},
-    plugins = true,
-  },
-}
+-- return {
+--   "crispybaccoon/aki",
+--   ---@type aki.types.Config
+--   opts = {
+--     theme = "default",
+--     override_terminal = true,
+--     transparent_background = false,
+--     contrast_dark = "medium",
+--     contrast_light = "medium",
+--     emphasis = {
+--       general = { italic = true },
+--       comment = {},
+--       keyword = { italic = true },
+--       type = { type = true },
+--     },
+--     style = {
+--       cursorline = { soft = true, contrast_currentline = true },
+--       tabline = { reverse = true, color = "seiun" },
+--       search = { reverse = true, color = "sakaeru" },
+--     },
+--     overrides = {
+--       Special = { theme.syntax.object },
+--     },
+--     plugins = true,
+--   },
+-- }
 -- return {
 --   "crispybaccoon/evergarden",
 --   opts = {
@@ -68,26 +71,26 @@ return {
 --     vim.cmd.colorscheme("gruvbox-material")
 --   end,
 -- }
--- return {
---   "sainnhe/everforest",
---   enabled = true,
---   priority = 1000,
---   config = function()
---     vim.g.everforest_transparent_background = 0
---     vim.g.everforest_foreground = "mix"
---     vim.g.everforest_background = "hard" -- soft, medium, hard
---     vim.g.everforest_ui_contrast = "high" -- The contrast of line numbers, indent lines, etc.
---     vim.g.everforest_float_style = "bright" -- Background of floating windows
---     vim.g.everforest_statusline_style = "material"
---     vim.g.everforest_cursor = "auto"
---
---     -- vim.g.gruvbox_material_colors_override = { bg0 = '#000000' } -- #0e1010
---     -- vim.g.gruvbox_material_colors_override = { bg0 = "#121212" }
---     -- vim.g.gruvbox_material_better_performance = 1
---
---     vim.cmd.colorscheme("everforest")
---   end,
--- }
+return {
+  "sainnhe/everforest",
+  enabled = true,
+  priority = 1000,
+  config = function()
+    vim.g.everforest_transparent_background = 1
+    vim.g.everforest_foreground = "mix"
+    vim.g.everforest_background = "hard" -- soft, medium, hard
+    vim.g.everforest_ui_contrast = "high" -- The contrast of line numbers, indent lines, etc.
+    vim.g.everforest_float_style = "bright" -- Background of floating windows
+    vim.g.everforest_statusline_style = "material"
+    vim.g.everforest_cursor = "auto"
+
+    -- vim.g.gruvbox_material_colors_override = { bg0 = '#000000' } -- #0e1010
+    -- vim.g.gruvbox_material_colors_override = { bg0 = "#121212" }
+    -- vim.g.gruvbox_material_better_performance = 1
+
+    vim.cmd.colorscheme("everforest")
+  end,
+}
 -- return {
 --   "catppuccin/nvim",
 --   priority = 150,

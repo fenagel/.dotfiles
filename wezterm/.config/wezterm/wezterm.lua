@@ -46,7 +46,7 @@ local config = {
 	native_macos_fullscreen_mode = false,
 	window_close_confirmation = "NeverPrompt",
 	window_decorations = "RESIZE",
-	window_background_opacity = 0.98,
+	window_background_opacity = 1,
 	macos_window_background_blur = 30,
 
 	-- ZenMode Nvim Plugin
