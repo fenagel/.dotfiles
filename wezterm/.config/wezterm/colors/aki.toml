@@ -1,15 +1,15 @@
 # aki
 [colors]
 foreground = "#8383A5"
-background = "#1D1E28"
+background = "#161720"
 cursor_bg = "#B4B4AC"
 cursor_border = "#EBEBE3"
-cursor_fg = "#e0def4"
+cursor_fg = "#1D1E28"
 selection_bg = "#EBEBE3"
 selection_fg = "#1D1E28"
 
 ansi = [
-  "#1D1E28",
+  "#161720",
   "#CA797E",
   "#A5C79F",
   "#E6B87F",
