@@ -5,49 +5,57 @@
 --   config = function()
 --     local poimandres = require("poimandres")
 --     poimandres.setup({
---       -- disable_background = true, -- disable background
---       -- disable_float_background = true, -- disable background for floats
+--       disable_background = true, -- disable background
+--       disable_float_background = true, -- disable background for floats
 --     })
---     --   end,
+--   end,
 --
---     -- optionally set the colorscheme within lazy config
---     init = function()
---       vim.cmd("colorscheme poimandres")
---       vim.g.poimandres_variant = "storm"
---     end
+--   -- optionally set the colorscheme within lazy config
+--   init = function()
+--     vim.cmd("colorscheme poimandres")
+--     vim.g.poimandres_variant = "storm"
 --   end,
 -- }
-return {
-  "crispybaccoon/aki",
-  ---@type aki.types.Config
-  opts = {
-    theme = "hard",
-    override_terminal = true,
-    transparent_background = false,
-    contrast_dark = "hard",
-    contrast_light = "medium",
-    emphasis = {
-      general = { italic = true },
-      comment = {},
-      keyword = { italic = true },
-      type = { type = true },
-    },
-    style = {
-      cursorline = { soft = true, contrast_currentline = true },
-      tabline = { reverse = true, color = "aqua" },
-      search = { reverse = true, color = "sakaeru" },
-      types = { italic = false },
-      comment = { italic = true },
-      keyword = { italic = true },
-    },
-    overrides = {
-      Special = { fg = "#fff" },
-      Operator = { fg = "#fff" },
-      Tag = { fg = "#fff" },
-    },
-    plugins = true,
-  },
-}
+-- return {
+--   "crispybaccoon/aki",
+--   ---@type aki.types.Config
+--   opts = {
+--     theme = "hard",
+--     override_terminal = true,
+--     transparent_background = false,
+--     contrast_dark = "hard",
+--     contrast_light = "medium",
+--     emphasis = {
+--       general = { italic = true },
+--       comment = {},
+--       keyword = { italic = true },
+--       type = { type = true },
+--     },
+--     style = {
+--       cursorline = { soft = true, contrast_currentline = true },
+--       tabline = { reverse = true, color = "aqua" },
+--       search = { reverse = true, color = "sakaeru" },
+--       types = { italic = false },
+--       comment = { italic = true },
+--       keyword = { italic = true },
+--     },
+--     overrides = {
+--       Special = { fg = "#fff" },
+--       Operator = { fg = "#fff" },
+--       Tag = { fg = "#fff" },
+--     },
+--     plugins = true,
+--   },
+-- }
+-- return {
+--   "crispybaccoon/twilight-moon",
+--   opts = {
+--     transparent_background = true,
+--     contrast_dark = "hard",
+--     style = {},
+--     overrides = {},
+--   },
+-- }
 -- return {
 --   "crispybaccoon/evergarden",
 --   opts = {
@@ -96,12 +104,12 @@ return {
 --     vim.cmd.colorscheme("everforest")
 --   end,
 -- }
--- return {
---   "catppuccin/nvim",
---   priority = 150,
---   name = "catppuccin",
---   opts = { transparent_background = true },
--- }
+return {
+  "catppuccin/nvim",
+  priority = 150,
+  name = "catppuccin",
+  opts = { transparent_background = true },
+}
 -- return {
 --   "catppuccin/nvim",
 --   priority = 150,
@@ -170,7 +178,7 @@ return {
 --           crust = "#141617",
 --         },
 --       },
---       transparent_background = false,
+--       transparent_background = true,
 --       show_end_of_buffer = false,
 --       integration_default = false,
 --       integrations = {
