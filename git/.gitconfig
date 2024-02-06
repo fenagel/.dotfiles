@@ -15,3 +15,5 @@
 [user]
 	name = fenagel
 	email = felixnagel105@gmail.com
+[init]
+	defaultBranch = main
