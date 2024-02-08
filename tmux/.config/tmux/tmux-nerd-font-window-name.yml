@@ -2,6 +2,7 @@ config:
   fallback-icon: "❓"
   multi-pane-icon: "🪟"
   show-name: false
+  icon-position: "right"
 
 icons:
   btop: "📈"

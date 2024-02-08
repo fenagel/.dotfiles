@@ -17,6 +17,29 @@ return {
           filetypes = { "go", "gomod", "gowork", "gotmpl", "gohtml" },
         },
       },
+      {
+        tailwindcss = {
+          filetypes = {
+            "html",
+            "css",
+            "scss",
+            "javascript",
+            "typescript",
+            "javascriptreact",
+            "typescriptreact",
+            "vue",
+            "svelte",
+            "templ",
+          },
+          init_options = {
+            userLanguages = {
+              vue = "html",
+              svelte = "html",
+              templ = "html",
+            },
+          },
+        },
+      },
     },
     -- you can do any additional lsp server setup here
     -- return true if you don't want this server to be setup with lspconfig
