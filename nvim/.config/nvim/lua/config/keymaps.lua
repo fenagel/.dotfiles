@@ -2,6 +2,7 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 local map = vim.keymap.set
+local del = vim.keymap.del
 local opts = { noremap = true, silent = true }
 -- Fast saving
 map("n", "<Leader>w", ":write!<CR>", opts)
@@ -47,6 +48,12 @@ map({ "n", "x", "o" }, "L", "g_", opts)
 -- P puts text before the cursor.
 -- TODO: fix, does not work
 -- map("n", "YY", "va{Vy", opts)
-
+del("n", "<leader>ww")
+del("n", "<leader>wd")
+del("n", "<leader>w-")
+del("n", "<leader>w|")
+del("n", "<leader>-")
+del("n", "<leader>|")
+-- vim.keymap.del({ "n", "v" }, "<leader><space>")
 map("n", "<space><space>", ":nohlsearch<CR>", { desc = "No Highlight" })
 map("v", "<space><space>", ":nohlsearch<CR>", { desc = "No Highlight" })
