@@ -1,4 +1,4 @@
-local path = vim.fn.expand("$HOME") .. "/Library/Mobile Documents/iCloud~md~obsidian/Documents/Ideaverse"
+local path = vim.fn.expand("$HOME") .. "/code/fenagel/second-brain"
 
 return {
   "epwalsh/obsidian.nvim",
@@ -23,7 +23,7 @@ return {
   opts = {
     workspaces = {
       {
-        name = "Notes",
+        name = "FVault",
         -- path = "~/second-brain",
         path = path,
       },
@@ -45,20 +45,50 @@ return {
       -- 1. Whether to add the note ID during completion.
       -- E.g. "[[Foo" completes to "[[foo|Foo]]" assuming "foo" is the ID of the note.
       -- Mutually exclusive with 'prepend_note_path' and 'use_path_only'.
-      prepend_note_id = false,
+      prepend_note_id = true,
       -- 2. Whether to add the note path during completion.
       -- E.g. "[[Foo" completes to "[[notes/foo|Foo]]" assuming "notes/foo.md" is the path of the note.
       -- Mutually exclusive with 'prepend_note_id' and 'use_path_only'.
-      prepend_note_path = true,
+      -- prepend_note_path = true,
       -- 3. Whether to only use paths during completion.
       -- E.g. "[[Foo" completes to "[[notes/foo]]" assuming "notes/foo.md" is the path of the note.
       -- Mutually exclusive with 'prepend_note_id' and 'prepend_note_path'.
-      use_path_only = false,
+      -- use_path_only = false,
     },
     templates = {
-      subdir = "Utilities/Templates",
+      subdir = "Templates",
       date_format = "%Y-%m-%d-%a",
       time_format = "%H:%M",
+      tags = "",
     },
+    mappings = {
+      -- Obsidian follow"
+      ["<leader>of"] = {
+        action = function()
+          require("obsidian").util.gf_passthrough()
+        end,
+        opts = { noremap = false, expr = true, buffer = true },
+      },
+      -- Toggle checkboxes "Obsidian done"
+      ["<leader>od"] = {
+        action = function()
+          require("obsidian").util.toggle_checkbox()
+        end,
+        opts = { buffer = true },
+      },
+    },
+    note_frontmatter_func = function(note)
+      -- This is equivalent to the default frontmatter function.
+      local out = { id = note.id, aliases = note.aliases, tags = note.tags, area = "", project = "" }
+
+      -- `note.metadata` contains any manually added fields in the frontmatter.
+      -- So here we just make sure those fields are kept in the frontmatter.
+      if note.metadata ~= nil and not vim.tbl_isempty(note.metadata) then
+        for k, v in pairs(note.metadata) do
+          out[k] = v
+        end
+      end
+      return out
+    end,
   },
 }

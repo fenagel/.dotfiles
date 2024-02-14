@@ -48,5 +48,5 @@ map({ "n", "x", "o" }, "L", "g_", opts)
 -- TODO: fix, does not work
 -- map("n", "YY", "va{Vy", opts)
 
-map("n", "<leader>h", ":nohlsearch<CR>", { desc = "No Highlight" })
-map("v", "<leader>h", ":nohlsearch<CR>", { desc = "No Highlight" })
+map("n", "<space><space>", ":nohlsearch<CR>", { desc = "No Highlight" })
+map("v", "<space><space>", ":nohlsearch<CR>", { desc = "No Highlight" })
