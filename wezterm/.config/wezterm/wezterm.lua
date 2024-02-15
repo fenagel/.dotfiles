@@ -21,8 +21,8 @@ local config = {
 	line_height = 1,
 
 	-- colors
-	-- color_scheme = "aki",
-	color_scheme = cs.get_color_scheme(),
+	color_scheme = "aki",
+	-- color_scheme = cs.get_color_scheme(),
 
 	-- padding
 	window_padding = {
