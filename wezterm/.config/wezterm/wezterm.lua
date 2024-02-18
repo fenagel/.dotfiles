@@ -21,8 +21,8 @@ local config = {
 	line_height = 1,
 
 	-- colors
-	-- color_scheme = "aki",
-	color_scheme = cs.get_color_scheme(),
+	color_scheme = "aki",
+	-- color_scheme = cs.get_color_scheme(),
 
 	-- padding
 	window_padding = {
@@ -46,8 +46,8 @@ local config = {
 	native_macos_fullscreen_mode = false,
 	window_close_confirmation = "NeverPrompt",
 	window_decorations = "RESIZE",
-	window_background_opacity = 1,
-	macos_window_background_blur = 30,
+	window_background_opacity = 0.90,
+	macos_window_background_blur = 80,
 
 	-- ZenMode Nvim Plugin
 	wezterm.on("user-var-changed", function(window, pane, name, value)
