@@ -54,6 +54,9 @@ del("n", "<leader>w-")
 del("n", "<leader>w|")
 del("n", "<leader>-")
 del("n", "<leader>|")
--- vim.keymap.del({ "n", "v" }, "<leader><space>")
-map("n", "<space><space>", ":nohlsearch<CR>", { desc = "No Highlight" })
-map("v", "<space><space>", ":nohlsearch<CR>", { desc = "No Highlight" })
+
+-- lsp
+map("n", "<space><space>", vim.lsp.buf.code_action, { desc = "Code Action Menu" })
+map("n", "<space>h", ":nohlsearch<CR>", { desc = "No Highlight" })
+map("v", "<space>h", ":nohlsearch<CR>", { desc = "No Highlight" })
+map("v", "<leader>rr", '"hy:%s/<C-r>h//g<left><left>') -- Replace all instances of highlighted words

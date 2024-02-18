@@ -18,9 +18,12 @@ M.get_color_scheme = function()
 	-- return h.is_dark() and "Catppuccin Mocha" or "Catppuccin Latte"
 	-- return "Catppuccin Mocha"
 	-- return "Poimandres"
+	-- return "Solarized Dark - Patched"
 	-- return "Tomorrow Night"
-	return "rose-pine"
-	-- return "GruvboxDarkHard"
+	-- return "rose-pine"
+	return "GruvboxDarkHard"
+	-- return "Gruvbox Dark (Gogh)"
+	-- return "Gruvbox dark, hard (base16)"
 	-- return "Everforest Dark (Gogh)"
 end
 
