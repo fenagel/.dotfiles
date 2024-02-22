@@ -63,56 +63,60 @@ vim.g.maplocalleader = " "
 -- NOTE: You can change these options as you wish!
 
 -- Set highlight on search
-vim.o.hlsearch = false
+vim.opt.hlsearch = false
 
 -- Make line numbers default
 vim.wo.number = true
 
 -- Enable mouse mode
-vim.o.mouse = "a"
+vim.opt.mouse = "a"
 
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
-vim.o.clipboard = "unnamedplus"
+vim.opt.clipboard = "unnamedplus"
 
 -- Enable break indent
-vim.o.breakindent = true
+vim.opt.breakindent = true
 
 -- Save undo history
-vim.o.undofile = true
+vim.opt.undofile = true
 
 -- Case-insensitive searching UNLESS \C or capital in search
-vim.o.ignorecase = true
-vim.o.smartcase = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
 -- Keep signcolumn on by default
 vim.wo.signcolumn = "yes"
 
 -- Decrease update time
-vim.o.updatetime = 250
-vim.o.timeoutlen = 300
+vim.opt.updatetime = 250
+vim.opt.timeoutlen = 300
 
 -- NOTE: You should make sure your terminal supports this
-vim.o.termguicolors = true
+vim.opt.termguicolors = true
 
 -- Configure how new splits should be opened
-vim.o.splitright = true
-vim.o.splitbelow = true
+vim.opt.splitright = true
+vim.opt.splitbelow = true
 
 -- Add filetypes
 vim.filetype.add({ extension = { templ = "templ" } })
 vim.filetype.add({ extension = { gohtml = "gohtml" } })
 
 -- conceal level
-vim.o.conceallevel = 2
+vim.opt.conceallevel = 2
 
 -- line wrapping
-vim.o.wrap = false
+vim.opt.wrap = false
 
 -- scroll options
-vim.o.scrolloff = 8
-vim.o.sidescrolloff = 8
+vim.opt.scrolloff = 8
+vim.opt.sidescrolloff = 8
+
+vim.opt.relativenumber = true
+vim.opt.nu = true
+vim.opt.colorcolumn = "80"
 
 -- [[ Basic Keymaps ]]
 
@@ -160,6 +164,22 @@ vim.keymap.set({ "n", "x", "o" }, "L", "g_", opts)
 -- Replace all instances of highlighted words
 vim.keymap.set("v", "<leader>rr", '"hy:%s/<C-r>h//g<left><left>')
 
+-- Move selected line / block of text in visual mode
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", opts)
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", opts)
+
+-- open Netrw
+vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+
+vim.keymap.set("n", "<leader>pe", "oif err != nil {<CR>}<Esc>Oreturn err<Esc>", { desc = "[P]aste Go [E]rror" })
+
+vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, { desc = "[F]ormat File" })
+
+-- J and K for everything
+vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
+vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
+vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
+vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 -- Toggle color column
 local utils = require("custom.utils")
 vim.keymap.set(
@@ -233,7 +253,7 @@ require("lazy").setup({
         --
         -- You can use a sub-list to tell conform to run *until* a formatter
         -- is found.
-        -- javascript = { { "prettierd", "prettier" } },
+        javascript = { { "prettierd", "prettier" } },
       },
     },
   },
@@ -438,7 +458,7 @@ require("lazy").setup({
       vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
       vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
       vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
-      vim.keymap.set("n", "<leader>gf", builtin.git_files, { desc = "Search [G]it [F]iles" })
+      vim.keymap.set("n", "<c-p>", builtin.git_files, { desc = "Search [G]it [F]iles" })
       vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
 
       -- Slightly advanced example of overriding default behavior and theme
