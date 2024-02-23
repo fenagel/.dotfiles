@@ -64,6 +64,15 @@ vim.opt.timeoutlen = 300
 -- NOTE: You should make sure your terminal supports this
 vim.opt.termguicolors = true
 
+-- the number of spaces inserted for each indentation
+vim.opt.shiftwidth = 2
+
+-- convert tabs to spaces
+vim.opt.expandtab = true
+
+-- number of spaces that tabs count for
+vim.opt.tabstop = 4
+
 -- Configure how new splits should be opened
 vim.opt.splitright = true
 vim.opt.splitbelow = true
@@ -71,7 +80,7 @@ vim.opt.splitbelow = true
 -- Sets how neovim will display certain whitespace in the editor.
 --  See :help 'list'
 --  and :help 'listchars'
-vim.opt.list = true
+vim.opt.list = false
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 -- Preview substitutions live
