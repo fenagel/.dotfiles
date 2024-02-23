@@ -101,6 +101,10 @@ vim.opt.colorcolumn = '80'
 -- Set highlight on search
 vim.opt.hlsearch = true
 
+-- Netrw settings
+vim.g.netrw_browse_split = 0
+vim.g.netrw_banner = 0
+vim.g.netrw_winsize = 25
 -- Clear highlighting on pressing Escape
 vim.keymap.set('n', '<Esc>', '<esc>:nohlsearch<CR>', { silent = true })
 
