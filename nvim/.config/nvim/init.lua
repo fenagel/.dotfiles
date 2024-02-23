@@ -506,10 +506,11 @@ require('lazy').setup({
       -- If you're wondering about lsp vs treesitter, you can check out the wonderfully
       -- and elegantly composed help section, :help lsp-vs-treesitter
 
+      require('lspconfig.ui.windows').default_options.border = 'single'
+
       -- First, enable neodev. This is helpful for auto-configuring the Lua LSP
       -- to understand your Neovim environment
       require('neodev').setup()
-
       --  This function gets run when an LSP connects to a particular buffer.
       local on_attach = function(_, bufnr)
         -- NOTE: Remember that lua is a real programming language, and as such it is possible
@@ -663,6 +664,28 @@ require('lazy').setup({
           end,
         },
       }
+
+      vim.diagnostic.config {
+        title = false,
+        underline = true,
+        virtual_text = true,
+        signs = true,
+        update_in_insert = false,
+        severity_sort = true,
+        float = {
+          source = 'always',
+          style = 'minimal',
+          border = 'rounded',
+          header = '',
+          prefix = '',
+        },
+      }
+
+      local signs = { Error = ' ', Warn = ' ', Hint = '󰠠 ', Info = ' ' }
+      for type, icon in pairs(signs) do
+        local hl = 'DiagnosticSign' .. type
+        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = '' })
+      end
     end,
   },
 
@@ -692,6 +715,9 @@ require('lazy').setup({
       -- Adds a number of user-friendly snippets
       'rafamadriz/friendly-snippets',
 
+      -- Adds vscode-like pictograms
+      'onsails/lspkind.nvim',
+
       -- Codeium
       {
         'Exafunction/codeium.nvim',
@@ -706,6 +732,35 @@ require('lazy').setup({
       -- See `:help cmp`
       local cmp = require 'cmp'
       local luasnip = require 'luasnip'
+      local lspkind = require 'lspkind'
+
+      local kind_icons = {
+        Text = '',
+        Method = '󰆧',
+        Function = '󰊕',
+        Constructor = '',
+        Field = '󰇽',
+        Variable = '󰂡',
+        Class = '󰠱',
+        Interface = '',
+        Module = '',
+        Property = '󰜢',
+        Unit = '',
+        Value = '󰎠',
+        Enum = '',
+        Keyword = '󰌋',
+        Snippet = '',
+        Color = '󰏘',
+        File = '󰈙',
+        Reference = '',
+        Folder = '󰉋',
+        EnumMember = '',
+        Constant = '󰏿',
+        Struct = '',
+        Event = '',
+        Operator = '󰆕',
+        TypeParameter = '󰅲',
+      }
       require('luasnip.loaders.from_vscode').lazy_load()
       luasnip.config.setup {}
 
@@ -715,10 +770,10 @@ require('lazy').setup({
             luasnip.lsp_expand(args.body)
           end,
         },
-        -- window = {
-        --   completion = cmp.config.window.bordered(),
-        --   documentation = cmp.config.window.bordered(),
-        -- },
+        window = {
+          completion = cmp.config.window.bordered(),
+          documentation = cmp.config.window.bordered(),
+        },
         completion = {
           completeopt = 'menu,menuone,noinsert,noselect',
         },
@@ -755,11 +810,33 @@ require('lazy').setup({
           end, { 'i', 's' }),
         },
         sources = {
-          { name = 'nvim_lsp' },
           { name = 'codeium' },
+          { name = 'nvim_lsp' },
           { name = 'luasnip' },
           { name = 'path' },
           { name = 'buffer' },
+        },
+        formatting = {
+          format = function(entry, vim_item)
+            local lspkind_ok, lspkind = pcall(require, 'lspkind')
+            if not lspkind_ok then
+              -- From kind_icons array
+              vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind)
+              -- Source
+              vim_item.menu = ({
+                copilot = '[Copilot]',
+                nvim_lsp = '[LSP]',
+                nvim_lua = '[Lua]',
+                luasnip = '[LuaSnip]',
+                buffer = '[Buffer]',
+                latex_symbols = '[LaTeX]',
+              })[entry.source.name]
+              return vim_item
+            else
+              -- From lspkind
+              return lspkind.cmp_format()(entry, vim_item)
+            end
+          end,
         },
       }
 

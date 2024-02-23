@@ -17,7 +17,7 @@ local config = {
 
 	-- font
 	font = f.get_font(),
-	font_size = 20,
+	font_size = 18,
 	line_height = 1,
 
 	-- colors
@@ -46,7 +46,7 @@ local config = {
 	native_macos_fullscreen_mode = false,
 	window_close_confirmation = "NeverPrompt",
 	window_decorations = "RESIZE",
-	window_background_opacity = 0.96,
+	window_background_opacity = 1,
 	macos_window_background_blur = 80,
 
 	-- ZenMode Nvim Plugin
