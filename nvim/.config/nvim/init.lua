@@ -150,7 +150,7 @@ vim.keymap.set('n', 'ss', ':split<Return>', opts)
 vim.keymap.set('n', 'sv', ':vsplit<Return>', opts)
 
 -- Select all
-vim.keymap.set('n', '<c-a>', 'ggVG', opts)
+vim.keymap.set('n', '<c-s>', 'ggVG', opts)
 
 -- Move to start/end of line
 vim.keymap.set({ 'n', 'x', 'o' }, 'H', '^', opts)
@@ -343,8 +343,17 @@ require('lazy').setup({
           mappings = {
             i = {
               ['<C-t>'] = trouble.open_with_trouble,
+              ['<C-n>'] = actions.cycle_history_next,
+              ['<C-p>'] = actions.cycle_history_prev,
+              ['<C-j>'] = actions.move_selection_next,
+              ['<C-k>'] = actions.move_selection_previous,
             },
-            n = { ['<C-t>'] = trouble.open_with_trouble },
+            n = {
+              ['j'] = actions.move_selection_next,
+              ['k'] = actions.move_selection_previous,
+              ['q'] = actions.close,
+              ['<C-t>'] = trouble.open_with_trouble,
+            },
           },
           layout_config = {
             prompt_position = 'top',
@@ -881,9 +890,9 @@ require('lazy').setup({
         -- chosen, you will need to read `:help ins-completion`
         mapping = cmp.mapping.preset.insert {
           -- Select the [n]ext item
-          ['<C-n>'] = cmp.mapping.select_next_item(),
+          ['<C-j>'] = cmp.mapping.select_next_item(),
           -- Select the [p]revious item
-          ['<C-p>'] = cmp.mapping.select_prev_item(),
+          ['<C-k>'] = cmp.mapping.select_prev_item(),
           -- Accept ([y]es) the completion.
           --  This will auto-import if your LSP supports it.
           --  This will expand snippets if the LSP sent a snippet.
