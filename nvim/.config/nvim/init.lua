@@ -661,6 +661,7 @@ require('lazy').setup({
           },
           settings = {
             gopls = {
+              filetypes = { 'go', 'gomod', 'gowork', 'gotmpl', 'templ' },
               gofumpt = true,
               codelenses = {
                 gc_details = false,
@@ -740,6 +741,9 @@ require('lazy').setup({
             },
           },
         },
+        -- setup = {
+        --   gopls = function(_, opts) end,
+        -- },
       }
 
       -- You can add other tools here that you want Mason to install
