@@ -8,95 +8,77 @@
 --     }
 --   end,
 -- }
-return {
-  'rose-pine/neovim',
-  name = 'rose-pine',
-  enabled = true,
-  config = function()
-    require('rose-pine').setup {
-      variant = 'auto', -- auto, main, moon, or dawn
-      dark_variant = 'main', -- main, moon, or dawn
-      dim_inactive_windows = false,
-      extend_background_behind_borders = true,
-
-      styles = {
-        bold = true,
-        italic = true,
-        transparency = true,
-      },
-
-      --   groups = {
-      --     border = "muted",
-      --     link = "iris",
-      --     panel = "surface",
-      --
-      --     error = "love",
-      --     hint = "iris",
-      --     info = "foam",
-      --     warn = "gold",
-      --
-      --     git_add = "foam",
-      --     git_change = "rose",
-      --     git_delete = "love",
-      --     git_dirty = "rose",
-      --     git_ignore = "muted",
-      --     git_merge = "iris",
-      --     git_rename = "pine",
-      --     git_stage = "iris",
-      --     git_text = "rose",
-      --     git_untracked = "subtle",
-      --
-      --     headings = {
-      --       h1 = "iris",
-      --       h2 = "foam",
-      --       h3 = "rose",
-      --       h4 = "gold",
-      --       h5 = "pine",
-      --       h6 = "foam",
-      --     },
-      --     -- Alternatively, set all headings at once.
-      --     -- headings = "subtle",
-      --   },
-      --
-      --   highlight_groups = {
-      --     -- Comment = { fg = "foam" },
-      --     -- VertSplit = { fg = "muted", bg = "muted" },
-      --   },
-      --
-      --   before_highlight = function(group, highlight, palette)
-      --     -- Disable all undercurls
-      --     -- if highlight.undercurl then
-      --     --     highlight.undercurl = false
-      --     -- end
-      --     --
-      --     -- Change palette colour
-      --     -- if highlight.fg == palette.pine then
-      --     --     highlight.fg = palette.foam
-      --     -- end
-      --   end,
-    }
-    --
-    vim.cmd 'colorscheme rose-pine-main'
-    -- vim.cmd('colorscheme rose-pine-moon')
-    -- vim.cmd('colorscheme rose-pine-dawn')
-  end,
-}
 -- return {
---   "olivercederborg/poimandres.nvim",
---   lazy = false,
---   priority = 1000,
+--   'rose-pine/neovim',
+--   name = 'rose-pine',
+--   enabled = true,
 --   config = function()
---     local poimandres = require("poimandres")
---     poimandres.setup({
---       disable_background = true, -- disable background
---       disable_float_background = true, -- disable background for floats
---     })
---   end,
+--     require('rose-pine').setup {
+--       variant = 'auto', -- auto, main, moon, or dawn
+--       dark_variant = 'main', -- main, moon, or dawn
+--       dim_inactive_windows = false,
+--       extend_background_behind_borders = true,
 --
---   -- optionally set the colorscheme within lazy config
---   init = function()
---     vim.cmd("colorscheme poimandres")
---     vim.g.poimandres_variant = "storm"
+--       styles = {
+--         bold = true,
+--         italic = true,
+--         transparency = true,
+--       },
+
+--   groups = {
+--     border = "muted",
+--     link = "iris",
+--     panel = "surface",
+--
+--     error = "love",
+--     hint = "iris",
+--     info = "foam",
+--     warn = "gold",
+--
+--     git_add = "foam",
+--     git_change = "rose",
+--     git_delete = "love",
+--     git_dirty = "rose",
+--     git_ignore = "muted",
+--     git_merge = "iris",
+--     git_rename = "pine",
+--     git_stage = "iris",
+--     git_text = "rose",
+--     git_untracked = "subtle",
+--
+--     headings = {
+--       h1 = "iris",
+--       h2 = "foam",
+--       h3 = "rose",
+--       h4 = "gold",
+--       h5 = "pine",
+--       h6 = "foam",
+--     },
+--     -- Alternatively, set all headings at once.
+--     -- headings = "subtle",
+--   },
+--
+--   highlight_groups = {
+--     -- Comment = { fg = "foam" },
+--     -- VertSplit = { fg = "muted", bg = "muted" },
+--   },
+--
+--   before_highlight = function(group, highlight, palette)
+--     -- Disable all undercurls
+--     -- if highlight.undercurl then
+--     --     highlight.undercurl = false
+--     -- end
+--     --
+--     -- Change palette colour
+--     -- if highlight.fg == palette.pine then
+--     --     highlight.fg = palette.foam
+--     -- end
+--   end,
+--     }
+--     --
+--     vim.cmd 'colorscheme rose-pine-main'
+--     -- vim.cmd('colorscheme rose-pine-moon')
+--     -- vim.cmd('colorscheme rose-pine-dawn')
 --   end,
 -- }
 -- return {
@@ -128,15 +110,6 @@ return {
 --       Tag = { fg = "#fff" },
 --     },
 --     plugins = true,
---   },
--- }
--- return {
---   "crispybaccoon/twilight-moon",
---   opts = {
---     transparent_background = true,
---     contrast_dark = "hard",
---     style = {},
---     overrides = {},
 --   },
 -- }
 -- return {
@@ -549,3 +522,153 @@ return {
 --     -- vim.api.nvim_set_hl(0, "NavicSeparator", { default = true, bg = "none", fg = "#eedaad" })
 --   end,
 -- }
+--
+-- return {
+--   'catppuccin/nvim',
+--   name = 'catppuccin',
+--   lazy = false,
+--   priority = 1000,
+--   config = function()
+--     require('catppuccin').setup {
+--       background = {
+--         light = 'latte',
+--         dark = 'mocha',
+--       },
+--       transparent_background = false,
+--       show_end_of_buffer = false,
+--       integration_default = false,
+--       integrations = {
+--         barbecue = { dim_dirname = true, bold_basename = true, dim_context = false, alt_background = false },
+--         cmp = true,
+--         gitsigns = true,
+--         illuminate = { enabled = true },
+--         markdown = true,
+--         mason = true,
+--         native_lsp = { enabled = true, inlay_hints = { background = true } },
+--         neogit = true,
+--         neotree = true,
+--         semantic_tokens = true,
+--         treesitter = true,
+--         treesitter_context = true,
+--         vimwiki = true,
+--         which_key = true,
+--       },
+--       highlight_overrides = {
+--         all = function(colors)
+--           return {
+--             NormalFloat = { bg = colors.base },
+--             Pmenu = { bg = colors.mantle, fg = '' },
+--             PmenuSel = { bg = colors.surface0, fg = '' },
+--             CursorLineNr = { fg = colors.text },
+--             LineNr = { fg = colors.surface1 },
+--             FloatBorder = { bg = colors.base, fg = colors.surface0 },
+--             VertSplit = { bg = colors.base, fg = colors.surface0 },
+--             WinSeparator = { bg = colors.base, fg = colors.surface0 },
+--             LspInfoBorder = { link = 'FloatBorder' },
+--             YankHighlight = { bg = colors.surface2 },
+--
+--             CmpItemMenu = { fg = colors.surface2 },
+--
+--             GitSignsChange = { fg = colors.peach },
+--
+--             NeoTreeDirectoryIcon = { fg = colors.subtext1 },
+--             NeoTreeDirectoryName = { fg = colors.subtext1 },
+--             NeoTreeFloatBorder = { link = 'TelescopeResultsBorder' },
+--             NeoTreeGitConflict = { fg = colors.red },
+--             NeoTreeGitDeleted = { fg = colors.red },
+--             NeoTreeGitIgnored = { fg = colors.overlay0 },
+--             NeoTreeGitModified = { fg = colors.peach },
+--             NeoTreeGitStaged = { fg = colors.green },
+--             NeoTreeGitUnstaged = { fg = colors.red },
+--             NeoTreeGitUntracked = { fg = colors.green },
+--             NeoTreeIndent = { link = 'IblIndent' },
+--             NeoTreeNormal = { bg = colors.mantle },
+--             NeoTreeNormalNC = { bg = colors.mantle },
+--             NeoTreeRootName = { fg = colors.subtext1, style = { 'bold' } },
+--             NeoTreeTabActive = { fg = colors.text, bg = colors.mantle },
+--             NeoTreeTabInactive = { fg = colors.surface2, bg = colors.crust },
+--             NeoTreeTabSeparatorActive = { fg = colors.mantle, bg = colors.mantle },
+--             NeoTreeTabSeparatorInactive = { fg = colors.crust, bg = colors.crust },
+--             NeoTreeWinSeparator = { fg = colors.base, bg = colors.base },
+--
+--             TelescopePreviewBorder = { bg = colors.crust, fg = colors.crust },
+--             TelescopePreviewNormal = { bg = colors.crust },
+--             TelescopePreviewTitle = { fg = colors.crust, bg = colors.crust },
+--             TelescopePromptBorder = { bg = colors.surface0, fg = colors.surface0 },
+--             TelescopePromptCounter = { fg = colors.mauve, style = { 'bold' } },
+--             TelescopePromptNormal = { bg = colors.surface0 },
+--             TelescopePromptPrefix = { bg = colors.surface0 },
+--             TelescopePromptTitle = { fg = colors.surface0, bg = colors.surface0 },
+--             TelescopeResultsBorder = { bg = colors.mantle, fg = colors.mantle },
+--             TelescopeResultsNormal = { bg = colors.mantle },
+--             TelescopeResultsTitle = { fg = colors.mantle, bg = colors.mantle },
+--             TelescopeSelection = { bg = colors.surface0 },
+--
+--             WhichKeyFloat = { bg = colors.mantle },
+--
+--             IblIndent = { fg = colors.surface0 },
+--             IblScope = { fg = colors.overlay0 },
+--
+--             MasonNormal = { bg = colors.mantle },
+--             MasonMutedBlock = { link = 'CursorLine' },
+--
+--             LazyNormal = { bg = colors.mantle },
+--           }
+--         end,
+--         latte = function(colors)
+--           return {
+--             LineNr = { fg = colors.surface1 },
+--
+--             IblIndent = { fg = colors.mantle },
+--             IblScope = { fg = colors.surface1 },
+--           }
+--         end,
+--       },
+--     }
+--
+--     vim.api.nvim_command 'colorscheme catppuccin'
+--   end,
+-- }
+return {
+  'catppuccin/nvim',
+  name = 'catppuccin',
+  lazy = false,
+  priority = 1000,
+  config = function()
+    require('catppuccin').setup {
+      transparent_background = true,
+      color_overrides = {
+        mocha = { -- custom
+          rosewater = '#ffc6be',
+          flamingo = '#CA6D73',
+          pink = '#AD8DBD',
+          mauve = '#CA6D73',
+          red = '#CA6D73',
+          maroon = '#AD8DBD',
+          peach = '#E09F87',
+          yellow = '#E6C193',
+          green = '#B4C7A7',
+          teal = '#9BC2B1',
+          sky = '#939DBD',
+          sapphire = '#9BC2B1',
+          blue = '#939DBD',
+          lavender = '#E4E1DD',
+          text = '#E4E1DD',
+          subtext1 = '#E4E1DD',
+          subtext0 = '#E4E1DD',
+          overlay2 = '#D1CEC9',
+          overlay1 = '#D1CEC9',
+          overlay0 = '#58596E',
+          surface2 = '#454756',
+          surface1 = '#373846',
+          surface0 = '#2C2D39',
+          base = '#22232E',
+          mantle = '#1A1B24',
+          crust = '#1A1B24',
+        },
+      },
+    }
+
+    vim.api.nvim_command 'colorscheme catppuccin'
+  end,
+}
