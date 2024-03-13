@@ -1,5 +1,5 @@
 -- return {
---   "craftzdog/solarized-osaka.nvim",
+--   'craftzdog/solarized-osaka.nvim',
 --   lazy = false,
 --   priority = 1000,
 --   opts = function()
@@ -112,59 +112,56 @@
 --     plugins = true,
 --   },
 -- }
+return {
+  'sainnhe/gruvbox-material',
+  enabled = true,
+  priority = 1000,
+  config = function()
+    vim.g.gruvbox_material_transparent_background = 1
+    vim.g.gruvbox_material_foreground = 'mix'
+    vim.g.gruvbox_material_background = 'soft' -- soft, medium, hard
+    vim.g.gruvbox_material_ui_contrast = 'high' -- The contrast of line numbers, indent lines, etc.
+    vim.g.gruvbox_material_float_style = 'transparent' -- Background of floating windows
+    vim.g.gruvbox_material_statusline_style = 'material'
+    vim.g.gruvbox_material_cursor = 'auto'
+
+    -- vim.g.gruvbox_material_colors_override = { bg0 = '#000000' } -- #0e1010
+    -- vim.g.gruvbox_material_colors_override = { bg0 = "#121212" }
+    -- vim.g.gruvbox_material_better_performance = 1
+
+    vim.cmd.colorscheme 'gruvbox-material'
+  end,
+}
 -- return {
---   "crispybaccoon/evergarden",
---   opts = {
---     transparent_background = true,
---     contrast_dark = "hard", -- 'hard'|'medium'|'soft'
---     overrides = {}, -- add custom overrides
---   },
--- }
--- return {
---   'sainnhe/gruvbox-material',
---   enabled = true,
---   priority = 1000,
---   config = function()
---     vim.g.gruvbox_material_transparent_background = 1
---     vim.g.gruvbox_material_foreground = 'material'
---     vim.g.gruvbox_material_background = 'soft' -- soft, medium, hard
---     vim.g.gruvbox_material_ui_contrast = 'high' -- The contrast of line numbers, indent lines, etc.
---     vim.g.gruvbox_material_float_style = 'transparent' -- Background of floating windows
---     vim.g.gruvbox_material_statusline_style = 'material'
---     vim.g.gruvbox_material_cursor = 'auto'
---
---     -- vim.g.gruvbox_material_colors_override = { bg0 = '#000000' } -- #0e1010
---     -- vim.g.gruvbox_material_colors_override = { bg0 = "#121212" }
---     -- vim.g.gruvbox_material_better_performance = 1
---
---     vim.cmd.colorscheme 'gruvbox-material'
---   end,
--- }
--- return {
---   "sainnhe/everforest",
+--   'sainnhe/everforest',
 --   enabled = true,
 --   priority = 1000,
 --   config = function()
 --     vim.g.everforest_transparent_background = 1
---     vim.g.everforest_foreground = "mix"
---     vim.g.everforest_background = "hard" -- soft, medium, hard
---     vim.g.everforest_ui_contrast = "high" -- The contrast of line numbers, indent lines, etc.
---     vim.g.everforest_float_style = "bright" -- Background of floating windows
---     vim.g.everforest_statusline_style = "material"
---     vim.g.everforest_cursor = "auto"
+--     vim.g.everforest_foreground = 'mix'
+--     vim.g.everforest_background = 'hard' -- soft, medium, hard
+--     vim.g.everforest_ui_contrast = 'high' -- The contrast of line numbers, indent lines, etc.
+--     vim.g.everforest_float_style = 'bright' -- Background of floating windows
+--     vim.g.everforest_statusline_style = 'material'
+--     vim.g.everforest_cursor = 'auto'
 --
 --     -- vim.g.gruvbox_material_colors_override = { bg0 = '#000000' } -- #0e1010
 --     -- vim.g.gruvbox_material_colors_override = { bg0 = "#121212" }
 --     -- vim.g.gruvbox_material_better_performance = 1
 --
---     vim.cmd.colorscheme("everforest")
+--     vim.cmd.colorscheme 'everforest'
 --   end,
 -- }
 -- return {
---   "catppuccin/nvim",
+--   'catppuccin/nvim',
 --   priority = 150,
---   name = "catppuccin",
---   opts = { transparent_background = true },
+--   name = 'catppuccin',
+--   config = function()
+--     require('catppuccin').setup {
+--       transparent_background = true,
+--     }
+--     vim.cmd.colorscheme 'catppuccin'
+--   end,
 -- }
 -- return {
 --   "catppuccin/nvim",
@@ -629,46 +626,46 @@
 --     vim.api.nvim_command 'colorscheme catppuccin'
 --   end,
 -- }
-return {
-  'catppuccin/nvim',
-  name = 'catppuccin',
-  lazy = false,
-  priority = 1000,
-  config = function()
-    require('catppuccin').setup {
-      transparent_background = true,
-      color_overrides = {
-        mocha = { -- custom
-          rosewater = '#ffc6be',
-          flamingo = '#CA6D73',
-          pink = '#AD8DBD',
-          mauve = '#CA6D73',
-          red = '#CA6D73',
-          maroon = '#AD8DBD',
-          peach = '#E09F87',
-          yellow = '#E6C193',
-          green = '#B4C7A7',
-          teal = '#9BC2B1',
-          sky = '#939DBD',
-          sapphire = '#9BC2B1',
-          blue = '#939DBD',
-          lavender = '#E4E1DD',
-          text = '#E4E1DD',
-          subtext1 = '#E4E1DD',
-          subtext0 = '#E4E1DD',
-          overlay2 = '#D1CEC9',
-          overlay1 = '#D1CEC9',
-          overlay0 = '#58596E',
-          surface2 = '#454756',
-          surface1 = '#373846',
-          surface0 = '#2C2D39',
-          base = '#22232E',
-          mantle = '#1A1B24',
-          crust = '#1A1B24',
-        },
-      },
-    }
-
-    vim.api.nvim_command 'colorscheme catppuccin'
-  end,
-}
+-- return {
+--   'catppuccin/nvim',
+--   name = 'catppuccin',
+--   lazy = false,
+--   priority = 1000,
+--   config = function()
+--     require('catppuccin').setup {
+--       transparent_background = true,
+--       color_overrides = {
+--         mocha = { -- custom
+--           rosewater = '#ffc6be',
+--           flamingo = '#E67E80',
+--           pink = '#AD8DBD',
+--           mauve = '#E67E80',
+--           red = '#CA6D73',
+--           maroon = '#AD8DBD',
+--           peach = '#E09F87',
+--           yellow = '#E6C193',
+--           green = '#B4C7A7',
+--           teal = '#9BC2B1',
+--           sky = '#939DBD',
+--           sapphire = '#9BC2B1',
+--           blue = '#939DBD',
+--           lavender = '#E4E1DD',
+--           text = '#E4E1DD',
+--           subtext1 = '#E4E1DD',
+--           subtext0 = '#E4E1DD',
+--           overlay2 = '#D1CEC9',
+--           overlay1 = '#D1CEC9',
+--           overlay0 = '#58596E',
+--           surface2 = '#454756',
+--           surface1 = '#373846',
+--           surface0 = '#2C2D39',
+--           base = '#22232E',
+--           mantle = '#1A1B24',
+--           crust = '#1A1B24',
+--         },
+--       },
+--     }
+--
+--     vim.api.nvim_command 'colorscheme catppuccin'
+--   end,
+-- }

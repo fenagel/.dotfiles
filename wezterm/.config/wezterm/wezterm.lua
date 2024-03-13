@@ -22,6 +22,7 @@ local config = {
 
 	-- colors
 	color_scheme = "aki",
+	colors = cs.colors(),
 	-- color_scheme = cs.get_color_scheme(),
 
 	-- padding

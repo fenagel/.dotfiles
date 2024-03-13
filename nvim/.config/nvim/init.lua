@@ -183,6 +183,8 @@ vim.keymap.set('n', '<leader>j', '<cmd>lprev<CR>zz')
 local utils = require 'custom.utils'
 vim.keymap.set('n', '<leader>tc', utils.toggle_set_color_column, { noremap = true, silent = true, desc = '[T]oggle [C]olorcolumn' })
 
+-- AUTOCMDS
+
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
@@ -685,6 +687,15 @@ require('lazy').setup({
         yamlls = {
           cmd = { 'yaml-language-server', '--stdio' },
           filetypes = { 'yaml' },
+        },
+        sqlfluff = {
+          filetypes = {
+            'sql',
+            'mysql',
+            'postgresql',
+            'sqlite',
+            'mysql',
+          },
         },
         lua_ls = {
           -- cmd = {...},
