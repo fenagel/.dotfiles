@@ -53,12 +53,13 @@ local colors = {
 M.get_color_scheme = function()
 	-- return get_color_scheme()
 	-- return h.is_dark() and "Catppuccin Mocha" or "Catppuccin Latte"
-	return "Catppuccin Mocha"
+	-- return "Catppuccin Mocha"
 	-- return "Poimandres"
 	-- return "OneHalfDark"
 	-- return "Solarized Dark Higher Contrast"
 	-- return "Tomorrow Night"
-	-- return "rose-pine"
+	-- return "IR Black (base16)"
+	return "rose-pine"
 	-- return "GruvboxDarkHard"
 	-- return "Gruvbox Dark (Gogh)"
 	-- return "Gruvbox dark, hard (base16)"
