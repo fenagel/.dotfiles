@@ -16,9 +16,11 @@ local config = {
 	-- },
 
 	-- font
-	font = f.get_font(),
+	font = f.get_font({
+		"CommitMono",
+	}),
 	font_size = 18,
-	line_height = 1,
+	line_height = 1.1,
 
 	-- colors
 	-- color_scheme = "aki",
