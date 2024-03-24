@@ -12,6 +12,8 @@ return {
       typescriptreact = { 'eslint_d' },
       vue = { 'eslint_d' },
       svelte = { 'eslint_d' },
+      terraform = { 'terraform_validate' },
+      tf = { 'terraform_validate' },
       python = { 'pylint' },
     }
 

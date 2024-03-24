@@ -16,11 +16,14 @@ local config = {
 	-- },
 
 	-- font
-	font = f.get_font({
-		"CommitMono",
-	}),
+	font = f.get_font(),
+	-- font = f.get_font({
+	-- 	-- "CommitMono",
+	-- 	-- "JetBrainsMono Nerd Font",
+	-- 	-- wezterm.font("JetBrainsMono Nerd Font", { italic = false }),
+	-- }),
 	font_size = 18,
-	line_height = 1.1,
+	line_height = 1,
 
 	-- colors
 	-- color_scheme = "aki",
