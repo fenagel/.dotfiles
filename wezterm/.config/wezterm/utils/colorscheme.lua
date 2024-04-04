@@ -14,8 +14,8 @@ local function get_color_scheme()
 end
 
 local colors = {
-	foreground = "#fbf1c7",
-	background = "#1d2021",
+	foreground = "#8ec07c",
+	background = "#011628",
 
 	cursor_bg = "#928374",
 	cursor_fg = "black",
@@ -54,13 +54,14 @@ M.get_color_scheme = function()
 	-- return get_color_scheme()
 	-- return h.is_dark() and "Catppuccin Mocha" or "Catppuccin Latte"
 	-- return "Catppuccin Mocha"
+	-- return "Tokyo Night"
 	-- return "Poimandres"
 	-- return "OneHalfDark"
-	-- return "Solarized Dark Higher Contrast"
+	return "Solarized Dark Higher Contrast"
 	-- return "Tomorrow Night"
 	-- return "IR Black (base16)"
 	-- return "rose-pine"
-	return "GruvboxDarkHard"
+	-- return "GruvboxDarkHard"
 	-- return "Gruvbox Dark (Gogh)"
 	-- return "Gruvbox dark, hard (base16)"
 	-- return "Everforest Dark (Gogh)"
