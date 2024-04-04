@@ -52,3 +52,19 @@ opt.inccommand = 'split'
 -- Add filetypes
 vim.filetype.add { extension = { templ = 'templ' } }
 vim.filetype.add { extension = { gohtml = 'gohtml' } }
+
+vim.diagnostic.config {
+  title = false,
+  underline = true,
+  virtual_text = true,
+  signs = true,
+  update_in_insert = false,
+  severity_sort = true,
+  float = {
+    source = 'always',
+    style = 'minimal',
+    border = 'rounded',
+    header = '',
+    prefix = '',
+  },
+}
