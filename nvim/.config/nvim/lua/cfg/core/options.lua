@@ -1,5 +1,8 @@
 vim.cmd 'let g:netrw_liststyle = 3'
 
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+
 local opt = vim.opt
 
 opt.relativenumber = true
