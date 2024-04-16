@@ -22,6 +22,7 @@ return {
         python = { 'isort', 'black' },
         go = { 'goimports', 'gofumpt' },
         vue = { { 'prettierd', 'prettier' } },
+        proto = { 'buf' },
       },
       format_on_save = {
         lsp_fallback = true,
