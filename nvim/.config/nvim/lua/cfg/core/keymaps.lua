@@ -3,7 +3,6 @@ vim.g.mapleader = ' '
 local keymap = vim.keymap -- for conciseness
 
 keymap.set('n', '<Esc>', '<esc>:nohlsearch<CR>', { silent = true })
-keymap.set('i', 'jk', '<ESC>', { desc = 'Exit insert mode with jk' })
 
 keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
@@ -12,10 +11,10 @@ keymap.set('n', '<leader>+', '<C-a>', { desc = 'Increment number' }) -- incremen
 keymap.set('n', '<leader>-', '<C-x>', { desc = 'Decrement number' }) -- decrement
 
 -- window management
-keymap.set('n', '<leader>sv', '<C-w>v', { desc = 'Split window vertically' }) -- split window vertically
-keymap.set('n', '<leader>sh', '<C-w>s', { desc = 'Split window horizontally' }) -- split window horizontally
-keymap.set('n', '<leader>se', '<C-w>=', { desc = 'Make splits equal size' }) -- make split windows equal width & height
-keymap.set('n', '<leader>sx', '<cmd>close<CR>', { desc = 'Close current split' }) -- close current split window
+-- keymap.set('n', '<leader>sv', '<C-w>v', { desc = 'Split window vertically' }) -- split window vertically
+-- keymap.set('n', '<leader>sh', '<C-w>s', { desc = 'Split window horizontally' }) -- split window horizontally
+-- keymap.set('n', '<leader>se', '<C-w>=', { desc = 'Make splits equal size' }) -- make split windows equal width & height
+-- keymap.set('n', '<leader>sx', '<cmd>close<CR>', { desc = 'Close current split' }) -- close current split window
 
 -- Remap for dealing with word wrap
 keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -37,6 +36,18 @@ keymap.set('n', '#', '#zz', opts)
 keymap.set('n', 'g*', 'g*zz', opts)
 keymap.set('n', 'g#', 'g#zz', opts)
 
+-- Fast saving
+keymap.set('n', '<Leader>w', ':write!<CR>', opts)
+keymap.set('n', '<Leader>q', ':q!<CR>', opts)
+
+-- Better indenting
+keymap.set('v', '<', '<gv')
+keymap.set('v', '>', '>gv')
+
+-- write file in current directory
+-- :w %:h/<new-file-name>
+keymap.set('n', '<C-n>', ':w %:h/', opts)
+
 -- Select all
 keymap.set('n', '<c-s>', 'ggVG', opts)
 
@@ -45,7 +56,7 @@ keymap.set({ 'n', 'x', 'o' }, 'H', '^', opts)
 keymap.set({ 'n', 'x', 'o' }, 'L', 'g_', opts)
 
 -- Replace all instances of highlighted words
-keymap.set('v', '<leader>rr', '"hy:%s/<C-r>h//g<left><left>')
+-- keymap.set('v', '<leader>rr', '"hy:%s/<C-r>h//g<left><left>')
 
 -- Move Lines
 keymap.set('n', '<A-j>', '<cmd>m .+1<cr>==', { desc = 'Move down' })
