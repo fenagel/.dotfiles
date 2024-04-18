@@ -29,6 +29,10 @@ local config = {
 	-- color_scheme = "aki",
 	-- colors = cs.colors(),
 	color_scheme = cs.get_color_scheme(),
+	-- colors = {
+	-- 	background = "#011628",
+	-- 	cursor_bg = "#38ff9c",
+	-- },
 
 	-- padding
 	window_padding = {
@@ -138,7 +142,7 @@ local config = {
 			mods = "CMD|SHIFT",
 			key = "}",
 			action = act.Multiple({
-				act.SendKey({ mods = "CTRL", key = "f" }),
+				act.SendKey({ mods = "CTRL", key = "a" }),
 				act.SendKey({ key = "n" }),
 			}),
 		},
@@ -146,7 +150,7 @@ local config = {
 			mods = "CMD|SHIFT",
 			key = "{",
 			action = act.Multiple({
-				act.SendKey({ mods = "CTRL", key = "f" }),
+				act.SendKey({ mods = "CTRL", key = "a" }),
 				act.SendKey({ key = "p" }),
 			}),
 		},
@@ -155,7 +159,7 @@ local config = {
 			mods = "CTRL",
 			key = "Tab",
 			action = act.Multiple({
-				act.SendKey({ mods = "CTRL", key = "f" }),
+				act.SendKey({ mods = "CTRL", key = "a" }),
 				act.SendKey({ key = "n" }),
 			}),
 		},
@@ -164,7 +168,7 @@ local config = {
 			mods = "CTRL|SHIFT",
 			key = "Tab",
 			action = act.Multiple({
-				act.SendKey({ mods = "CTRL", key = "f" }),
+				act.SendKey({ mods = "CTRL", key = "a" }),
 				act.SendKey({ key = "n" }),
 			}),
 		},
@@ -183,7 +187,7 @@ local config = {
 			mods = "CMD",
 			key = "~",
 			action = act.Multiple({
-				act.SendKey({ mods = "CTRL", key = "f" }),
+				act.SendKey({ mods = "CTRL", key = "a" }),
 				act.SendKey({ key = "p" }),
 			}),
 		},
