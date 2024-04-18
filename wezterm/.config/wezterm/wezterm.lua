@@ -142,7 +142,7 @@ local config = {
 			mods = "CMD|SHIFT",
 			key = "}",
 			action = act.Multiple({
-				act.SendKey({ mods = "CTRL", key = "f" }),
+				act.SendKey({ mods = "CTRL", key = "a" }),
 				act.SendKey({ key = "n" }),
 			}),
 		},
@@ -150,7 +150,7 @@ local config = {
 			mods = "CMD|SHIFT",
 			key = "{",
 			action = act.Multiple({
-				act.SendKey({ mods = "CTRL", key = "f" }),
+				act.SendKey({ mods = "CTRL", key = "a" }),
 				act.SendKey({ key = "p" }),
 			}),
 		},
@@ -159,7 +159,7 @@ local config = {
 			mods = "CTRL",
 			key = "Tab",
 			action = act.Multiple({
-				act.SendKey({ mods = "CTRL", key = "f" }),
+				act.SendKey({ mods = "CTRL", key = "a" }),
 				act.SendKey({ key = "n" }),
 			}),
 		},
@@ -168,7 +168,7 @@ local config = {
 			mods = "CTRL|SHIFT",
 			key = "Tab",
 			action = act.Multiple({
-				act.SendKey({ mods = "CTRL", key = "f" }),
+				act.SendKey({ mods = "CTRL", key = "a" }),
 				act.SendKey({ key = "n" }),
 			}),
 		},
@@ -187,7 +187,7 @@ local config = {
 			mods = "CMD",
 			key = "~",
 			action = act.Multiple({
-				act.SendKey({ mods = "CTRL", key = "f" }),
+				act.SendKey({ mods = "CTRL", key = "a" }),
 				act.SendKey({ key = "p" }),
 			}),
 		},
