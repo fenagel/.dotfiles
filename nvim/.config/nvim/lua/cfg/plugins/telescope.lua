@@ -56,8 +56,8 @@ return {
     local keymap = vim.keymap -- for conciseness
     local builtin = require 'telescope.builtin'
 
-    keymap.set('n', '<leader>f', builtin.git_files, { desc = 'Search [G]it [F]iles' })
-    keymap.set('n', '<leader>F', '<cmd>Telescope find_files<cr>', { desc = 'Fuzzy find files in cwd' })
+    keymap.set('n', '<leader>F', builtin.git_files, { desc = 'Search [G]it [F]iles' })
+    keymap.set('n', '<leader>f', '<cmd>Telescope find_files<cr>', { desc = 'Fuzzy find files in cwd' })
     -- keymap.set('n', '<leader>fr', '<cmd>Telescope oldfiles<cr>', { desc = 'Fuzzy find recent files' })
     keymap.set('n', '<leader>s', '<cmd>Telescope live_grep<cr>', { desc = 'Find string in cwd' })
     -- keymap.set('n', '<leader>fc', '<cmd>Telescope grep_string<cr>', { desc = 'Find string under cursor in cwd' })

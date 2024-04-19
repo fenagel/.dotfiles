@@ -65,3 +65,50 @@ keymap.set('i', '<A-j>', '<esc><cmd>m .+1<cr>==gi', { desc = 'Move down' })
 keymap.set('i', '<A-k>', '<esc><cmd>m .-2<cr>==gi', { desc = 'Move up' })
 keymap.set('v', '<A-j>', ":m '>+1<cr>gv=gv", { desc = 'Move down' })
 keymap.set('v', '<A-k>', ":m '<-2<cr>gv=gv", { desc = 'Move up' })
+
+--------------
+-- obsidian --
+--------------
+--
+-- >>> oo # from shell, navigate to vault (optional)
+--
+-- # NEW NOTE
+-- >>> on "Note Name" # call my "obsidian new note" shell script (~/bin/on)
+-- >>>
+-- >>> ))) <leader>on # inside vim now, format note as template
+-- >>> ))) # add tag, e.g. fact / blog / video / etc..
+-- >>> ))) # add hubs, e.g. [[python]], [[machine-learning]], etc...
+-- >>> ))) <leader>of # format title
+--
+-- # END OF DAY/WEEK REVIEW
+-- >>> or # review notes in inbox
+-- >>>
+-- >>> ))) <leader>ok # inside vim now, move to zettelkasten
+-- >>> ))) <leader>odd # or delete
+-- >>>
+-- >>> og # organize saved notes from zettelkasten into notes/[tag] folders
+-- >>> ou # sync local with Notion
+--
+-- navigate to vault
+--/Users/fenagel/Library/Mobile Documents/iCloud~md~obsidian/Documents/Second Brain
+keymap.set('n', '<leader>oo', ':cd $HOME/Library/Mobile\\ Documents/iCloud~md~obsidian/Documents/Second\\ Brain<cr>')
+--
+-- convert note to template and remove leading white space
+keymap.set('n', '<leader>on', ':ObsidianTemplate note<cr> :lua vim.cmd([[1,/^\\S/s/^\\n\\{1,}//]])<cr>')
+-- strip date from note title and replace dashes with spaces
+-- must have cursor on title
+keymap.set('n', '<leader>of', ':s/\\(# \\)[^_]*_/\\1/ | s/-/ /g<cr>')
+--
+-- search for files in full vault
+keymap.set('n', '<leader>os', ':Telescope find_files search_dirs={"$HOME/Library/Mobile\\ Documents/iCloud~md~obsidian/Documents/Second\\ Brain"}<cr>')
+keymap.set('n', '<leader>oz', ':Telescope live_grep search_dirs={"$HOME/Library/Mobile\\ Documents/iCloud~md~obsidian/Documents/Second\\ Brain"}<cr>')
+--
+-- search for files in notes (ignore zettelkasten)
+-- vim.keymap.set("n", "<leader>ois", ":Telescope find_files search_dirs={\"/Users/alex/library/Mobile\\ Documents/iCloud~md~obsidian/Documents/ZazenCodes/notes\"}<cr>")
+-- vim.keymap.set("n", "<leader>oiz", ":Telescope live_grep search_dirs={\"/Users/alex/library/Mobile\\ Documents/iCloud~md~obsidian/Documents/ZazenCodes/notes\"}<cr>")
+--
+-- for review workflow
+-- move file in current buffer to zettelkasten folder
+keymap.set('n', '<leader>ok', ":!mv '%:p' $HOME/Library/Mobile\\ Documents/iCloud~md~obsidian/Documents/Second\\ Brain/zettelkasten<cr>:bd<cr>")
+-- delete file in current buffer
+keymap.set('n', '<leader>odd', ":!rm '%:p'<cr>:bd<cr>")

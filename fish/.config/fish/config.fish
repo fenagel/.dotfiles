@@ -126,6 +126,9 @@ abbr nb "npm run build"
 abbr nd "npm run dev"
 abbr ni "npm install"
 abbr nt "npm run test"
+# Obsidian
+abbr oo='cd $HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/Second Brain/'
+abbr or='nvim $HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/Second Brain/0. Inbox/*.md'
 abbr rmr "rm -rf"
 abbr pd "pnpm dev"
 abbr pi "pnpm install"
@@ -138,7 +141,6 @@ abbr td "sh t dotfiles"
 abbr tn "tmux new -s (pwd | sed 's/.*\///g')"
 abbr u "bash ~/.conifg/bin/update.sh"
 abbr v "nvim (fd --type f --hidden --follow --exclude .git | fzf-tmux -p --reverse)"
-abbr va "nvim ~/.config/alacritty/alacritty.yml"
 abbr vf "nvim ~/.config/fish/config.fish"
 abbr vp "nvim package.json"
 abbr vt "nvim ~/.config/tmux/tmux.conf"
