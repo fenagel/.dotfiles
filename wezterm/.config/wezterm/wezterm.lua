@@ -33,7 +33,6 @@ local config = {
 	-- 	background = "#011628",
 	-- 	cursor_bg = "#38ff9c",
 	-- },
-
 	-- padding
 	window_padding = {
 		left = 30,
