@@ -42,7 +42,7 @@ return {
         'query',
         'vimdoc',
         'c',
-        'golang',
+        'go',
       },
       incremental_selection = {
         enable = true,
