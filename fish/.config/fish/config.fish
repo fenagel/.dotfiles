@@ -127,8 +127,8 @@ abbr nd "npm run dev"
 abbr ni "npm install"
 abbr nt "npm run test"
 # Obsidian
-abbr oo='cd $HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/Second Brain/'
-abbr or='nvim $HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/Second Brain/0. Inbox/*.md'
+abbr oo 'cd $HOME/Library/Mobile\\ Documents/iCloud~md~obsidian/Documents/Second\\ Brain/'
+abbr or 'nvim $HOME/Library/Mobile\\ Documents/iCloud~md~obsidian/Documents/Second\\ Brain/inbox/*.md'
 abbr rmr "rm -rf"
 abbr pd "pnpm dev"
 abbr pi "pnpm install"
