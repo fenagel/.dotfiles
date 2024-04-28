@@ -58,14 +58,14 @@ M.get_color_scheme = function()
 	-- return "Poimandres"
 	-- return "OneDark"
 	-- return "Belge (terminal.sexy)"
-	-- return "Black Metal (Bathory) (base16)"
+	return "Black Metal (Bathory) (base16)"
 	-- return "Solarized Dark Higher Contrast"
 	-- return "Tomorrow Night"
 	-- return "IR Black (base16)"
 	-- return "rose-pine"
 	-- return "GruvboxDarkHard"
 	-- return "Gruvbox Dark (Gogh)"
-	return "Gruvbox dark, hard (base16)"
+	-- return "Gruvbox dark, hard (base16)"
 	-- return "Everforest Dark (Gogh)"
 end
 M.colors = function()

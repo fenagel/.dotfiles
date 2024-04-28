@@ -1,21 +1,21 @@
 return {
-  -- {
-  --   'rose-pine/neovim',
-  --   name = 'rose-pine',
-  --   priority = 1000,
-  --   config = function()
-  --     require('rose-pine').setup {
-  --       extend_background_behind_borders = false,
-  --       styles = {
-  --         bold = true,
-  --         italic = false,
-  --         transparency = true,
-  --       },
-  --     }
-  --
-  --     vim.cmd 'colorscheme rose-pine'
-  --   end,
-  -- },
+  {
+    'rose-pine/neovim',
+    name = 'rose-pine',
+    priority = 1000,
+    config = function()
+      require('rose-pine').setup {
+        extend_background_behind_borders = false,
+        styles = {
+          bold = true,
+          italic = false,
+          transparency = true,
+        },
+      }
+
+      vim.cmd 'colorscheme rose-pine'
+    end,
+  },
   -- {
   --   "folke/tokyonight.nvim",
   --   priority = 1000,
@@ -58,6 +58,7 @@ return {
     'catppuccin/nvim',
     priority = 150,
     name = 'catppuccin',
+    enabled = false,
     config = function()
       require('catppuccin').setup {
 
@@ -427,7 +428,7 @@ return {
   },
   {
     'sainnhe/gruvbox-material',
-    enabled = true,
+    enabled = false,
     priority = 1000,
     config = function()
       vim.g.gruvbox_material_transparent_background = 0
