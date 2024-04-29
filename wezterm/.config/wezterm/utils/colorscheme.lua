@@ -14,8 +14,8 @@ local function get_color_scheme()
 end
 
 local colors = {
-	foreground = "#8ec07c",
-	background = "#011628",
+	foreground = "#8C9E93",
+	background = "#131516",
 
 	cursor_bg = "#928374",
 	cursor_fg = "black",
@@ -30,7 +30,7 @@ local colors = {
 	split = "#444444",
 
 	ansi = {
-		"#1d2021", -- black, color 0
+		"#131516", -- black, color 0
 		"#cc241d", -- red, color 1
 		"#98971a", -- green, color 2
 		"#d79921",
@@ -60,9 +60,9 @@ M.get_color_scheme = function()
 	-- return "Belge (terminal.sexy)"
 	-- return "Black Metal (Bathory) (base16)"
 	-- return "Solarized Dark Higher Contrast"
-	-- return "Tomorrow Night"
+	return "Tomorrow Night"
 	-- return "IR Black (base16)"
-	return "rose-pine"
+	-- return "rose-pine"
 	-- return "Harper"
 	-- return "One Half Black (Gogh)"
 	-- return "GruvboxDarkHard"
