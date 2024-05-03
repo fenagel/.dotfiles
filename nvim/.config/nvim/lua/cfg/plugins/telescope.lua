@@ -64,7 +64,7 @@ return {
     -- See `:help telescope.builtin`
     local builtin = require 'telescope.builtin'
     -- keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
-    keymap.set('n', '<leader>k', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
+    keymap.set('n', '<leader>?', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
     keymap.set('n', '<leader>F', builtin.find_files, { desc = '[S]earch [F]iles' })
     -- keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
     -- keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
