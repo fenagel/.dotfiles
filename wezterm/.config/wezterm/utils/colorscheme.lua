@@ -15,14 +15,14 @@ end
 
 local colors = {
 	foreground = "#8C9E93",
-	background = "#131516",
+	background = "#0D0F11",
 
-	cursor_bg = "#928374",
-	cursor_fg = "black",
-	cursor_border = "#928374",
+	cursor_bg = "#F7ECE5",
+	cursor_fg = "#090A0B",
+	cursor_border = "#F7ECE5",
 
 	selection_fg = "#928374",
-	selection_bg = "#ebdbb2",
+	selection_bg = "#F7F9B4",
 
 	scrollbar_thumb = "#222222",
 
@@ -31,23 +31,23 @@ local colors = {
 
 	ansi = {
 		"#131516", -- black, color 0
-		"#cc241d", -- red, color 1
-		"#98971a", -- green, color 2
-		"#d79921",
+		"#9C4430", -- red, color 1
+		"#B1EEAB", -- green, color 2
+		"#EE964B",
 		"#458588",
-		"#b16286",
+		"#d3869b",
 		"#689d6a",
-		"#a89984",
+		"#595959",
 	},
 	brights = {
-		"#7c6f64", -- black, color 0
-		"#fb4934", -- red, color 1
-		"#b8bb26", -- green, color 2
-		"#fabd2f",
-		"#83a598",
+		"#131516", -- black, color 0
+		"#9C4430", -- red, color 1
+		"#B1EEAB", -- green, color 2
+		"#EE964B",
+		"#458588",
 		"#d3869b",
-		"#8ec07c",
-		"#fbf1c7",
+		"#689d6a",
+		"#595959",
 	},
 }
 M.get_color_scheme = function()
