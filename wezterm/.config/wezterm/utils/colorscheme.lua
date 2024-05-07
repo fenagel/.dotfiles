@@ -14,7 +14,7 @@ local function get_color_scheme()
 end
 
 local colors = {
-	foreground = "#8C9E93",
+	foreground = "#8383A5",
 	background = "#0D0F11",
 
 	cursor_bg = "#F7ECE5",
@@ -34,7 +34,7 @@ local colors = {
 		"#9C4430", -- red, color 1
 		"#B1EEAB", -- green, color 2
 		"#EE964B",
-		"#458588",
+		"#FC9867",
 		"#d3869b",
 		"#689d6a",
 		"#595959",
@@ -44,7 +44,7 @@ local colors = {
 		"#9C4430", -- red, color 1
 		"#B1EEAB", -- green, color 2
 		"#EE964B",
-		"#458588",
+		"#FC9867",
 		"#d3869b",
 		"#689d6a",
 		"#595959",
