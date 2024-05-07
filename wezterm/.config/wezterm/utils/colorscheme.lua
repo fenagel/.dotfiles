@@ -34,7 +34,7 @@ local colors = {
 		"#9C4430", -- red, color 1
 		"#B1EEAB", -- green, color 2
 		"#EE964B",
-		"#FC9867",
+		"#9C4430",
 		"#d3869b",
 		"#689d6a",
 		"#595959",
@@ -44,7 +44,7 @@ local colors = {
 		"#9C4430", -- red, color 1
 		"#B1EEAB", -- green, color 2
 		"#EE964B",
-		"#FC9867",
+		"#9C4430",
 		"#d3869b",
 		"#689d6a",
 		"#595959",
