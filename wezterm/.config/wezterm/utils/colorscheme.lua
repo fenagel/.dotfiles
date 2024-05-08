@@ -30,7 +30,8 @@ local colors = {
 	split = "#444444",
 
 	ansi = {
-		"#131516", -- black, color 0
+		"#0D0F11",
+		-- "#131516", -- black, color 0
 		"#9C4430", -- red, color 1
 		"#B1EEAB", -- green, color 2
 		"#EE964B",
@@ -40,7 +41,8 @@ local colors = {
 		"#595959",
 	},
 	brights = {
-		"#131516", -- black, color 0
+		"#0D0F11",
+		-- "#131516", -- black, color 0
 		"#9C4430", -- red, color 1
 		"#B1EEAB", -- green, color 2
 		"#EE964B",
