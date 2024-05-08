@@ -27,16 +27,19 @@ return {
 
         -- set keybinds
         opts.desc = 'Show LSP references'
-        keymap.set('n', 'gr', '<cmd>Telescope lsp_references<CR>', opts) -- show definition, references
+        -- keymap.set('n', 'gr', '<cmd>Telescope lsp_references<CR>', opts) -- show definition, references
+        keymap.set('n', 'gr', '<cmd>Glance references<CR>', opts) -- show definition, references
 
         opts.desc = 'Go to declaration'
         keymap.set('n', 'gD', vim.lsp.buf.declaration, opts) -- go to declaration
 
         opts.desc = 'Show LSP definitions'
-        keymap.set('n', 'gd', '<cmd>Telescope lsp_definitions<CR>', opts) -- show lsp definitions
+        -- keymap.set('n', 'gd', '<cmd>Telescope lsp_definitions<CR>', opts) -- show lsp definitions
+        keymap.set('n', 'gd', '<cmd>Glance definitions<CR>', opts) -- show lsp definitions
 
         opts.desc = 'Show LSP implementations'
-        keymap.set('n', 'gi', '<cmd>Telescope lsp_implementations<CR>', opts) -- show lsp implementations
+        -- keymap.set('n', 'gi', '<cmd>Telescope lsp_implementations<CR>', opts) -- show lsp implementations
+        keymap.set('n', 'gi', '<cmd>Glance implementations<CR>', opts) -- show lsp implementations
 
         opts.desc = 'Show LSP type definitions'
         keymap.set('n', 'gt', '<cmd>Telescope lsp_type_definitions<CR>', opts) -- show lsp type definitions
@@ -135,6 +138,23 @@ return {
               },
             },
           },
+        }
+      end,
+      ['jsonls'] = function()
+        lspconfig['jsonls'].setup {
+          settings = {
+            json = {
+              schema = require('schemastore').json.schemas(),
+              validate = { enable = true },
+            },
+          },
+        }
+      end,
+      ['terraformls'] = function()
+        lspconfig['terraformls'].setup {
+          cmd = { 'terraform-ls' },
+          arg = { 'server' },
+          filetypes = { 'terraform', 'tf', 'terraform-vars' },
         }
       end,
     }
