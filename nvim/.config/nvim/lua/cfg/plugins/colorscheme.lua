@@ -1,21 +1,22 @@
 return {
-  -- {
-  --   'rose-pine/neovim',
-  --   name = 'rose-pine',
-  --   priority = 1000,
-  --   config = function()
-  --     require('rose-pine').setup {
-  --       extend_background_behind_borders = false,
-  --       styles = {
-  --         bold = true,
-  --         italic = false,
-  --         transparency = true,
-  --       },
-  --     }
-  --
-  --     vim.cmd 'colorscheme rose-pine'
-  --   end,
-  -- },
+  {
+    'rose-pine/neovim',
+    name = 'rose-pine',
+    priority = 1000,
+    config = function()
+      require('rose-pine').setup {
+        variant = 'main',
+        extend_background_behind_borders = false,
+        styles = {
+          bold = true,
+          italic = false,
+          transparency = true,
+        },
+      }
+
+      vim.cmd 'colorscheme rose-pine'
+    end,
+  },
   -- {
   --   "folke/tokyonight.nvim",
   --   priority = 1000,
@@ -446,75 +447,85 @@ return {
   --     vim.cmd.colorscheme 'gruvbox-material'
   --   end,
   -- },
-  {
-    'catppuccin/nvim',
-    priority = 150,
-    name = 'catppuccin',
-    enabled = true,
-    config = function()
-      require('catppuccin').setup {
-        flavour = 'mocha',
-        -- transparent_background = false, -- disables setting the background color.
-        -- integrations = {
-        --   which_key = true,
-        --   cmp = true,
-        --   gitsigns = true,
-        --   treesitter = true,
-        --   notify = false,
-        --   telescope = {
-        --     enabled = true,
-        --     style = "nvchad",
-        --   },
-        -- },
-        background = {
-          light = 'latte',
-          dark = 'mocha',
-        },
-        color_overrides = {
-          all = {
-            text = '#F7ECE5',
-          },
-          latte = {},
-          frappe = {},
-          macchiato = {},
-          none = 'NONE',
-          mocha = {
-            rosewater = '#F5AD89',
-            flamingo = '#F5AD89',
-            -- rosewater = '#EE964B',
-            -- flamingo = '#EE964B',
-            red = '#9C4430',
-            maroon = '#9C4430',
-            pink = '#d3869b',
-            mauve = '#FC9867',
-            peach = '#FC9867',
-            yellow = '#89599B',
-            -- green = '#71a559',
-            green = '#B1EEAB',
-            teal = '#D87071',
-            sky = '#D87071',
-            sapphire = '#F7F9B4',
-            blue = '#F7F9B4',
-            lavender = '#F7F9B4',
-            text = '#F7F9B4',
-            subtext1 = '#F7ECE5',
-            subtext0 = '#F7ECE5',
-            overlay2 = '#F5AD89',
-            overlay1 = '#F7ECE5',
-            overlay0 = '#71a559',
-            surface2 = '#4d4342',
-            surface1 = '#322C2B',
-            surface0 = '#100905',
-            base = '#0D0F11',
-            mantle = '#0D0F11',
-            -- base = '#161720',
-            -- mantle = '#161720',
-            crust = '#141617',
-          },
-        },
-      }
-
-      vim.cmd.colorscheme 'catppuccin'
-    end,
-  },
+  -- {
+  --   'catppuccin/nvim',
+  --   priority = 150,
+  --   name = 'catppuccin',
+  --   enabled = true,
+  --   config = function()
+  --     require('catppuccin').setup {
+  --       flavour = 'mocha',
+  --       -- transparent_background = false, -- disables setting the background color.
+  --       -- integrations = {
+  --       --   which_key = true,
+  --       --   cmp = true,
+  --       --   gitsigns = true,
+  --       --   treesitter = true,
+  --       --   notify = false,
+  --       --   telescope = {
+  --       --     enabled = true,
+  --       --     style = "nvchad",
+  --       --   },
+  --       -- },
+  --       background = {
+  --         light = 'latte',
+  --         dark = 'mocha',
+  --       },
+  --       color_overrides = {
+  --         all = {
+  --           text = '#F7ECE5',
+  --         },
+  --         latte = {},
+  --         frappe = {},
+  --         macchiato = {},
+  --         none = 'NONE',
+  --         mocha = {
+  --           rosewater = '#F5AD89',
+  --           flamingo = '#F5AD89',
+  --           -- rosewater = '#EE964B',
+  --           -- flamingo = '#EE964B',
+  --           red = '#9C4430',
+  --           maroon = '#9C4430',
+  --           pink = '#d3869b',
+  --           mauve = '#FC9867',
+  --           peach = '#FC9867',
+  --           yellow = '#89599B',
+  --           -- green = '#71a559',
+  --           green = '#B1EEAB',
+  --           teal = '#D87071',
+  --           sky = '#D87071',
+  --           sapphire = '#F7F9B4',
+  --           blue = '#F7F9B4',
+  --           lavender = '#F7F9B4',
+  --           text = '#F7F9B4',
+  --           subtext1 = '#F7ECE5',
+  --           subtext0 = '#F7ECE5',
+  --           overlay2 = '#F5AD89',
+  --           overlay1 = '#F7ECE5',
+  --           overlay0 = '#71a559',
+  --           surface2 = '#4d4342',
+  --           surface1 = '#322C2B',
+  --           surface0 = '#100905',
+  --           base = '#0D0F11',
+  --           mantle = '#0D0F11',
+  --           -- base = '#161720',
+  --           -- mantle = '#161720',
+  --           crust = '#141617',
+  --         },
+  --       },
+  --     }
+  --
+  --     vim.cmd.colorscheme 'catppuccin'
+  --   end,
+  -- },
+  -- {
+  --   'oxfist/night-owl.nvim',
+  --   lazy = false, -- make sure we load this during startup if it is your main colorscheme
+  --   priority = 1000, -- make sure to load this before all the other start plugins
+  --   config = function()
+  --     -- load the colorscheme here
+  --     require('night-owl').setup()
+  --     vim.cmd.colorscheme 'night-owl'
+  --   end,
+  -- },
 }

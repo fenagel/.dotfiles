@@ -14,7 +14,7 @@ return {
     local transform_mod = require('telescope.actions.mt').transform_mod
 
     local trouble = require 'trouble'
-    local trouble_telescope = require 'trouble.providers.telescope'
+    local trouble_telescope = require 'trouble.sources.telescope'
 
     -- or create your custom action
     local custom_actions = transform_mod {
@@ -37,7 +37,7 @@ return {
             ['j'] = actions.move_selection_next,
             ['k'] = actions.move_selection_previous,
             ['q'] = actions.close,
-            ['<C-t>'] = trouble_telescope.smart_open_with_trouble,
+            ['<C-t>'] = trouble_telescope.open,
           },
         },
         layout_config = {
