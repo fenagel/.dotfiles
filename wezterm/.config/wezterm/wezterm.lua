@@ -26,9 +26,9 @@ local config = {
 	line_height = 1,
 
 	-- colors
-	color_scheme = "aki",
+	-- color_scheme = "aki",
 	-- colors = cs.colors(),
-	-- color_scheme = cs.get_color_scheme(),
+	color_scheme = cs.get_color_scheme(),
 	-- colors = {
 	-- 	background = "#011628",
 	-- 	cursor_bg = "#38ff9c",
