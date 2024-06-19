@@ -30,12 +30,10 @@ zinit snippet OMZP::git
 zinit snippet OMZP::sudo
 zinit snippet OMZP::archlinux
 zinit snippet OMZP::ubuntu
-zinit snippet OMZP::macos
 zinit snippet OMZP::aws
 zinit snippet OMZP::brew
 zinit snippet OMZP::rails
 zinit snippet OMZP::golang
-zinit snippet OMZP::docker
 zinit snippet OMZP::kubectl
 zinit snippet OMZP::kubectx
 zinit snippet OMZP::command-not-found
