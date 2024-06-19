@@ -1,95 +1,115 @@
-# Path to your oh-my-zsh installation.
-# DISABLE_MAGIC_FUNCTIONS=true
-export ZSH=$HOME/.oh-my-zsh
+PATH="$HOME/.go/bin:$PATH"
+
+if [[ -f "/opt/homebrew/bin/brew" ]] then
+  # If you're using macOS, you'll want this enabled
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
 export DOTFILES=$HOME/.dotfiles
+export EDITOR=nvim
+# Set the directory we want to store zinit and plugins
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-completions zsh-syntax-highlighting zsh-z)
+# Download Zinit, if it's not there yet
+if [ ! -d "$ZINIT_HOME" ]; then
+   mkdir -p "$(dirname $ZINIT_HOME)"
+   git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+fi
 
-# You can change the theme with another one from https://github.com/robbyrussell/oh-my-zsh/wiki/themes
-ZSH_THEME="robbyrussell"
+# Source/Load zinit
+source "${ZINIT_HOME}/zinit.zsh"
 
-source $ZSH/oh-my-zsh.sh
-  
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-# (macOS-only) Prevent Homebrew from reporting - https://github.com/Homebrew/brew/blob/master/docs/Analytics.md
-export HOMEBREW_NO_ANALYTICS=1
+# Add in zsh plugins
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-autosuggestions
+zinit light Aloxaf/fzf-tab
 
-# Disable warning about insecure completion-dependent directories
-ZSH_DISABLE_COMPFIX=true
+# Add in snippets
+zinit snippet OMZP::git
+zinit snippet OMZP::sudo
+zinit snippet OMZP::archlinux
+zinit snippet OMZP::ubuntu
+zinit snippet OMZP::macos
+zinit snippet OMZP::aws
+zinit snippet OMZP::brew
+zinit snippet OMZP::rails
+zinit snippet OMZP::golang
+zinit snippet OMZP::docker
+zinit snippet OMZP::kubectl
+zinit snippet OMZP::kubectx
+zinit snippet OMZP::command-not-found
 
-export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:${HOME}/.local/bin:$HOME/.config/tmux/plugins/tmux-nvr/bin:$HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin:$HOME/.config/bin:${HOME}/.rbenv/bin:${PATH}:./bin:./node_modules/.bin:${PATH}:/usr/local/sbin:${HOME}/.config/bin
-type -a rbenv > /dev/null && eval "$(rbenv init -)"
+# Load completions
+autoload -Uz compinit && compinit
 
-# Load pyenv (to manage your Python versions)
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-type -a pyenv > /dev/null && eval "$(pyenv init -)" && eval "$(pyenv virtualenv-init -)" && RPROMPT+='[🐍 $(pyenv_prompt_info)]'
+zinit cdreplay -q
 
-# ITERM (MACOS ONLY)
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-test -e /usr/share/nvm/init-nvm.sh && source /usr/share/nvm/init-nvm.sh
+# Load oh my posh
+if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
+  eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
+fi
 
-# Load nvm (to manage your node versions)
-export NVM_DIR="$HOME/.nvm"
-  [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+# Keybindings
+bindkey -e
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
+bindkey '^[w' kill-region
 
-# Call `nvm use` automatically in a directory with a `.nvmrc` file
-autoload -U add-zsh-hook
-load-nvmrc() {
-  if nvm -v &> /dev/null; then
-    local node_version="$(nvm version)"
-    local nvmrc_path="$(nvm_find_nvmrc)"
+zle_highlight+=(paste:none)
 
-    if [ -n "$nvmrc_path" ]; then
-      local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+# History
+HISTSIZE=5000
+HISTFILE=~/.zsh_history
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
 
-      if [ "$nvmrc_node_version" = "N/A" ]; then
-        nvm install
-      elif [ "$nvmrc_node_version" != "$node_version" ]; then
-        nvm use --silent
-      fi
-    elif [ "$node_version" != "$(nvm version default)" ]; then
-      nvm use default --silent
-    fi
-  fi
-}
-type -a nvm > /dev/null && add-zsh-hook chpwd load-nvmrc
-type -a nvm > /dev/null && load-nvmrc
+# Completion styling
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu no
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
-# Rails and Ruby uses the local `bin` folder to store binstubs.
-# So instead of running `bin/rails` like the doc says, just run `rails`
-# Same for `./node_modules/.bin` and nodejs
+# Aliases
+alias ls='ls --color'
+alias vim='nvim'
+alias c='clear'
+alias v='nvim $(fd --type f --hidden --follow --exclude .git | fzf-tmux -p --reverse)'
+alias g="git status"
+alias ga="git add ."
+alias gb="git branch -v"
+alias gc="git commit -m "
+alias gca="git commit -av"
+alias gcl="git clone"
+alias gco="git checkout -b"
+alias gd="git diff"
+alias gf="git fetch --all"
+alias gl="git pull"
+alias gma="git merge --abort"
+alias gmc="git merge --continue"
+alias gp="git push"
+alias gpom="git pull origin main"
+alias gpr="gh pr create"
+alias gpum="git pull upstream master"
+alias gr="git remote"
+alias gra="git remote add"
+alias grv="git remote -v"
+alias gs="git status"
+alias gst="git status"
+alias l="lsd  --group-dirs first -A"
+alias ll="lsd  --group-dirs first -Al"
+alias lt="lsd  --group-dirs last -A --tree"
+alias ld=lazydocker
+alias lg=lazygit
 
-# Store your own aliases in the ~/.aliases file and load the here.
-[[ -f "$HOME/.aliases" ]] && source "$HOME/.aliases"
-
-# aliases
-alias ls="ls -p -G"
-alias la="ls -A"
-alias ll="ls -l"
-alias lla="ll -A"
-
-# Get External IP / local IPs
-alias ip="curl ipinfo.io/ip"
-alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
-alias speedtest="wget -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip"
-
-alias v='nvim'
-alias lg='lazygit'
-
-# Encoding stuff for the terminal
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
-
-export BUNDLER_EDITOR=nvim
-export EDITOR='nvim'
-
-export go_test() {
-  go test $* | sed ''/PASS/s//$(printf "\033[32mPASS\033[0m")/'' | sed ''/SKIP/s//$(printf "\033[34mSKIP\033[0m")/'' | sed ''/FAIL/s//$(printf "\033[31mFAIL\033[0m")/'' | sed ''/FAIL/s//$(printf "\033[31mFAIL\033[0m")/'' | GREP_COLOR="01;33" egrep --color=always '\s*[a-zA-Z0-9\-_.]+[:][0-9]+[:]|^'
-}
-eval "$(starship init zsh)"
+# Shell integrations
 eval "$(fzf --zsh)"
+eval "$(zoxide init --cmd cd zsh)"
