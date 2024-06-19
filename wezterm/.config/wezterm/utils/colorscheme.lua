@@ -56,7 +56,7 @@ M.get_color_scheme = function()
 	-- return get_color_scheme()
 	-- return h.is_dark() and "Catppuccin Mocha" or "Catppuccin Latte"
 	-- return "Catppuccin Mocha"
-	return "tokyonight"
+	return "Tokyo Night"
 	-- return "Poimandres"
 	-- return "OneDark"
 	-- return "Belge (terminal.sexy)"
