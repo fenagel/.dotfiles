@@ -1,3 +1,4 @@
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 PATH="$HOME/.go/bin:$PATH"
 
 if [[ -f "/opt/homebrew/bin/brew" ]] then
@@ -108,6 +109,7 @@ alias ll="lsd  --group-dirs first -Al"
 alias lt="lsd  --group-dirs last -A --tree"
 alias ld=lazydocker
 alias lg=lazygit
+alias st="tmux source ~/.config/tmux/tmux.conf"
 
 # Shell integrations
 eval "$(fzf --zsh)"

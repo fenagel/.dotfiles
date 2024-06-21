@@ -1,9 +1,8 @@
-local b = require("utils/background")
+-- local b = require("utils/background")
 local cs = require("utils/colorscheme")
-local f = require("utils/font")
 -- local h = require("utils/helpers")
 local k = require("utils/keys")
-local w = require("utils/wallpaper")
+-- local w = require("utils/wallpaper")
 
 local wezterm = require("wezterm")
 local act = wezterm.action
@@ -16,13 +15,13 @@ local config = {
 	-- },
 
 	-- font
-	font = f.get_font(),
+	font = wezterm.font("JetBrainsMono Nerd Font", { bold = true }),
 	-- font = f.get_font({
 	-- 	-- "CommitMono",
 	-- 	-- "JetBrainsMono Nerd Font",
 	-- 	-- wezterm.font("JetBrainsMono Nerd Font", { italic = false }),
 	-- }),
-	font_size = 18,
+	font_size = 17,
 	line_height = 1,
 
 	-- colors
@@ -35,10 +34,10 @@ local config = {
 	-- },
 	-- padding
 	window_padding = {
-		left = 30,
-		right = 30,
-		top = 20,
-		bottom = 10,
+		left = 40,
+		right = 20,
+		top = 30,
+		bottom = 20,
 	},
 
 	set_environment_variables = {
@@ -87,11 +86,11 @@ local config = {
 		k.cmd_key(".", k.multiple_actions(":ZenMode")),
 		k.cmd_key("[", act.SendKey({ mods = "CTRL", key = "o" })),
 		k.cmd_key("]", act.SendKey({ mods = "CTRL", key = "i" })),
-		k.cmd_key("f", k.multiple_actions(":Grep")),
+		-- k.cmd_key("f", k.multiple_actions(":Grep")),
 		k.cmd_key("H", act.SendKey({ mods = "CTRL", key = "h" })),
-		k.cmd_key("i", k.multiple_actions(":SmartGoTo")),
-		k.cmd_key("P", k.multiple_actions(":GoToCommand")),
-		k.cmd_key("p", k.multiple_actions(":GoToFile")),
+		-- k.cmd_key("i", k.multiple_actions(":SmartGoTo")),
+		-- k.cmd_key("P", k.multiple_actions(":GoToCommand")),
+		-- k.cmd_key("p", k.multiple_actions(":GoToFile")),
 		k.cmd_key("q", k.multiple_actions(":qa!")),
 		k.cmd_to_tmux_prefix("1", "1"),
 		k.cmd_to_tmux_prefix("2", "2"),
