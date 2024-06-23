@@ -15,13 +15,13 @@ local config = {
 	-- },
 
 	-- font
-	font = wezterm.font("JetBrainsMono Nerd Font", { bold = true }),
+	font = wezterm.font("UbuntuMono Nerd Font", { bold = true }),
 	-- font = f.get_font({
 	-- 	-- "CommitMono",
 	-- 	-- "JetBrainsMono Nerd Font",
 	-- 	-- wezterm.font("JetBrainsMono Nerd Font", { italic = false }),
 	-- }),
-	font_size = 17,
+	font_size = 18,
 	line_height = 1,
 
 	-- colors
