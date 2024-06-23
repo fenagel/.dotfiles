@@ -15,7 +15,8 @@ map("n", "g#", "g#zz", opts)
 -- Move to start/end of line
 map({ "n", "x", "o" }, "H", "^", opts)
 map({ "n", "x", "o" }, "L", "g_", opts)
-
+-- surrounding words
+vim.keymap.set("n", "<leader>wsq", 'ciw""<Esc>P', { desc = "Word Surround Quotes" })
 -- Obsidian
 -- navigate to vault
 --/Users/fenagel/Library/Mobile Documents/iCloud~md~obsidian/Documents/Second Brain
