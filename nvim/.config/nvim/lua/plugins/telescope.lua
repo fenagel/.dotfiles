@@ -1,6 +1,9 @@
 -- cSpell:words piersolenski danielfalk vuki
 return {
   "nvim-telescope/telescope.nvim",
+  keys = {
+    { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find Files Telescope" },
+  },
   opts = {
     defaults = {
       mappings = {
@@ -73,11 +76,4 @@ return {
       },
     },
   },
-  -- keys = function()
-  --   return {
-  --     -- TODO: last telescope
-  --     { "<leader>*", "<cmd>Telescope grep_string<cr>", { silent = true, desc = "Grep Word Under Cursor" } },
-  --     { "<leader>.", "<cmd>Telescope resume<cr>", { silent = true, desc = "Resume Telescope" } },
-  --   }
-  -- end,
 }
