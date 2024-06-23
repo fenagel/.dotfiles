@@ -15,7 +15,8 @@ local config = {
 	-- },
 
 	-- font
-	font = wezterm.font("UbuntuMono Nerd Font", { bold = true }),
+	-- font = wezterm.font("UbuntuMono Nerd Font", { italic = false }),
+	font = wezterm.font("Source Code Pro", { italic = false }),
 	-- font = f.get_font({
 	-- 	-- "CommitMono",
 	-- 	-- "JetBrainsMono Nerd Font",
