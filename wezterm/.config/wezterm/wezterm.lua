@@ -47,7 +47,7 @@ local config = {
 
 	-- general options
 	-- Spawn a fish shell in login mode
-	default_prog = { "/usr/local/bin/fish", "-l" },
+	-- default_prog = { "/usr/local/bin/fish", "-l" },
 	adjust_window_size_when_changing_font_size = false,
 	debug_key_events = false,
 	enable_tab_bar = false,
