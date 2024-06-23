@@ -1,3 +1,4 @@
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 PATH="$HOME/.go/bin:$PATH"
 
 if [[ -f "/opt/homebrew/bin/brew" ]] then
@@ -30,12 +31,10 @@ zinit snippet OMZP::git
 zinit snippet OMZP::sudo
 zinit snippet OMZP::archlinux
 zinit snippet OMZP::ubuntu
-zinit snippet OMZP::macos
 zinit snippet OMZP::aws
 zinit snippet OMZP::brew
 zinit snippet OMZP::rails
 zinit snippet OMZP::golang
-zinit snippet OMZP::docker
 zinit snippet OMZP::kubectl
 zinit snippet OMZP::kubectx
 zinit snippet OMZP::command-not-found
@@ -110,6 +109,7 @@ alias ll="lsd  --group-dirs first -Al"
 alias lt="lsd  --group-dirs last -A --tree"
 alias ld=lazydocker
 alias lg=lazygit
+alias st="tmux source ~/.config/tmux/tmux.conf"
 
 # Shell integrations
 eval "$(fzf --zsh)"

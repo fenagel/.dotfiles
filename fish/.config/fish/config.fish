@@ -8,6 +8,8 @@
 # https://fishshell.com
 # cSpell:words ajeetdsouza cppflags ldflags pkgconfig pnpm nvim Nord gopath nvimpager ripgreprc ripgrep zoxide joshmedeski sharkdp neovim lucc
 
+#eval (/usr/local/bin/brew shellenv)
+
 starship init fish | source # https://starship.rs/
 zoxide init fish | source # 'ajeetdsouza/zoxide'
 
@@ -15,7 +17,7 @@ set -gx fish_greeting # disable fish greeting
 set -gx CPPFLAGS -I/opt/homebrew/opt/sqlite/include
 set -gx LDFLAGS -L/opt/homebrew/opt/sqlite/lib
 set -gx PKG_CONFIG_PATH /opt/homebrew/opt/sqlite/lib/pkgconfig
-set -Ux BAT_THEME Nord # 'sharkdp/bat' cat clone 
+#set -Ux BAT_THEME Nord # 'sharkdp/bat' cat clone 
 set -Ux EDITOR nvim # 'neovim/neovim' text editor 
 set -Ux FZF_DEFAULT_COMMAND "fd -H -E '.git'"
 

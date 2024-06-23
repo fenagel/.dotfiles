@@ -56,7 +56,7 @@ M.get_color_scheme = function()
 	-- return get_color_scheme()
 	-- return h.is_dark() and "Catppuccin Mocha" or "Catppuccin Latte"
 	-- return "Catppuccin Mocha"
-	return "Tokyo Night"
+	-- return "Tokyo Night"
 	-- return "Poimandres"
 	-- return "OneDark"
 	-- return "Belge (terminal.sexy)"
@@ -69,7 +69,7 @@ M.get_color_scheme = function()
 	-- return "One Half Black (Gogh)"
 	-- return "GruvboxDarkHard"
 	-- return "Gruvbox Dark (Gogh)"
-	-- return "Gruvbox dark, hard (base16)"
+	return "Gruvbox dark, hard (base16)"
 	-- return "Everforest Dark (Gogh)"
 end
 M.colors = function()
