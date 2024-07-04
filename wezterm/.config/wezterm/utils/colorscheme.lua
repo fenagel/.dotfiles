@@ -110,10 +110,11 @@ M.get_color_scheme = function()
 	-- return "rose-pine"
 	-- return "Harper"
 	-- return "One Half Black (Gogh)"
-	return "GruvboxDarkHard"
+	-- return "GruvboxDarkHard"
 	-- return "GruvboxLight"
 	-- return "Gruvbox Dark (Gogh)"
 	-- return "Gruvbox dark, hard (base16)"
+	return "Gruvbox dark, medium (base16)"
 	-- return "Everforest Dark (Gogh)"
 end
 M.colors = function()
