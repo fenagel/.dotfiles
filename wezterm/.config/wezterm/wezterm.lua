@@ -1,34 +1,16 @@
--- local b = require("utils/background")
 local cs = require("utils/colorscheme")
--- local h = require("utils/helpers")
 local k = require("utils/keys")
--- local w = require("utils/wallpaper")
 
 local wezterm = require("wezterm")
 local act = wezterm.action
 
 local config = {
-	-- background
-	-- background = {
-	-- 	w.get_wallpaper(),
-	-- 	b.get_background(),
-	-- },
-
 	-- font
 	font = wezterm.font("UbuntuMono Nerd Font", { italic = false }),
-	-- font = wezterm.font("Source Code Pro", { italic = false }),
-	-- font = f.get_font({
-	-- 	-- "CommitMono",
-	-- 	-- "JetBrainsMono Nerd Font",
-	-- 	-- wezterm.font("JetBrainsMono Nerd Font", { italic = false }),
-	-- }),
 	font_size = 20,
 	line_height = 1,
-
-	-- colors
-	-- color_scheme = "aki",
-	colors = cs.colors(),
-	-- color_scheme = cs.get_color_scheme(),
+	-- colors = cs.colors(),
+	color_scheme = cs.get_color_scheme(),
 	-- colors = {
 	-- 	background = "#011628",
 	-- 	cursor_bg = "#38ff9c",
