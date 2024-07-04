@@ -55,12 +55,17 @@ local colors = {
 M.get_color_scheme = function()
 	-- return get_color_scheme()
 	-- return h.is_dark() and "Catppuccin Mocha" or "Catppuccin Latte"
-	-- return "Catppuccin Mocha"
+	return "Catppuccin Mocha"
 	-- return "Tokyo Night"
 	-- return "Poimandres"
 	-- return "OneDark"
 	-- return "Belge (terminal.sexy)"
 	-- return "Black Metal (Bathory) (base16)"
+	-- return "Silk Dark (base16)"
+	-- return "Solar Flare (base16)"
+	-- return "Solarized Dark Higher Contrast"
+	-- return "Material Darker (base16)"
+	-- return "Neutron (Gogh)"
 	-- return "Solarized Dark Higher Contrast"
 	-- return "Tomorrow Night"
 	-- return "IR Black (base16)"
@@ -68,8 +73,9 @@ M.get_color_scheme = function()
 	-- return "Harper"
 	-- return "One Half Black (Gogh)"
 	-- return "GruvboxDarkHard"
+	-- return "GruvboxLight"
 	-- return "Gruvbox Dark (Gogh)"
-	return "Gruvbox dark, hard (base16)"
+	-- return "Gruvbox dark, hard (base16)"
 	-- return "Everforest Dark (Gogh)"
 end
 M.colors = function()

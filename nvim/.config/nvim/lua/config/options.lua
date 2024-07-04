@@ -6,8 +6,8 @@ local opt = vim.opt
 opt.cursorline = false
 opt.tabstop = 4
 opt.shiftwidth = 4
--- vim.opt.list = false
--- vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+vim.opt.list = false
+vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
 opt.ignorecase = true
 
@@ -18,11 +18,13 @@ opt.foldmethod = "manual"
 opt.foldenable = false
 
 -- scrolling
-opt.number = false
-opt.relativenumber = false
+-- opt.number = false
+-- opt.relativenumber = false
 opt.scrolloff = 8
 
 -- wrap / break
 
 opt.textwidth = 80
 opt.linebreak = true
+
+-- opt.background = "light"
