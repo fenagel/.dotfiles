@@ -14,8 +14,6 @@ local function get_color_scheme()
 end
 
 local colors = {
-	foreground = "#8383A5",
-	background = "#0D0F11",
 
 	cursor_bg = "#F7ECE5",
 	cursor_fg = "#090A0B",
@@ -28,30 +26,70 @@ local colors = {
 
 	-- The color of the split lines between panes
 	split = "#444444",
-
+	background = "#282828",
+	foreground = "#ebdbb2",
 	ansi = {
-		"#0D0F11",
-		-- "#131516", -- black, color 0
-		"#9C4430", -- red, color 1
-		"#B1EEAB", -- green, color 2
-		"#EE964B",
-		"#9C4430",
-		"#d3869b",
+		"#282828",
+		"#cc241d",
+		"#98971a",
+		"#d79921",
+		"#458588",
+		"#b16286",
 		"#689d6a",
-		"#595959",
+		"#a89984",
 	},
+
 	brights = {
-		"#0D0F11",
-		-- "#131516", -- black, color 0
-		"#9C4430", -- red, color 1
-		"#B1EEAB", -- green, color 2
-		"#EE964B",
-		"#9C4430",
+		"#928374",
+		"#fb4934",
+		"#b8bb26",
+		"#fabd2f",
+		"#83a598",
 		"#d3869b",
-		"#689d6a",
-		"#595959",
+		"#8ec07c",
+		"#ebdbb2",
 	},
 }
+
+-- local colors = {
+-- 	foreground = "#8383A5",
+-- 	background = "#0D0F11",
+--
+-- 	cursor_bg = "#F7ECE5",
+-- 	cursor_fg = "#090A0B",
+-- 	cursor_border = "#F7ECE5",
+--
+-- 	selection_fg = "#928374",
+-- 	selection_bg = "#F7F9B4",
+--
+-- 	scrollbar_thumb = "#222222",
+--
+-- 	-- The color of the split lines between panes
+-- 	split = "#444444",
+--
+-- 	ansi = {
+-- 		"#0D0F11",
+-- 		-- "#131516", -- black, color 0
+-- 		"#9C4430", -- red, color 1
+-- 		"#B1EEAB", -- green, color 2
+-- 		"#EE964B",
+-- 		"#9C4430",
+-- 		"#d3869b",
+-- 		"#689d6a",
+-- 		"#595959",
+-- 	},
+-- 	brights = {
+-- 		"#0D0F11",
+-- 		-- "#131516", -- black, color 0
+-- 		"#9C4430", -- red, color 1
+-- 		"#B1EEAB", -- green, color 2
+-- 		"#EE964B",
+-- 		"#9C4430",
+-- 		"#d3869b",
+-- 		"#689d6a",
+-- 		"#595959",
+-- 	},
+-- }
 M.get_color_scheme = function()
 	-- return get_color_scheme()
 	-- return h.is_dark() and "Catppuccin Mocha" or "Catppuccin Latte"

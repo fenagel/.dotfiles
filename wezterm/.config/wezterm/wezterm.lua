@@ -15,20 +15,20 @@ local config = {
 	-- },
 
 	-- font
-	-- font = wezterm.font("UbuntuMono Nerd Font", { italic = false }),
-	font = wezterm.font("Source Code Pro", { italic = false }),
+	font = wezterm.font("UbuntuMono Nerd Font", { italic = false }),
+	-- font = wezterm.font("Source Code Pro", { italic = false }),
 	-- font = f.get_font({
 	-- 	-- "CommitMono",
 	-- 	-- "JetBrainsMono Nerd Font",
 	-- 	-- wezterm.font("JetBrainsMono Nerd Font", { italic = false }),
 	-- }),
-	font_size = 18,
+	font_size = 20,
 	line_height = 1,
 
 	-- colors
 	-- color_scheme = "aki",
-	-- colors = cs.colors(),
-	color_scheme = cs.get_color_scheme(),
+	colors = cs.colors(),
+	-- color_scheme = cs.get_color_scheme(),
 	-- colors = {
 	-- 	background = "#011628",
 	-- 	cursor_bg = "#38ff9c",
