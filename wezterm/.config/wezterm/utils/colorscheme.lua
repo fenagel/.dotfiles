@@ -114,7 +114,8 @@ M.get_color_scheme = function()
 	-- return "GruvboxLight"
 	-- return "Gruvbox Dark (Gogh)"
 	-- return "Gruvbox dark, hard (base16)"
-	return "Gruvbox dark, medium (base16)"
+	-- return "Gruvbox dark, medium (base16)"
+	return "Gruvbox Material (Gogh)"
 	-- return "Everforest Dark (Gogh)"
 end
 M.colors = function()
