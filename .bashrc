@@ -172,7 +172,8 @@ alias fp="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}
 alias vf='v $(fp)'
 
 # sourcing
-source "$HOME/.privaterc"
+# What is this for?
+# source "$HOME/.privaterc"
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
     source "$HOME/.fzf.bash"
