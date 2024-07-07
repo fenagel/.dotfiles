@@ -141,7 +141,6 @@ alias lg='lazygit'
 alias eb='v ~/.bashrc'
 alias ev='cd ~/.config/nvim/ && v init.lua'
 alias sbr='source ~/.bashrc'
-alias s='startx'
 
 # vim & second brain
 alias sb="cd \$SECOND_BRAIN"
@@ -155,14 +154,14 @@ alias cards='python3 /opt/homebrew/lib/python3.11/site-packages/mtg_proxy_printe
 alias tf='terraform'
 alias tp='terraform plan'
 
-# flux
-source <(flux completion bash)
-alias fgk='flux get kustomizations'
+# # flux
+# source <(flux completion bash)
+# alias fgk='flux get kustomizations'
 
 # completions
-source <(talosctl completion bash)
-source <(kubectl-cnp completion bash)
-source <(cilium completion bash)
+# source <(talosctl completion bash)
+# source <(kubectl-cnp completion bash)
+# source <(cilium completion bash)
 source <(devpod completion bash)
 
 # fzf aliases
