@@ -94,14 +94,12 @@ fi
 
 # ~~~~~~~~~~~~~~~ Prompt ~~~~~~~~~~~~~~~~~~~~~~~~
 
-# Moved to starship 20-03-2024 for all my prompt needs.
-
 eval "$(starship init bash)"
 
 # ~~~~~~~~~~~~~~~ Aliases ~~~~~~~~~~~~~~~~~~~~~~~~
 
 alias v=nvim
-# alias vim=nvim
+alias vim=nvim
 
 # cd
 alias vo='cd $REPOS/github.com/VanOord/'
