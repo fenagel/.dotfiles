@@ -134,6 +134,7 @@ alias syu='sudo pacman -Syu'
 
 # git
 alias gp='git pull'
+alias gco='git checkout'
 alias gs='git status'
 alias lg='lazygit'
 
