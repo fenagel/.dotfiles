@@ -13,6 +13,7 @@
     "lazyvim.plugins.extras.lang.ruby",
     "lazyvim.plugins.extras.linting.eslint",
     "lazyvim.plugins.extras.formatting.prettier",
+    "lazyvim.plugins.extras.coding.copilot",
     "lazyvim.plugins.extras.coding.copilot-chat",
     "lazyvim.plugins.extras.editor.harpoon2",
     "lazyvim.plugins.extras.coding.mini-surround"
@@ -22,4 +23,3 @@
   },
   "version": 6
 }
-
