@@ -1,7 +1,3 @@
-# Prompt
-export STARSHIP_CONFIG=$HOME/.starship.toml
-eval "$(starship init bash)"
-
 alias reload-zsh="source ~/.zshrc"
 alias edit-zsh="nvim ~/.zshrc"
 
@@ -94,3 +90,7 @@ alias ls="eza --icons=always"
 eval "$(zoxide init zsh)"
 
 alias cd="z"
+
+# Prompt
+export STARSHIP_CONFIG=$HOME/.starship.toml
+eval "$(starship init zsh)"
