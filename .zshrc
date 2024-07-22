@@ -6,6 +6,50 @@ fi
 alias reload-zsh="source ~/.zshrc"
 alias edit-zsh="nvim ~/.zshrc"
 
+# Git
+alias gc="git commit -m"
+alias gca="git commit -a -m"
+# alias gps="git push origin HEAD"
+alias gp="git pull origin"
+alias gs="git status"
+alias glog="git log --graph --topo-order --pretty='%w(100,0,6)%C(yellow)%h%C(bold)%C(black)%d %C(cyan)%ar %C(green)%an%n%C(bold)%C(white)%s %N' --abbrev-commit"
+alias gdiff="git diff"
+alias gco="git checkout"
+alias gb='git branch'
+alias gba='git branch -a'
+alias ga='git add'
+alias gr='git remote'
+alias gre='git reset'
+
+# Docker
+alias dc="docker compose"
+alias dps="docker ps"
+alias dpa="docker ps -a"
+alias dl="docker ps -l -q"
+alias dx="docker exec -it"
+
+# Dirs
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ......="cd ../../../../.."
+
+alias v="nvim"
+alias c="clear"
+alias vim="nvim"
+alias lg="lazygit"
+
+# Eza
+alias l="eza -l --icons --git -a"
+alias lt="eza --tree --level=2 --long --icons --git"
+
+# fzf aliases
+# use fp to do a fzf search and preview the files
+alias fp="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
+# search for a file with fzf and open it in vim
+alias vf='v $(fp)'
+
 # history setup
 HISTFILE=$HOME/.zhistory
 SAVEHIST=1000
