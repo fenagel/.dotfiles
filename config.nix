@@ -4,6 +4,7 @@
       name = "dev-tools";
       paths = [
         bash-completion
+        zsh
         neovim
         go
         nodejs_22
@@ -19,11 +20,10 @@
         tmux
         sesh
         zoxide
-        zsh
-        zsh-autosuggestions
-        zsh-syntax-highlighting
-        eza
-        bat
+	      zsh-autosuggestions
+	      zsh-syntax-highlighting
+	      bat
+	      eza
       ];
     };
   };

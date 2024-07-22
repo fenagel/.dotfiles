@@ -114,3 +114,7 @@ fi
 # Add Nix and Home Manager paths
 export PATH="$HOME/.nix-profile/bin:$PATH"
 export NIX_PATH="$HOME/.nix-defexpr/channels:$NIX_PATH"
+
+# Prompt
+export STARSHIP_CONFIG=$HOME/.starship.toml
+eval "$(starship init zsh)"
