@@ -1,3 +1,4 @@
 plugged
 .nvimlog
 undodir
+.DS_Store
