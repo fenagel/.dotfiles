@@ -1,3 +1,8 @@
+# Nix
+if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+  . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+fi
+
 alias reload-zsh="source ~/.zshrc"
 alias edit-zsh="nvim ~/.zshrc"
 
@@ -14,82 +19,101 @@ setopt hist_verify
 bindkey '^[[A' history-search-backward
 bindkey '^[[B' history-search-forward
 
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# Check if zsh-autosuggestions is installed via Nix
+if [ -e "${HOME}/.nix-profile/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]; then
+  source "${HOME}/.nix-profile/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+fi
 
+# Check if zsh-syntax-highlighting is installed via Nix
+if [ -e "${HOME}/.nix-profile/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]; then
+  source "${HOME}/.nix-profile/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+fi
+
+# NVM setup (if you're using NVM with Nix)
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
-export PATH="$HOME/.rbenv/shims:$PATH"
+# Ruby setup (if you're using rbenv with Nix)
+if [ -d "$HOME/.rbenv" ]; then
+  export PATH="$HOME/.rbenv/shims:$PATH"
+fi
 
-# ---- FZF -----
+# FZF setup
+if command -v fzf >/dev/null 2>&1; then
+  # Set up fzf key bindings and fuzzy completion
+  if [ -e "${HOME}/.nix-profile/share/fzf/key-bindings.zsh" ]; then
+    source "${HOME}/.nix-profile/share/fzf/key-bindings.zsh"
+  fi
+  if [ -e "${HOME}/.nix-profile/share/fzf/completion.zsh" ]; then
+    source "${HOME}/.nix-profile/share/fzf/completion.zsh"
+  fi
 
-# Set up fzf key bindings and fuzzy completion
-eval "$(fzf --zsh)"
+  # FZF theme
+  fg="#CBE0F0"
+  bg="#011628"
+  bg_highlight="#143652"
+  purple="#B388FF"
+  blue="#06BCE4"
+  cyan="#2CF9ED"
+  export FZF_DEFAULT_OPTS="--color=fg:${fg},bg:${bg},hl:${purple},fg+:${fg},bg+:${bg_highlight},hl+:${purple},info:${blue},prompt:${cyan},pointer:${cyan},marker:${cyan},spinner:${cyan},header:${cyan}"
 
-# --- setup fzf theme ---
-fg="#CBE0F0"
-bg="#011628"
-bg_highlight="#143652"
-purple="#B388FF"
-blue="#06BCE4"
-cyan="#2CF9ED"
+  # Use fd instead of find for FZF
+  if command -v fd >/dev/null 2>&1; then
+    export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+    export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+    export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+  fi
 
-export FZF_DEFAULT_OPTS="--color=fg:${fg},bg:${bg},hl:${purple},fg+:${fg},bg+:${bg_highlight},hl+:${purple},info:${blue},prompt:${cyan},pointer:${cyan},marker:${cyan},spinner:${cyan},header:${cyan}"
+  # FZF functions
+  _fzf_compgen_path() {
+    fd --hidden --exclude .git . "$1"
+  }
 
-# -- Use fd instead of fzf --
+  _fzf_compgen_dir() {
+    fd --type=d --hidden --exclude .git . "$1"
+  }
 
-export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+  # Source fzf-git.sh if it exists
+  if [ -f ~/fzf-git.sh/fzf-git.sh ]; then
+    source ~/fzf-git.sh/fzf-git.sh
+  fi
 
-# Use fd (https://github.com/sharkdp/fd) for listing path candidates.
-# - The first argument to the function ($1) is the base path to start traversal
-# - See the source code (completion.{bash,zsh}) for the details.
-_fzf_compgen_path() {
-  fd --hidden --exclude .git . "$1"
-}
+  show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
+  export FZF_CTRL_T_OPTS="--preview '$show_file_or_dir_preview'"
+  export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
 
-# Use fd to generate the list for directory completion
-_fzf_compgen_dir() {
-  fd --type=d --hidden --exclude .git . "$1"
-}
+  _fzf_comprun() {
+    local command=$1
+    shift
+    case "$command" in
+      cd)           fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
+      export|unset) fzf --preview "eval 'echo \${}'"         "$@" ;;
+      ssh)          fzf --preview 'dig {}'                   "$@" ;;
+      *)            fzf --preview "$show_file_or_dir_preview" "$@" ;;
+    esac
+  }
+fi
 
-source ~/fzf-git.sh/fzf-git.sh
+# Bat setup
+if command -v bat >/dev/null 2>&1; then
+  export BAT_THEME=tokyonight_night
+fi
 
-show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
+# Eza setup
+if command -v eza >/dev/null 2>&1; then
+  alias ls="eza --icons=always"
+fi
 
-export FZF_CTRL_T_OPTS="--preview '$show_file_or_dir_preview'"
-export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
+# Zoxide setup
+if command -v zoxide >/dev/null 2>&1; then
+  eval "$(zoxide init zsh)"
+  alias cd="z"
+fi
 
-# Advanced customization of fzf options via _fzf_comprun function
-# - The first argument to the function is the name of the command.
-# - You should make sure to pass the rest of the arguments to fzf.
-_fzf_comprun() {
-  local command=$1
-  shift
-
-  case "$command" in
-    cd)           fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
-    export|unset) fzf --preview "eval 'echo \${}'"         "$@" ;;
-    ssh)          fzf --preview 'dig {}'                   "$@" ;;
-    *)            fzf --preview "$show_file_or_dir_preview" "$@" ;;
-  esac
-}
-
-# ----- Bat (better cat) -----
-
-export BAT_THEME=tokyonight_night
-
-# ---- Eza (better ls) -----
-
-alias ls="eza --icons=always"
-
-# ---- Zoxide (better cd) ----
-eval "$(zoxide init zsh)"
-
-alias cd="z"
+# Add Nix and Home Manager paths
+export PATH="$HOME/.nix-profile/bin:$PATH"
+export NIX_PATH="$HOME/.nix-defexpr/channels:$NIX_PATH"
 
 # Prompt
 export STARSHIP_CONFIG=$HOME/.starship.toml

@@ -20,10 +20,10 @@
         tmux
         sesh
         zoxide
-	zsh-autosuggestions
-	zsh-syntax-highlighting
-	bat
-	eza
+	      zsh-autosuggestions
+	      zsh-syntax-highlighting
+	      bat
+	      eza
       ];
     };
   };
