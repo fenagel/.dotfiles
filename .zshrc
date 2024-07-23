@@ -3,6 +3,8 @@ if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
   . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
 fi
 
+export SECOND_BRAIN="/Users/felix/Library/Mobile Documents/iCloud~md~obsidian/Documents/Second Brain"
+
 alias reload-zsh="source ~/.zshrc"
 alias edit-zsh="nvim ~/.zshrc"
 
@@ -39,6 +41,11 @@ alias v="nvim"
 alias c="clear"
 alias vim="nvim"
 alias lg="lazygit"
+
+# vim & second brain
+alias sb="cd \$SECOND_BRAIN"
+alias in="cd \$SECOND_BRAIN/0 Inbox/"
+alias zk="cd \$SECOND_BRAIN"
 
 # Eza
 alias l="eza -l --icons --git -a"
