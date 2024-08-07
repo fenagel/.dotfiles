@@ -48,6 +48,12 @@ config.enable_tab_bar = false
 
 config.window_decorations = "RESIZE"
 config.window_background_opacity = 1
+window_padding = {
+	left = 40,
+	right = 20,
+	top = 30,
+	bottom = 20,
+}
 config.macos_window_background_blur = 10
 config.keys = {
 	cmd_to_tmux_prefix("1", "1"),
