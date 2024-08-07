@@ -57,6 +57,10 @@ alias fp="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}
 # search for a file with fzf and open it in vim
 alias vf='v $(fp)'
 
+alias ta="tmux a"
+alias tk="tmux kill-server"
+alias tn="tmux new -s (basename (pwd))"
+
 function sesh-sessions() {
   {
     exec </dev/tty
