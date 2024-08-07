@@ -5,6 +5,9 @@ return {
     view_options = { show_hidden = true },
   },
   init = function()
-    vim.keymap.set("n", "-", require("oil").open, { desc = "Open parent directory" })
+    local oil = require("oil")
+    vim.keymap.set("n", "-", oil.open, { desc = "Open parent directory" })
+
+    -- vim.keymap.set("n", "-", oil.toggle_float, {})
   end,
 }
