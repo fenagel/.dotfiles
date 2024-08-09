@@ -40,7 +40,28 @@ local config = wezterm.config_builder()
 -- 	ansi = { "#214969", "#E52E2E", "#44FFB1", "#FFE073", "#0FC5ED", "#a277ff", "#24EAF7", "#24EAF7" },
 -- 	brights = { "#214969", "#E52E2E", "#44FFB1", "#FFE073", "#A277FF", "#a277ff", "#24EAF7", "#24EAF7" },
 -- }
-config.color_scheme = "Brewer (dark) (terminal.sexy)"
+-- cyberdream theme for wezterm
+config.colors = {
+	foreground = "#ffffff",
+	background = "#16181a",
+
+	cursor_bg = "#ffffff",
+	cursor_fg = "#16181a",
+	cursor_border = "#ffffff",
+
+	selection_fg = "#ffffff",
+	selection_bg = "#3c4048",
+
+	scrollbar_thumb = "#16181a",
+	split = "#16181a",
+
+	ansi = { "#16181a", "#ff6e5e", "#5eff6c", "#f1ff5e", "#5ea1ff", "#bd5eff", "#5ef1ff", "#ffffff" },
+	brights = { "#3c4048", "#ff6e5e", "#5eff6c", "#f1ff5e", "#5ea1ff", "#bd5eff", "#5ef1ff", "#ffffff" },
+	indexed = { [16] = "#ffbd5e", [17] = "#ff6e5e" },
+}
+config.window_background_image = "/Users/felix/repos/github.com/fenagel/dotfiles/bg-blurred-darker.png"
+config.macos_window_background_blur = 30
+
 config.font = wezterm.font("MesloLGS Nerd Font Mono")
 config.font_size = 19
 

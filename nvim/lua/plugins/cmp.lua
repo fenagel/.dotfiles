@@ -2,13 +2,39 @@ return {
   {
     "hrsh7th/nvim-cmp",
     opts = function(_, opts)
-      -- Merge the default options with your custom options
-      opts = vim.tbl_deep_extend("force", opts or {}, {
-        experimental = {
-          ghost_text = false,
+      opts.completion.autocomplete = false
+      opts.mapping["<CR>"] = nil
+      opts.experimental.ghost_text = false
+      opts.window = {
+        completion = {
+          border = {
+            { "󱐋", "WarningMsg" },
+            { "─", "Comment" },
+            { "╮", "Comment" },
+            { "│", "Comment" },
+            { "╯", "Comment" },
+            { "─", "Comment" },
+            { "╰", "Comment" },
+            { "│", "Comment" },
+          },
+          scrollbar = false,
+          winblend = 0,
         },
-      })
-      return opts
+        documentation = {
+          border = {
+            { "󰙎", "DiagnosticHint" },
+            { "─", "Comment" },
+            { "╮", "Comment" },
+            { "│", "Comment" },
+            { "╯", "Comment" },
+            { "─", "Comment" },
+            { "╰", "Comment" },
+            { "│", "Comment" },
+          },
+          scrollbar = false,
+          winblend = 0,
+        },
+      }
     end,
   },
 }

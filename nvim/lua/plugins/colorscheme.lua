@@ -7,22 +7,33 @@ return {
   --     -- vim.cmd.colorscheme("gruvbuddy")
   --   end,
   -- },
-  -- {
-  --   "rose-pine/neovim",
-  --   name = "rose-pine",
-  --   opts = {
-  --     variant = "moon", -- auto, main, moon, or dawn
-  --     extend_background_behind_borders = true,
-  --     styles = {
-  --       bold = true,
-  --       italic = true,
-  --       transparency = true,
-  --     },
-  --   },
-  -- },
+  {
+    {
+      "scottmckendry/cyberdream.nvim",
+      lazy = false,
+      priority = 1000,
+      opts = function(_, opts)
+        opts.transparent = true
+        opts.italic_comments = true
+      end,
+    },
+    -- modicator (auto color line number based on vim mode)
+    {
+      "mawkler/modicator.nvim",
+      dependencies = "scottmckendry/cyberdream.nvim",
+      init = function()
+        -- These are required for Modicator to work
+        vim.o.cursorline = false
+        vim.o.number = true
+        vim.o.termguicolors = true
+      end,
+      opts = {},
+    },
+  },
   {
     "rose-pine/neovim",
     name = "rose-pine",
+    enabled = false,
     config = function()
       require("rose-pine").setup({
         disable_background = true,
@@ -38,6 +49,7 @@ return {
   {
     "catppuccin/nvim",
     priority = 150,
+    enabled = false,
     name = "catppuccin",
     config = function()
       require("catppuccin").setup({
@@ -459,7 +471,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "rose-pine",
+      colorscheme = "cyberdream",
     },
   },
 }
