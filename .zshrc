@@ -59,7 +59,7 @@ alias vf='v $(fp)'
 
 alias ta="tmux a"
 alias tk="tmux kill-server"
-alias tn="tmux new -s (basename (pwd))"
+alias tn="tmux new -s"
 
 function sesh-sessions() {
   {
