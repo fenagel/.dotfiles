@@ -33,9 +33,10 @@ return {
   {
     "rose-pine/neovim",
     name = "rose-pine",
-    enabled = false,
+    enabled = true,
     config = function()
       require("rose-pine").setup({
+        variant = "moon",
         disable_background = true,
         styles = {
           italic = false,
@@ -471,7 +472,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "tokyonight",
+      colorscheme = "rose-pine",
     },
   },
 }

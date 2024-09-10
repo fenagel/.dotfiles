@@ -64,7 +64,7 @@ config.colors = {
 -- config.macos_window_background_blur = 30
 
 config.font = wezterm.font("MesloLGS Nerd Font Mono")
-config.font_size = 19
+config.font_size = 24
 
 config.enable_tab_bar = false
 
