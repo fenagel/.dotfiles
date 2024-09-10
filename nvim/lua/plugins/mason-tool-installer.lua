@@ -34,6 +34,7 @@ return {
       "shfmt",
       "stylua",
       "tailwindcss-language-server",
+      "templ",
       "typescript-language-server",
       "yaml-language-server",
     },

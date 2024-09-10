@@ -45,6 +45,10 @@ return {
         -- terraformls = {},
         -- helm_ls = {},
         -- csharp_ls = {},
+        templ = {},
+        html = {
+          filetypes = { "html", "templ" },
+        },
       },
       inlay_hints = {
         enabled = false,
