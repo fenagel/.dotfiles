@@ -11,7 +11,7 @@ return {
     {
       "scottmckendry/cyberdream.nvim",
       lazy = false,
-      enabled = false,
+      enabled = true,
       priority = 1000,
       opts = function(_, opts)
         opts.transparent = true
@@ -22,7 +22,7 @@ return {
     {
       "mawkler/modicator.nvim",
       dependencies = "scottmckendry/cyberdream.nvim",
-      enabled = false,
+      enabled = true,
       init = function()
         -- These are required for Modicator to work
         vim.o.cursorline = false
@@ -476,7 +476,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "catppuccin",
+      colorscheme = "cyberdream",
     },
   },
 }

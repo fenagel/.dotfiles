@@ -189,3 +189,10 @@ export NIX_PATH="$HOME/.nix-defexpr/channels:$NIX_PATH"
 # Prompt
 export STARSHIP_CONFIG=$HOME/.starship.toml
 eval "$(starship init zsh)"
+
+# bun completions
+[ -s "/Users/felix/.bun/_bun" ] && source "/Users/felix/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
