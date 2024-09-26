@@ -196,3 +196,7 @@ eval "$(starship init zsh)"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# flutter
+export PATH=$HOME/development/flutter/bin:$PATH
+export PATH="$PATH":"$HOME/.pub-cache/bin"
