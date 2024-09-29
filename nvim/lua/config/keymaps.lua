@@ -11,8 +11,8 @@ local opts = { noremap = true, silent = true }
 --  See `:help hlsearch`
 keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
--- Diagnostic keymaps
-keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+keymap.set("n", "<leader>q", "<Cmd>q<CR>", { desc = "Close" })
+keymap.set("n", "<leader>w", "<Cmd>w<CR>", { desc = "Write" })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -59,38 +59,6 @@ keymap.set("n", "<M-j>", '<Cmd>lua require("tmux").resize_bottom()<CR>', { silen
 keymap.set("n", "<M-k>", '<Cmd>lua require("tmux").resize_top()<CR>', { silent = true })
 keymap.set("n", "<M-l>", '<Cmd>lua require("tmux").resize_right()<CR>', { silent = true })
 
-local set_keymap = vim.api.nvim_set_keymap
--- package-info keymaps
-set_keymap(
-  "n",
-  "<leader>cpt",
-  "<cmd>lua require('package-info').toggle()<cr>",
-  { silent = true, noremap = true, desc = "Toggle" }
-)
-set_keymap(
-  "n",
-  "<leader>cpd",
-  "<cmd>lua require('package-info').delete()<cr>",
-  { silent = true, noremap = true, desc = "Delete package" }
-)
-set_keymap(
-  "n",
-  "<leader>cpu",
-  "<cmd>lua require('package-info').update()<cr>",
-  { silent = true, noremap = true, desc = "Update package" }
-)
-set_keymap(
-  "n",
-  "<leader>cpi",
-  "<cmd>lua require('package-info').install()<cr>",
-  { silent = true, noremap = true, desc = "Install package" }
-)
-set_keymap(
-  "n",
-  "<leader>cpc",
-  "<cmd>lua require('package-info').change_version()<cr>",
-  { silent = true, noremap = true, desc = "Change package version" }
-)
 -- Obsidian
 -- navigate to vault
 --/Users/fenagel/Library/Mobile Documents/iCloud~md~obsidian/Documents/Second Brain
