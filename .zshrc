@@ -72,7 +72,7 @@ function sesh-sessions() {
   }
 }
 
-zle     -N             sesh-sessions
+zle -N sesh-sessions
 bindkey -M emacs '\es' sesh-sessions
 bindkey -M vicmd '\es' sesh-sessions
 bindkey -M viins '\es' sesh-sessions
@@ -81,7 +81,7 @@ bindkey -M viins '\es' sesh-sessions
 HISTFILE=$HOME/.zhistory
 SAVEHIST=1000
 HISTSIZE=999
-setopt share_history 
+setopt share_history
 setopt hist_expire_dups_first
 setopt hist_ignore_dups
 setopt hist_verify
@@ -158,10 +158,10 @@ if command -v fzf >/dev/null 2>&1; then
     local command=$1
     shift
     case "$command" in
-      cd)           fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
-      export|unset) fzf --preview "eval 'echo \${}'"         "$@" ;;
-      ssh)          fzf --preview 'dig {}'                   "$@" ;;
-      *)            fzf --preview "$show_file_or_dir_preview" "$@" ;;
+    cd) fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
+    export | unset) fzf --preview "eval 'echo \${}'" "$@" ;;
+    ssh) fzf --preview 'dig {}' "$@" ;;
+    *) fzf --preview "$show_file_or_dir_preview" "$@" ;;
     esac
   }
 fi
@@ -187,8 +187,7 @@ export PATH="$HOME/.nix-profile/bin:$PATH"
 export NIX_PATH="$HOME/.nix-defexpr/channels:$NIX_PATH"
 
 # Prompt
-export STARSHIP_CONFIG=$HOME/.starship.toml
-eval "$(starship init zsh)"
+eval "$(oh-my-posh init zsh --config $HOME/.ohmyposh.toml)"
 
 # bun completions
 [ -s "/Users/felix/.bun/_bun" ] && source "/Users/felix/.bun/_bun"

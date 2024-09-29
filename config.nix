@@ -8,7 +8,7 @@
         neovim
         go
         nodejs_22
-        starship
+        oh-my-posh
         fd
         ripgrep
         fzf
@@ -20,10 +20,10 @@
         tmux
         sesh
         zoxide
-	      zsh-autosuggestions
-	      zsh-syntax-highlighting
-	      bat
-	      eza
+        zsh-autosuggestions
+        zsh-syntax-highlighting
+        bat
+        eza
       ];
     };
   };
