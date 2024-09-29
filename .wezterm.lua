@@ -31,19 +31,19 @@ local config = wezterm.config_builder()
 -- my coolnight colorscheme
 --
 config.colors = {
-	foreground = "#CBE0F0",
+	-- foreground = "#CBE0F0",
 	-- background = "#011423",
 	-- background = "#01101D",
 	background = "#000F1D",
 	-- cursor_bg = "#47FF9C",
 	-- cursor_border = "#47FF9C",
-	cursor_bg = "#CBE0F0",
-	cursor_border = "#CBE0F0",
-	cursor_fg = "#011423",
-	selection_bg = "#033259",
-	selection_fg = "#CBE0F0",
-	ansi = { "#214969", "#E52E2E", "#44FFB1", "#FFE073", "#0FC5ED", "#a277ff", "#24EAF7", "#24EAF7" },
-	brights = { "#214969", "#E52E2E", "#44FFB1", "#FFE073", "#A277FF", "#a277ff", "#24EAF7", "#24EAF7" },
+	-- cursor_bg = "#CBE0F0",
+	-- cursor_border = "#CBE0F0",
+	-- cursor_fg = "#011423",
+	-- selection_bg = "#033259",
+	-- selection_fg = "#CBE0F0",
+	-- ansi = { "#214969", "#E52E2E", "#44FFB1", "#FFE073", "#0FC5ED", "#a277ff", "#24EAF7", "#24EAF7" },
+	-- brights = { "#214969", "#E52E2E", "#44FFB1", "#FFE073", "#A277FF", "#a277ff", "#24EAF7", "#24EAF7" },
 }
 -- config.colors = {
 -- 	foreground = "#CBE0F0",
@@ -59,7 +59,6 @@ config.colors = {
 -- 	ansi = { "#214969", "#E52E2E", "#44FFB1", "#FFE073", "#0FC5ED", "#a277ff", "#24EAF7", "#24EAF7" },
 -- 	brights = { "#214969", "#E52E2E", "#44FFB1", "#FFE073", "#A277FF", "#a277ff", "#24EAF7", "#24EAF7" },
 -- }
--- config.color_scheme = "tokyonight"
 -- cyberdream theme for wezterm
 -- config.colors = {
 -- 	foreground = "#ffffff",
@@ -81,6 +80,7 @@ config.colors = {
 -- }
 -- config.window_background_image = "/Users/felix/repos/github.com/fenagel/dotfiles/bg-blurred-darker.png"
 -- config.macos_window_background_blur = 30
+config.color_scheme = "tokyonight"
 
 config.font = wezterm.font("MesloLGS Nerd Font Mono")
 config.font_size = 24
