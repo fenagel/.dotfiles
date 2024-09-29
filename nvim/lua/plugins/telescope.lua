@@ -42,12 +42,21 @@ return { -- Fuzzy Finder (files, lsp, etc)
     -- Telescope picker. This is really useful to discover what Telescope can
     -- do as well as how to actually do it!
 
+    local trouble = require("trouble")
+    local trouble_telescope = require("trouble.sources.telescope")
+    local actions = require("telescope.actions")
+    local transform_mod = require("telescope.actions.mt").transform_mod
+    -- or create your custom action
+    local custom_actions = transform_mod({
+      open_trouble_qflist = function(prompt_bufnr)
+        trouble.toggle("quickfix")
+      end,
+    })
     -- [[ Configure Telescope ]]
     -- See `:help telescope` and `:help telescope.setup()`
     require("telescope").setup({
       -- You can put your default mappings / updates / etc. in here
       --  All the info you're looking for is in `:help telescope.setup()`
-      --
       defaults = {
         file_ignore_patterns = { ".git/", "node_modules" },
         layout_config = {
@@ -65,7 +74,8 @@ return { -- Fuzzy Finder (files, lsp, etc)
         sorting_strategy = "ascending",
         mappings = {
           i = {
-
+            ["<C-q>"] = actions.send_selected_to_qflist + custom_actions.open_trouble_qflist,
+            ["<C-t>"] = trouble_telescope.open,
             ["<C-j>"] = {
               require("telescope.actions").move_selection_next,
               type = "action",
