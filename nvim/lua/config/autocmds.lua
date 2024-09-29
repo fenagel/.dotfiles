@@ -1,6 +1,13 @@
--- Autocmds are automatically loaded on the VeryLazy event
--- Default autocmds that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
--- Add any additional autocmds here
+-- Highlight when yanking (copying) text
+--  Try it with `yap` in normal mode
+--  See `:help vim.highlight.on_yank()`
+vim.api.nvim_create_autocmd("TextYankPost", {
+  desc = "Highlight when yanking (copying) text",
+  group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+})
 -- disable completion on markdown files by default
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "gitcommit", "markdown" },
@@ -54,16 +61,6 @@ vim.api.nvim_create_autocmd("ColorScheme", {
   end,
 })
 
--- attemting to disable terraform ls on fixture file
--- vim.api.nvim_create_autocmd("BufEnter", {
---   pattern = "*fixture*",
---   callback = function()
---     vim.diagnostic.disable(0)
---
---     this one also didnt work:     vim.lsp.stop_client(vim.lsp.get_active_clients())
---   end,
--- })
-
 -- wrap and check for spell in text filetypes
 -- added to disable spelling
 vim.api.nvim_create_autocmd("FileType", {
@@ -80,12 +77,6 @@ vim.api.nvim_create_autocmd("filetype", {
   pattern = { "gitcommit", "markdown", "pandoc" },
   command = "set nospell",
 })
-
--- vim.api.nvim_create_autocmd("filetype", {
---   -- group = augroup("wrap_spell"),
---   pattern = { "pandoc" },
---   command = "PandocFolding none",
--- })
 
 -- Go related
 

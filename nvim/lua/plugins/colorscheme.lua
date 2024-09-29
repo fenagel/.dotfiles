@@ -406,12 +406,7 @@ return {
           floats = "transparent",
         },
       })
+    vim.cmd([[colorscheme tokyonight-night]])
     end,
-  },
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "tokyonight",
-    },
   },
 }
