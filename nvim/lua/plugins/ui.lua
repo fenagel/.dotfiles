@@ -7,10 +7,6 @@ return {
       highlight = { "NonText" },
     },
   },
-  -- {
-  --   "folke/noice.nvim",
-  --   enabled = true,
-  -- },
   {
     "j-hui/fidget.nvim",
     opts = {

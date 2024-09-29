@@ -3,7 +3,24 @@
 -- Add any additional keymaps here
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
-local Util = require("lazyvim.util")
+
+-- [[ Basic Keymaps ]]
+-- See `:help vim.keymap.set()`
+
+-- Clear highlights on search when pressing <Esc> in normal mode
+--  See `:help hlsearch`
+keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
+
+-- Diagnostic keymaps
+keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+
+-- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
+-- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
+-- is not what someone will guess without a bit more experience.
+--
+-- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
+-- or just use <C-\><C-n> to exit terminal mode
+keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
 keymap.set("n", "<C-d>", "<C-d>zz", opts)
 keymap.set("n", "<C-u>", "<C-u>zz", opts)
@@ -33,26 +50,9 @@ keymap.set("n", "<M-l>", '<Cmd>lua require("tmux").resize_right()<CR>', { silent
 keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
--- Borderless terminal
-keymap.set("n", "<C-/>", function()
-  Util.terminal(nil, { border = "none" })
-end, { desc = "Term with border" })
-
--- Borderless lazygit
-keymap.set("n", "<leader>gg", function()
-  Util.terminal({ "lazygit" }, { cwd = Util.root(), esc_esc = false, ctrl_hjkl = false, border = "none" })
-end, { desc = "Lazygit (root dir)" })
-
 -- Split windows
 keymap.set("n", "ss", ":vsplit<Return>", opts)
 keymap.set("n", "sv", ":split<Return>", opts)
-
-keymap.del({ "n", "i", "v" }, "<A-j>")
-keymap.del({ "n", "i", "v" }, "<A-k>")
-keymap.del("n", "<C-Left>")
-keymap.del("n", "<C-Down>")
-keymap.del("n", "<C-Up>")
-keymap.del("n", "<C-Right>")
 
 keymap.set("n", "<M-h>", '<Cmd>lua require("tmux").resize_left()<CR>', { silent = true })
 keymap.set("n", "<M-j>", '<Cmd>lua require("tmux").resize_bottom()<CR>', { silent = true })
