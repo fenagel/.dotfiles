@@ -75,6 +75,7 @@ vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
+vim.opt.sidescrolloff = 8
 
 -- transparent background
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
