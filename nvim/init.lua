@@ -132,3 +132,9 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufNewFile" }, {
     vim.api.nvim_buf_set_option(buf, "filetype", "templ")
   end,
 })
+
+vim.filetype.add({
+  extension = {
+    erb = "eruby",
+  },
+})

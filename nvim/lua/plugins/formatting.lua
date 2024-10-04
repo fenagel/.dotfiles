@@ -1,5 +1,5 @@
 return {
-  "nvimtools/none-ls.nvim",
+  "stevearc/conform.nvim",
   on_attach = function(client, bufnr)
     local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
     if client.supports_method("textDocument/formatting") then
@@ -14,25 +14,33 @@ return {
           vim.lsp.buf.format({ bufnr = bufnr })
         end,
       })
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        pattern = "*",
+        callback = function(args)
+          require("conform").format({ bufnr = args.buf })
+        end,
+      })
     end
   end,
   config = function()
-    local null_ls = require("null-ls")
-    null_ls.setup({
-      sources = {
-        null_ls.builtins.formatting.stylua,
-        null_ls.builtins.formatting.prettier,
-        null_ls.builtins.diagnostics.eslint_d,
-        null_ls.builtins.formatting.shellharden,
-        null_ls.builtins.diagnostics.erb_lint,
-        null_ls.builtins.diagnostics.rubocop,
-        null_ls.builtins.formatting.rubocop,
-        null_ls.builtins.formatting.alejandra,
-        null_ls.builtins.formatting.goimports,
-        null_ls.builtins.formatting.golines,
+    require("conform").setup({
+      formatters_by_ft = {
+        lua = { "stylua" },
+        -- Conform will run multiple formatters sequentially
+        python = { "isort", "black" },
+        -- You can customize some of the format options for the filetype (:help conform.format)
+        rust = { "rustfmt", lsp_format = "fallback" },
+        -- Conform will run the first available formatter
+        javascript = { "prettierd", "prettier", stop_after_first = true },
+        erb = { "erb_format" },
+        eruby = { "erb_format" },
+        go = { "goimprts", "gofumpt" },
+        ruby = { "rubocop" },
+      },
+      format_on_save = {
+        timeout_ms = 500,
+        lsp_format = "fallback",
       },
     })
-
-    vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
   end,
 }

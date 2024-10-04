@@ -209,6 +209,16 @@ return {
             },
           },
         },
+        ruby_lsp = {
+          init_options = {
+            formatter = "standard",
+            linters = { "standard" },
+          },
+          filetypes = { "eruby", "erb" },
+        },
+        emmet_ls = {
+          filetypes = { "html", "eruby", "erb" },
+        },
       }
 
       -- Ensure the servers and tools above are installed
@@ -232,6 +242,7 @@ return {
         "rust-analyzer",
         "rustfmt",
         "typescript-language-server",
+        "rubocop",
       })
       require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
