@@ -1,46 +1,43 @@
 return {
   "stevearc/conform.nvim",
-  on_attach = function(client, bufnr)
-    local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-    if client.supports_method("textDocument/formatting") then
-      vim.api.nvim_clear_autocmds({
-        group = augroup,
-        buffer = bufnr,
-      })
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        group = augroup,
-        buffer = bufnr,
-        callback = function()
-          vim.lsp.buf.format({ bufnr = bufnr })
-        end,
-      })
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        pattern = "*",
-        callback = function(args)
-          require("conform").format({ bufnr = args.buf })
-        end,
-      })
-    end
-  end,
+  event = { "BufReadPre", "BufNewFile" },
   config = function()
-    require("conform").setup({
+    local conform = require("conform")
+
+    conform.setup({
       formatters_by_ft = {
+        javascript = { "prettier" },
+        typescript = { "prettier" },
+        javascriptreact = { "prettier" },
+        typescriptreact = { "prettier" },
+        svelte = { "prettier" },
+        css = { "prettier" },
+        html = { "prettier" },
+        json = { "prettier" },
+        yaml = { "prettier" },
+        markdown = { "prettier" },
+        graphql = { "prettier" },
+        liquid = { "prettier" },
         lua = { "stylua" },
-        -- Conform will run multiple formatters sequentially
         python = { "isort", "black" },
-        -- You can customize some of the format options for the filetype (:help conform.format)
-        rust = { "rustfmt", lsp_format = "fallback" },
-        -- Conform will run the first available formatter
-        javascript = { "prettierd", "prettier", stop_after_first = true },
         erb = { "erb_format" },
         eruby = { "erb_format" },
-        go = { "goimprts", "gofumpt" },
+        go = { "goimports", "gofumpt" },
         ruby = { "rubocop" },
       },
       format_on_save = {
-        timeout_ms = 500,
-        lsp_format = "fallback",
+        lsp_fallback = true,
+        async = false,
+        timeout_ms = 1000,
       },
     })
+
+    vim.keymap.set({ "n", "v" }, "<leader>gf", function()
+      conform.format({
+        lsp_fallback = true,
+        async = false,
+        timeout_ms = 1000,
+      })
+    end, { desc = "Format file or range (in visual mode)" })
   end,
 }

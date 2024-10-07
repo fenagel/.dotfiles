@@ -35,6 +35,7 @@ config.colors = {
 	-- background = "#011423",
 	-- background = "#01101D",
 	-- background = "#000F1D",
+	background = "#000",
 	-- cursor_bg = "#47FF9C",
 	-- cursor_border = "#47FF9C",
 	-- cursor_bg = "#CBE0F0",
@@ -82,7 +83,8 @@ config.colors = {
 -- config.macos_window_background_blur = 30
 -- config.color_scheme = "tokyonight"
 -- config.color_scheme = "Tomorrow Night"
-config.color_scheme = "GruvboxDarkHard"
+-- config.color_scheme = "GruvboxDarkHard"
+config.color_scheme = "Rosé Pine (base16)"
 
 config.font = wezterm.font("MesloLGS Nerd Font Mono")
 config.font_size = 24
