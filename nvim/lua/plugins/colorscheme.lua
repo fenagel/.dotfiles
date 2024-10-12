@@ -10,7 +10,7 @@ return {
   {
     "rose-pine/neovim",
     name = "rose-pine",
-    enabled = true,
+    enabled = false,
     config = function()
       require("rose-pine").setup({
         variant = "moon",
@@ -38,7 +38,7 @@ return {
   -- },
   {
     "catppuccin/nvim",
-    enabled = false,
+    enabled = true,
     priority = 150,
     name = "catppuccin",
     config = function()
