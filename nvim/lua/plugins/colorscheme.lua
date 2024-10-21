@@ -38,7 +38,7 @@ return {
   -- },
   {
     "catppuccin/nvim",
-    enabled = true,
+    enabled = false,
     priority = 150,
     name = "catppuccin",
     config = function()
@@ -401,7 +401,7 @@ return {
   {
     "folke/tokyonight.nvim",
     priority = 1000,
-    enabled = false,
+    enabled = enable,
     config = function()
       require("tokyonight").setup({
         style = "night",

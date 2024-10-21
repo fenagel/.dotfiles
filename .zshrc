@@ -202,3 +202,13 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # flutter
 export PATH=$HOME/development/flutter/bin:$PATH
 export PATH="$PATH":"$HOME/.pub-cache/bin"
+
+
+# Herd injected PHP 8.3 configuration.
+export HERD_PHP_83_INI_SCAN_DIR="/Users/felix/Library/Application Support/Herd/config/php/83/"
+
+
+# Herd injected PHP binary.
+export PATH="/Users/felix/Library/Application Support/Herd/bin/":$PATH
+export PATH="/Users/felix/.config/herd-lite/bin:$PATH"
+export PHP_INI_SCAN_DIR="/Users/felix/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"

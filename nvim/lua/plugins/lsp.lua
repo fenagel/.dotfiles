@@ -210,6 +210,7 @@ return {
             },
           },
         },
+        pint = {},
         ruby_lsp = {
           init_options = {
             formatter = "standard",
@@ -219,6 +220,15 @@ return {
         },
         emmet_ls = {
           filetypes = { "html", "eruby", "erb" },
+        },
+        tailwindcss = {
+          init_options = {
+            userLanguages = {
+              elixir = "html-eex",
+              eelixir = "html-eex",
+              heex = "html-eex",
+            },
+          },
         },
       }
 
