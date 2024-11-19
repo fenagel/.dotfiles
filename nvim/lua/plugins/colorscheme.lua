@@ -10,7 +10,7 @@ return {
   {
     "rose-pine/neovim",
     name = "rose-pine",
-    enabled = false,
+    enabled = true,
     config = function()
       require("rose-pine").setup({
         variant = "moon",
@@ -401,7 +401,7 @@ return {
   {
     "folke/tokyonight.nvim",
     priority = 1000,
-    enabled = enable,
+    enabled = false,
     config = function()
       require("tokyonight").setup({
         style = "night",

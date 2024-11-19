@@ -13,7 +13,6 @@ keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 keymap.set("n", "<leader>q", "<Cmd>q<CR>", { desc = "Close" })
 keymap.set("n", "<leader>w", "<Cmd>w<CR>", { desc = "Write" })
-keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
