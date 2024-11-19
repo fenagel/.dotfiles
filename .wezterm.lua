@@ -86,8 +86,9 @@ config.color_scheme = "tokyonight"
 -- config.color_scheme = "GruvboxDarkHard"
 -- config.color_scheme = "Rosé Pine (base16)"
 
-config.font = wezterm.font("MesloLGS Nerd Font Mono")
-config.font_size = 24
+-- config.font = wezterm.font("MesloLGS Nerd Font Mono")
+config.font = wezterm.font("JetBrainsMono Nerd Font")
+config.font_size = 22
 
 config.enable_tab_bar = false
 
