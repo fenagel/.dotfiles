@@ -212,3 +212,4 @@ export HERD_PHP_83_INI_SCAN_DIR="/Users/felix/Library/Application Support/Herd/c
 export PATH="/Users/felix/Library/Application Support/Herd/bin/":$PATH
 export PATH="/Users/felix/.config/herd-lite/bin:$PATH"
 export PHP_INI_SCAN_DIR="/Users/felix/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
+export PATH="/usr/local/opt/postgresql@17/bin:$PATH"

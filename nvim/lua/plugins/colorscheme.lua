@@ -10,7 +10,7 @@ return {
   {
     "rose-pine/neovim",
     name = "rose-pine",
-    enabled = true,
+    enabled = false,
     config = function()
       require("rose-pine").setup({
         variant = "moon",
@@ -38,8 +38,8 @@ return {
   -- },
   {
     "catppuccin/nvim",
-    enabled = false,
-    priority = 150,
+    enabled = true,
+    priority = 1000,
     name = "catppuccin",
     config = function()
       require("catppuccin").setup({
@@ -395,7 +395,7 @@ return {
       vim.api.nvim_set_hl(0, "NavicText", { default = true, bg = "none", fg = "#eedaad" })
       vim.api.nvim_set_hl(0, "NavicSeparator", { default = true, bg = "none", fg = "#eedaad" })
 
-      vim.cmd([[colorscheme catppuccin]])
+      -- vim.cmd([[colorscheme catppuccin]])
     end,
   },
   {
@@ -413,5 +413,11 @@ return {
       })
       -- vim.cmd([[colorscheme tokyonight-night]])
     end,
+  },
+  {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "catppuccin",
+    },
   },
 }
