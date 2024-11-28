@@ -81,10 +81,10 @@ config.colors = {
 -- }
 -- config.window_background_image = "/Users/felix/repos/github.com/fenagel/dotfiles/bg-blurred-darker.png"
 -- config.macos_window_background_blur = 30
-config.color_scheme = "tokyonight"
+-- config.color_scheme = "tokyonight"
 -- config.color_scheme = "Tomorrow Night"
 -- config.color_scheme = "GruvboxDarkHard"
--- config.color_scheme = "Rosé Pine (base16)"
+config.color_scheme = "Rosé Pine (base16)"
 -- config.color_scheme = "Catppuccin Mocha"
 
 -- config.font = wezterm.font("MesloLGS Nerd Font Mono")
