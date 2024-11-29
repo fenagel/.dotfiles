@@ -1,9 +1,8 @@
 return {
-  { "saadparwaiz1/cmp_luasnip" },
   {
     "nvim-cmp",
     optional = true,
-    dependencies = { "saadparwaiz1/cmp_luasnip" },
+    dependencies = { "saadparwaiz1/cmp_luasnip", "hrsh7th/cmp-nvim-lsp" },
     opts = function(_, opts)
       vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
       local cmp = require("cmp")
@@ -29,7 +28,14 @@ return {
           return LazyVim.cmp.map({ "snippet_forward", "ai_accept" }, fallback)()
         end,
       })
-      table.insert(opts.sources, { name = "luasnip" })
+      opts.sources = cmp.config.sources({
+        { name = "nvim_lsp" },
+        { name = "luasnip" },
+        { name = "path" },
+      }, {
+        { name = "buffer" },
+      })
+      -- table.insert(opts.sources, { name = "luasnip" })
     end,
   -- stylua: ignore
   keys = {

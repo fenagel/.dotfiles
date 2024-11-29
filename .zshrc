@@ -192,6 +192,9 @@ export NIX_PATH="$HOME/.nix-defexpr/channels:$NIX_PATH"
 # Prompt
 eval "$(oh-my-posh init zsh --config $HOME/.ohmyposh.toml)"
 
+# Direnv environment vars per project
+eval "$(direnv hook zsh)"
+
 # bun completions
 [ -s "/Users/felix/.bun/_bun" ] && source "/Users/felix/.bun/_bun"
 
