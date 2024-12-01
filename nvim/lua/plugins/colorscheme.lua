@@ -1,16 +1,16 @@
 return {
-  -- {
-  --   "tjdevries/colorbuddy.nvim",
-  --   lazy = false,
-  --   priority = 1000,
-  --   config = function()
-  --     -- vim.cmd.colorscheme("gruvbuddy")
-  --   end,
-  -- },
+  {
+    "tjdevries/colorbuddy.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      -- vim.cmd.colorscheme("gruvbuddy")
+    end,
+  },
   {
     "rose-pine/neovim",
     name = "rose-pine",
-    enabled = false,
+    enabled = true,
     config = function()
       require("rose-pine").setup({
         variant = "moon",
@@ -417,7 +417,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "catppuccin",
+      colorscheme = "rose-pine",
     },
   },
 }
