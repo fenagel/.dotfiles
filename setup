@@ -4,6 +4,7 @@ mkdir -p "$XDG_CONFIG_HOME"
 mkdir -p "$XDG_CONFIG_HOME"/nixpkgs
 
 ln -sf "$PWD/nvim" "$XDG_CONFIG_HOME"
+ln -sf "$PWD/ghostty" "$XDG_CONFIG_HOME"
 
 ln -sf "$PWD/.bash_profile" "$HOME"/.bash_profile
 ln -sf "$PWD/.bashrc" "$HOME"/.bashrc
