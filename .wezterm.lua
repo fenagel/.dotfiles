@@ -90,7 +90,8 @@ config.color_scheme = "Rosé Pine (base16)"
 -- config.font = wezterm.font("MesloLGS Nerd Font Mono")
 -- config.font = wezterm.font("Fantasque Sans Mono", { weight = "Regular" })
 -- config.font = wezterm.font("JetBrainsMono Nerd Font")
-config.font = wezterm.font("DejaVuSansM Nerd Font Mono")
+-- config.font = wezterm.font("DejaVuSansM Nerd Font Mono")
+config.font = wezterm.font("Hasklug Nerd Font")
 config.font_size = 22
 
 config.enable_tab_bar = false
