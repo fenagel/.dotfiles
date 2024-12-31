@@ -38,7 +38,7 @@ return {
   -- },
   {
     "catppuccin/nvim",
-    enabled = false,
+    enabled = true,
     priority = 150,
     name = "catppuccin",
     config = function()
@@ -401,7 +401,7 @@ return {
   {
     "folke/tokyonight.nvim",
     priority = 1000,
-    enabled = enable,
+    enabled = true,
     config = function()
       require("tokyonight").setup({
         style = "night",
@@ -411,7 +411,7 @@ return {
           floats = "transparent",
         },
       })
-      vim.cmd([[colorscheme tokyonight-night]])
+      -- vim.cmd([[colorscheme tokyonight-night]])
     end,
   },
 }
