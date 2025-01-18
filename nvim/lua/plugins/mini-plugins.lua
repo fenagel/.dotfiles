@@ -33,5 +33,12 @@ return { -- Collection of various small independent plugins/modules
 
     -- ... and there is more!
     --  Check out: https://github.com/echasnovski/mini.nvim
+    require("mini.ai").setup()
+    require("mini.operators").setup()
+    require("mini.pairs").setup()
+    require("mini.bracketed").setup()
+    require("mini.icons").setup()
+    require("mini.files").setup()
+    vim.keymap.set("n", "<leader>f", ":lua MiniFiles.open()<CR>")
   end,
 }

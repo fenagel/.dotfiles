@@ -8,6 +8,7 @@ window-colorspace = display-p3
 window-padding-balance = true
 macos-titlebar-style = transparent
 cursor-style-blink = false
+macos-option-as-alt = true
 
 # background = 1C2021
 

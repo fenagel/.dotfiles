@@ -14,6 +14,7 @@ keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 keymap.set("n", "<leader>q", "<Cmd>q<CR>", { desc = "Close" })
 keymap.set("n", "<leader>w", "<Cmd>w<CR>", { desc = "Write" })
 keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
+keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open [E]rrors" })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -50,10 +51,6 @@ keymap.set("n", "<M-l>", '<Cmd>lua require("tmux").resize_right()<CR>', { silent
 
 keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 keymap.set("v", "K", ":m '<-2<CR>gv=gv")
-
--- Split windows
-keymap.set("n", "ss", ":vsplit<Return>", opts)
-keymap.set("n", "sv", ":split<Return>", opts)
 
 -- paste over visually selected text without copying it
 keymap.set("x", "<leader>p", [["_dP]])
